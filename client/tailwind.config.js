@@ -2,7 +2,13 @@
 export default {
   content: ['./src/**/*.{html,js,svelte,ts}'],
   theme: {
-    extend: {}
+    extend: {
+
+      colors: {
+        text_base: "#2A303C"
+      }
+
+    }
   },
   plugins: [require("daisyui")]
 };

@@ -3,24 +3,23 @@
 
 </script>
 
-<div class="flex justify-center items-center h-screen">
+<!-- Centering content -->
+<div class="flex justify-center items-center h-screen flex-col">
 
+    <!-- Base card -->
     <div class="card w-1/3 shadow-xl">
 
+        <!-- Card Header (Logo) -->
+        <div class="flex justify-center">
+            <a href="/home">
+                <img class="w-40 h-30 pt-4" src="logo-textless.svg" alt="logo"/>
+            </a>
+        </div>
+
+        <!-- Card Body (Title, Form, Sign In Button, Continue With) -->
         <div class="card-body">
 
-            <!-- Card Header -->
-            <div class="flex justify-center items-center">
-
-                <img
-                        class="w-8 h-8 mr-2"
-                        src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/logo.svg"
-                        alt="logo"
-                />
-                Acordb
-
-            </div>
-            <h2 class="text-center gap-2 text-xl font-semibold leading-7">Create an Account</h2>
+            <h1 class="text-center gap-2 text-3xl font-semibold leading-7">Sign up to Acordb</h1>
 
             <!-- Card Body and Form -->
             <form action="" class="pt-4">
@@ -28,22 +27,17 @@
                 <label class="label">
                     <span class="label-text">Choose a username</span>
                 </label>
-                <input type="text" placeholder="Username" class="input input-bordered input-primary w-full"/>
+                <input type="text" placeholder="Username" class="input input-bordered w-full"/>
 
                 <label class="label pt-4">
-                    <span class="label-text">Your address</span>
+                    <span class="label-text">Insert your address</span>
                 </label>
-                <input type="text" placeholder="example@service.domain" class="input input-bordered input-primary w-full"/>
+                <input type="text" placeholder="example@service.domain" class="input input-bordered w-full"/>
 
                 <label class="label pt-4">
-                    <span class="label-text">Your password</span>
+                    <span class="label-text">State your password</span>
                 </label>
-                <input type="password" placeholder="Password" class="input input-bordered input-primary w-full"/>
-
-                <label class="label pt-4">
-                    <span class="label-text">Repeat your password</span>
-                </label>
-                <input type="password" placeholder="Repeat the Password" class="input input-bordered input-primary w-full"/>
+                <input type="password" placeholder="Password" class="input input-bordered w-full"/>
 
                 <label class="label cursor-pointer pt-6 justify-start">
                     <input type="checkbox" checked="checked" class="checkbox checkbox-primary checkbox-sm mr-2" />
@@ -62,5 +56,4 @@
 
         </div>
     </div>
-
 </div>
