@@ -22,30 +22,30 @@
             <h1 class="text-center gap-2 text-3xl font-semibold leading-7">Sign up to Acordb</h1>
 
             <!-- Card Body and Form -->
-            <form action="" class="pt-4">
+            <form method="POST" class="pt-4">
 
-                <label class="label">
-                    <span class="label-text">Choose a username</span>
+                <label class="label" for="username">
+                    <span id="username" class="label-text">Choose a username</span>
                 </label>
                 <input type="text" placeholder="Username" class="input input-bordered w-full"/>
 
-                <label class="label pt-4">
-                    <span class="label-text">Insert your address</span>
+                <label class="label pt-4" for="email">
+                    <span id="email" class="label-text">Insert your address</span>
                 </label>
                 <input type="text" placeholder="example@service.domain" class="input input-bordered w-full"/>
 
-                <label class="label pt-4">
-                    <span class="label-text">State your password</span>
+                <label class="label pt-4" for="password">
+                    <span id="password" class="label-text">State your password</span>
                 </label>
                 <input type="password" placeholder="Password" class="input input-bordered w-full"/>
 
                 <label class="label cursor-pointer pt-6 justify-start">
-                    <input type="checkbox" checked="checked" class="checkbox checkbox-primary checkbox-sm mr-2" />
-                    <span class="text-md">I accept the <a href="#" class="text-primary">Terms and Conditions</a></span>
+                    <input type="checkbox" class="checkbox checkbox-primary checkbox-sm mr-2" />
+                    <span class="text-md">I accept the <a href="/tos" class="text-primary">Terms and Conditions</a></span>
                 </label>
 
                 <div class="pt-4">
-                    <button class="btn btn-primary w-full"> Sign Up</button>
+                    <button class="btn btn-primary w-full" type="submit"> Sign Up</button>
                 </div>
 
             </form>

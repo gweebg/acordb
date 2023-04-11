@@ -2,6 +2,11 @@
 
     import ImageButton from "$lib/components/ImageButton.svelte";
 
+    import { superForm } from 'sveltekit-superforms/client';
+
+    export let data;
+    const { form, errors, enhance } = superForm(data.form);
+
 </script>
 
 <div class="flex justify-center items-center h-screen flex-col">
@@ -22,20 +27,26 @@
             <h1 class="text-text_base text-center gap-2 text-3xl font-semibold leading-7">Sign into Acordb</h1>
 
             <!-- Card Body and Form -->
-            <form action="" class="pt-4">
+            <form method="POST" class="pt-4" use:enhance>
 
-                <label class="label" for="username">
-                    <span class="label-text">Insert your username</span>
+                <label class="label" for="email">
+                    <span class="label-text">Insert your email</span>
                 </label>
-                <input id="username" type="text" placeholder="Username" class="input input-bordered w-full"/>
+                <input name="email" type="text" placeholder="Username" class="input input-bordered w-full" bind:value={$form.email}/>
+                {#if $errors.email}
+                    <small class="text-error">{$errors.email}</small>
+                {/if}
 
                 <label class="label pt-4" for="password">
                     <span class="label-text">Insert your password</span>
                 </label>
-                <input id="password" type="text" placeholder="Your password" class="input input-bordered w-full"/>
+                <input name="password" type="password" placeholder="Your password" class="input input-bordered w-full"/>
+                {#if $errors.password}
+                    <small class="text-error">{$errors.email}</small>
+                {/if}
 
                 <label class="label cursor-pointer pt-6 justify-start" for="remember">
-                    <input id="remember" type="checkbox" checked="checked" class="checkbox checkbox-primary checkbox-sm mr-2" />
+                    <input name="remember" type="checkbox" class="checkbox checkbox-primary checkbox-sm mr-2" />
                     <span class="text-md">Remember me</span>
                 </label>
 
