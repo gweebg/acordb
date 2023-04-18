@@ -1,21 +1,44 @@
 from rest_framework import serializers
-from .models import Account
+from .models import Administrator,Consumer,Account
 
-class UsersSerializer(serializers.ModelSerializer):
+class AccountSerializer(serializers.ModelSerializer):
     class Meta:
         model=Account
-        fields=('email','username','first_name')
+        fields=('email','first_name','last_name','filiation')
 
-class RegistrationSerializer(serializers.ModelSerializer):
+class AdministratorSerializer(serializers.ModelSerializer):
+    account = AccountSerializer(many=False)
+    class Meta:
+        model=Administrator
+        fields=('account',)
+
+class ConsumerSerializer(serializers.ModelSerializer):
+    account = AccountSerializer(many=False)
+    class Meta:
+        model=Consumer
+        fields=('account',)
+
+class AccountRegistrationSerializer(serializers.ModelSerializer):
     class Meta:
         model=Account
-        fields=('email','username','password','first_name')
-        extra_kwargs={'password':{'write_only':True}}
+        fields=('email','password','first_name','last_name','filiation')
+        extra_kwargs={'password':{'write_only':True}}  
+class AdministratorRegistrationSerializer(serializers.ModelSerializer):
+    account = AccountRegistrationSerializer()
+    class Meta:
+        model=Administrator
+        fields=('account',)
 
     def create(self,validated_data):
-        password=validated_data.pop('password',None)
-        instance=self.Meta.model(**validated_data)
-        if password is not None:
-            instance.set_password(password)
-        instance.save()
+        instance=self.Meta.model.objects.create_administrator(**validated_data["account"])
+        return instance
+
+class ConsumerRegistrationSerializer(serializers.ModelSerializer):
+    account = AccountRegistrationSerializer()
+    class Meta:
+        model=Consumer
+        fields=('account',)
+
+    def create(self,validated_data):
+        instance=self.Meta.model.objects.create_administrator(**validated_data["account"])
         return instance
