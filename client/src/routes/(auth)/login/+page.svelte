@@ -32,7 +32,7 @@
                 <label class="label" for="email">
                     <span class="label-text">Insert your email</span>
                 </label>
-                <input name="email" type="text" placeholder="Username" class="input input-bordered w-full" bind:value={$form.email}/>
+                <input id="email" name="email" type="text" placeholder="Username" class="input input-bordered w-full" bind:value={$form.email}/>
                 {#if $errors.email}
                     <small class="text-error">{$errors.email}</small>
                 {/if}
@@ -40,13 +40,13 @@
                 <label class="label pt-4" for="password">
                     <span class="label-text">Insert your password</span>
                 </label>
-                <input name="password" type="password" placeholder="Your password" class="input input-bordered w-full"/>
+                <input id="password" name="password" type="password" placeholder="Your password" class="input input-bordered w-full"/>
                 {#if $errors.password}
                     <small class="text-error">{$errors.email}</small>
                 {/if}
 
                 <label class="label cursor-pointer pt-6 justify-start" for="remember">
-                    <input name="remember" type="checkbox" class="checkbox checkbox-primary checkbox-sm mr-2" />
+                    <input id="remember" name="remember" type="checkbox" class="checkbox checkbox-primary checkbox-sm mr-2" />
                     <span class="text-md">Remember me</span>
                 </label>
 

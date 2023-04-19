@@ -1,5 +1,9 @@
 <script>
 
+    import { superForm } from 'sveltekit-superforms/client';
+
+    export let data;
+    const { form, errors, enhance } = superForm(data.form);
 
 </script>
 
@@ -22,27 +26,36 @@
             <h1 class="text-center gap-2 text-3xl font-semibold leading-7">Sign up to Acordb</h1>
 
             <!-- Card Body and Form -->
-            <form method="POST" class="pt-4">
+            <form method="POST" class="pt-4" use:enhance>
 
                 <label class="label" for="username">
                     <span id="username" class="label-text">Choose a username</span>
                 </label>
-                <input type="text" placeholder="Username" class="input input-bordered w-full"/>
+                <input name="username" type="text" placeholder="Username" class="input input-bordered w-full" bind:value={$form.username}/>
+                {#if $errors.username}
+                    <small class="text-error">{$errors.username}</small>
+                {/if}
 
                 <label class="label pt-4" for="email">
                     <span id="email" class="label-text">Insert your address</span>
                 </label>
-                <input type="text" placeholder="example@service.domain" class="input input-bordered w-full"/>
+                <input name="email" type="text" placeholder="example@service.domain" class="input input-bordered w-full bind:value={$form.email}"/>
+                {#if $errors.email}
+                    <small class="text-error">{$errors.email}</small>
+                {/if}
 
                 <label class="label pt-4" for="password">
                     <span id="password" class="label-text">State your password</span>
                 </label>
-                <input type="password" placeholder="Password" class="input input-bordered w-full"/>
+                <input name="password" type="password" placeholder="Password" class="input input-bordered w-full"/>
 
-                <label class="label cursor-pointer pt-6 justify-start">
-                    <input type="checkbox" class="checkbox checkbox-primary checkbox-sm mr-2" />
+                <label for="tos" class="label cursor-pointer pt-6 justify-start">
+                    <input id="tos" name="tos" type="checkbox" class="checkbox checkbox-primary checkbox-sm mr-2" bind:value={$form.tos}/>
                     <span class="text-md">I accept the <a href="/tos" class="text-primary">Terms and Conditions</a></span>
                 </label>
+                {#if $errors.tos}
+                    <small class="text-error">{$errors.tos}</small>
+                {/if}
 
                 <div class="pt-4">
                     <button class="btn btn-primary w-full" type="submit"> Sign Up</button>
