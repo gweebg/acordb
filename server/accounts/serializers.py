@@ -1,21 +1,34 @@
 from rest_framework import serializers
-from .models import Account
+from .models import Administrator,Consumer,Account
 
-class UsersSerializer(serializers.ModelSerializer):
+
+class PasswordBasedLoginSerializer(serializers.ModelSerializer):
     class Meta:
         model=Account
-        fields=('email','username','first_name')
+        fields=('username','password')
+        extra_kwargs={'password':{'write_only':True}} 
 
-class RegistrationSerializer(serializers.ModelSerializer):
+class AccountSerializer(serializers.ModelSerializer):
     class Meta:
         model=Account
-        fields=('email','username','password','first_name')
-        extra_kwargs={'password':{'write_only':True}}
+        fields=('id','email','password','first_name','last_name','filiation')
+        extra_kwargs={'password':{'write_only':True},'id':{'read_only':True}}  
 
+class AdministratorSerializer(serializers.ModelSerializer):
+    account = AccountSerializer(many=False)
+    class Meta:
+        model=Administrator
+        fields=('account',)
     def create(self,validated_data):
-        password=validated_data.pop('password',None)
-        instance=self.Meta.model(**validated_data)
-        if password is not None:
-            instance.set_password(password)
-        instance.save()
+        instance=self.Meta.model.objects.create_administrator(**validated_data["account"])
         return instance
+
+class ConsumerSerializer(serializers.ModelSerializer):
+    account = AccountSerializer(many=False)
+    class Meta:
+        model=Consumer
+        fields=('account',)
+    def create(self,validated_data):
+        instance=self.Meta.model.objects.create_consumer(**validated_data["account"])
+        return instance
+
