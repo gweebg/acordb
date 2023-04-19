@@ -1,23 +1,37 @@
 from django.shortcuts import render
 from rest_framework.views import APIView
-from rest_framework import status,generics
+from rest_framework import status,generics,viewsets
 from rest_framework.response import Response  
-from .serializers import AccountSerializer,AdministratorSerializer,ConsumerSerializer,ConsumerRegistrationSerializer,AdministratorRegistrationSerializer
+from .serializers import AccountSerializer,AdministratorSerializer,ConsumerSerializer,PasswordBasedLoginSerializer
 from rest_framework import permissions
 from .models import Account
 import requests
 from rest_framework import status,generics
-
-class AllUsers(generics.ListAPIView):
-    permission_classes=[permissions.AllowAny]
-    queryset=Account.objects.all()
-    serializer_class=AccountSerializer
+from .permissions import IsAdministrator,IsConsumer
+from django.conf import settings
+from rest_framework import mixins
+from .models import Administrator,Consumer
 
 class CurrentUser(APIView):
     permission_classes = (permissions.IsAuthenticated,)
     def get(self, request):
         serializer = AccountSerializer(self.request.user)
         return Response(serializer.data)
+    
+class PasswordBasedLogin(APIView):
+    permission_classes=[permissions.AllowAny]
+    def post(self,request):
+        reg_serializer=PasswordBasedLoginSerializer(data=request.data)
+        if reg_serializer.is_valid():
+            r=requests.post('http://127.0.0.1:8000/api-auth/token', data = {
+                    'username':request.data['username'],
+                    'password':request.data['password'],
+                    'client_id':settings.DEFAULT_CLIENT_ID,
+                    'client_secret':settings.DEFAULT_CLIENT_SECRET,
+                    'grant_type':'password'
+                })
+            return Response(r.json(),status=status.HTTP_200_OK)
+    
 
 class CreateAdministrator(APIView):
     permission_classes=[permissions.AllowAny]
@@ -26,15 +40,36 @@ class CreateAdministrator(APIView):
         if reg_serializer.is_valid():
             new_user=reg_serializer.save()
             if new_user:
-                r=requests.post('http://127.0.0.1:8000/api-auth/token', data = {
+                r=requests.post('http://127.0.0.1:8000/accounts/login/', data = {
                     'username':new_user.account.email,
-                    'password':request.data['account']['password'],
-                    'client_id':'45Wi64AqHgfs3Ehy8JGioH6wn1U1pGECfSzrCy5L',
-                    'client_secret':'C67kEa9GwgVjAODaiXTbvHmlAbGFeRN2laaYzfv0LARGTjNrHeu4BQ8m9lIdBu32AfUGXlPjInzAeI66CruGLJFDlbOIc4RGp5n6SyNvxyuVwUmD9ZWKxC4MZznMDt8U',
-                    'grant_type':'password'
+                    'password':request.data['account']['password']
                 })
                 return Response(r.json(),status=status.HTTP_201_CREATED)
         return Response(reg_serializer.errors,status=status.HTTP_400_BAD_REQUEST)
+
+
+class AdministratorData(mixins.RetrieveModelMixin,
+                        mixins.DestroyModelMixin,
+                        mixins.CreateModelMixin,
+                        viewsets.GenericViewSet):
+    permission_classes=[IsAdministrator]
+    serializer_class=AdministratorSerializer
+    queryset = Administrator.objects.all()
+    
+    def perform_destroy(self, instance):
+        instance.account.delete()
+        instance.delete()
+class ConsumerData(mixins.RetrieveModelMixin,
+                        mixins.DestroyModelMixin,
+                        mixins.CreateModelMixin,
+                        viewsets.GenericViewSet):
+    permission_classes=[IsConsumer]
+    serializer_class=ConsumerSerializer()
+    queryset = Consumer.objects.all()
+    
+    def perform_destroy(self, instance):
+        instance.account.delete()
+        instance.delete()
     
 class CreateConsumer(APIView):
     permission_classes=[permissions.AllowAny]
@@ -43,12 +78,9 @@ class CreateConsumer(APIView):
         if reg_serializer.is_valid():
             new_user=reg_serializer.save()
             if new_user:
-                r=requests.post('http://127.0.0.1:8000/api-auth/token', data = {
+                r=requests.post('http://127.0.0.1:8000/accounts/login/', data = {
                     'username':new_user.email,
-                    'password':request.data['password'],
-                    'client_id':'45Wi64AqHgfs3Ehy8JGioH6wn1U1pGECfSzrCy5L',
-                    'client_secret':'C67kEa9GwgVjAODaiXTbvHmlAbGFeRN2laaYzfv0LARGTjNrHeu4BQ8m9lIdBu32AfUGXlPjInzAeI66CruGLJFDlbOIc4RGp5n6SyNvxyuVwUmD9ZWKxC4MZznMDt8U',
-                    'grant_type':'password'
+                    'password':request.data['password']
                 })
                 return Response(r.json(),status=status.HTTP_201_CREATED)
         return Response(reg_serializer.errors,status=status.HTTP_400_BAD_REQUEST)

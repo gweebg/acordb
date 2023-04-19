@@ -63,8 +63,8 @@ REST_FRAMEWORK = {
    )
 }
 CORS_ALLOWED_ORIGINS = [
-   "http://localhost:3000",
-   "http://127.0.0.1:3000"
+   "http://localhost:8000",
+   "http://127.0.0.1:8000"
 ]
 
 MIDDLEWARE = [
@@ -154,6 +154,8 @@ STATIC_URL = "static/"
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
+SOCIAL_AUTH_URL_NAMESPACE = 'accounts:social'
+
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 # Facebook configuration
@@ -176,3 +178,6 @@ SOCIAL_AUTH_GOOGLE_OAUTH2_SCOPE = [
    'https://www.googleapis.com/auth/userinfo.email',
    'https://www.googleapis.com/auth/userinfo.profile',
 ]
+
+DEFAULT_CLIENT_ID="v4X9KjxY7WLR4ibEJmIBheZMLmuDXFdlFyOow8QT"
+DEFAULT_CLIENT_SECRET="aOWQ8HKWgDFYBEC012fC0HGuxKAJgtWk5ZlUETxg91Nt0g0PBExlLXiBIj5LMinzU07uEjoXfxkdBIuDcckf5OzVl3M1D90x3RzJP5ZdEFvJzzKrEBjlnahx9ZJUZkV9"
