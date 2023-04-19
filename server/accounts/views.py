@@ -56,6 +56,16 @@ class AdministratorData(mixins.RetrieveModelMixin,
     serializer_class=AdministratorSerializer
     queryset = Administrator.objects.all()
     
+    def get_permissions(self):
+        """
+        Instantiates and returns the list of permissions that this view requires.
+        """
+        if self.action == 'create':
+            permission_classes = [permissions.AllowAny]
+        else:
+            permission_classes = [AdministratorSerializer]
+        return [permission() for permission in permission_classes]
+    
     def perform_destroy(self, instance):
         instance.account.delete()
         instance.delete()
@@ -66,6 +76,15 @@ class ConsumerData(mixins.RetrieveModelMixin,
     permission_classes=[IsConsumer]
     serializer_class=ConsumerSerializer()
     queryset = Consumer.objects.all()
+    def get_permissions(self):
+        """
+        Instantiates and returns the list of permissions that this view requires.
+        """
+        if self.action == 'create':
+            permission_classes = [permissions.AllowAny]
+        else:
+            permission_classes = [AdministratorSerializer]
+        return [permission() for permission in permission_classes]
     
     def perform_destroy(self, instance):
         instance.account.delete()
