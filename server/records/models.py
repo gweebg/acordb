@@ -1,5 +1,5 @@
 from django.db import models
-from ..accounts.models import Administrator,Consumer
+from accounts.models import Administrator,Consumer
 import uuid 
 
 # Create your models here.
@@ -7,10 +7,11 @@ import uuid
 
 class Record(models.Model):
     id = models.CharField(max_length=32,primary_key=True)
-    added_by = models.ForeignKey(Administrator, on_delete=models.CASCADE,null=True,default=None)
+    added_by = models.ForeignKey(Administrator, on_delete=models.CASCADE,null=True,default=None,blank=True)
     
 class ChangedRecord(models.Model):
-    id = models.UUIDField(default=uuid.uuid4(),primary_key=True)
+    #id will be automaticly added
+    pass
 
 class ChangeRequest(models.Model):
     changedRecord = models.OneToOneField(ChangedRecord, on_delete=models.CASCADE,primary_key=True)

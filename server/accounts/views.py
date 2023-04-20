@@ -33,21 +33,6 @@ class PasswordBasedLogin(APIView):
             return Response(r.json(),status=status.HTTP_200_OK)
     
 
-class CreateAdministrator(APIView):
-    permission_classes=[permissions.AllowAny]
-    def post(self,request):
-        reg_serializer=AdministratorRegistrationSerializer(data=request.data)
-        if reg_serializer.is_valid():
-            new_user=reg_serializer.save()
-            if new_user:
-                r=requests.post('http://127.0.0.1:8000/accounts/login/', data = {
-                    'username':new_user.account.email,
-                    'password':request.data['account']['password']
-                })
-                return Response(r.json(),status=status.HTTP_201_CREATED)
-        return Response(reg_serializer.errors,status=status.HTTP_400_BAD_REQUEST)
-
-
 class AdministratorData(mixins.RetrieveModelMixin,
                         mixins.DestroyModelMixin,
                         mixins.CreateModelMixin,
@@ -69,6 +54,10 @@ class AdministratorData(mixins.RetrieveModelMixin,
     def perform_destroy(self, instance):
         instance.account.delete()
         instance.delete()
+        
+        
+        
+        
 class ConsumerData(mixins.RetrieveModelMixin,
                         mixins.DestroyModelMixin,
                         mixins.CreateModelMixin,
@@ -89,17 +78,3 @@ class ConsumerData(mixins.RetrieveModelMixin,
     def perform_destroy(self, instance):
         instance.account.delete()
         instance.delete()
-    
-class CreateConsumer(APIView):
-    permission_classes=[permissions.AllowAny]
-    def post(self,request):
-        reg_serializer=ConsumerRegistrationSerializer(data=request.data)
-        if reg_serializer.is_valid():
-            new_user=reg_serializer.save()
-            if new_user:
-                r=requests.post('http://127.0.0.1:8000/accounts/login/', data = {
-                    'username':new_user.email,
-                    'password':request.data['password']
-                })
-                return Response(r.json(),status=status.HTTP_201_CREATED)
-        return Response(reg_serializer.errors,status=status.HTTP_400_BAD_REQUEST)
