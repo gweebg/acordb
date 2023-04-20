@@ -29,26 +29,26 @@
             <!-- Card Body and Form -->
             <form method="POST" class="pt-4" use:enhance>
 
-                <label class="label" for="email">
+                <label class="label" for="username">
                     <span class="label-text">Insert your email</span>
                 </label>
-                <input id="email" name="email" type="text" placeholder="Username" class="input input-bordered w-full" bind:value={$form.email}/>
-                {#if $errors.email}
-                    <small class="text-error">{$errors.email}</small>
+                <input id="username" name="username" type="text" placeholder="Username" class="input input-bordered w-full" bind:value={$form.username}/>
+                {#if $errors.username}
+                    <small class="text-error">{$errors.username}</small>
                 {/if}
 
                 <label class="label pt-4" for="password">
                     <span class="label-text">Insert your password</span>
                 </label>
                 <input id="password" name="password" type="password" placeholder="Your password" class="input input-bordered w-full"/>
-                {#if $errors.password}
-                    <small class="text-error">{$errors.email}</small>
-                {/if}
-
+            
                 <label class="label cursor-pointer pt-6 justify-start" for="remember">
                     <input id="remember" name="remember" type="checkbox" class="checkbox checkbox-primary checkbox-sm mr-2" />
                     <span class="text-md">Remember me</span>
                 </label>
+                {#if $errors.password}
+                    <small class="text-error">{$errors.password}</small>
+                {/if}
 
                 <div class="pt-4">
                     <button class="btn btn-primary w-full"> Sign In</button>

@@ -26,7 +26,7 @@ export const actions = {
 
         /* Assert the TOS are checked. */
         if (form.data.tos === false) {
-            form.errors["tos"] = "You must accept the Terms of Service to create an account.";
+            form.errors["tos"] = ["You must accept the Terms of Service to create an account."];
         }
 
         if (!form.valid) {
