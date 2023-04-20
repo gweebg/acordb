@@ -7,6 +7,8 @@ class PasswordBasedLoginSerializer(serializers.ModelSerializer):
         model=Account
         fields=('username','password')
         extra_kwargs={'password':{'write_only':True}} 
+class SocialMediaLoginSerializer(serializers.Serializer):
+    token = serializers.CharField(write_only=True,required=True)
 
 class AccountSerializer(serializers.ModelSerializer):
     class Meta:
