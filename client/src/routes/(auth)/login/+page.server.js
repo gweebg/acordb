@@ -69,6 +69,14 @@ export const actions = {
                 maxAge: responseData.expires_in
             });
 
+            event.cookies.set('RefreshTken', `Refresh ${responseData.refresh_token}`, {
+                httpOnly: true,
+                path: '/',
+                secure: true,
+                sameSite: 'strict',
+                maxAge: responseData.expires_in
+            });
+
         } else return { form };
 
         /* If everything went well, put the user on the homepage. */
