@@ -1,6 +1,6 @@
 import { z } from "zod";
 import { superValidate } from 'sveltekit-superforms/server';
-import {fail} from "@sveltejs/kit";
+import { fail } from "@sveltejs/kit";
 
 const loginSchema = z.object({
 
