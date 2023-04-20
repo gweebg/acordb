@@ -7,7 +7,8 @@ from rest_framework.views import APIView
 from .models import Administrator, Consumer
 from .permissions import IsAdministrator, IsConsumer
 from .serializers import (AccountSerializer, AdministratorSerializer,
-                          ConsumerSerializer, PasswordBasedLoginSerializer)
+                          ConsumerSerializer, PasswordBasedLoginSerializer,
+                          SocialMediaLoginSerializer)
 
 
 class CurrentUser(APIView):
@@ -33,7 +34,34 @@ class PasswordBasedLogin(APIView):
                     'client_secret':settings.DEFAULT_CLIENT_SECRET,
                     'grant_type':'password'
                 })
-            return Response(r.json(),status=status.HTTP_200_OK)
+            return Response(r.json(),status=r.status_code)
+        
+class FacebookBasedLogin(APIView):
+    permission_classes=[permissions.AllowAny]
+    def post(self,request):
+        reg_serializer=SocialMediaLoginSerializer(data=request.data)
+        if reg_serializer.is_valid():
+            r=requests.post('http://127.0.0.1:8000/api-auth/convert-token', data = {
+                    'token': request.data["token"],
+                    'backend': "facebook",
+                    'client_id':settings.DEFAULT_CLIENT_ID,
+                    'client_secret':settings.DEFAULT_CLIENT_SECRET,
+                    'grant_type':'convert_token'
+                })
+            return Response(r.json(),status=r.status_code)
+class GoogleBasedLogin(APIView):
+    permission_classes=[permissions.AllowAny]
+    def post(self,request):
+        reg_serializer=SocialMediaLoginSerializer(data=request.data)
+        if reg_serializer.is_valid():
+            r=requests.post('http://127.0.0.1:8000/api-auth/convert-token', data = {
+                    'token': request.data["token"],
+                    'backend': "google-oauth2",
+                    'client_id':settings.DEFAULT_CLIENT_ID,
+                    'client_secret':settings.DEFAULT_CLIENT_SECRET,
+                    'grant_type':'convert_token'
+                })
+            return Response(r.json(),status=r.status_code)
     
 
 class AdministratorData(mixins.RetrieveModelMixin,

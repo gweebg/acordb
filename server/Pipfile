@@ -8,6 +8,7 @@ django = "*"
 djangorestframework = "*"
 django-cors-headers = "*"
 drf-social-oauth2 = "*"
+drf-spectacular = "*"
 
 [dev-packages]
 
