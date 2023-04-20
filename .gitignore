@@ -1,0 +1,8 @@
+./server/__pycache__
+./server/accounts/__pycache__
+./server/accounts/migrations/__pycache__
+./server/records/__pycache__
+./server/records/migrations/__pycache__
+./server/favorites/__pycache__
+./server/favorites/migrations/__pycache__
+./server/acordãos/__pycache__
