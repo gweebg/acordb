@@ -4,20 +4,23 @@ import { fail, redirect } from "@sveltejs/kit";
 
 const loginSchema = z.object({
 
-    username: z.string().email({message: "Invalid email address"}),
-    password: z.string().min(1),
+    username: z.string().email({message: "Invalid email address."}),
+    password: z.string({
+        required_error: "Please fill in the password field.",
+        invalid_type_error: "Password must be a string."
+      }).min(1),
     remember: z.boolean()
 
 });
 
 export const load = async (event) => {
-
     const form = await superValidate(event, loginSchema);
     return { form };
 };
 
 export const actions = {
 
+    /* Default is local password login. */
     default: async (event) => {
 
         const form = await superValidate(event, loginSchema);
@@ -31,7 +34,7 @@ export const actions = {
         try {
 
             /* Logging in the user via the backend API. */
-            var response = await fetch("http://127.0.0.1:8000/accounts/login/", 
+            var response = await fetch("http://127.0.0.1:8000/accounts/login/password/", 
             {
                 method: 'POST', 
                 headers: { 'Content-Type': 'application/json' },
@@ -52,13 +55,6 @@ export const actions = {
 
             const responseData = await response.json();
 
-            if (responseData.access_token === undefined) {
-
-                form.errors["password"] = ["Invalid username or password, try again."];
-                return {form};
-
-            }
-
             if (form.data.remember) responseData.expires_in = 2628000; /* If remember me is set to true, token lasts 1 month. */
 
             event.cookies.set('AuthorizationToken', `Bearer ${responseData.access_token}`, {
@@ -77,7 +73,12 @@ export const actions = {
                 maxAge: responseData.expires_in
             });
 
-        } else return { form };
+        } else {
+
+            form.errors["password"] = ["Invalid username or password, try again."];
+            return {form};
+
+        };
 
         /* If everything went well, put the user on the homepage. */
         throw redirect(302, '/');

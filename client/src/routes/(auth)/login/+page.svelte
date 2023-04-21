@@ -1,11 +1,19 @@
+
 <script>
 
     import ImageButton from "$lib/components/ImageButton.svelte";
 
     import { superForm } from 'sveltekit-superforms/client';
+    import { GoogleAuth, FacebookAuth } from '@beyonk/svelte-social-auth'
 
     export let data;
     const { form, errors, enhance } = superForm(data.form);
+
+    const GOOGLE_CLIENT_ID = "316555827922-thlb7qjblpqovk9033h29ub4rejimaqd.apps.googleusercontent.com";
+
+    const handleGoogleSignIn = (/** @type {any} */ event) => {
+        console.log(event);
+    };
 
 </script>
 
@@ -65,11 +73,16 @@
             <div class="divider"> Or continue with </div>
 
             <div class="btn-group justify-center">
-                <ImageButton iconAlt="google-icon" iconPath="icons/google-color-icon.svg" buttonText="Google"/>
+                
+
+                <GoogleAuth clientId={GOOGLE_CLIENT_ID} on:auth-success={e => console.dir(e.detail.user)}>
+                    <ImageButton iconAlt="google-icon" iconPath="icons/google-color-icon.svg" buttonText="Google"/>
+                </GoogleAuth>
+
                 <ImageButton iconAlt="github-icon" iconPath="icons/facebook-color.svg" buttonText="Facebook"/>
                 <ImageButton iconAlt="github-icon" iconPath="icons/github-mark-white.svg" buttonText="GitHub"/>
+            
             </div>
-
         </div>
     </div>
 </div>
