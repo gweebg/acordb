@@ -31,10 +31,12 @@ export const actions = {
             return { form };
         }
 
+        let response;
+
         try {
 
             /* Logging in the user via the backend API. */
-            var response = await fetch("http://127.0.0.1:8000/accounts/login/password/", 
+            response = await fetch("http://127.0.0.1:8000/accounts/login/password/",
             {
                 method: 'POST', 
                 headers: { 'Content-Type': 'application/json' },
@@ -50,7 +52,7 @@ export const actions = {
 
         }
 
-        /* Handle succssesfull response, store access tokens in secure cookir. */
+        /* Handle successful response, store access tokens in secure cookie. */
         if (response.ok) {
 
             const responseData = await response.json();
@@ -65,7 +67,7 @@ export const actions = {
                 maxAge: responseData.expires_in
             });
 
-            event.cookies.set('RefreshTken', `Refresh ${responseData.refresh_token}`, {
+            event.cookies.set('RefreshToken', `Refresh ${responseData.refresh_token}`, {
                 httpOnly: true,
                 path: '/',
                 secure: true,
@@ -78,7 +80,7 @@ export const actions = {
             form.errors["password"] = ["Invalid username or password, try again."];
             return {form};
 
-        };
+        }
 
         /* If everything went well, put the user on the homepage. */
         throw redirect(302, '/');

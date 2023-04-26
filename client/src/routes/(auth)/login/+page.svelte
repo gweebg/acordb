@@ -2,9 +2,10 @@
 <script>
 
     import ImageButton from "$lib/components/ImageButton.svelte";
+    import GoogleAuth from "$lib/social-auth/google-auth/GoogleAuth.svelte";
+    import FacebookAuth from "$lib/social-auth/facebook-auth/FacebookAuth.svelte";
 
     import { superForm } from 'sveltekit-superforms/client';
-    import { GoogleAuth, FacebookAuth } from '@beyonk/svelte-social-auth'
 
     export let data;
     const { form, errors, enhance } = superForm(data.form);
@@ -73,12 +74,15 @@
             <div class="divider"> Or continue with </div>
 
             <div class="btn-group justify-center">
+
+                <GoogleAuth
+                        clientId={GOOGLE_CLIENT_ID}
+                        on:init-error={ev => alert(ev.detail.error.error)}
+                        on:auth-failure={() => alert('auth failure')}
+                        on:auth-success={ev => console.dir(ev.detail.user) }
+                />
                 
-
-                <GoogleAuth clientId={GOOGLE_CLIENT_ID} on:auth-success={e => console.dir(e.detail.user)}>
-                    <ImageButton iconAlt="google-icon" iconPath="icons/google-color-icon.svg" buttonText="Google"/>
-                </GoogleAuth>
-
+                <ImageButton iconAlt="google-icon" iconPath="icons/google-color-icon.svg" buttonText="Google"/>
                 <ImageButton iconAlt="github-icon" iconPath="icons/facebook-color.svg" buttonText="Facebook"/>
                 <ImageButton iconAlt="github-icon" iconPath="icons/github-mark-white.svg" buttonText="GitHub"/>
             
