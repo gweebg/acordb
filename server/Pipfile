@@ -9,6 +9,7 @@ djangorestframework = "*"
 django-cors-headers = "*"
 drf-social-oauth2 = "*"
 drf-spectacular = "*"
+pymongo = "*"
 
 [dev-packages]
 

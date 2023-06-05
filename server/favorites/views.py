@@ -9,6 +9,7 @@ class FavoritesData(mixins.ListModelMixin,
                     mixins.RetrieveModelMixin,
                     mixins.DestroyModelMixin,
                     mixins.CreateModelMixin,
+                    mixins.UpdateModelMixin,
                     viewsets.GenericViewSet):
     permission_classes=[FavoritesPermission]
     queryset=Favorites.objects.all()

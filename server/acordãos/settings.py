@@ -11,6 +11,9 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
 from pathlib import Path
+from pymongo import MongoClient
+import os
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -39,6 +42,8 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     
     'rest_framework',
+    "rest_framework_swagger",
+    'drf_yasg',
     'oauth2_provider',
     'social_django',
     'drf_social_oauth2',
@@ -159,7 +164,11 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
-STATIC_URL = "static/"
+STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, "static")
+
+STATICFILES_DIRS = [
+]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
@@ -191,3 +200,6 @@ SOCIAL_AUTH_GOOGLE_OAUTH2_SCOPE = [
 
 DEFAULT_CLIENT_ID="v4X9KjxY7WLR4ibEJmIBheZMLmuDXFdlFyOow8QT"
 DEFAULT_CLIENT_SECRET="aOWQ8HKWgDFYBEC012fC0HGuxKAJgtWk5ZlUETxg91Nt0g0PBExlLXiBIj5LMinzU07uEjoXfxkdBIuDcckf5OzVl3M1D90x3RzJP5ZdEFvJzzKrEBjlnahx9ZJUZkV9"
+
+client = MongoClient('mongodb://localhost:27017/')
+mongodb=client['acordaos']
