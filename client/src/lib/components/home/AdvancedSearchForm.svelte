@@ -4,7 +4,7 @@
 </script>
 
 
-<div id="search" class="px-4 my-[100px] mx-48">
+<div id="search" class="px-4 mb-[100px] mt-[80px] mx-48">
 
     <div class="flex justify-between">
 
@@ -25,7 +25,7 @@
 
     </div>
 
-    <div class="opacity-40">
+    <div class="opacity-60">
         <p>In the area you can search any ruling by the parameters bellow.</p>
     </div>
 
