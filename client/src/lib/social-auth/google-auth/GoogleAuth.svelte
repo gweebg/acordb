@@ -80,7 +80,7 @@
 
   function initialise () {
 
-    google.accounts.id.initialize({
+    window.google.accounts.id.initialize({
       client_id: clientId,
       scope,
       callback: attachHandler
@@ -105,7 +105,7 @@
   }
 
   function triggerPrompt () {
-    google.accounts.id.prompt();
+    window.google.accounts.id.prompt();
   }
 
   function attachHandler ({ credential }) {

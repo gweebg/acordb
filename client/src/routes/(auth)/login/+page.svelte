@@ -2,25 +2,17 @@
 <script>
 
     import ImageButton from "$lib/components/ImageButton.svelte";
-    import GoogleAuth from "$lib/social-auth/google-auth/GoogleAuth.svelte";
-    import FacebookAuth from "$lib/social-auth/facebook-auth/FacebookAuth.svelte";
 
     import { superForm } from 'sveltekit-superforms/client';
 
     export let data;
     const { form, errors, enhance } = superForm(data.form);
 
-    const GOOGLE_CLIENT_ID = "316555827922-thlb7qjblpqovk9033h29ub4rejimaqd.apps.googleusercontent.com";
-
-    const handleGoogleSignIn = (/** @type {any} */ event) => {
-        console.log(event);
-    };
-
 </script>
 
 <div class="flex justify-center items-center h-screen flex-col">
 
-    <div class="card w-1/3 shadow-xl">
+    <div class="card w-1/3 shadow-xl bg-white">
 
         <!-- Card Header (Logo) -->
         <div class="flex justify-center">
@@ -75,13 +67,6 @@
 
             <div class="btn-group justify-center">
 
-                <GoogleAuth
-                        clientId={GOOGLE_CLIENT_ID}
-                        on:init-error={ev => alert(ev.detail.error.error)}
-                        on:auth-failure={() => alert('auth failure')}
-                        on:auth-success={ev => console.dir(ev.detail.user) }
-                />
-                
                 <ImageButton iconAlt="google-icon" iconPath="icons/google-color-icon.svg" buttonText="Google"/>
                 <ImageButton iconAlt="github-icon" iconPath="icons/facebook-color.svg" buttonText="Facebook"/>
                 <ImageButton iconAlt="github-icon" iconPath="icons/github-mark-white.svg" buttonText="GitHub"/>
