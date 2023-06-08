@@ -11,7 +11,7 @@
 <div class="flex justify-center items-center h-screen flex-col">
 
     <!-- Base card -->
-    <div class="card w-1/3 shadow-xl">
+    <div class="card w-1/3 shadow-x bg-white">
 
         <!-- Card Header (Logo) -->
         <div class="flex justify-center">
@@ -50,21 +50,21 @@
                 <input name="password" type="password" placeholder="Password" class="input input-bordered w-full"/>
 
                 <label for="tos" class="label cursor-pointer pt-6 justify-start">
-                    <input id="tos" name="tos" type="checkbox" class="checkbox checkbox-primary checkbox-sm mr-2" bind:value={$form.tos}/>
-                    <span class="text-md">I accept the <a href="/tos" class="text-primary">Terms and Conditions</a></span>
+                    <input id="tos" name="tos" type="checkbox" class="checkbox checkbox-accent checkbox-sm mr-2" bind:value={$form.tos}/>
+                    <span class="text-md">I accept the <a href="/tos" class="text-accent">Terms and Conditions</a></span>
                 </label>
                 {#if $errors.tos}
                     <small class="text-error">{$errors.tos}</small>
                 {/if}
 
                 <div class="pt-4">
-                    <button class="btn btn-primary w-full" type="submit"> Sign Up</button>
+                    <button class="btn btn-accent w-full" type="submit"> Sign Up</button>
                 </div>
 
             </form>
 
             <p class="pt-2 text-gray-500 text-md">
-                Already have an account ? <a href="/login" class="text-primary">Login here</a>
+                Already have an account ? <a href="/login" class="text-accent">Login here</a>
             </p>
 
         </div>
