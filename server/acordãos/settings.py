@@ -201,4 +201,4 @@ SOCIAL_AUTH_GOOGLE_OAUTH2_SCOPE = [
 DEFAULT_CLIENT_ID="yD6KLGaIUypk7xbbbVuoxs9QdH7MLzAmLj8OHdLl"
 DEFAULT_CLIENT_SECRET="7i4AQUl3zMWXYa1O01rdMpMHL1P2TrCJ6GXACyAtcl7RYR0kghfEGJbQmGxztCpESkbrxEkarvua5dkwgnleonhQWbdpoDEAn4C4D1BNdL97zLEdFVOyYlnDonY2gVDZ"
 
-MONGO_DB = MongoClient('mongodb://dbmongo:27017')['acordaos']
+MONGO_DB = MongoClient('mongodb+srv://lumafepe:Q1VXCy2G7vsk7yK3@acordao.mu9hzs7.mongodb.net/?retryWrites=true&w=majority')['acordaos']
