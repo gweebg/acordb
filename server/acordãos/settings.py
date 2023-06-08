@@ -28,7 +28,7 @@ SECRET_KEY = "django-insecure-9ciqs71-bhdsf_tnc^+f@r-oe0w$gzt$-^lfge21ceb*2_9_wu
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['0.0.0.0','localhost','127.0.0.1']
 
 
 # Application definition
@@ -125,7 +125,7 @@ WSGI_APPLICATION = "acordãos.wsgi.application"
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
+        "NAME": BASE_DIR / "data/db.sqlite3",
     }
 }
 
@@ -198,8 +198,7 @@ SOCIAL_AUTH_GOOGLE_OAUTH2_SCOPE = [
    'https://www.googleapis.com/auth/userinfo.profile',
 ]
 
-DEFAULT_CLIENT_ID="v4X9KjxY7WLR4ibEJmIBheZMLmuDXFdlFyOow8QT"
-DEFAULT_CLIENT_SECRET="aOWQ8HKWgDFYBEC012fC0HGuxKAJgtWk5ZlUETxg91Nt0g0PBExlLXiBIj5LMinzU07uEjoXfxkdBIuDcckf5OzVl3M1D90x3RzJP5ZdEFvJzzKrEBjlnahx9ZJUZkV9"
+DEFAULT_CLIENT_ID="yD6KLGaIUypk7xbbbVuoxs9QdH7MLzAmLj8OHdLl"
+DEFAULT_CLIENT_SECRET="7i4AQUl3zMWXYa1O01rdMpMHL1P2TrCJ6GXACyAtcl7RYR0kghfEGJbQmGxztCpESkbrxEkarvua5dkwgnleonhQWbdpoDEAn4C4D1BNdL97zLEdFVOyYlnDonY2gVDZ"
 
-client = MongoClient('mongodb://localhost:27017/')
-mongodb=client['acordaos']
+MONGO_DB = MongoClient('mongodb://dbmongo:27017')['acordaos']
