@@ -6,5 +6,6 @@
 ./server/favorites/__pycache__
 ./server/favorites/migrations/__pycache__
 ./server/acordãos/__pycache__
+./server/venv
 .env
 __pycache__
