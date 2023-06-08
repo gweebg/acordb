@@ -4,11 +4,12 @@
 </script>
 
 
-<footer class="footer items-center p-4 bg-neutral text-neutral-content">
-    <div class="items-center grid-flow-col">
-        <p>Copyright © 2023 - All right reserved</p>
-    </div>
-    <div class="grid-flow-col gap-4 md:place-self-center md:justify-self-end">
-        <a href="https://github.com/gweebg/acordb" target="_blank">Accordb</a>
+<footer class="footer footer-center p-4 bg-neutral text-base-100">
+    <div>
+        <p>Copyright © 2023 - All right reserved by
+            <a href="https://github.com/gweebg/genere-et-moribus" target="_blank">
+                <span class="text-secondary">Accordb</span>
+            </a>
+        </p>
     </div>
 </footer>
