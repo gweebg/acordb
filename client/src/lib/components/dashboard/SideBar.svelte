@@ -3,6 +3,9 @@
     import SideBarItem from "$lib/components/dashboard/SideBarItem.svelte";
 
     export let active;
+    export let name = "The best rulings database.";
+    export let basePath = "";
+    export let isAdmin = "";
 
 </script>
 
@@ -12,7 +15,7 @@
 
         <div>
             <h1 class="normal-case text-2xl ml-0 font-semibold">Accordb</h1>
-            <p class="opacity-40">Guilherme Sampaio</p>
+            <p class="opacity-40">{name}</p>
         </div>
 
         <a href="/home" class="btn btn-circle">
@@ -26,14 +29,30 @@
     <!-- Menu Items -->
     <div class="flex flex-col gap-2 flex-grow">
 
-        <SideBarItem params={{text: "Profile", iconPath: "/icons/menu/profile.svg", isActive: active.profile, link: "/dashboard/profile"}}/>
-        <SideBarItem params={{text: "Your Rulings", iconPath: "/icons/menu/ruling.svg", isActive: active.rulings, link: "/dashboard/rulings"}}/>
-        <SideBarItem params={{text: "Favourites", iconPath: "/icons/menu/favourites.svg", isActive: active.favourites, link: "/dashboard/favourites"}}/>
-        <SideBarItem params={{text: "Settings", iconPath: "/icons/menu/settings.svg", isActive: active.settings, link: "/dashboard/settings"}}/>
+        {#if isAdmin}
 
-        <div class="divider border-t border-white mb-1"></div>
+            <SideBarItem params={{text: "Profile", iconPath: "/icons/menu/profile.svg", isActive: active.profile, link: `${basePath}/profile`}}/>
+            <SideBarItem params={{text: "Your Rulings", iconPath: "/icons/menu/ruling.svg", isActive: active.rulings, link: `${basePath}/rulings`}}/>
+            <SideBarItem params={{text: "Favourites", iconPath: "/icons/menu/favourites.svg", isActive: active.favourites, link: `${basePath}/favorites`}}/>
+            <SideBarItem params={{text: "Requests", iconPath: "/icons/menu/settings.svg", isActive: active.settings, link: `${basePath}/requests`}}/>
+            <SideBarItem params={{text: "Settings", iconPath: "/icons/menu/settings.svg", isActive: active.settings, link: `${basePath}/settings`}}/>
 
-        <SideBarItem params={{text: "Add New", iconPath: "/icons/menu/add.svg", isActive: active.add, link: "/rulings/new"}}/>
+
+            <div class="divider border-t border-white mb-1"></div>
+
+            <SideBarItem params={{text: "Add New", iconPath: "/icons/menu/add.svg", isActive: active.add, link: "/rulings/new"}}/>
+
+        {:else}
+
+            <SideBarItem params={{text: "Profile", iconPath: "/icons/menu/profile.svg", isActive: active.profile, link: `${basePath}/profile`}}/>
+            <SideBarItem params={{text: "Requests", iconPath: "/icons/menu/ruling.svg", isActive: active.rulings, link: `${basePath}/requests`}}/>
+            <SideBarItem params={{text: "Favourites", iconPath: "/icons/menu/favourites.svg", isActive: active.favourites, link: `${basePath}/favorites`}}/>
+            <SideBarItem params={{text: "Settings", iconPath: "/icons/menu/settings.svg", isActive: active.settings, link: `${basePath}/settings`}}/>
+
+            <div class="divider border-t border-white mb-1"></div>
+
+        {/if}
+
 
     </div>
 
