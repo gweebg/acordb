@@ -1,0 +1,483 @@
+{
+	"info": {
+		"_postman_id": "eaf03a95-3502-4295-a898-00b3e6290237",
+		"name": "Acordãos",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "21277449"
+	},
+	"item": [
+		{
+			"name": "user",
+			"item": [
+				{
+					"name": "get current user",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "DFrdImIufDdJbsntVVmRhGbPLZSGOf",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/accounts/user/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"accounts",
+								"user",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get user",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "DFrdImIufDdJbsntVVmRhGbPLZSGOf",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/accounts/user/1/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"accounts",
+								"user",
+								"1",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "register utilizador",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"filipe@massa.com\",\n    \"password\": \"croissant\",\n    \"first_name\": \"filipe\",\n    \"last_name\": \"massa\",\n    \"filiation\": \"racist\",\n    \"is_administrator\": true\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/accounts/user/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"accounts",
+								"user",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "editar info",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "DFrdImIufDdJbsntVVmRhGbPLZSGOf",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"filipe@massa.com\",\n    \"password\": \"croissant2\",\n    \"first_name\": \"filipe_alt\",\n    \"last_name\": \"massa_alr\",\n    \"filiation\": \"racer\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/accounts/user/4/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"accounts",
+								"user",
+								"4",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "records",
+			"item": [
+				{
+					"name": "Create Acordão",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "DFrdImIufDdJbsntVVmRhGbPLZSGOf",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n        \"Nº Convencional\": \"ACTC8242\",\n        \"Acordão\": \"98-260-P\",\n        \"Processo\": \"93-0418\",\n        \"Relator\": \"SOUSA BRITO\",\n        \"Descritores\": [\n            \"FISCALIZAÇÃO ABSTRACTA DA CONSTITUCIONALIDADE.\",\n            \"AUTARQUIA LOCAL.\",\n            \"FINANÇAS LOCAIS.\",\n            \"CONSIGNAÇÃO DE RECEITAS.\",\n            \"TUTELA ADMINISTRATIVA.\"\n        ],\n        \"Nº do Documento\": \"TSC1998030598260P\",\n        \"Data do Acordão\": \"03/05/1998\",\n        \"Espécie\": \"SUCESSIVA A\",\n        \"Requerente\": \"PROVEDOR DE JUSTIÇA\",\n        \"Requerido\": \"GOVERNO\",\n        \"Nº do Diário da República\": \"76\",\n        \"Série do Diário da República\": \"I-A\",\n        \"Data do Diário da República\": \"03/31/1998\",\n        \"Página do Diário da República\": \"1414\",\n        \"Volume dos Acordãos do T.C.\": \"39\",\n        \"Votação\": \"MAIORIA COM 4 DEC VOT E 3 VOT VENC\",\n        \"Privacidade\": \"1\",\n        \"Declaração de Voto\": \"SOUSA BRITO.  RIBEIRO MENDES.  \\nNUNES DE ALMEIDA.  FERNANDA PALMA.\",\n        \"Voto Vencido\": \"ASSUNÇÃO ESTEVES.  VÍTOR NUNES DE ALMEIDA.  \\nCARDOSO DA COSTA.\",\n        \"Indicações Eventuais\": \"OUTROS ACÓRDÃOS 98-335-P.\",\n        \"Constituição\": \"1989 ART205 ART243.\\n1997 ART202 ART242 N1.\",\n        \"Normas Apreciadas\": \"DL 103-B/89 DE 1989/04/04 ART4 N1 N3.\\nL 101/89 DE 1989/12/19 ART43.  L 65/90 DE 1990/12/28 ART45 N1.\\nL 2/92 DE 1992/03/09 ART16 N1.  L 30-C/92 DE 1992/12/28 ART12 N1.\",\n        \"Normas Declaradas Inconst.\": \"DL 103-B/89 DE 1989/04/04 ART4 N1 N3.\\nL 101/89 DE 1989/12/19 ART43.  L 65/90 DE 1990/12/28 ART45 N1.\\nL 2/92 DE 1992/03/09 ART16 N1.  L 30-C/92 DE 1992/12/28 ART12 N1.\",\n        \"Área Temática 1\": \"TRIBUNAIS.  PODER LOCAL.\",\n        \"Área Temática 2\": \"DIR ADM - ADM PUBL.\",\n        \"Decisão\": \"Declara inconstitucionais, com força obrigatória geral, as normas constantes dos artigos 4º, nº 1 e 3, do Decreto-Lei nº 103-B/89, de 4 de Abril e ainda dos artigos 43º, da Lei nº 101/89 de 19 de Dezembro, 45º, nº 1, da Lei nº 65/90 de 28 de Dezembro, 16º, nº 1, da Lei nº 2/92, de 9 de Março e 12º, nº 1, da Lei nº 30-C/92, de 28 de Dezembro.\",\n        \"Sumário\": \"I - As questões que aqui se põem são as de saber se os actos de retenção de verbas em questão são uma fonte de tutela autorizada ou excluída pela nova redacção do n.º 1 do artigo 243.º (hoje 242.º) da Constituição, defendendo o Provedor de Justiça serem de tutela substitutiva de mérito, ou se são uma outra forma de actuação legítima do Governo que não tem carácter tutelar, mas é corolário lógico da tutela inspectiva, como pretende o Primeiro Ministro.\\n\\n\\nII - A resposta é tratar-se da tutela substitutiva de legalidade proibida pela Constituição.\\nIII - Com efeito, reconhecendo que os n.ºs 2 e 3 do actual artigo 242.º da Constituição implicam a existência de formas sancionatórias de tutela da legalidade, maxime a dissolução, que afectam genericamente, e não apenas quanto a actos determinados, a autonomia das autarquias locais, deve considerar-se que a tutela substitutiva de legalidade está afastada pelo n.º 1 do mesmo artigo. \\nIV - A falta de pagamento, por parte de uma autarquia local, de uma dívida de um contrato com uma empresa pública não pode dar lugar a uma tutela substitutiva que antecipe cautelarmente o que a outra parte pode obter através dos tribunais.\",\n        \"Texto Integral\": \"\",\n        \"url\": \"/atco1.nsf/904714e45043f49b802565fa004a5fd7/e3af1f647b5e13c6802568ea0053e0f5?OpenDocument\",\n        \"tribunal\": \"atco1\"\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/records/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"records",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "list acordãos",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "DFrdImIufDdJbsntVVmRhGbPLZSGOf",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/records/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"records",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get acordão",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "DFrdImIufDdJbsntVVmRhGbPLZSGOf",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/records/0199-F13.6BECBR/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"records",
+								"0199-F13.6BECBR",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get change requests",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "DFrdImIufDdJbsntVVmRhGbPLZSGOf",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/records/97-0847/alteracoes/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"records",
+								"97-0847",
+								"alteracoes",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get change request",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "DFrdImIufDdJbsntVVmRhGbPLZSGOf",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/records/97-0847/alteracoes/f4db4fe5-89f5-461c-a577-8dcaf90f4851/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"records",
+								"97-0847",
+								"alteracoes",
+								"f4db4fe5-89f5-461c-a577-8dcaf90f4851",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete change request",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "DFrdImIufDdJbsntVVmRhGbPLZSGOf",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/records/97-0847/alteracoes/f4db4fe5-89f5-461c-a577-8dcaf90f4851/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"records",
+								"97-0847",
+								"alteracoes",
+								"f4db4fe5-89f5-461c-a577-8dcaf90f4851",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "accept change request",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "DFrdImIufDdJbsntVVmRhGbPLZSGOf",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"status\":\"accepted\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/records/97-0847/alteracoes/f3c8927b-045c-41b3-9290-74dc6a6d847e/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"records",
+								"97-0847",
+								"alteracoes",
+								"f3c8927b-045c-41b3-9290-74dc6a6d847e",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create change request",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "DFrdImIufDdJbsntVVmRhGbPLZSGOf",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n            \"Nº Convencional\": \"ACTC8262\",\n            \"Acordão\": \"98-280-2\",\n            \"Processo\": \"97-0847\",\n            \"Relator\": \"NUNO DE ALMEIDA\",\n            \"Descritores\": [\n                \"ACESSO AOS TRIBUNAIS.\",\n                \"PRINCÍPIO DA PROPORCIONALIDADE.\",\n                \"CUSTAS.\",\n                \"PROCESSO FISCAL.\"\n            ],\n            \"Nº do Documento\": \"TCA19980310982803\",\n            \"Data do Acordão\": \"03/10/1998\",\n            \"Espécie\": \"CONCRETA A\",\n            \"Requerente\": \"MINISTÉRIO PÚBLICO\",\n            \"Requerido\": \"TT1I PORTO\",\n            \"Votação\": \"UNANIMIDADE\",\n            \"Privacidade\": \"1\",\n            \"Normas Apreciadas\": \"DL 199/90 DE 1990/06/19 ART3 TABELA I ANEXA.\",\n            \"Normas Julgadas Inconst.\": \"DL 199/90 DE 1990/06/19 ART3 TABELA I ANEXA.\",\n            \"Área Temática 1\": \"PRINCÍPIOS GERAIS DOS DIREITOS E DEVERES FUNDAMENTAIS.\",\n            \"Área Temática 2\": \"CONTENC FISC.\",\n            \"Decisão\": \"Julga inconstitucional a norma que se extrai da conjugação do artigo 3º do Decreto-Lei nº 199/90, de 19 de Junho, com a tabela I anexada.\",\n            \"Sumário\": \"Remete para os fundamentos dos Acórdãos nºs 1182/96 e 70/98.\",\n            \"Texto Integral\": \"\",\n            \"url\": \"/atco1.nsf/904714e45043f49b802565fa004a5fd7/2eb96985a6aa4d1e00256862005cffa2?OpenDocument\",\n            \"tribunal\": \"atco1\"\n        }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/records/97-0847/alteracoes/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"records",
+								"97-0847",
+								"alteracoes",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "authentication",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"username\":\"filipe@massa.com\",\n    \"password\":\"croissant2\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/accounts/login/password/",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"accounts",
+						"login",
+						"password",
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "client_id",
+			"value": "EYjXwBZpYDxlk3RMbnpcZIfphUZH3dPNrXo0QV2a",
+			"type": "string"
+		},
+		{
+			"key": "client_secret",
+			"value": "pbkdf2_sha256$390000$QwyMxlgKCGzwBJL3XLCtHO$JwqbsaURe8sxQr6DYxWQboPZyGmg/+6edOGDXmByJjs=",
+			"type": "string"
+		},
+		{
+			"key": "url",
+			"value": "http://127.0.0.1:8000/",
+			"type": "string"
+		}
+	]
+}
