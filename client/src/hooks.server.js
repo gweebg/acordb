@@ -7,7 +7,7 @@ export const handle = async ({ event, resolve }) => {
 
 		try {
 
-			var userResponse = await fetch("http://127.0.0.1:8000/accounts/personal/", 
+			var userResponse = await fetch("http://127.0.0.1:8000/accounts/user/",
 			{
 				method: 'GET', 
 				headers: { 'Content-Type': 'application/json', 'Authorization': authCookie }
@@ -17,17 +17,15 @@ export const handle = async ({ event, resolve }) => {
 			if (userResponse.ok) {
 
 				const responseData = await userResponse.json();
-				
-				const sessionUser = {
+
+				event.locals.user = {
 					id: responseData.id,
 					email: responseData.email,
 					first_name: responseData.first_name,
 					last_name: responseData.last_name,
-					filiation: responseData.filiation
+					filiation: responseData.filiation,
+					is_administrator: responseData.is_administrator
 				};
-
-				// @ts-ignore
-				event.locals.user = sessionUser;
 
 			}
 			else {
