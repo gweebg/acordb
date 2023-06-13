@@ -18,3 +18,17 @@ class IsUser(permissions.BasePermission):
         if isinstance(obj,Account):
             return obj==user
         return False
+    
+class IsAdministrator(permissions.BasePermission):
+    def has_permission(self,request,view):
+        user = request.user
+        if user is None or not user.is_authenticated:
+            return False
+        return user.is_administrator
+    def has_object_permission(self,request,view,obj):
+        r=self.has_permission(request,view)
+        if not r:
+            return False
+        else:
+            return isinstance(Account,obj) and not obj.is_administrator
+    

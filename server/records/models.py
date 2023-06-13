@@ -7,6 +7,7 @@ from django.utils import timezone
 from abc import ABCMeta, abstractmethod
 from .mongo import createRecord,getManyRecords,getOneRecord,updateRecord,deleteRecord
 from .mongo import createchangeRequest,getOnechangeRequest,deletechangeRequest
+from django.db.models import Max
 
 # Create your models here.
 
@@ -38,7 +39,9 @@ class RecordManager(models.Manager):
         r=[]
         for record_data in records:
             record=self.get(id=uuid.UUID(bytes=record_data["_id"]))
-            r.append(recordSerializer(record,record_data))
+            most_recent_added_at = Record.objects.filter(processo=record.processo).aggregate(Max("added_at"))["added_at__max"]
+            if record.added_at==most_recent_added_at:
+                r.append(recordSerializer(record,record_data))
         return r
     
     def getOne(self,processo):

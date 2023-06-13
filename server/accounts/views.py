@@ -4,10 +4,13 @@ from rest_framework import mixins, permissions, status, viewsets
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from .models import Account
-from .permissions import IsUser
+from django.shortcuts import get_object_or_404
+from .permissions import IsUser,IsAdministrator
 from .serializers import (  AccountSerializer,
                             PasswordBasedLoginSerializer,
                             SocialMediaLoginSerializer)
+from django.db.models import Q,Value
+from django.db.models.functions import Concat
 
 
 class CurrentUser(mixins.ListModelMixin, 
@@ -32,7 +35,31 @@ class CurrentUser(mixins.ListModelMixin,
         serializer = self.get_serializer(queryset.first())  # Get the first item from the queryset
         return Response(serializer.data)
 
+class Search(APIView):
+    permission_classes=[permissions.AllowAny]
+    def get(self,request,x):
+        accounts = Account.objects.annotate(
+        full_name=Concat('first_name', Value(' '), 'last_name')
+        ).filter(
+            Q(email__icontains=x) |
+            Q(first_name__icontains=x) |
+            Q(last_name__icontains=x) |
+            Q(filiation__icontains=x) |
+            Q(full_name__icontains=x)
+        )
+        return Response(AccountSerializer(accounts,many=True).data,status=status.HTTP_200_OK)
+        
+
+class MakeConsumerAdmin(APIView):
+    permission_classes=[IsAdministrator]
     
+    def post(self, request,id):
+        account = get_object_or_404(Account, id=id)
+        if account.is_administrator:
+            return Response(status=status.HTTP_403_FORBIDDEN)
+        account.is_administrator=True
+        account.save()
+        return Response(AccountSerializer(account).data,status=status.HTTP_201_CREATED)
     
     
 class PasswordBasedLogin(APIView):
