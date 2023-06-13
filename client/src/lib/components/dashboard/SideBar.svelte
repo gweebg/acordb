@@ -1,0 +1,56 @@
+<script>
+
+    import SideBarItem from "$lib/components/dashboard/SideBarItem.svelte";
+
+    export let active;
+
+</script>
+
+<div class="text-base-100 bg-neutral h-screen w-96 p-5 pt-8 flex flex-col">
+
+    <div class="flex justify-between items-center px-2">
+
+        <div>
+            <h1 class="normal-case text-2xl ml-0 font-semibold">Accordb</h1>
+            <p class="opacity-40">Guilherme Sampaio</p>
+        </div>
+
+        <a href="/home" class="btn btn-circle">
+            <img src="/icons/menu/arrow-left.svg" alt="Back Arrow">
+        </a>
+
+    </div>
+
+    <div class="divider border-t border-white"></div>
+
+    <!-- Menu Items -->
+    <div class="flex flex-col gap-2 flex-grow">
+
+        <SideBarItem params={{text: "Profile", iconPath: "/icons/menu/profile.svg", isActive: active.profile, link: "/dashboard/profile"}}/>
+        <SideBarItem params={{text: "Your Rulings", iconPath: "/icons/menu/ruling.svg", isActive: active.rulings, link: "/dashboard/rulings"}}/>
+        <SideBarItem params={{text: "Favourites", iconPath: "/icons/menu/favourites.svg", isActive: active.favourites, link: "/dashboard/favourites"}}/>
+        <SideBarItem params={{text: "Settings", iconPath: "/icons/menu/settings.svg", isActive: active.settings, link: "/dashboard/settings"}}/>
+
+        <div class="divider border-t border-white mb-1"></div>
+
+        <SideBarItem params={{text: "Add New", iconPath: "/icons/menu/add.svg", isActive: active.add, link: "/rulings/new"}}/>
+
+    </div>
+
+
+    <!-- End Items -->
+    <div>
+
+        <div class="divider border-t border-white mb-1"></div>
+
+        <form action="/logout" method="POST">
+            <button type="submit" class="btn gap-4 text-base-100-focus float-right">
+                <img src="/icons/menu/logout.svg" alt="Logout">
+                Logout
+            </button>
+        </form>
+
+    </div>
+
+
+</div>

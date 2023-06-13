@@ -44,7 +44,7 @@
                 <input id="password" name="password" type="password" placeholder="Your password" class="input input-bordered w-full"/>
             
                 <label class="label cursor-pointer pt-6 justify-start" for="remember">
-                    <input id="remember" name="remember" type="checkbox" class="checkbox checkbox-primary checkbox-sm mr-2" />
+                    <input id="remember" name="remember" type="checkbox" class="checkbox checkbox-accent checkbox-sm mr-2" />
                     <span class="text-md">Remember me</span>
                 </label>
                 {#if $errors.password}
@@ -52,26 +52,26 @@
                 {/if}
 
                 <div class="pt-4">
-                    <button class="btn btn-primary w-full"> Sign In</button>
+                    <button class="btn btn-accent w-full"> Sign In</button>
                 </div>
 
             </form>
 
             <!-- Want to sign up ? -->
             <p class="pt-2 text-gray-500 text-md">
-                Don't have an account ? <a href="/register" class="text-primary">Sign up here</a>
+                Don't have an account ? <a href="/register" class="text-accent">Sign up here</a>
             </p>
 
-            <!-- Continue with section -->
-            <div class="divider"> Or continue with </div>
+<!--            &lt;!&ndash; Continue with section &ndash;&gt;-->
+<!--            <div class="divider"> Or continue with </div>-->
 
-            <div class="btn-group justify-center">
+<!--            <div class="btn-group justify-center">-->
 
-                <ImageButton iconAlt="google-icon" iconPath="icons/google-color-icon.svg" buttonText="Google"/>
-                <ImageButton iconAlt="github-icon" iconPath="icons/facebook-color.svg" buttonText="Facebook"/>
-                <ImageButton iconAlt="github-icon" iconPath="icons/github-mark-white.svg" buttonText="GitHub"/>
-            
-            </div>
+<!--                <ImageButton iconAlt="google-icon" iconPath="icons/google-color-icon.svg" buttonText="Google"/>-->
+<!--                <ImageButton iconAlt="github-icon" iconPath="icons/facebook-color.svg" buttonText="Facebook"/>-->
+<!--                <ImageButton iconAlt="github-icon" iconPath="icons/github-mark-white.svg" buttonText="GitHub"/>-->
+<!--            -->
+<!--            </div>-->
         </div>
     </div>
 </div>

@@ -45,7 +45,7 @@
                     <button class="btn btn-sm btn-accent">NEW</button>
 
                     <!-- Dashboard Button -->
-                    <button class="btn btn-outline btn-sm">Dashboard</button>
+                    <a href="/dashboard" class="btn btn-outline btn-sm">Dashboard</a>
 
                     <div class="dropdown dropdown-end">
 
