@@ -78,7 +78,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"email\": \"filipe@massa.com\",\n    \"password\": \"croissant\",\n    \"first_name\": \"filipe\",\n    \"last_name\": \"massa\",\n    \"filiation\": \"racist\",\n    \"is_administrator\": true\n}\n",
+							"raw": "{\n    \"email\": \"max@verstappen.com\",\n    \"password\": \"croissant\",\n    \"first_name\": \"super\",\n    \"last_name\": \"max\",\n    \"filiation\": \"racist\"\n}\n",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -132,6 +132,57 @@
 								"accounts",
 								"user",
 								"4",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "tornar administrador",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "DFrdImIufDdJbsntVVmRhGbPLZSGOf",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/accounts/user/6/makeadmin/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"accounts",
+								"user",
+								"6",
+								"makeadmin",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "search users",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/accounts/search/robert/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"accounts",
+								"search",
+								"robert",
 								""
 							]
 						}
@@ -224,13 +275,13 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{url}}/records/0199-F13.6BECBR/",
+							"raw": "{{url}}/records/97-0847/",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"records",
-								"0199-F13.6BECBR",
+								"97-0847",
 								""
 							]
 						}
