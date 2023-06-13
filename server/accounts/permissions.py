@@ -1,33 +1,20 @@
 from rest_framework import permissions
-from .models import Consumer,Administrator
+from .models import Account
 
-class IsConsumer(permissions.BasePermission):
-    message = 'Must be a consumer to access this endpoint.'
-
+class IsUser(permissions.BasePermission):
     def has_permission(self, request, view):
         user = request.user
+        if request.method=='POST':
+            return True
         if user is None or not user.is_authenticated:
             return False
-        return Consumer.objects.filter(account=user).exists()
+        return True
     def has_object_permission(self, request, view, obj):
         user = request.user
         if user is None or not user.is_authenticated:
             return False
-        if isinstance(obj,Consumer):
-            return obj.account==user
-                    
-    
-class IsAdministrator(permissions.BasePermission):
-    message = 'Must be Administrator to access this endpoint.'
-
-    def has_permission(self, request, view):
-        user = request.user
-        if user is None or not user.is_authenticated:
-            return False
-        return Administrator.objects.filter(account=user).exists()
-    def has_object_permission(self, request, view, obj):
-        user = request.user
-        if user is None or not user.is_authenticated:
-           return False
-        if isinstance(obj,Administrator):
-            return obj.account==user
+        if request.method in permissions.SAFE_METHODS:  # Allows GET, HEAD, OPTIONS requests
+            return True
+        if isinstance(obj,Account):
+            return obj==user
+        return False

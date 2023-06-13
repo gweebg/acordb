@@ -3,19 +3,37 @@ from django.conf import settings
 from rest_framework import mixins, permissions, status, viewsets
 from rest_framework.response import Response
 from rest_framework.views import APIView
+from .models import Account
+from .permissions import IsUser
+from .serializers import (  AccountSerializer,
+                            PasswordBasedLoginSerializer,
+                            SocialMediaLoginSerializer)
 
-from .models import Administrator, Consumer
-from .permissions import IsAdministrator, IsConsumer
-from .serializers import (AccountSerializer, AdministratorSerializer,
-                          ConsumerSerializer, PasswordBasedLoginSerializer,
-                          SocialMediaLoginSerializer)
 
-
-class CurrentUser(APIView):
-    permission_classes = (permissions.IsAuthenticated,)
-    def get(self, request):
-        serializer = AccountSerializer(self.request.user)
+class CurrentUser(mixins.ListModelMixin, 
+                mixins.RetrieveModelMixin,
+                mixins.CreateModelMixin,
+                mixins.UpdateModelMixin,
+                viewsets.GenericViewSet):
+    permission_classes = (IsUser,)
+    serializer_class=AccountSerializer
+    queryset = Account.objects.all()
+    
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        # Check if the ListModelMixin is being used
+        if 'list' in self.action:
+            user = self.request.user
+            queryset = queryset.filter(pk=user.pk)
+        return queryset
+    
+    def list(self, request, *args, **kwargs):
+        queryset = self.get_queryset()
+        serializer = self.get_serializer(queryset.first())  # Get the first item from the queryset
         return Response(serializer.data)
+
+    
+    
     
 class PasswordBasedLogin(APIView):
     
@@ -62,50 +80,5 @@ class GoogleBasedLogin(APIView):
                     'grant_type':'convert_token'
                 })
             return Response(r.json(),status=r.status_code)
-    
 
-class AdministratorData(mixins.RetrieveModelMixin,
-                        mixins.DestroyModelMixin,
-                        mixins.CreateModelMixin,
-                        viewsets.GenericViewSet):
-    permission_classes=[IsAdministrator]
-    serializer_class=AdministratorSerializer
-    queryset = Administrator.objects.all()
-    
-    def get_permissions(self):
-        """
-        Instantiates and returns the list of permissions that this view requires.
-        """
-        if self.action == 'create':
-            permission_classes = [permissions.AllowAny]
-        else:
-            permission_classes = [AdministratorSerializer]
-        return [permission() for permission in permission_classes]
-    
-    def perform_destroy(self, instance):
-        instance.account.delete()
-        instance.delete()
         
-        
-        
-        
-class ConsumerData(mixins.RetrieveModelMixin,
-                        mixins.DestroyModelMixin,
-                        mixins.CreateModelMixin,
-                        viewsets.GenericViewSet):
-    permission_classes=[IsConsumer]
-    serializer_class=ConsumerSerializer()
-    queryset = Consumer.objects.all()
-    def get_permissions(self):
-        """
-        Instantiates and returns the list of permissions that this view requires.
-        """
-        if self.action == 'create':
-            permission_classes = [permissions.AllowAny]
-        else:
-            permission_classes = [AdministratorSerializer]
-        return [permission() for permission in permission_classes]
-    
-    def perform_destroy(self, instance):
-        instance.account.delete()
-        instance.delete()

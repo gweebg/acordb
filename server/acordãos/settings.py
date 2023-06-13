@@ -76,6 +76,9 @@ REST_FRAMEWORK = {
 SPECTACULAR_SETTINGS = {
     'TITLE': 'Acordb Server'
 }
+OAUTH2_PROVIDER = {
+    'ACCESS_TOKEN_EXPIRE_SECONDS': 26784000,
+}
 
 CORS_ALLOWED_ORIGINS = [
    "http://localhost:8000",
@@ -198,7 +201,7 @@ SOCIAL_AUTH_GOOGLE_OAUTH2_SCOPE = [
    'https://www.googleapis.com/auth/userinfo.profile',
 ]
 
-DEFAULT_CLIENT_ID="yD6KLGaIUypk7xbbbVuoxs9QdH7MLzAmLj8OHdLl"
-DEFAULT_CLIENT_SECRET="7i4AQUl3zMWXYa1O01rdMpMHL1P2TrCJ6GXACyAtcl7RYR0kghfEGJbQmGxztCpESkbrxEkarvua5dkwgnleonhQWbdpoDEAn4C4D1BNdL97zLEdFVOyYlnDonY2gVDZ"
+DEFAULT_CLIENT_ID="9IM7D4Is7Eb5axH6UzUvXkKINgzLmmbgwvVt0DfP"
+DEFAULT_CLIENT_SECRET="P0nj9NVCl9HHmAWA0RgxtApdx1e378yngi5uaXgEdKNskbo8i5CBlIpoSvIUzGCAxcpoiteqFJOa3NGtTCrqgNq93thMZww4aave9BLIPPs6uPY9N89bMB2YDYIjDf76"
 
 MONGO_DB = MongoClient('mongodb+srv://lumafepe:Q1VXCy2G7vsk7yK3@acordao.mu9hzs7.mongodb.net/?retryWrites=true&w=majority')['acordaos']

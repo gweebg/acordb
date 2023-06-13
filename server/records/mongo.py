@@ -20,5 +20,21 @@ def deleteRecord(id):
     #Returns True on Success
     result = settings.MONGO_DB['records'].delete_one({'_id': id})
     return result.deleted_count > 0
-    
+
+
+
+
+def getOnechangeRequest(id):
+    return settings.MONGO_DB['changeRequests'].find_one({'_id':id})
+  
+def createchangeRequest(data):
+    result = settings.MONGO_DB['changeRequests'].insert_one(data)
+    if result.inserted_id:
+        return getOnechangeRequest(result.inserted_id)
+    else:
+        return None
+    pass
+def deletechangeRequest(id):
+    result = settings.MONGO_DB['changeRequests'].delete_one({'_id': id})
+    return result.deleted_count > 0
     
