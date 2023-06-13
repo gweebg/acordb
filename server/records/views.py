@@ -3,6 +3,8 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import permissions,status
 from .mongo import *
+import uuid
+import bson
 from .models import Record,ChangeRequest
 from .permissions import IsAdministrator,IsConsumer,BelongsToUser
 # Create your views here.
@@ -17,7 +19,11 @@ class Records(APIView):
     
     def get(self, request, processo=None):
         if processo==None:
-            return Response(Record.objects.getMany(request.GET.dict()),status=status.HTTP_200_OK)
+            d=request.GET.dict()
+            idQ = d.pop('id',None)
+            if idQ is not None:
+                d['_id']=bson.Binary.from_uuid(uuid.UUID(idQ))
+            return Response(Record.objects.getMany(d),status=status.HTTP_200_OK)
         else:
             #Retrieve
             r=Record.objects.getOne(processo)
