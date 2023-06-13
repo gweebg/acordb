@@ -1,6 +1,7 @@
 from django.db import models
 from accounts.models import Account
 from records.models import Record
+from rest_framework import serializers
 
 class CustomFavoritesManager(models.Manager):
     def create_favorite(self,user,processo,description):

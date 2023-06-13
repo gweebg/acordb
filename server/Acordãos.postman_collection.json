@@ -247,13 +247,12 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{url}}/records/",
+							"raw": "{{url}}/records",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"records",
-								""
+								"records"
 							]
 						}
 					},
@@ -453,6 +452,172 @@
 								"records",
 								"97-0847",
 								"alteracoes",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "favorites",
+			"item": [
+				{
+					"name": "listar favoritos",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "DFrdImIufDdJbsntVVmRhGbPLZSGOf",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/favorites/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"favorites",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "criar favorito",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "DFrdImIufDdJbsntVVmRhGbPLZSGOf",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"processo\":\"97-0215\",\n    \"description\":\"Este é o melhor processo de sempre\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/favorites/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"favorites",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "obter favorito",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "DFrdImIufDdJbsntVVmRhGbPLZSGOf",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/favorites/1/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"favorites",
+								"1",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "eliminar favorito",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "DFrdImIufDdJbsntVVmRhGbPLZSGOf",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/favorites/1/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"favorites",
+								"1",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "atualizar favorito",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "DFrdImIufDdJbsntVVmRhGbPLZSGOf",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n        \"processo\": \"97-0215\",\n        \"description\": \"Este é o pior processo de sempre\",\n        \"id\": 2\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/favorites/2/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"favorites",
+								"2",
 								""
 							]
 						}
