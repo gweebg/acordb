@@ -23,7 +23,7 @@
     <div class="flex flex-row">
 
         <div class="fixed">
-            <SideBar active={{profile: true, rulings: false, favourites: false, settings: false, add: false}}/>
+            <SideBar active={{profile: true, rulings: false, favourites: false, settings: false, add: false}} />
         </div>
 
         <!-- Content -->

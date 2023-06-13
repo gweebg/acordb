@@ -6,12 +6,14 @@
     import Footer from "$lib/components/Footer.svelte";
     import Navbar from "$lib/components/home/Navbar.svelte";
 
+    export let data;
+
 </script>
 
 <div>
 
     <!-- Navbar -->
-    <Navbar/>
+    <Navbar isAuthenticated={data.isAuthed}/>
 
     <!-- Main content -->
     <div>
