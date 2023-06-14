@@ -1,20 +1,23 @@
 <script>
-	import Metadados from "./Metadados.svelte";
-    import Header from "./Metadados.svelte";
+
+    import Metadata from "$lib/components/record/Metadata.svelte";
+
     export let data;
+
     let process = data.process;
     let record = data.record; 
     let fields = [];
+
+
     for (let key in record.data) {
         if (record.data.hasOwnProperty(key) && !(["id", "added_by", "added_at"].includes(key))) {
-            if (typeof(record.data[key]) === 'string'){
-                fields.push([key, record.data[key]]);
-            }
-            else {
-                fields.push([key, record.data[key].join("\n")])
-            }
+
+            if (typeof(record.data[key]) === 'string') fields.push([key, record.data[key]]);
+            else fields.push([key, record.data[key].join("\n")])
+
         }
     }
+
     process.map(
         (r) => {
             if (r.data["Votação"] === undefined) {
@@ -24,40 +27,63 @@
                 r.data["Relator"] = "Não disponível"
             }
         }
-    )
+    );
+
     function handleRowClick(id) {
-        // Redirect to the link with the object ID
+        // Redirect to the link with the object ID.
         window.location.href = `/record/${id}`;
     }
+
 </script>
 
 <div class="container mx-auto py-5">
-    <div class="divider pt-3 pb-6">Dados</div>
-    <div>
-        <table class="table rounded-2xl shadow-lg w-full">
-            <!-- head -->
+
+    <!-- General Data + Record URL  -->
+    <div class="flex flex-row justify-between items-center">
+        <h2 class="text-3xl font-bold">General Data</h2>
+        <a href={"http://www.dgsi.pt/" + data.record.data.url} target="_blank" class="text-neutral underline">View Ruling</a>
+    </div>
+    <div class="divider"></div>
+
+    <!-- General Data Table -->
+    <div class="overflow-x-auto">
+        <table class="table table-zebra w-full">
+
+            <!-- Table Header -->
             <thead>
                 <tr>
-                    <th class="bg-accent">Campo</th>
-                    <th class="bg-accent">Valor</th>
+                    <th class="font-bold text-base bg-accent">Field</th>
+                    <th class="text-center text-base bg-accent">Value</th>
                 </tr>
             </thead>
+
+            <!-- Table Content -->
             <tbody class="bg-card-accent">
-                <!-- row 1 -->
                 {#each fields as e}
-                <tr class="bg-card-accent">
-                    <th class="bg-card-accent">{e[0]}</th>
-                    <td class="bg-card-accent whitespace-pre-wrap break-all">{e[1]}</td>
-                </tr>
+                    <tr class="bg-card-accent">
+                        <th class="bg-card-accent">{e[0]}</th>
+                        <td class="bg-card-accent whitespace-pre-wrap break-all">{e[1]}</td>
+                    </tr>
                 {/each}
             </tbody>
+
         </table>
     </div>
-    <div class="divider py-6">Metadados</div>
-    <Metadados record={record}/>
-    <div class="divider py-6">Versoes</div>
+
+
+    <!-- Metadata Header    -->
+    <h2 class="text-3xl font-bold mt-12">Metadata</h2>
+    <div class="divider"></div>
+
+    <!-- Metadata -->
+    <Metadata record={record}/>
+
+    <!-- Ruling Versions Header    -->
+    <h2 class="text-3xl font-bold mt-12">Ruling Versions</h2>
+    <div class="divider"></div>
+
     <div>
-        <table class="table rounded-2xl shadow-lg w-full">
+        <table class="table table-zebra shadow-lg w-full">
             <!-- head -->
             <thead>
                 <tr>
