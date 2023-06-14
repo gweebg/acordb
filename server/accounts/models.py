@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser,BaseUserManager,PermissionsMixin
+from django.utils import timezone
 from django.utils.translation import gettext_lazy as _
 
 class CustomAccountManager(BaseUserManager):
@@ -57,6 +58,7 @@ class Account(AbstractBaseUser,PermissionsMixin):
     is_active=models.BooleanField(default=True)
     filiation = models.CharField(max_length=150,blank=True)
     is_administrator =models.BooleanField(default=False)
+    created_at = models.DateTimeField(_('Created At'), default=timezone.now)
 
     objects=CustomAccountManager()
 

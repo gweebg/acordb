@@ -23,6 +23,7 @@ from drf_yasg import openapi
 from django.views.static import serve
 from rest_framework import permissions
 from django.conf import settings
+from .views import Statistics
 schema_view = get_schema_view(
     openapi.Info(
         title="acordãos",
@@ -47,5 +48,6 @@ urlpatterns = [
     path('accounts/', include('accounts.urls',namespace="accounts")),
     path('favorites/', include('favorites.urls',namespace="favorites")),
     path('records/', include('records.urls',namespace="records")),
+    path('statistics/',Statistics.as_view(),name="global-statistics"),
     re_path(r"^static/(?P<path>.*)$", serve, {"document_root": settings.STATIC_ROOT}),
 ]

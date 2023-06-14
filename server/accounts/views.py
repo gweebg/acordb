@@ -4,6 +4,8 @@ from rest_framework import mixins, permissions, status, viewsets
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from .models import Account
+from records.models import Record,ChangeRequest
+from favorites.models import Favorites
 from django.shortcuts import get_object_or_404
 from .permissions import IsUser,IsAdministrator
 from .serializers import (  AccountSerializer,
@@ -48,7 +50,27 @@ class Search(APIView):
             Q(full_name__icontains=x)
         )
         return Response(AccountSerializer(accounts,many=True).data,status=status.HTTP_200_OK)
-        
+    
+class Statistics(APIView):
+    permission_classes=[permissions.IsAuthenticated]
+    def get(self,request):
+        if request.user.is_administrator:
+            return Response({
+                "Processos":Record.objects.filter(added_by=request.user).count(),
+                "Criação":request.user.created_at.strftime('%H:%M:%S %d/%m/%Y'),
+                "Reviews":ChangeRequest.objects.filter(reviewer=request.user).count(),
+                "Favoritos":Favorites.objects.filter(user=request.user).count()
+                },status=status.HTTP_200_OK)
+        else:
+            return Response({
+                "Changes":ChangeRequest.objects.filter(sujested_by=request.user).count(),
+                "Criação":request.user.created_at.strftime('%H:%M:%S %d/%m/%Y'),
+                "ChangesAccepted":ChangeRequest.objects.filter(sujested_by=request.user, status='accepted').count(),
+                "ChangesDenied":ChangeRequest.objects.filter(sujested_by=request.user, status='denied').count(),
+                "Favoritos":Favorites.objects.filter(user=request.user).count()
+                },status=status.HTTP_200_OK)
+            
+         
 
 class MakeConsumerAdmin(APIView):
     permission_classes=[IsAdministrator]

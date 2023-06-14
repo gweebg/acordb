@@ -188,6 +188,35 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "Stats",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "DFrdImIufDdJbsntVVmRhGbPLZSGOf",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/accounts/statistics/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"accounts",
+								"statistics",
+								""
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},
@@ -636,7 +665,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"username\":\"filipe@massa.com\",\n    \"password\":\"croissant2\"\n}",
+					"raw": "{\n    \"username\":\"seb@vettel.com\",\n    \"password\":\"croissant\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -652,6 +681,24 @@
 						"accounts",
 						"login",
 						"password",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Stats",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/statistics/",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"statistics",
 						""
 					]
 				}
