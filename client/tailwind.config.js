@@ -6,7 +6,6 @@ export default {
     themes: [
       {
         base: {
-
           "primary": "#ea60be",
           "secondary": "#bfbdfc",
           "accent": "#2dbcab",
@@ -25,6 +24,7 @@ export default {
     extend: {
 
       colors: {
+        "card-accent": "#ebf3f8",
         text_base: "#2A303C"
       }
 
