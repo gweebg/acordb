@@ -8,4 +8,5 @@
 ./server/acordãos/__pycache__
 ./server/venv
 .env
+./.vscode
 __pycache__
