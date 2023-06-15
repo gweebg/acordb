@@ -201,7 +201,7 @@ SOCIAL_AUTH_GOOGLE_OAUTH2_SCOPE = [
    'https://www.googleapis.com/auth/userinfo.profile',
 ]
 
-DEFAULT_CLIENT_ID="9IM7D4Is7Eb5axH6UzUvXkKINgzLmmbgwvVt0DfP"
-DEFAULT_CLIENT_SECRET="P0nj9NVCl9HHmAWA0RgxtApdx1e378yngi5uaXgEdKNskbo8i5CBlIpoSvIUzGCAxcpoiteqFJOa3NGtTCrqgNq93thMZww4aave9BLIPPs6uPY9N89bMB2YDYIjDf76"
+DEFAULT_CLIENT_ID="2h9uuBaNXXRZyO9anDvAzA1CssWEuplIluJTKJNb"
+DEFAULT_CLIENT_SECRET="6fOkOydW54SOQ09Hnd6Ly92qjGC7AInIPQuWsN8AwZQ92AaNth38h3T1c5gSVjRcM27eiYSXw3Av2ktiMM6Bd8R8gWrP37sFBPBlwiVWAShfhkm0p3GochUz7lNcsgdg"
 
 MONGO_DB = MongoClient('mongodb+srv://lumafepe:Q1VXCy2G7vsk7yK3@acordao.mu9hzs7.mongodb.net/?retryWrites=true&w=majority')['acordaos']

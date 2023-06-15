@@ -17,7 +17,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "DFrdImIufDdJbsntVVmRhGbPLZSGOf",
+									"value": "JZxUCOL2PKp8aiIMbxwcv3AK9agfvx",
 									"type": "string"
 								}
 							]
@@ -46,7 +46,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "DFrdImIufDdJbsntVVmRhGbPLZSGOf",
+									"value": "JZxUCOL2PKp8aiIMbxwcv3AK9agfvx",
 									"type": "string"
 								}
 							]
@@ -54,14 +54,14 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{url}}/accounts/user/1/",
+							"raw": "{{url}}/accounts/user/3/",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"accounts",
 								"user",
-								"1",
+								"3",
 								""
 							]
 						}
@@ -78,7 +78,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"email\": \"max@verstappen.com\",\n    \"password\": \"croissant\",\n    \"first_name\": \"super\",\n    \"last_name\": \"max\",\n    \"filiation\": \"racist\"\n}\n",
+							"raw": "{\n    \"email\": \"seb@vettel.com\",\n    \"password\": \"croissant\",\n    \"first_name\": \"seb\",\n    \"last_name\": \"vettel\",\n    \"filiation\": \"racist\"\n}\n",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -107,7 +107,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "DFrdImIufDdJbsntVVmRhGbPLZSGOf",
+									"value": "JZxUCOL2PKp8aiIMbxwcv3AK9agfvx",
 									"type": "string"
 								}
 							]
@@ -124,14 +124,14 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/accounts/user/4/",
+							"raw": "{{url}}/accounts/user/3/",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"accounts",
 								"user",
-								"4",
+								"3",
 								""
 							]
 						}
@@ -146,7 +146,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "DFrdImIufDdJbsntVVmRhGbPLZSGOf",
+									"value": "JZxUCOL2PKp8aiIMbxwcv3AK9agfvx",
 									"type": "string"
 								}
 							]
@@ -154,14 +154,14 @@
 						"method": "POST",
 						"header": [],
 						"url": {
-							"raw": "{{url}}/accounts/user/6/makeadmin/",
+							"raw": "{{url}}/accounts/user/2/makeadmin/",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"accounts",
 								"user",
-								"6",
+								"2",
 								"makeadmin",
 								""
 							]
@@ -197,7 +197,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "DFrdImIufDdJbsntVVmRhGbPLZSGOf",
+									"value": "JZxUCOL2PKp8aiIMbxwcv3AK9agfvx",
 									"type": "string"
 								}
 							]
@@ -231,7 +231,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "DFrdImIufDdJbsntVVmRhGbPLZSGOf",
+									"value": "JZxUCOL2PKp8aiIMbxwcv3AK9agfvx",
 									"type": "string"
 								}
 							]
@@ -240,7 +240,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n        \"Nº Convencional\": \"ACTC8242\",\n        \"Acordão\": \"98-260-P\",\n        \"Processo\": \"93-0418\",\n        \"Relator\": \"SOUSA BRITO\",\n        \"Descritores\": [\n            \"FISCALIZAÇÃO ABSTRACTA DA CONSTITUCIONALIDADE.\",\n            \"AUTARQUIA LOCAL.\",\n            \"FINANÇAS LOCAIS.\",\n            \"CONSIGNAÇÃO DE RECEITAS.\",\n            \"TUTELA ADMINISTRATIVA.\"\n        ],\n        \"Nº do Documento\": \"TSC1998030598260P\",\n        \"Data do Acordão\": \"03/05/1998\",\n        \"Espécie\": \"SUCESSIVA A\",\n        \"Requerente\": \"PROVEDOR DE JUSTIÇA\",\n        \"Requerido\": \"GOVERNO\",\n        \"Nº do Diário da República\": \"76\",\n        \"Série do Diário da República\": \"I-A\",\n        \"Data do Diário da República\": \"03/31/1998\",\n        \"Página do Diário da República\": \"1414\",\n        \"Volume dos Acordãos do T.C.\": \"39\",\n        \"Votação\": \"MAIORIA COM 4 DEC VOT E 3 VOT VENC\",\n        \"Privacidade\": \"1\",\n        \"Declaração de Voto\": \"SOUSA BRITO.  RIBEIRO MENDES.  \\nNUNES DE ALMEIDA.  FERNANDA PALMA.\",\n        \"Voto Vencido\": \"ASSUNÇÃO ESTEVES.  VÍTOR NUNES DE ALMEIDA.  \\nCARDOSO DA COSTA.\",\n        \"Indicações Eventuais\": \"OUTROS ACÓRDÃOS 98-335-P.\",\n        \"Constituição\": \"1989 ART205 ART243.\\n1997 ART202 ART242 N1.\",\n        \"Normas Apreciadas\": \"DL 103-B/89 DE 1989/04/04 ART4 N1 N3.\\nL 101/89 DE 1989/12/19 ART43.  L 65/90 DE 1990/12/28 ART45 N1.\\nL 2/92 DE 1992/03/09 ART16 N1.  L 30-C/92 DE 1992/12/28 ART12 N1.\",\n        \"Normas Declaradas Inconst.\": \"DL 103-B/89 DE 1989/04/04 ART4 N1 N3.\\nL 101/89 DE 1989/12/19 ART43.  L 65/90 DE 1990/12/28 ART45 N1.\\nL 2/92 DE 1992/03/09 ART16 N1.  L 30-C/92 DE 1992/12/28 ART12 N1.\",\n        \"Área Temática 1\": \"TRIBUNAIS.  PODER LOCAL.\",\n        \"Área Temática 2\": \"DIR ADM - ADM PUBL.\",\n        \"Decisão\": \"Declara inconstitucionais, com força obrigatória geral, as normas constantes dos artigos 4º, nº 1 e 3, do Decreto-Lei nº 103-B/89, de 4 de Abril e ainda dos artigos 43º, da Lei nº 101/89 de 19 de Dezembro, 45º, nº 1, da Lei nº 65/90 de 28 de Dezembro, 16º, nº 1, da Lei nº 2/92, de 9 de Março e 12º, nº 1, da Lei nº 30-C/92, de 28 de Dezembro.\",\n        \"Sumário\": \"I - As questões que aqui se põem são as de saber se os actos de retenção de verbas em questão são uma fonte de tutela autorizada ou excluída pela nova redacção do n.º 1 do artigo 243.º (hoje 242.º) da Constituição, defendendo o Provedor de Justiça serem de tutela substitutiva de mérito, ou se são uma outra forma de actuação legítima do Governo que não tem carácter tutelar, mas é corolário lógico da tutela inspectiva, como pretende o Primeiro Ministro.\\n\\n\\nII - A resposta é tratar-se da tutela substitutiva de legalidade proibida pela Constituição.\\nIII - Com efeito, reconhecendo que os n.ºs 2 e 3 do actual artigo 242.º da Constituição implicam a existência de formas sancionatórias de tutela da legalidade, maxime a dissolução, que afectam genericamente, e não apenas quanto a actos determinados, a autonomia das autarquias locais, deve considerar-se que a tutela substitutiva de legalidade está afastada pelo n.º 1 do mesmo artigo. \\nIV - A falta de pagamento, por parte de uma autarquia local, de uma dívida de um contrato com uma empresa pública não pode dar lugar a uma tutela substitutiva que antecipe cautelarmente o que a outra parte pode obter através dos tribunais.\",\n        \"Texto Integral\": \"\",\n        \"url\": \"/atco1.nsf/904714e45043f49b802565fa004a5fd7/e3af1f647b5e13c6802568ea0053e0f5?OpenDocument\",\n        \"tribunal\": \"atco1\"\n    }",
+							"raw": "{\n        \"Nº Convencional\": \"ACTC8254\",\n        \"Acordão\": \"98-272-1\",\n        \"Processo\": \"94-0039\",\n        \"Relator\": \"ASSUNÇÃO ESTEVES\",\n        \"Descritores\": [\n            \"PROCESSO CONSTITUCIONAL.\",\n            \"FISCALIZAÇÃO CONCRETA DA CONSTITUCIONALIDADE.\",\n            \"APLICAÇÃO DE NORMA ARGUIDA DE INCONSTITUCIONAL.\",\n            \"PRESSUPOSTO DO RECURSO.\",\n            \"CONHECIMENTO DO RECURSO.\",\n            \"INTERPRETAÇÃO DE NORMA.\",\n            \"INUTILIDADE SUPERVENIENTE.\",\n            \"IMPRENSA.\",\n            \"CRIME DE IMPRENSA.\",\n            \"LIBERDADE DE INFORMAÇÃO.\"\n        ],\n        \"Nº do Documento\": \"TCB19980309982721\",\n        \"Data do Acordão\": \"03/09/1998\",\n        \"Espécie\": \"CONCRETA B\",\n        \"Requerente\": \"PARTICULAR\",\n        \"Requerido\": \"TR PORTO\",\n        \"Volume dos Acordãos do T.C.\": \"39\",\n        \"Votação\": \"UNANIMIDADE\",\n        \"Privacidade\": \"1\",\n        \"Normas Suscitadas\": \"LIMP75 ART26 N2 A B.  CPP87 ART411.\",\n        \"Legislação Nacional\": \"LTC82 ART70 N1 B.\",\n        \"Área Temática 1\": \"FISCALIZAÇÃO DA CONSTITUCIONALIDADE.\",\n        \"Área Temática 2\": \"DIR INFORMAC.\",\n        \"Decisão\": \"Não toma conhecimento do recurso por a decisão recorrida não ter aplicado a norma do artigo 26º, nº 2, alínea a), da Lei da Imprensa arguida de inconstitucional e por, quanto à norma do artigo 41º, n.º 1, do Código de Processo Penal, o julgamento da questão de inconstitucionalidade não poder influir na decisão da questão de mérito.\",\n        \"Sumário\": \"I - Sendo manifesto que o acórdão recorrido não aplicou a norma impugnada do artigo 26º, nº 2, alínea a), da Lei de Imprensa, está desde logo excluído um dos pressupostos do recurso previsto no artigo 70º, n.º 1, alínea b), da Lei n.º 28/82, de 15 de Novembro, que consiste justamente na aplicação pela decisão recorrida da norma impugnada.\\n\\n\\nII - Mesmo que se decidisse no sentido da inconstitucionalidade da norma do artigo 411º, do Código de Processo Penal, na decisão impugnada manter-se-ia o fundamento alternativo que fez proceder a questão prévia e que já não entra no objecto do recurso para o Tribunal Constitucional, pelo que se torna inútil conhecer do recurso.\",\n        \"Texto Integral\": \"\",\n        \"url\": \"/atco1.nsf/904714e45043f49b802565fa004a5fd7/c11eded5ef88d42300256862005cff8f?OpenDocument\",\n        \"tribunal\": \"atco1\"\n    }",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -268,7 +268,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "DFrdImIufDdJbsntVVmRhGbPLZSGOf",
+									"value": "JZxUCOL2PKp8aiIMbxwcv3AK9agfvx",
 									"type": "string"
 								}
 							]
@@ -288,6 +288,35 @@
 					"response": []
 				},
 				{
+					"name": "get descriptors",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "JZxUCOL2PKp8aiIMbxwcv3AK9agfvx",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/records/tags/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"records",
+								"tags",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "get acordão",
 					"request": {
 						"auth": {
@@ -295,7 +324,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "DFrdImIufDdJbsntVVmRhGbPLZSGOf",
+									"value": "JZxUCOL2PKp8aiIMbxwcv3AK9agfvx",
 									"type": "string"
 								}
 							]
@@ -324,7 +353,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "DFrdImIufDdJbsntVVmRhGbPLZSGOf",
+									"value": "JZxUCOL2PKp8aiIMbxwcv3AK9agfvx",
 									"type": "string"
 								}
 							]
@@ -416,7 +445,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "DFrdImIufDdJbsntVVmRhGbPLZSGOf",
+									"value": "JZxUCOL2PKp8aiIMbxwcv3AK9agfvx",
 									"type": "string"
 								}
 							]
@@ -433,7 +462,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/records/97-0847/alteracoes/f3c8927b-045c-41b3-9290-74dc6a6d847e/",
+							"raw": "{{url}}/records/97-0847/alteracoes/1f2060b0-11c7-44c7-822b-25f9b90e1f24/",
 							"host": [
 								"{{url}}"
 							],
@@ -441,7 +470,7 @@
 								"records",
 								"97-0847",
 								"alteracoes",
-								"f3c8927b-045c-41b3-9290-74dc6a6d847e",
+								"1f2060b0-11c7-44c7-822b-25f9b90e1f24",
 								""
 							]
 						}
@@ -456,7 +485,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "DFrdImIufDdJbsntVVmRhGbPLZSGOf",
+									"value": "JZxUCOL2PKp8aiIMbxwcv3AK9agfvx",
 									"type": "string"
 								}
 							]
@@ -500,7 +529,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "DFrdImIufDdJbsntVVmRhGbPLZSGOf",
+									"value": "JZxUCOL2PKp8aiIMbxwcv3AK9agfvx",
 									"type": "string"
 								}
 							]
@@ -528,7 +557,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "DFrdImIufDdJbsntVVmRhGbPLZSGOf",
+									"value": "JZxUCOL2PKp8aiIMbxwcv3AK9agfvx",
 									"type": "string"
 								}
 							]

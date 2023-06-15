@@ -1,13 +1,23 @@
 from django.shortcuts import render
 from rest_framework.views import APIView
 from rest_framework.response import Response
-from rest_framework import permissions,status
+from rest_framework import permissions,status,mixins,generics,viewsets
 from .mongo import *
 import uuid
 import bson
-from .models import Record,ChangeRequest
+from .models import Record,ChangeRequest,Tag
 from .permissions import IsAdministrator,IsConsumer,BelongsToUser
 # Create your views here.
+
+from .serializers import TagSerializer
+# Create your views here.
+
+class Tags(mixins.ListModelMixin,
+                    mixins.RetrieveModelMixin,
+                    viewsets.GenericViewSet):
+    permission_classes=[permissions.AllowAny]
+    queryset=Tag.objects.all()
+    serializer_class=TagSerializer
 
 class Records(APIView):
     def get_permissions(self):

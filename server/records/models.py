@@ -11,12 +11,26 @@ from django.db.models import Max
 
 # Create your models here.
 
+class TagManager(models.Manager):
+    def get_or_create(self,name):
+        tag = self.filter(name=name).first()
+        if tag is None:
+            tag=self.model(name=name)
+            tag.save()
+        return tag
+
+class Tag(models.Model):
+    name = models.CharField(max_length=128,primary_key=True)
+    objects = TagManager()
+    
+
 def recordSerializer(record,record_data):
     del record_data['_id']
     return {
                 "id":str(record.id),
                 "added_by":str(record.added_by),
                 "added_at":record.added_at.strftime("%H:%M:%S %d/%m/%Y"),
+                "tags":[i.name for i in record.tags.all()],
                 "data":record_data            
             }
     
@@ -25,11 +39,15 @@ def recordSerializer(record,record_data):
 
 class RecordManager(models.Manager):
     def create(self,data,user):
-        if 'Processo' in data:
+        if 'Processo' in data and 'Descritores' in data:
             rec=self.model(processo=data['Processo'],added_by=user)
+            descritores = data.pop("Descritores")
+            tags = [Tag.objects.get_or_create(name=descritor) for descritor in descritores]
             data["_id"]=bson.Binary.from_uuid(rec.id)
             r=createRecord(data)
             if r is not None:
+                rec.save()
+                rec.tags.set(tags)
                 rec.save()
                 return recordSerializer(rec,r)
         return None
@@ -60,6 +78,7 @@ class Record(models.Model):
     processo = models.CharField(max_length=32)
     added_by = models.ForeignKey(Account, on_delete=models.CASCADE,null=True,default=None,blank=True)
     added_at = models.DateTimeField(default=timezone.now)
+    tags = models.ManyToManyField(Tag)
     objects = RecordManager()
 
 
