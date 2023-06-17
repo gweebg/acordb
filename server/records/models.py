@@ -52,7 +52,7 @@ class RecordManager(models.Manager):
                 return recordSerializer(rec,r)
         return None
     
-    def getMany(self,query):
+    def getMostRecentMany(self,query):
         records = getManyRecords(query)
         r=[]
         for record_data in records:
@@ -60,6 +60,14 @@ class RecordManager(models.Manager):
             most_recent_added_at = Record.objects.filter(processo=record.processo).aggregate(Max("added_at"))["added_at__max"]
             if record.added_at==most_recent_added_at:
                 r.append(recordSerializer(record,record_data))
+        return r
+    
+    def getMany(self,query):
+        records = getManyRecords(query)
+        r=[]
+        for record_data in records:
+            record=self.get(id=uuid.UUID(bytes=record_data["_id"]))
+            r.append(recordSerializer(record,record_data))
         return r
     
     def getOne(self,processo):

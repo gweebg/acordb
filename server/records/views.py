@@ -15,10 +15,23 @@ from .serializers import TagSerializer
 class Tags(mixins.ListModelMixin,
                     mixins.RetrieveModelMixin,
                     viewsets.GenericViewSet):
-    permission_classes=[permissions.AllowAny]
+    permission_classes=[permissions.AllowAny()]
     queryset=Tag.objects.all()
     serializer_class=TagSerializer
 
+class RecordsMostRecent(APIView):
+    def get_permissions(self):
+        if self.request.method == 'GET':
+            return [permissions.AllowAny()] 
+        return super().get_permissions()
+    
+    def get(self, request):
+        d=request.GET.dict()
+        idQ = d.pop('id',None)
+        if idQ is not None:
+            d['_id']=bson.Binary.from_uuid(uuid.UUID(idQ))
+        return Response(Record.objects.getMostRecentMany(d),status=status.HTTP_200_OK)
+            
 class Records(APIView):
     def get_permissions(self):
         if self.request.method == 'GET':
@@ -41,7 +54,7 @@ class Records(APIView):
                 return Response(status=status.HTTP_404_NOT_FOUND)
             else:
                 return Response(r,status=status.HTTP_200_OK)
-        
+            
     def post(self, request, format=None):
         if 'Processo' in request.data:
             if Record.objects.filter(processo=request.data['Processo']).exists():
@@ -50,6 +63,8 @@ class Records(APIView):
             if r is not None:
                 return Response(r,status=status.HTTP_201_CREATED)
         return Response({},status=status.HTTP_400_BAD_REQUEST)
+
+
 
 class ChangeRequests(APIView):
     def get_permissions(self):

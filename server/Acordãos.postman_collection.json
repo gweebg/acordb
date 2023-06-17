@@ -336,6 +336,34 @@
 					"response": []
 				},
 				{
+					"name": "list most volume acordãos",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "JZxUCOL2PKp8aiIMbxwcv3AK9agfvx",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/records/mostRecent",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"records",
+								"mostRecent"
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "get descriptors",
 					"request": {
 						"auth": {
