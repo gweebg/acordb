@@ -2,6 +2,10 @@ from rest_framework import serializers
 from .models import Account
 
 
+class APIKeySerializer(serializers.Serializer):
+    name = serializers.CharField(write_only=True)
+    key = serializers.CharField(read_only=True)
+
 class PasswordBasedLoginSerializer(serializers.ModelSerializer):
     class Meta:
         model=Account

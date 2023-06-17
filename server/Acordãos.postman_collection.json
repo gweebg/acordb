@@ -42,11 +42,16 @@
 					"name": "get user",
 					"request": {
 						"auth": {
-							"type": "bearer",
-							"bearer": [
+							"type": "apikey",
+							"apikey": [
 								{
-									"key": "token",
-									"value": "JZxUCOL2PKp8aiIMbxwcv3AK9agfvx",
+									"key": "value",
+									"value": "mbH86wi9.UnCk9HdPxaTyFiTETpY09lvLBT66yRk4",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "API-KEY",
 									"type": "string"
 								}
 							]
@@ -93,6 +98,49 @@
 							"path": [
 								"accounts",
 								"user",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "genApiKey",
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "key",
+									"value": "API-KEY",
+									"type": "string"
+								},
+								{
+									"key": "value",
+									"value": "DZ0ex07c.1GkgMW2TRr4leV5wPFGwIXZHpsK2RXl8",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"k1\"\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/accounts/genAPIKey/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"accounts",
+								"genAPIKey",
 								""
 							]
 						}
@@ -694,7 +742,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"username\":\"seb@vettel.com\",\n    \"password\":\"croissant\"\n}",
+					"raw": "{\n    \"username\":\"filipe@massa.com\",\n    \"password\":\"croissant2\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"

@@ -3,14 +3,15 @@ from django.conf import settings
 from rest_framework import mixins, permissions, status, viewsets
 from rest_framework.response import Response
 from rest_framework.views import APIView
-from .models import Account
+from .models import Account,APIKey
 from records.models import Record,ChangeRequest
 from favorites.models import Favorites
 from django.shortcuts import get_object_or_404
 from .permissions import IsUser,IsAdministrator
 from .serializers import (  AccountSerializer,
                             PasswordBasedLoginSerializer,
-                            SocialMediaLoginSerializer)
+                            SocialMediaLoginSerializer,
+                            APIKeySerializer)
 from django.db.models import Q,Value
 from django.db.models.functions import Concat
 
@@ -83,7 +84,20 @@ class MakeConsumerAdmin(APIView):
         account.save()
         return Response(AccountSerializer(account).data,status=status.HTTP_201_CREATED)
     
+
+class GenerateApiKey(APIView):
+    permission_classes=[permissions.IsAuthenticated]
     
+    def post(self,request):
+        ser = APIKeySerializer(data=request.data)
+        if ser.is_valid():
+            key = APIKey.objects.create_newkey(name=request.data['name'],user=request.user)
+            return Response({'key':key[1]},status=status.HTTP_201_CREATED)
+        return Response(status=status.HTTP_400_BAD_REQUEST)
+            
+            
+
+
 class PasswordBasedLogin(APIView):
     
     permission_classes=[permissions.AllowAny]

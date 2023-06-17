@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     
     'rest_framework',
+    'rest_framework_api_key',
     "rest_framework_swagger",
     'drf_yasg',
     'oauth2_provider',
@@ -56,7 +57,8 @@ INSTALLED_APPS = [
 ]
 AUTH_USER_MODEL='accounts.Account'
 
-AUTHENTICATION_BACKENDS = ( 
+AUTHENTICATION_BACKENDS = (
+    'acordãos.authentication.APIKeyAuthenticationBackend',
     'social_core.backends.google.GoogleOAuth2',
     'social_core.backends.facebook.FacebookAppOAuth2',
     'social_core.backends.facebook.FacebookOAuth2',
@@ -66,6 +68,7 @@ AUTHENTICATION_BACKENDS = (
 )
 REST_FRAMEWORK = {
    'DEFAULT_AUTHENTICATION_CLASSES': (
+       'accounts.authentication.APIKeyAuthenticationBackend',
        'oauth2_provider.contrib.rest_framework.OAuth2Authentication',  
        'drf_social_oauth2.authentication.SocialAuthentication',
    ),

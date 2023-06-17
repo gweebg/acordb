@@ -1,7 +1,10 @@
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser,BaseUserManager,PermissionsMixin
 from django.utils import timezone
+from rest_framework_api_key.models import AbstractAPIKey,BaseAPIKeyManager
 from django.utils.translation import gettext_lazy as _
+
+
 
 class CustomAccountManager(BaseUserManager):
     def create_account(self,email,first_name,last_name,password,filiation):
@@ -67,4 +70,17 @@ class Account(AbstractBaseUser,PermissionsMixin):
 
     def __str__(self):
         return self.email
+    
+    
+class APIKeyManager(BaseAPIKeyManager):
+    def create_newkey(self,**data):
+        user=data.get('user')
+        currKey = self.filter(user=user).first()
+        if currKey is not None:
+            currKey.delete()
+        return self.create_key(**data)
+    
+class APIKey(AbstractAPIKey):
+    user = models.OneToOneField(Account, on_delete=models.CASCADE)
+    objects = APIKeyManager()
     

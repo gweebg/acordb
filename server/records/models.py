@@ -79,10 +79,9 @@ class Record(models.Model):
     added_by = models.ForeignKey(Account, on_delete=models.CASCADE,null=True,default=None,blank=True)
     added_at = models.DateTimeField(default=timezone.now)
     tags = models.ManyToManyField(Tag)
-    objects = RecordManager()
+    objects = RecordManager()            
 
-
-
+    
 
 def changeRequestSerializer(changeRequest,request_data):
     del request_data['_id']
