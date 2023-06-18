@@ -2,7 +2,15 @@
 
     import SideBar from "$lib/components/dashboard/SideBar.svelte";
 
+    import { enhance } from '$app/forms';
+    import {superForm} from "sveltekit-superforms/client";
+
     export let data; // Data returned from the load function at +page.server.js
+    export let form; // Data returned from the form genKey.
+
+    const { errors } = superForm(data.form);
+
+    let visible = true;
 
     const switchPassword = () => {
 
@@ -18,8 +26,16 @@
 
     };
 
-</script>
+    const copyToClipboard = () => {
 
+        const clipContent = (element) => {
+            navigator.clipboard.writeText(element.value.toString());
+        };
+
+        clipContent(document.getElementById('api_key'));
+    }
+
+</script>
 
 
 <div class="flex flex-row">
@@ -60,32 +76,50 @@
 
                 <h3 class="text-xl font-bold pb-4">Your Account</h3>
 
+                <form method="POST" action="?/update">
 
-                <form action="" method="POST">
-
-                    <label class="label">
+                    <label for="email" class="label">
                         <span class="label-text">Email Address</span>
                     </label>
                     <input id="email"
+                           name="email"
                            disabled
                            type="text"
                            value={data.user.email}
                            class="input input-bordered w-full" />
 
-                    <label class="label">
-                        <span class="label-text">Username</span>
-                    </label>
-                    <input id="username"
-                           type="text"
-                           value={data.user.first_name + " " + data.user.last_name}
-                           class="input input-bordered w-full" />
+                    <div class="flex flex-row gap-2">
 
-                    <label class="label">
+                        <div class="flex-1">
+                            <label for="first_name" class="label">
+                                <span class="label-text">First Name</span>
+                            </label>
+                            <input id="first_name"
+                                   name="first_name"
+                                   type="text"
+                                   value={data.user.first_name}
+                                   class="input input-bordered w-full" />
+                        </div>
+
+                        <div class="flex-1">
+                            <label for="last_name" class="label">
+                                <span class="label-text">Last Name</span>
+                            </label>
+                            <input id="last_name"
+                                   name="last_name"
+                                   type="text"
+                                   value={data.user.last_name}
+                                   class="input input-bordered w-full" />
+                        </div>
+                    </div>
+
+                    <label for="password" class="label">
                         <span class="label-text">Password</span>
                     </label>
                     <div class="form-control">
                         <div class="input-group">
                             <input id="password"
+                                   name="password"
                                    type="password"
                                    placeholder="Type a new password"
                                    class="input input-bordered w-full" />
@@ -97,10 +131,27 @@
                         </div>
                     </div>
 
-                    <fieldset class="mt-6 float-right">
-                        <button type="button" class="btn">Reset </button>
-                        <button type="submit" class="btn btn-accent">Save Changes</button>
-                    </fieldset>
+
+                    <div class="mt-6 flex flex-row justify-between">
+
+                        <div>
+                            {#if $errors.first_name}
+                                <p class="text-error text-sm">{$errors.first_name}</p>
+                            {/if}
+                            {#if $errors.last_name}
+                                <p class="text-error text-sm">{$errors.last_name}</p>
+                            {/if}
+                            {#if $errors.password}
+                                <p class="text-error text-sm">{$errors.password}</p>
+                            {/if}
+                        </div>
+
+                        <fieldset>
+                            <button type="button" class="btn">Reset </button>
+                            <button class="btn btn-accent">Save Changes</button>
+                        </fieldset>
+
+                    </div>
 
                 </form>
 
@@ -141,23 +192,68 @@
                         </div>
 
                     </div>
-
-
-
                 </div>
+            </div>
+        </div>
 
 
+        <!-- API Key -->
+        <div class="mt-4">
+
+            <!-- Header -->
+            <header>
+                <h3 class="text-xl font-bold pb-4">Generate API Key</h3>
+
+                <p>
+                    Please save this secret key somewhere safe and accessible. For security reasons,
+                    <strong>you won't be able to view it again</strong> through your Accordb account.
+                </p>
+
+                <p>If you lose this secret key, you'll need to generate a new one.</p>
+            </header>
+
+            <!-- Form -->
+            <div class="mt-4">
+
+                <form method="POST" action="?/genKey" use:enhance on:submit={() => visible = !visible}>
+
+                    {#if visible}
+
+                        <button class="btn btn-accent">Generate API Key</button>
+
+                    {/if}
+
+                </form>
+
+                {#if form?.success}
+
+                    <div class="form-control">
+                        <div class="input-group">
+
+                            <input id="api_key"
+                                   readonly
+                                   value={form?.data.key}
+                                   class="input input-bordered w-full" />
+
+                            <button type="button" on:click={copyToClipboard} class="btn btn-square btn-accent">
+                                <img id="copy" src="/icons/profile/copy.svg" alt="Eye">
+                            </button>
+
+                        </div>
+                    </div>
+
+                {/if}
+
+                {#if !visible && form && !form.success}
+                    <p class="text-error">Something went wrong, try again later.</p>
+                {/if}
+
+                {#if !visible && !form}
+                    <p class="btn btn-ghost text-md loading">Loading</p>
+                {/if}
 
             </div>
 
         </div>
-
-
-
-        <!-- Save Controls -->
-        <div class="">
-
-        </div>
-
     </div>
 </div>

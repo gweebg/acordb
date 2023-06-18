@@ -1,8 +1,6 @@
 
 <script>
 
-    import ImageButton from "$lib/components/ImageButton.svelte";
-
     import { superForm } from 'sveltekit-superforms/client';
 
     export let data;
