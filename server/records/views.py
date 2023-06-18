@@ -5,19 +5,25 @@ from rest_framework import permissions,status,mixins,generics,viewsets
 from .mongo import *
 import uuid
 import bson
-from .models import Record,ChangeRequest,Tag
+from .models import Record,ChangeRequest,Tag,Field
 from .permissions import IsAdministrator,IsConsumer,BelongsToUser
 # Create your views here.
 
-from .serializers import TagSerializer
+from .serializers import TagSerializer,FieldSerializer
 # Create your views here.
 
 class Tags(mixins.ListModelMixin,
                     mixins.RetrieveModelMixin,
                     viewsets.GenericViewSet):
-    permission_classes=[permissions.AllowAny()]
+    permission_classes=[permissions.AllowAny]
     queryset=Tag.objects.all()
     serializer_class=TagSerializer
+    
+class Fields(mixins.ListModelMixin,
+             viewsets.GenericViewSet):
+    permission_classes=[permissions.AllowAny]
+    queryset=Field.objects.all()
+    serializer_class=FieldSerializer
 
 class RecordsMostRecent(APIView):
     def get_permissions(self):

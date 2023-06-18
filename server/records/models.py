@@ -22,7 +22,18 @@ class TagManager(models.Manager):
 class Tag(models.Model):
     name = models.CharField(max_length=128,primary_key=True)
     objects = TagManager()
-    
+
+class FieldManager(models.Manager):
+    def get_or_create(self,name):
+        tag = self.filter(name=name).first()
+        if tag is None:
+            tag=self.model(name=name)
+            tag.save()
+        return tag
+
+class Field(models.Model):
+    name = models.CharField(max_length=128,primary_key=True)
+    objects = FieldManager()
 
 def recordSerializer(record,record_data):
     del record_data['_id']
@@ -42,12 +53,14 @@ class RecordManager(models.Manager):
         if 'Processo' in data and 'Descritores' in data:
             rec=self.model(processo=data['Processo'],added_by=user)
             descritores = data.pop("Descritores")
+            fields = [Field.objects.get_or_create(name=key) for key in data.keys()]
             tags = [Tag.objects.get_or_create(name=descritor) for descritor in descritores]
             data["_id"]=bson.Binary.from_uuid(rec.id)
             r=createRecord(data)
             if r is not None:
                 rec.save()
                 rec.tags.set(tags)
+                rec.fields.set(fields)
                 rec.save()
                 return recordSerializer(rec,r)
         return None
@@ -87,6 +100,7 @@ class Record(models.Model):
     added_by = models.ForeignKey(Account, on_delete=models.CASCADE,null=True,default=None,blank=True)
     added_at = models.DateTimeField(default=timezone.now)
     tags = models.ManyToManyField(Tag)
+    fields = models.ManyToManyField(Field)
     objects = RecordManager()            
 
     
