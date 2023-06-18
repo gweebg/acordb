@@ -58,7 +58,7 @@ INSTALLED_APPS = [
 AUTH_USER_MODEL='accounts.Account'
 
 AUTHENTICATION_BACKENDS = (
-    'acordãos.authentication.APIKeyAuthenticationBackend',
+    'accounts.authentication.APIKeyAuthenticationBackend',
     'social_core.backends.google.GoogleOAuth2',
     'social_core.backends.facebook.FacebookAppOAuth2',
     'social_core.backends.facebook.FacebookOAuth2',
