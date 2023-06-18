@@ -288,7 +288,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n        \"Nº Convencional\": \"ACTC8254\",\n        \"Acordão\": \"98-272-1\",\n        \"Processo\": \"94-0039\",\n        \"Relator\": \"ASSUNÇÃO ESTEVES\",\n        \"Descritores\": [\n            \"PROCESSO CONSTITUCIONAL.\",\n            \"FISCALIZAÇÃO CONCRETA DA CONSTITUCIONALIDADE.\",\n            \"APLICAÇÃO DE NORMA ARGUIDA DE INCONSTITUCIONAL.\",\n            \"PRESSUPOSTO DO RECURSO.\",\n            \"CONHECIMENTO DO RECURSO.\",\n            \"INTERPRETAÇÃO DE NORMA.\",\n            \"INUTILIDADE SUPERVENIENTE.\",\n            \"IMPRENSA.\",\n            \"CRIME DE IMPRENSA.\",\n            \"LIBERDADE DE INFORMAÇÃO.\"\n        ],\n        \"Nº do Documento\": \"TCB19980309982721\",\n        \"Data do Acordão\": \"03/09/1998\",\n        \"Espécie\": \"CONCRETA B\",\n        \"Requerente\": \"PARTICULAR\",\n        \"Requerido\": \"TR PORTO\",\n        \"Volume dos Acordãos do T.C.\": \"39\",\n        \"Votação\": \"UNANIMIDADE\",\n        \"Privacidade\": \"1\",\n        \"Normas Suscitadas\": \"LIMP75 ART26 N2 A B.  CPP87 ART411.\",\n        \"Legislação Nacional\": \"LTC82 ART70 N1 B.\",\n        \"Área Temática 1\": \"FISCALIZAÇÃO DA CONSTITUCIONALIDADE.\",\n        \"Área Temática 2\": \"DIR INFORMAC.\",\n        \"Decisão\": \"Não toma conhecimento do recurso por a decisão recorrida não ter aplicado a norma do artigo 26º, nº 2, alínea a), da Lei da Imprensa arguida de inconstitucional e por, quanto à norma do artigo 41º, n.º 1, do Código de Processo Penal, o julgamento da questão de inconstitucionalidade não poder influir na decisão da questão de mérito.\",\n        \"Sumário\": \"I - Sendo manifesto que o acórdão recorrido não aplicou a norma impugnada do artigo 26º, nº 2, alínea a), da Lei de Imprensa, está desde logo excluído um dos pressupostos do recurso previsto no artigo 70º, n.º 1, alínea b), da Lei n.º 28/82, de 15 de Novembro, que consiste justamente na aplicação pela decisão recorrida da norma impugnada.\\n\\n\\nII - Mesmo que se decidisse no sentido da inconstitucionalidade da norma do artigo 411º, do Código de Processo Penal, na decisão impugnada manter-se-ia o fundamento alternativo que fez proceder a questão prévia e que já não entra no objecto do recurso para o Tribunal Constitucional, pelo que se torna inútil conhecer do recurso.\",\n        \"Texto Integral\": \"\",\n        \"url\": \"/atco1.nsf/904714e45043f49b802565fa004a5fd7/c11eded5ef88d42300256862005cff8f?OpenDocument\",\n        \"tribunal\": \"atco1\"\n    }",
+							"raw": "{\n        \"Nº Convencional\": \"ACTC8252\",\n        \"Acordão\": \"98-270-1\",\n        \"Processo\": \"96-0847\",\n        \"Relator\": \"ASSUNÇÃO ESTEVES\",\n        \"Descritores\": [\n            \"PROCESSO CONSTITUCIONAL.\",\n            \"FISCALIZAÇÃO CONCRETA DA CONSTITUCIONALIDADE.\",\n            \"RECLAMAÇÃO.\",\n            \"PRESSUPOSTO DO RECURSO.\",\n            \"ADMISSIBILIDADE DO RECURSO.\"\n        ],\n        \"Nº do Documento\": \"TRC19980309982701\",\n        \"Data do Acordão\": \"03/09/1998\",\n        \"Espécie\": \"RECLAMAÇÃO\",\n        \"Requerente\": \"PARTICULAR\",\n        \"Requerido\": \"STA\",\n        \"Nº do Diário da República\": \"271\",\n        \"Série do Diário da República\": \"II\",\n        \"Data do Diário da República\": \"11/23/1998\",\n        \"Página do Diário da República\": \"16623\",\n        \"Volume dos Acordãos do T.C.\": \"39\",\n        \"Votação\": \"UNANIMIDADE\",\n        \"Privacidade\": \"1\",\n        \"Normas Suscitadas\": \"PORT 302-B/74 DE 1974/05/19.\",\n        \"Legislação Nacional\": \"LTC82 ART76 ART70 N1 B.  \\nPORT 302-B/84 DE 1984/05/19 N1 N2.\",\n        \"Decisão\": \"Defere a reclamação contra não admissão de recurso por ter sido suscitada durante o processo uma questão de constitucionalidade de norma aplicada na decisão recorrida.\",\n        \"Sumário\": \"Se, durante o processo, o reclamante sustentou sobre a Portaria nº 302-B/84, de 19 de Maio, uma questão de constitucionalidade, não é a qualificação jurídica por ele feita de \\\"acto administrativo consubstanciado nessa Portaria\\\" que retira ao caso a objectividade da verificação dos pressupostos do recurso de constitucionalidade previstos no artigo 70º, nº 1, alínea b), da Lei do Tribunal Constitucional.\",\n        \"Texto Integral\": \"\",\n        \"url\": \"/atco1.nsf/904714e45043f49b802565fa004a5fd7/f2f8e9a827852037802568ea0053e0f6?OpenDocument\",\n        \"tribunal\": \"atco1\"\n    }",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -324,12 +324,18 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{url}}/records",
+							"raw": "{{url}}/records?id=2219cd73-6984-4e70-8a2c-b2fa898784e2",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"records"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "2219cd73-6984-4e70-8a2c-b2fa898784e2"
+								}
 							]
 						}
 					},
@@ -386,6 +392,35 @@
 							"path": [
 								"records",
 								"tags",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get fields",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "JZxUCOL2PKp8aiIMbxwcv3AK9agfvx",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/records/fields/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"records",
+								"fields",
 								""
 							]
 						}
