@@ -5,7 +5,7 @@
     export let active;
     export let name = "The best rulings database.";
     export let basePath = "";
-    export let isAdmin = "";
+    export let isAdmin;
 
 </script>
 
