@@ -34,3 +34,71 @@ const fetchFavorites = async (authCookie) => {
     } catch (err) { console.log("Server is down - ", err); }
 
 }
+
+export const actions = {
+
+    delete: async ({ cookies, request, locals }) => {
+
+        const authCookie = cookies.get('AuthorizationToken');
+
+        if (authCookie) {
+
+            const data = await request.formData();
+
+            try {
+
+                var response = await fetch(`http://127.0.0.1:8000/favorites/${data.get('id')}/`,
+                    {
+                        method: 'DELETE',
+                        headers: { 'Content-Type': 'application/json', 'Authorization': authCookie },
+                    });
+
+                if (!response.ok) {
+                    console.log(response.status);
+                }
+
+            } catch (err) {
+
+                /* The server is down, alert the user. */
+                console.log("Server is down - ", err);
+            }
+
+            throw redirect(301, `/user/${locals.user.id}/favorites`);
+        }
+    },
+
+    edit: async ({ cookies, request}) => {
+
+        const authCookie = cookies.get('AuthorizationToken');
+
+        if (authCookie) {
+
+            const data = await request.formData();
+
+            const putData = {
+                id: data.get('id'),
+                processo: data.get('process'),
+                description: data.get('description')
+            };
+
+            try {
+
+                var response = await fetch(`http://127.0.0.1:8000/favorites/${data.get('id')}/`,
+                    {
+                        method: 'PUT',
+                        headers: { 'Content-Type': 'application/json', 'Authorization': authCookie },
+                        body: JSON.stringify(putData)
+                    });
+
+                if (!response.ok) {
+                    console.log(response.status);
+                }
+
+            } catch (err) {
+
+                /* The server is down, alert the user. */
+                console.log("Server is down - ", err);
+            }
+        }
+    }
+};

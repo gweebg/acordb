@@ -4,6 +4,8 @@
 
     import { enhance } from '$app/forms';
     import {superForm} from "sveltekit-superforms/client";
+    import {convertDate} from "$lib/scripts/dateConvert.js";
+    import UserStats from "$lib/components/dashboard/UserStats.svelte";
 
     export let data; // Data returned from the load function at +page.server.js
     export let form; // Data returned from the form genKey.
@@ -159,41 +161,10 @@
 
             <!-- Stats -->
             <div class="w-1/2">
-
                 <h3 class="text-xl font-bold pb-4">Your Stats</h3>
-
-                <div class="flex gap-4">
-
-                    <div class="stats shadow">
-
-                        <div class="stat">
-                            <div class="stat-title">Created at</div>
-                            <div class="stat-value">{data.user.createdAt}</div>
-                            <div class="stat-desc">Account creation date</div>
-                        </div>
-
-                    </div>
-
-                    <div class="stats shadow">
-
-                        <div class="stat">
-                            <div class="stat-title">You added</div>
-                            <div class="stat-value">{data.user.addedRecords}</div>
-                            <div class="stat-desc">Rulings</div>
-                        </div>
-
-                    </div>
-
-                    <div class="stats shadow">
-
-                        <div class="stat">
-                            <div class="stat-title">Favorites</div>
-                            <div class="stat-value">{data.user.favorites}</div>
-                        </div>
-
-                    </div>
-                </div>
+                <UserStats user={data.user}/>
             </div>
+
         </div>
 
 

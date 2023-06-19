@@ -37,7 +37,7 @@
         <div class="ml-auto flex flex-row gap-1">
 
             <!-- Edit Button -->
-            <button class="btn btn-accent btn-sm" on:click={editMode}>
+            <button class="btn btn-accent btn-sm px-0" on:click={editMode}>
                 <img src={currPath} alt="Edit">
             </button>
 
@@ -45,7 +45,7 @@
             <form action="?/delete" method="POST">
                 <input type="text" name="id" class="hidden" value={favData.id}>
                 <input type="text" name="process" class="hidden" value={favData.processo}>
-                <button class="btn btn-error btn-sm">
+                <button class="btn btn-error btn-sm px-0">
                     <img src="/icons/delete.svg" alt="Delete">
                 </button>
             </form>
@@ -54,7 +54,7 @@
 
     </div>
 
-    <div class="divider"></div>
+    <div class="divider mt-0"></div>
 
     <!-- Body -->
     {#if !isEditing}
@@ -83,8 +83,8 @@
                     class="textarea textarea-accent w-full"></textarea>
 
             <div class="modal-action">
-                <button class="btn btn-accent btn-sm">Save</button>
-                <label for={favData.id} class="btn btn-sm">Close</label>
+                <button class="btn btn-accent btn-sm mt-2">Save</button>
+                <label for={favData.id} class="btn btn-sm mt-2">Close</label>
             </div>
 
         </form>

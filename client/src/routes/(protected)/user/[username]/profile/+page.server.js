@@ -19,6 +19,32 @@ const updateSchema = z.object({
 
 });
 
+
+const fetchUserStats = async (authCookie) => {
+
+    try {
+
+        var response = await fetch("http://127.0.0.1:8000/accounts/statistics/",
+            {
+                method: 'GET',
+                headers: { 'Content-Type': 'application/json', 'Authorization': authCookie },
+            });
+
+        if (response.ok) {
+            return response.json();
+        }
+        else {
+            console.log(response.status);
+        }
+
+    } catch (err) {
+
+        /* The server is down, alert the user. */
+        console.log("Server is down - ", err);
+    }
+
+}
+
 export const load = async (event) => {
 
     // If user is not authenticated then we redirect him to login page.
@@ -28,10 +54,11 @@ export const load = async (event) => {
 
     const form = await superValidate(event, updateSchema);
 
-    // TODO: Get user statistics and append to locals.
-    event.locals.user.favorites = 30;
-    event.locals.user.createdAt = "30 Jul 2021";
-    event.locals.user.addedRecords = 312;
+    const authCookie = event.cookies.get('AuthorizationToken');
+
+    if (authCookie) {
+        event.locals.user.stats = await fetchUserStats(authCookie);
+    }
 
     // If user is authenticated we return its user data to the page.
     return {user: event.locals.user, form: form};
