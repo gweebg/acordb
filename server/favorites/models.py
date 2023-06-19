@@ -24,6 +24,6 @@ class Favorites(models.Model):
     #id will be the primary key
     user = models.ForeignKey(Account, on_delete=models.CASCADE)
     processo = models.CharField(max_length=32)
-    description = models.CharField(max_length=150,blank=True) 
+    description = models.CharField(max_length=255,blank=True)
     class Meta:
         unique_together = (("user", "processo"),)

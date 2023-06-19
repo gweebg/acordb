@@ -5,17 +5,20 @@
 
     export let data; // Data returned from the load function at +page.server.js
 
+    data.data[1] = {
+        processo: "P1-981",
+        description: "Ola",
+        id: "10"
+    }
+
     let visible = false;
 
     let itemsChecked = Array(data.data.length).fill(false);
-
-    $: console.log(itemsChecked);
 
     $: {
         const noChecked = itemsChecked.every(e => e == 0);
         visible = !noChecked;
     }
-
 
 </script>
 
@@ -81,30 +84,34 @@
                                 <div class="flex flex-row gap-2 items-center">
 
                                     <label>
-                                        <input type="checkbox" class="checkbox" bind:checked={itemsChecked[i]}/>
+                                        <input type="checkbox" class="checkbox mt-1" bind:checked={itemsChecked[i]}/>
                                     </label>
                                     <h2 class="card-title">Process {fav.processo}</h2>
 
                                 </div>
 
-                                <p class="overflow-hidden nowrap truncate">{fav.description}</p>
+                                {#if fav.description.length === 0}
+                                    <p class="opacity-40">No description available.</p>
+                                {:else}
+                                    <p class="overflow-hidden nowrap truncate">{fav.description}</p>
+                                {/if}
 
                                 <div class="card-actions justify-end">
 
-                                    <a href="/" class="btn btn-accent btn-xs mt-2">Open</a>
-                                    <label for={fav.id} class="btn btn btn-xs mt-2">Details</label>
+                                    <label for={fav.id} class="btn btn btn-sm mt-2">Details</label>
+                                    <a href={"/process/" + fav.processo} target="_blank" class="btn btn-accent btn-sm mt-2">
+                                        <img src="/icons/hyperlink.svg" alt="redirect">
+                                    </a>
 
                                     <input type="checkbox" id={fav.id} class="modal-toggle">
 
                                     <div class="modal">
                                         <FavoriteDetailBody favData={fav} auth={data.token}/>
                                     </div>
-
                                 </div>
 
                             </div>
                         </div>
-
                     {/each}
                 </div>
             {/if}

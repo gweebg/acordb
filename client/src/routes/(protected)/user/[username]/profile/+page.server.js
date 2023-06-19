@@ -75,8 +75,6 @@ export const actions = {
 
     update: async (event) => {
 
-        console.log("AQUI")
-
         const authCookie = event.cookies.get('AuthorizationToken');
 
         if (authCookie) {
