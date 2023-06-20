@@ -5,7 +5,7 @@
 
 <div class="container mx-auto flex items-stretch gap-4">
     <div class="flex flex-col grow">
-        <div class="grow flex mx-auto container bg-card-accent shadow-lg rounded-2xl">
+        <div class="grow flex mx-auto container bg-base-200 shadow-lg rounded-2xl">
 
             <div class="container mx-auto basis-1/4 grow px-4 py-4">
                 <h2 class="px-2 py-1 font-bold text-xl">Added by:</h2>
