@@ -16,35 +16,32 @@
 
     </div>
 
-    <div class="stats shadow">
+    {#if !user.is_administrator}
 
-        <div class="stat">
-            <div class="stat-title">You have made</div>
-            <div class="stat-value">{user.stats.Changes}</div>
-            <div class="stat-desc">requests</div>
+        <div class="stats shadow">
+            <div class="stat">
+                <div class="stat-title">You have made</div>
+                <div class="stat-value">{user.stats.Changes}</div>
+                <div class="stat-desc">requests</div>
+            </div>
         </div>
 
-    </div>
-
-    <div class="stats shadow">
-
-        <div class="stat">
-            <div class="stat-title">You have</div>
-            <div class="stat-value">{user.stats.ChangesAccepted}</div>
-            <div class="stat-desc"><span class="text-accent">accepted</span> change requests.</div>
+        <div class="stats shadow">
+            <div class="stat">
+                <div class="stat-title">You have</div>
+                <div class="stat-value">{user.stats.ChangesAccepted}</div>
+                <div class="stat-desc"><span class="text-accent">accepted</span> change requests.</div>
+            </div>
         </div>
 
-    </div>
-
-    <div class="stats shadow">
-
-        <div class="stat">
-            <div class="stat-title">You have</div>
-            <div class="stat-value">{user.stats.ChangesDenied}</div>
-            <div class="stat-desc"><span class="text-error">denied</span> change requests.</div>
+        <div class="stats shadow">
+            <div class="stat">
+                <div class="stat-title">You have</div>
+                <div class="stat-value">{user.stats.ChangesDenied}</div>
+                <div class="stat-desc"><span class="text-error">denied</span> change requests.</div>
+            </div>
         </div>
-
-    </div>
+    {/if}
 
     <div class="stats shadow">
         <div class="stat">

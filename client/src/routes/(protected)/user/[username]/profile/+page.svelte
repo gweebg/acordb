@@ -1,11 +1,11 @@
 <script>
 
     import SideBar from "$lib/components/dashboard/SideBar.svelte";
+    import UserStats from "$lib/components/dashboard/UserStats.svelte";
 
     import { enhance } from '$app/forms';
     import {superForm} from "sveltekit-superforms/client";
-    import {convertDate} from "$lib/scripts/dateConvert.js";
-    import UserStats from "$lib/components/dashboard/UserStats.svelte";
+
 
     export let data; // Data returned from the load function at +page.server.js
     export let form; // Data returned from the form genKey.
@@ -47,7 +47,7 @@
             active={{profile: true, rulings: false, favourites: false, settings: false, add: false}}
             name={data.user.email}
             basePath={"/user/" + data.user.id}
-            userRole={data.user.is_administrator}
+            isAdmin={data.user.is_administrator}
         />
     </div>
 

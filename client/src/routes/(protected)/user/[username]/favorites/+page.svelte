@@ -39,7 +39,7 @@
                 active={{profile: false, rulings: false, favourites: true, settings: false, add: false}}
                 name={data.user.email}
                 basePath={"/user/" + data.user.id}
-                userRole={data.user.is_administrator}
+                isAdmin={data.user.is_administrator}
         />
     </div>
 
