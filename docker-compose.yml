@@ -1,10 +1,25 @@
 version: '3'
 
 services:
-  web:
+  api-server:
     build: ./server
     ports:
       - 8000:8000
     volumes:
       - ./data:/code/data
-
+    networks:
+      - lost
+  frontend:
+    build: ./client
+    ports:
+      - 80:80
+    volumes:
+      - ./client:/src
+    networks:
+      - lost
+    environment:
+      - PORT=80
+      - PUBLIC_API_URL=http://api-server:8000
+networks:
+  lost:
+    driver: bridge

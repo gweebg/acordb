@@ -1,5 +1,5 @@
 import {redirect} from "@sveltejs/kit";
-
+import { PUBLIC_API_URL } from '$env/static/public';
 export const load = async (event) => {
 
     // If user is not authenticated then we redirect him to login page.
@@ -22,7 +22,7 @@ const fetchFavorites = async (authCookie) => {
 
     try {
 
-        var response = await fetch("http://127.0.0.1:8000/favorites/",
+        var response = await fetch(`${PUBLIC_API_URL}/favorites/`,
             {
                 method: 'GET',
                 headers: { 'Content-Type': 'application/json', 'Authorization': authCookie },
@@ -47,7 +47,7 @@ export const actions = {
 
             try {
 
-                var response = await fetch(`http://127.0.0.1:8000/favorites/${data.get('id')}/`,
+                var response = await fetch(`${PUBLIC_API_URL}/favorites/${data.get('id')}/`,
                     {
                         method: 'DELETE',
                         headers: { 'Content-Type': 'application/json', 'Authorization': authCookie },
@@ -83,7 +83,7 @@ export const actions = {
 
             try {
 
-                var response = await fetch(`http://127.0.0.1:8000/favorites/${data.get('id')}/`,
+                var response = await fetch(`${PUBLIC_API_URL}/favorites/${data.get('id')}/`,
                     {
                         method: 'PUT',
                         headers: { 'Content-Type': 'application/json', 'Authorization': authCookie },

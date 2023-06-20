@@ -1,4 +1,4 @@
-
+import { PUBLIC_API_URL } from '$env/static/public';
 export const handle = async ({ event, resolve }) => {
 
     const authCookie = event.cookies.get('AuthorizationToken');
@@ -7,7 +7,7 @@ export const handle = async ({ event, resolve }) => {
 
 		try {
 
-			var userResponse = await fetch("http://127.0.0.1:8000/accounts/user/",
+			var userResponse = await fetch(`${PUBLIC_API_URL}/accounts/user/`,
 			{
 				method: 'GET', 
 				headers: { 'Content-Type': 'application/json', 'Authorization': authCookie }

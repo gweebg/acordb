@@ -1,7 +1,7 @@
 import { z } from "zod";
 import { superValidate } from 'sveltekit-superforms/server';
 import { fail, redirect } from "@sveltejs/kit";
-
+import { PUBLIC_API_URL } from '$env/static/public';
 const loginSchema = z.object({
 
     username: z.string().email({message: "Invalid email address."}),
@@ -36,7 +36,7 @@ export const actions = {
         try {
 
             /* Logging in the user via the backend API. */
-            response = await fetch("http://127.0.0.1:8000/accounts/login/password/",
+            response = await fetch(`${PUBLIC_API_URL}/accounts/login/password/`,
             {
                 method: 'POST', 
                 headers: { 'Content-Type': 'application/json' },
