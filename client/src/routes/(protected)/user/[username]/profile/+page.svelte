@@ -14,6 +14,14 @@
 
     let visible = true;
 
+    let originalData = {
+        first_name: data.user.first_name,
+        last_name: data.user.last_name
+    }
+
+    let firstName = data.user.first_name;
+    let lastName = data.user.last_name;
+
     const switchPassword = () => {
 
         const passwordInput = document.getElementById("password");
@@ -27,6 +35,14 @@
         else passwordIcon.src = "/icons/profile/eye-open.svg";
 
     };
+
+    const resetForm = () => {
+
+        console.log("ran")
+        firstName = originalData.first_name;
+        lastName = originalData.last_name;
+
+    }
 
     const copyToClipboard = () => {
 
@@ -99,7 +115,7 @@
                             <input id="first_name"
                                    name="first_name"
                                    type="text"
-                                   value={data.user.first_name}
+                                   bind:value={firstName}
                                    class="input input-bordered w-full" />
                         </div>
 
@@ -110,7 +126,7 @@
                             <input id="last_name"
                                    name="last_name"
                                    type="text"
-                                   value={data.user.last_name}
+                                   bind:value={lastName}
                                    class="input input-bordered w-full" />
                         </div>
                     </div>
@@ -149,7 +165,7 @@
                         </div>
 
                         <fieldset>
-                            <button type="button" class="btn">Reset </button>
+                            <button type="button" class="btn" on:click={resetForm}>Reset</button>
                             <button class="btn btn-accent">Save Changes</button>
                         </fieldset>
 
