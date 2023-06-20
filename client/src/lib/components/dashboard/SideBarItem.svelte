@@ -6,7 +6,7 @@
 
 
 <a
-    class="btn gap-4 text-left justify-start items-center text-base-100-focus {params.isActive ? 'btn-accent' : ''}"
+    class="btn gap-4 text-left justify-start items-center text-base-100-focus {params.isActive ? 'btn-accent' : 'btn-neutral'}"
     href={params.link}>
 
     {#if params.isActive}
