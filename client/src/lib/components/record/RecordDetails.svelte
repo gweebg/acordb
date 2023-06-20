@@ -38,14 +38,12 @@
     <!-- General Data + Record URL  -->
     <div class="flex flex-row justify-between items-center">
         <h2 class="text-3xl font-bold">General Data</h2>
-        <a href={"http://www.dgsi.pt/" + data.record.data.url} target="_blank" class="btn btn-accent text-neutral">
+        <a href={"http://www.dgsi.pt/" + data.record.data.url} target="_blank" class="btn btn-outline btn-sm text-neutral">
             View Ruling
-            <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">-->
-                <path d="M13.0464 17C11.5404 15.4882 11.6761 12.9009 13.3494 11.2211L18.197 6.35462C19.8703 4.67483 22.4476 4.53865 23.9536 6.05046C25.4596 7.56228 25.3239 10.1496 23.6506 11.8294L21.2268 14.2626" stroke="#1C274C" stroke-width="1.5" stroke-linecap="round"/>-->
-                <path d="M16.9536 13C18.4596 14.5118 18.3239 17.0991 16.6506 18.7789L14.2268 21.2121L11.803 23.6454C10.1297 25.3252 7.55237 25.4613 6.0464 23.9495C4.54043 22.4377 4.67609 19.8504 6.34939 18.1706L8.77323 15.7373" stroke="#1C274C" stroke-width="1.5" stroke-linecap="round"/>
-            </svg>
+            <img src="/icons/hyperlink.svg" alt="dsgi">
         </a>
     </div>
+
     <div class="divider"></div>
 
     <!-- General Data Table -->

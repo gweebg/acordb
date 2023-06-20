@@ -18,6 +18,7 @@ export const handle = async ({ event, resolve }) => {
 
 				const responseData = await userResponse.json();
 
+				// This is dumb, at this point just = responseData.
 				event.locals.user = {
 					id: responseData.id,
 					email: responseData.email,

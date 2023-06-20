@@ -16,14 +16,14 @@
         <div class="divider border-t border-white"></div>
 
         <div class="overflow-x-auto flex justify-center">
-            <table class="table table-xs w-full">
+            <table class="table w-full text-neutral-100">
                 <thead>
-                <tr>
+                <tr class="text-neutral-100">
                     <th></th>
                     <th>Name</th>
                     <th>Job</th>
-                    <th>company</th>
-                    <th>location</th>
+                    <th>Company</th>
+                    <th>Location</th>
                     <th>Last Login</th>
                     <th>Favorite Color</th>
                 </tr>

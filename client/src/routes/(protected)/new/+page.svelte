@@ -37,6 +37,12 @@
             isDisabled = true;
         }
 
+        const button = document.getElementById('submit');
+        button.addEventListener('click', function() {
+            button.setAttribute('type', 'button');
+        });
+
+        buttonContent = "Next";
     }
 
 </script>
@@ -64,7 +70,24 @@
             </ul>
 
             <!-- Form Content -->
-            <div></div>
+            <div>
+
+                {#if sections.details === true}
+
+                    <p>Details</p>
+
+                {:else if sections.content === true}
+
+                    <p>Content</p>
+
+                {:else}
+
+                    <p>General</p>
+                    
+                {/if}
+
+
+            </div>
 
             <!-- Next/Submit Button -->
             <div class="ml-auto">

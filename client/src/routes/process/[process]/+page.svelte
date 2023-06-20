@@ -5,12 +5,15 @@
     import Navbar from "$lib/components/home/Navbar.svelte";
     import RecordDetails from "$lib/components/record/RecordDetails.svelte";
     export let data;
+
+    const isAuthenticated = !!data.user;
+
 </script>
 
 <div>
 
     <!-- Navbar -->
-    <Navbar/>
+    <Navbar isAuthenticated={isAuthenticated}/>
 
     <!-- Main content -->
     <div>

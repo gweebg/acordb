@@ -1,7 +1,7 @@
 <div class="flex gap-4 items-center">
 
     <!-- Add New Button -->
-    <button class="btn btn-sm btn-accent">NEW</button>
+    <a href="/new" class="btn btn-sm btn-accent">NEW</a>
 
     <!-- Dashboard Button -->
     <a href="/user" class="btn btn-outline btn-sm">Dashboard</a>
