@@ -208,3 +208,5 @@ DEFAULT_CLIENT_ID="2h9uuBaNXXRZyO9anDvAzA1CssWEuplIluJTKJNb"
 DEFAULT_CLIENT_SECRET="6fOkOydW54SOQ09Hnd6Ly92qjGC7AInIPQuWsN8AwZQ92AaNth38h3T1c5gSVjRcM27eiYSXw3Av2ktiMM6Bd8R8gWrP37sFBPBlwiVWAShfhkm0p3GochUz7lNcsgdg"
 
 MONGO_DB = MongoClient('mongodb+srv://lumafepe:Q1VXCy2G7vsk7yK3@acordao.mu9hzs7.mongodb.net/?retryWrites=true&w=majority')['acordaos']
+
+DATA_UPLOAD_MAX_NUMBER_FIELDS=1000000

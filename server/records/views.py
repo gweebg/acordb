@@ -63,8 +63,6 @@ class Records(APIView):
             
     def post(self, request, format=None):
         if 'Processo' in request.data:
-            if Record.objects.filter(processo=request.data['Processo']).exists():
-                return Response(status=status.HTTP_403_FORBIDDEN)
             r = Record.objects.create(request.data,request.user)
             if r is not None:
                 return Response(r,status=status.HTTP_201_CREATED)

@@ -50,6 +50,10 @@ def recordSerializer(record,record_data):
 
 class RecordManager(models.Manager):
     def create(self,data,user):
+        try:
+            data=data.dict()
+        except:
+            pass
         if 'Processo' in data and 'Descritores' in data:
             rec=self.model(processo=data['Processo'],added_by=user)
             descritores = data.pop("Descritores")
