@@ -1,5 +1,6 @@
 import {error, fail, redirect} from "@sveltejs/kit";
 import {PUBLIC_API_URL} from "$env/static/public";
+import {convert} from "$lib/scripts/formdataToJson.js";
 
 
 export const load = async ({ locals }) => {
@@ -14,7 +15,25 @@ export const load = async ({ locals }) => {
         throw error(404, { message: "You don't have the privilege to access this endpoint." });
     }
 
-    /*
+    let fields = await fetchFields();
+    return {user: locals.user, fields: fields};
+
+};
+
+export const actions = {
+
+    new: async ({ cookies, locals, request }) => {
+
+        let data = await request.formData(); /* This holds the form data, un-formatted because of black magic. */
+        let final = convert(data); /* This holds the form data, formatted as readable JSON. */
+
+        /* TODO: Make POST request to API to add new ruling. */
+
+    }
+};
+
+const fetchFields = async () => {
+
     const fieldsResponse = await fetch(
         `${PUBLIC_API_URL}/acordaos/fields/`,
         {
@@ -25,35 +44,21 @@ export const load = async ({ locals }) => {
 
     if (fieldsResponse.ok) {
 
-        const responseData = await userResponse.json();
+        /* This data is in the format [{name:"..."},{name:"..."},...] */
+        const responseData = await fieldsResponse.json();
 
-        // This is dumb, at this point just = responseData.
-        event.locals.user = {
-            id: responseData.id,
-            email: responseData.email,
-            first_name: responseData.first_name,
-            last_name: responseData.last_name,
-            filiation: responseData.filiation,
-            is_administrator: responseData.is_administrator
-        };
+        /* Reserved fields that are already put out for the user to fill in. */
+        const reservedFields = ['url', 'Processo', 'Descritores', 'Texto Integral', 'Sumário', 'Decisão']
 
+        /* Return the flattened list with the reserved fields removed. */
+        return responseData
+            .map((value) => { return value.name})
+            .filter((value) => {
+                return !reservedFields.includes(value);
+            });
     }
     else {
-        console.log(userResponse.status);
+        console.log(fieldsResponse.status);
+        return [];
     }
-    */
-
-
-    return {user: locals.user, fields: ["Acordãos", "Contencioso", "Votação", "Requerido", "Data"]};
-
-};
-
-export const actions = {
-
-    new: async ({ cookies, locals, request }) => {
-
-        const data = await request.formData();
-        console.log(data);
-
-    }
-};
+}
