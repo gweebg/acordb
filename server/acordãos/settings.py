@@ -129,9 +129,14 @@ WSGI_APPLICATION = "acordãos.wsgi.application"
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
 DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "data/db.sqlite3",
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'acordaos',
+        'USER': 'ACORDB_ADMIN',
+        'PASSWORD': 'Subamolimitepara25',
+        'HOST': 'acordb-postgres.postgres.database.azure.com',
+        'PORT': '5432',
+        'sslmode':'require'
     }
 }
 
@@ -204,8 +209,8 @@ SOCIAL_AUTH_GOOGLE_OAUTH2_SCOPE = [
    'https://www.googleapis.com/auth/userinfo.profile',
 ]
 
-DEFAULT_CLIENT_ID="2h9uuBaNXXRZyO9anDvAzA1CssWEuplIluJTKJNb"
-DEFAULT_CLIENT_SECRET="6fOkOydW54SOQ09Hnd6Ly92qjGC7AInIPQuWsN8AwZQ92AaNth38h3T1c5gSVjRcM27eiYSXw3Av2ktiMM6Bd8R8gWrP37sFBPBlwiVWAShfhkm0p3GochUz7lNcsgdg"
+DEFAULT_CLIENT_ID="TIB1j6dKXtEQoB3kAp8dXTsYlBkUfG3GkLmO1Oph"
+DEFAULT_CLIENT_SECRET="qlBGPrFBzH05tJxciMzfPCVRIrdFacDXS3GAacCixyQWBLfOB6LP4iMSEr77nu7s80X84KCQZuxT6h4Z0Qa7WCjLJFcCOho37STViWVo1vA55tOoYqdb2vznQtl0ZN7d"
 
 MONGO_DB = MongoClient('mongodb://acordb:YpKMqDBwVDmrNLMwJOdOfYSHE72GsFqlOuiUCTP8z6juvCSmot23UmlOcFejyleeWpBlSUGntFvDACDbB7Raeg==@acordb.mongo.cosmos.azure.com:10255/?ssl=true&retrywrites=false&replicaSet=globaldb&maxIdleTimeMS=120000&appName=@acordb@')['acordaos']
 

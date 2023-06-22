@@ -18,9 +18,33 @@ class TagManager(models.Manager):
             tag=self.model(name=name)
             tag.save()
         return tag
+    
+    def createIfNotExists(self,data:set):
+        existing_tags = self.filter(name__in=data)
+        existing_names = set(tag.name for tag in existing_tags)
+        c=[]
+        for d in data:
+            if d not in existing_names:
+                c.append(self.model(name=d))
+        self.bulk_create(c) 
+            
+    def get_or_createMany(self,data_list):
+        data_list=set(data_list)
+        existing_tags = self.filter(name__in=data_list)
+        existing_names = set(tag.name for tag in existing_tags)
+
+        objects_to_create = []
+        for data in data_list:
+            if data not in existing_names:
+                objects_to_create.append(self.model(name=data))
+
+        created_objects = self.bulk_create(objects_to_create)
+        created_objects = self.filter(pk__in=[obj.pk for obj in created_objects])
+        all_objects = existing_tags | created_objects
+        return all_objects
 
 class Tag(models.Model):
-    name = models.CharField(max_length=128,primary_key=True)
+    name = models.CharField(max_length=512,primary_key=True)
     objects = TagManager()
 
 class FieldManager(models.Manager):
@@ -30,9 +54,33 @@ class FieldManager(models.Manager):
             field=self.model(name=name)
             field.save()
         return field
+    
+    def createIfNotExists(self,data:set):
+        existing_fields = self.filter(name__in=data)
+        existing_names = set(tag.name for tag in existing_fields)
+        c=[]
+        for d in data:
+            if d not in existing_names:
+                c.append(self.model(name=d))
+        self.bulk_create(c) 
+    
+    def get_or_createMany(self,data_list):
+        data_list=set(data_list)
+        existing_fields = self.filter(name__in=data_list)
+        existing_names = set(field.name for field in existing_fields)
+
+        objects_to_create = []
+        for data in data_list:
+            if data not in existing_names:
+                objects_to_create.append(self.model(name=data))
+
+        created_objects = self.bulk_create(objects_to_create)
+        created_objects = self.filter(pk__in=[obj.pk for obj in created_objects])
+        all_objects = existing_fields | created_objects
+        return all_objects
 
 class Field(models.Model):
-    name = models.CharField(max_length=128,primary_key=True)
+    name = models.CharField(max_length=265,primary_key=True)
     objects = FieldManager()
     
 
@@ -45,11 +93,14 @@ class Acordaomanager(models.Manager):
         c.save()
         return Record.objects.create(c,data,user)
     def createMany(self,data,user):
-        def createAcordao(datat):
+        acordaos=[]
+        pairs=[]
+        for datat in data:
             c=self.model()
-            c.save()
-            return (c,datat)
-        Record.objects.createMany(map(createAcordao,data),user)
+            acordaos.append(c)
+            pairs.append((c,datat))
+        Acordao.objects.bulk_create(acordaos)
+        Record.objects.createMany(pairs,user)
         
         
     
@@ -109,8 +160,15 @@ class RecordManager(models.Manager):
             rec.save()
             return recordSerializer(rec,r)
         return None
+    
     def createMany(self,acordaoData,user):
-        l=[]
+        mongoData=[]
+        records=[]
+        fields=[]
+        tags=[]
+        stags=set()
+        sfields=set()
+
         for (acordao,data) in acordaoData:
             try:
                 data=data.dict()
@@ -119,16 +177,25 @@ class RecordManager(models.Manager):
             if 'Descritores' not in data:
                 data['Descritores']=[]
             rec=self.model(acordao=acordao,added_by=user)
+            records.append(rec)
             descritores = data.pop("Descritores")
-            fields = [Field.objects.get_or_create(name=key) for key in data.keys()]
-            tags = [Tag.objects.get_or_create(name=descritor) for descritor in descritores]
+            fields.append(list(data.keys()))
+            for field in data.keys():
+                sfields.add(field)
+            tags.append(descritores)
+            for tag in descritores:
+                stags.add(tag)
             data["_id"]=bson.Binary.from_uuid(rec.id)
-            rec.save()
-            rec.tags.set(tags)
-            rec.fields.set(fields)
-            rec.save()
-            l.append(data)
-        createManyRecord(l)
+            mongoData.append(data)
+        Record.objects.bulk_create(records)
+        Tag.objects.createIfNotExists(stags)
+        Field.objects.createIfNotExists(sfields)
+
+        for p,rec in enumerate(records):
+            rec.tags.set(Tag.objects.filter(name__in=tags[p]))
+            rec.fields.set(Field.objects.filter(name__in=fields[p]))
+        print("starting MongoInsertion")
+        createManyRecord(mongoData)
             
     
     def getMostRecentMany(self,query):
