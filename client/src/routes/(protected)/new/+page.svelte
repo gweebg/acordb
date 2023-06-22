@@ -1,6 +1,9 @@
 <script>
     import Navbar from "$lib/components/home/Navbar.svelte";
-    import Footer from "$lib/components/Footer.svelte";
+    import GeneralSection from "$lib/components/new/GeneralSection.svelte";
+    import {inputs, process, url, tags} from "$lib/stores/form.js";
+
+    import jsonToFormData from '@ajoelp/json-to-formdata';
 
     export let data;
 
@@ -45,6 +48,48 @@
         buttonContent = "Next";
     }
 
+    const handleSubmit = async (event) => {
+
+        event.preventDefault();
+
+        let data = {
+            fields: undefined,
+            process: "",
+            tags: [],
+            url: "",
+            body: undefined
+        };
+
+        const unsubFields = inputs.subscribe(
+            fieldList => data.fields = fieldList
+        );
+
+        const unsubProcess = process.subscribe(
+            processId => data.process = processId
+        );
+
+        const unsubTags = tags.subscribe(
+            tagList => data.tags = tagList
+        );
+
+        const unsubUrl = url.subscribe(
+            url => data.url = url
+        );
+
+        // const body = inputs.subscribe(
+        //     values => data.fields = values
+        // );
+
+        const formData = jsonToFormData(data);
+
+        await fetch('?/new', {
+            method: 'POST',
+            body: formData
+        });
+
+        unsubFields(); unsubProcess(); unsubTags(); unsubUrl();
+    }
+
 </script>
 
 
@@ -55,23 +100,23 @@
     <!-- New judgment form. -->
     <div class="px-4 mb-[100px] mt-[80px] mx-48">
 
+        <header>
+            <h2 class="text-3xl font-bold">Add a new ruling!</h2>
+            <p class="opacity-50">Pay attention to what fields are obligatory!</p>
+            <div class="divider"></div>
+        </header>
 
-        <h2 class="text-3xl font-bold">Add a new ruling!</h2>
-        <p class="opacity-50">Pay attention to what fields are obligatory!</p>
-        <div class="divider"></div>
-
-        <form class="flex justify-center flex-col" id="new" action="?/new" method="POST">
+        <form class="flex justify-center flex-col" id="new" action="?/new" method="POST" on:submit={handleSubmit}>
 
             <!-- Steps -->
             <ul class="steps">
                 <li class="step {sections.general ? 'step-primary' : ''}">General Information</li>
                 <li class="step {sections.content ? 'step-primary' : ''}">Content</li>
-                <li class="step {sections.details ? 'step-primary' : ''}">Details</li>
+                <li class="step {sections.details ? 'step-primary' : ''}">Review & Submit</li>
             </ul>
 
             <!-- Form Content -->
             <div>
-
                 {#if sections.details === true}
 
                     <p>Details</p>
@@ -82,11 +127,9 @@
 
                 {:else}
 
-                    <p>General</p>
+                    <GeneralSection fields={data.fields}/>
                     
                 {/if}
-
-
             </div>
 
             <!-- Next/Submit Button -->
@@ -98,8 +141,6 @@
         </form>
 
     </div>
-
-    <Footer/>
 
 </div>
 
