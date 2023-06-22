@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Record,ChangeRequest,Tag,Field
+from .models import Record,ChangeRequest,Tag,Field,Acordao
 
 # Register your models here.
 
@@ -13,6 +13,10 @@ admin.site.register(Field,FieldManager)
 class RecordAdmin(admin.ModelAdmin):
     pass
 admin.site.register(Record,RecordAdmin)
+
+class AcordaoAdmin(admin.ModelAdmin):
+    pass
+admin.site.register(Acordao,AcordaoAdmin)
 
 class ChangeRequestAdmin(admin.ModelAdmin):
     pass

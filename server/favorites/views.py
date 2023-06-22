@@ -4,6 +4,7 @@ from rest_framework.response import Response
 from .models import Favorites
 from .serializers import FavoritesSerializer
 from .permissions import FavoritesPermission
+import uuid
 # Create your views here.
 
 class FavoritesData(mixins.ListModelMixin,
@@ -25,15 +26,22 @@ class FavoritesData(mixins.ListModelMixin,
         
     def create(self, request, *args, **kwargs):
         user = request.user
-        processo = request.data.get('processo')
+        acordao = request.data.get('acordao')
 
-        # Check if a Favorites object with the same user and processo already exists
-        if Favorites.objects.filter(user=user, processo=processo).exists():
+        # Check if a Favorites object with the same user and acordao already exists
+        if Favorites.objects.filter(user=user, acordao=acordao).exists():
             return Response(
-                {"error": "Favorites with this user and processo already exists."},
+                {"error": "Favorites with this user and acordao already exists."},
                 status=status.HTTP_403_FORBIDDEN
             )
-
+        try:
+            uuid.UUID(acordao)
+        except ValueError:
+            return Response(
+                {"error": "Invalid UUID format for acordao."},
+                status=status.HTTP_400_BAD_REQUEST
+            )
+            
         serializer = self.get_serializer(data=request.data)
         serializer.is_valid(raise_exception=True)
         self.perform_create(serializer)
@@ -43,13 +51,13 @@ class FavoritesData(mixins.ListModelMixin,
     
     def update(self, request, *args, **kwargs):
         user = request.user
-        processo = request.data.get('processo')
+        acordao = request.data.get('acordao')
         instance = self.get_object()
 
-        # Check if a Favorites object with the same user and processo already exists
-        if Favorites.objects.filter(user=user, processo=processo).exclude(pk=instance.pk).exists():
+        # Check if a Favorites object with the same user and acordao already exists
+        if Favorites.objects.filter(user=user, acordao=acordao).exclude(pk=instance.pk).exists():
             return Response(
-                {"error": "Favorites with this user and processo already exists."},
+                {"error": "Favorites with this user and acordao already exists."},
                 status=status.HTTP_403_FORBIDDEN
             )
 

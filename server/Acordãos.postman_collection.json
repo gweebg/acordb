@@ -83,7 +83,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"email\": \"seb@vettel.com\",\n    \"password\": \"croissant\",\n    \"first_name\": \"seb\",\n    \"last_name\": \"vettel\",\n    \"filiation\": \"racist\"\n}\n",
+							"raw": "{\n    \"email\": \"seb4@vettel.com\",\n    \"password\": \"croissant\",\n    \"first_name\": \"seb\",\n    \"last_name\": \"vettel\",\n    \"filiation\": \"racist\"\n}\n",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -288,7 +288,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n        \"Nº Convencional\": \"ACTC8252\",\n        \"Acordão\": \"98-270-1\",\n        \"Processo\": \"96-0847\",\n        \"Relator\": \"ASSUNÇÃO ESTEVES\",\n        \"Descritores\": [\n            \"PROCESSO CONSTITUCIONAL.\",\n            \"FISCALIZAÇÃO CONCRETA DA CONSTITUCIONALIDADE.\",\n            \"RECLAMAÇÃO.\",\n            \"PRESSUPOSTO DO RECURSO.\",\n            \"ADMISSIBILIDADE DO RECURSO.\"\n        ],\n        \"Nº do Documento\": \"TRC19980309982701\",\n        \"Data do Acordão\": \"03/09/1998\",\n        \"Espécie\": \"RECLAMAÇÃO\",\n        \"Requerente\": \"PARTICULAR\",\n        \"Requerido\": \"STA\",\n        \"Nº do Diário da República\": \"271\",\n        \"Série do Diário da República\": \"II\",\n        \"Data do Diário da República\": \"11/23/1998\",\n        \"Página do Diário da República\": \"16623\",\n        \"Volume dos Acordãos do T.C.\": \"39\",\n        \"Votação\": \"UNANIMIDADE\",\n        \"Privacidade\": \"1\",\n        \"Normas Suscitadas\": \"PORT 302-B/74 DE 1974/05/19.\",\n        \"Legislação Nacional\": \"LTC82 ART76 ART70 N1 B.  \\nPORT 302-B/84 DE 1984/05/19 N1 N2.\",\n        \"Decisão\": \"Defere a reclamação contra não admissão de recurso por ter sido suscitada durante o processo uma questão de constitucionalidade de norma aplicada na decisão recorrida.\",\n        \"Sumário\": \"Se, durante o processo, o reclamante sustentou sobre a Portaria nº 302-B/84, de 19 de Maio, uma questão de constitucionalidade, não é a qualificação jurídica por ele feita de \\\"acto administrativo consubstanciado nessa Portaria\\\" que retira ao caso a objectividade da verificação dos pressupostos do recurso de constitucionalidade previstos no artigo 70º, nº 1, alínea b), da Lei do Tribunal Constitucional.\",\n        \"Texto Integral\": \"\",\n        \"url\": \"/atco1.nsf/904714e45043f49b802565fa004a5fd7/f2f8e9a827852037802568ea0053e0f6?OpenDocument\",\n        \"tribunal\": \"atco1\"\n    }",
+							"raw": "{\n        \"Processo\": \"01974-21.3T8LRA.S1-CP\",\n        \"Data do Acord\\u00e3o\": \"07/13/2022\",\n        \"Relator\": \"MARIA DOS PRAZERES PIZARRO BELEZA\",\n        \"N\\u00ba Convencional\": \"JSTA000P29801\",\n        \"N\\u00ba do Documento\": \"SAC2022071301974\",\n        \"Recorrente\": \"CP COMBOIOS DE PORTUGAL, EPE\",\n        \"Vota\\u00e7\\u00e3o\": \"UNANIMIDADE\",\n        \"Texto Integral\": \"Consulta prejudicial\\nAcordam, no Tribunal dos Conflitos:\\n1. Em 24 de Maio de 2021, CP \\u2013 Comboios de Portugal \\u2013 E.P.E. instaurou no Tribunal Judicial da Comarca de Leiria uma a\\u00e7\\u00e3o contra Companhia de Seguros Allianz Portugal, S.A., e IP \\u2013 Infraestruturas de Portugal, S.A., pedindo a condena\\u00e7\\u00e3o individual ou solid\\u00e1ria das r\\u00e9s a pagarem-lhe a quantia de \\u20ac 220.665,746, acrescida de juros vincendos, a t\\u00edtulo de danos sofridos.\\nPara o efeito, e em s\\u00edntese, invocou ter sofrido danos em consequ\\u00eancia da colis\\u00e3o entre um comboio (explorado por si) e um ve\\u00edculo pesado de mercadorias (seguro na r\\u00e9 Companhia de Seguros Allianz Portugal, S.A.), ocorrida numa passagem de n\\u00edvel situada numa linha de caminho de ferro explorada pela r\\u00e9 IP, tendo o sinistro sido causado\\n\\u2013 pelo condutor do ve\\u00edculo de mercadorias, \\u201cpor inobserv\\u00e2ncia das regras que, enquanto condutor, deve respeitar, na aproxima\\u00e7\\u00e3o e transposi\\u00e7\\u00e3o das Passagens de N\\u00edvel\\u201d, \\n\\u2013 e / ou pela r\\u00e9 IP \\u2013 Infraestruturas de Portugal, S.A., sendo que esta r\\u00e9 \\u201comitiu o cumprimento do dever de conserva\\u00e7\\u00e3o e manuten\\u00e7\\u00e3o daquela PN e do seu equipamento\\u201d, omiss\\u00e3o que impediu que o maquinista \\u201cpudesse imobilizar o comboio antes daquela PN o que, n\\u00e3o sucedendo, deu origem ao sinistro em causa, pois o comboio n\\u00e3o conseguiu evitar o embate\\u201d.\\nExplicou que demandou as duas r\\u00e9s \\u201cpor cautela e dever de patroc\\u00ednio\\u201d (artigo 12.\\u00ba da peti\\u00e7\\u00e3o inicial).\\nAs r\\u00e9s contestaram separadamente. Para o que agora releva, ambas invocaram a incompet\\u00eancia absoluta do tribunal, em raz\\u00e3o da mat\\u00e9ria, por se tratar de uma ac\\u00e7\\u00e3o da compet\\u00eancia dos Tribunais Administrativos. \\nA Companhia de Seguros Allianz Portugal, S.A., alegou que a r\\u00e9 IP, S.A., \\u00e9 \\u201cuma sociedade an\\u00f3nima, que prossegue fins p\\u00fablicos, estando dotada de prerrogativas conferidas ao Estado pelas disposi\\u00e7\\u00f5es legais e regulamentares aplic\\u00e1veis no que respeita \\u00e0 responsabilidade civil extracontratual, no dom\\u00ednio de actos de gest\\u00e3o p\\u00fablica\\u201d, sendo \\u201ca gest\\u00e3o das infraestruturas de circula\\u00e7\\u00e3o ferrovi\\u00e1ria (\\u2026) um acto de gest\\u00e3o p\\u00fablica\\u201d.\\nConcluiu no sentido de que resulta do Estatuto dos Tribunais Administrativos e Fiscais que \\u201ccompete aos tribunais da jurisdi\\u00e7\\u00e3o administrativa e fiscal a aprecia\\u00e7\\u00e3o de lit\\u00edgios que tenham nomeadamente por objecto a responsabilidade civil extracontratual dos sujeitos privados, aos quais seja aplic\\u00e1vel o regime espec\\u00edfico da responsabilidade do Estado e demais pessoas colectivas de direito p\\u00fablico\\u201d.\\nA r\\u00e9 Infraestruturas de Portugal, S.A., baseou a alega\\u00e7\\u00e3o de incompet\\u00eancia no disposto nos artigos 4.\\u00ba, n.\\u00ba 1, al\\u00ednea f), do Estatuto dos Tribunais Administrativos e Fiscais, 4.\\u00ba, n.\\u00ba 2, do Decreto-Lei n.\\u00ba 91/2015, de 29 de Maio e 23.\\u00ba, n.\\u00ba 1, do Decreto-Lei n.\\u00ba 133/2013, de 3 de Outubro, referindo os poderes de autoridade detidos pela r\\u00e9 IP, S.A., necess\\u00e1rios \\u00e0 garantia da seguran\\u00e7a da circula\\u00e7\\u00e3o e das infraestruturas ferrovi\\u00e1rias nacionais sob sua administra\\u00e7\\u00e3o.\\nPor despacho de 22 de Outubro de 2021 do Tribunal Judicial da Comarca de Leiria \\u2013 Ju\\u00edzo Central C\\u00edvel de Leiria \\u2013 Juiz ..., foi admitida a interven\\u00e7\\u00e3o principal provocada de F..., S.A., ao lado da r\\u00e9 Infraestruturas de Portugal, S.A., que a requereu, alegando ter transferido para a seguradora a responsabilidade relativa \\u00e0 gest\\u00e3o da infraestrutura rodovi\\u00e1ria, mediante um contrato de seguro.\\nF..., S.A., contestou; releva agora que tamb\\u00e9m invocou a incompet\\u00eancia material do Tribunal para conhecer da a\\u00e7\\u00e3o. Acompanhando as considera\\u00e7\\u00f5es apresentadas pela r\\u00e9 IP, S.A., concluiu que, por decorr\\u00eancia do disposto na al\\u00ednea f) do n.\\u00ba 1 do artigo 4.\\u00ba, do Estatuto dos Tribunais Administrativos e Fiscais, \\u00e9 \\u00e0 jurisdi\\u00e7\\u00e3o administrativa que compete a aprecia\\u00e7\\u00e3o do presente lit\\u00edgio.\\nA autora respondeu \\u00e0 excep\\u00e7\\u00e3o de incompet\\u00eancia e, aludindo \\u00e0 previs\\u00e3o do n.\\u00ba 1 do artigo 32.\\u00ba do Decreto-Lei n.\\u00ba 104/97, de 29 de Abril, reiterou a compet\\u00eancia dos tribunais comuns para o conhecimento da causa.\\n\\n2. Por despacho de 15 de Mar\\u00e7o de 2022, o Juiz ... do Tribunal Judicial da Comarca de Leiria \\u2013 Ju\\u00edzo Central C\\u00edvel de Leiria dirigiu oficiosamente ao Senhor Presidente do Supremo Tribunal de Justi\\u00e7a consulta prejudicial ao Tribunal dos Conflitos sobre a quest\\u00e3o da jurisdi\\u00e7\\u00e3o competente para a aprecia\\u00e7\\u00e3o do presente lit\\u00edgio.\\nRemetidos os autos ao Tribunal dos Conflitos, o Senhor Presidente do Supremo Tribunal de Justi\\u00e7a admitiu a consulta, nos termos do n.\\u00ba 2 do artigo 16.\\u00ba da Lei n.\\u00ba 91/2019, de 4 de Setembro (Tribunal dos Conflitos), determinando que se seguissem os termos previstos na mesma Lei. \\nDe acordo com o disposto no n.\\u00ba 4 do artigo 11.\\u00ba da Lei n.\\u00ba 91/2019, o Minist\\u00e9rio P\\u00fablico emitiu parecer no sentido de ser atribu\\u00edda compet\\u00eancia para conhecer da presente a\\u00e7\\u00e3o \\u00e0 jurisdi\\u00e7\\u00e3o administrativa: \\u201cTal como a A. configura a ac\\u00e7\\u00e3o, verifica-se que o pedido foi dirigido contra uma entidade p\\u00fablica empresarial, que se rege pelo disposto no DL n.\\u00ba 133/2013, de 3/10. \\nEsta entidade p\\u00fablica empresarial foi demandada por eventual responsabilidade civil extracontratual derivada da alegada omiss\\u00e3o do dever de gest\\u00e3o da infraestrutura integrante da rede ferrovi\\u00e1ria nacional. \\nDisp\\u00f5e-se no artigo 4.\\u00b0, n.\\u00b0 1, al\\u00ednea f) do ETAF que \\\"Compete aos tribunais da jurisdi\\u00e7\\u00e3o administrativa e fiscal a aprecia\\u00e7\\u00e3o de lit\\u00edgios que tenham por objeto quest\\u00f5es relativas a:\\n(...)\\nf) - Responsabilidade civil extracontratual das pessoas coletivas de direito p\\u00fablico\\n(...)\\nTem-se entendido que esta norma revogou tacitamente a norma contida no artigo 32.\\u00b0 do DL n.\\u00b0 104/97, de 29/4, citado pela A., na sua resposta de 16/2/22.\\nNeste sentido, ver os seguintes ac\\u00f3rd\\u00e3os do Tribunal de Conflitos, todos publicados nas bases de dados jur\\u00eddico-documentais do IGFEJ:\\n011/10, de 9/9/10, relatado por Ad\\u00e9rito Santos;\\n030/09, de 17/6/10, relatado por Jorge de Sousa;\\n017/07, de 23/1/08, relatado por Pol\\u00edbio Henriques.\\nDeste modo, somos de parecer que a compet\\u00eancia material para conhecer da presente a\\u00e7\\u00e3o caber\\u00e1 \\u00e0 jurisdi\\u00e7\\u00e3o administrativa\\u201d.\\nOs factos relevantes para a decis\\u00e3o constam do relat\\u00f3rio.\\n\\n3. Est\\u00e1 pois em causa, apenas, determinar quais s\\u00e3o os tribunais competentes para apreciar o pedido da autora, se os tribunais judiciais \\u2013 que, no conjunto do sistema judici\\u00e1rio, t\\u00eam compet\\u00eancia residual (n.\\u00ba 1 do artigo 211\\u00ba da Constitui\\u00e7\\u00e3o, n.\\u00ba 1 do artigo 40\\u00ba da Lei de Organiza\\u00e7\\u00e3o do Sistema Judici\\u00e1rio, a Lei n.\\u00ba 62/2013, de 26 de Agosto e artigo 64.\\u00ba do C\\u00f3digo de Processo Civil) \\u2013 , se os tribunais administrativos e fiscais, cuja jurisdi\\u00e7\\u00e3o \\u00e9 delimitada pelo n.\\u00ba 3 do artigo 212\\u00ba da Constitui\\u00e7\\u00e3o e pelos artigos 1.\\u00ba e 4\\u00ba do Estatuto dos Tribunais Administrativos e Fiscais.\\nOs tribunais administrativos \\u00abs\\u00e3o os tribunais comuns em mat\\u00e9ria administrativa, tendo \\u00abreserva de jurisdi\\u00e7\\u00e3o nessa mat\\u00e9ria, excepto nos casos em que, pontualmente, a lei atribua compet\\u00eancia a outra jurisdi\\u00e7\\u00e3o\\u00bb [ver AC TC n\\u00ba508/94, de 14.07.94, in Processo n\\u00ba777/92; e AC TC n\\u00ba347/97, de 29.04.97, in Processo n\\u00ba139/95]\\u201d \\u2013 ac\\u00f3rd\\u00e3o do Tribunal  dos Conflitos de 8 de Novembro de 2018, www.dgsi.pt, proc. n.\\u00ba 020/18). \\nEsta forma de delimita\\u00e7\\u00e3o rec\\u00edproca obriga a come\\u00e7ar por verificar se a presente ac\\u00e7\\u00e3o tem por objecto um pedido de resolu\\u00e7\\u00e3o de um lit\\u00edgio \\u201cemergente\\u201d de \\u201crela\\u00e7\\u00f5es jur\\u00eddicas administrativas e fiscais\\u201d (n.\\u00ba 2 do artigo 212\\u00ba da Constitui\\u00e7\\u00e3o, n.\\u00ba 1 do artigo 1.\\u00ba e artigo 4.\\u00ba do Estatuto dos Tribunais Administrativos e Fiscais).  \\nComo escreve Vieira de Andrade, A Justi\\u00e7a Administrativa, 18.\\u00aa ed., Coimbra, 2020, p\\u00e1g. 52-53, o legislador deveria esclarecer o que se entende como \\u201crela\\u00e7\\u00e3o jur\\u00eddica administrativa\\u201d, nomeadamente para ser poss\\u00edvel saber, com seguran\\u00e7a, como delimitar o \\u00e2mbito da jurisdi\\u00e7\\u00e3o administrativa: \\u201cDe facto, face \\u00e0 complexidade actual das rela\\u00e7\\u00f5es entre o direito p\\u00fablico e o direito privado no \\u00e2mbito da actividade administrativa, a quest\\u00e3o (\\u2026) transformou-se numa decis\\u00e3o, numa op\\u00e7\\u00e3o pol\\u00edtica entre solu\\u00e7\\u00f5es igualmente defens\\u00e1veis\\u201d (nota 68).\\n\\u00abMas, na falta de uma clarifica\\u00e7\\u00e3o legislativa, parece-nos que ser\\u00e1 porventura mais prudente partir-se do entendimento do conceito constitucional de \\u201crela\\u00e7\\u00e3o jur\\u00eddica administrativa\\u201d no sentido estrito tradicional de \\u201crela\\u00e7\\u00e3o jur\\u00eddica de direito administrativo\\u201d, com exclus\\u00e3o, nomeadamente, das rela\\u00e7\\u00f5es de direito privado em que interv\\u00e9m a administra\\u00e7\\u00e3o. (\\u2026)\\nA determina\\u00e7\\u00e3o do dom\\u00ednio material da justi\\u00e7a administrativa continua, assim, a passar pela distin\\u00e7\\u00e3o material entre o direito p\\u00fablico e o direito privado, uma das quest\\u00f5es cruciais que se p\\u00f5em \\u00e0 ci\\u00eancia jur\\u00eddica.\\nN\\u00e3o sendo este o lugar indicado para desenvolver o tema, lembraremos apenas que se t\\u00eam de considerar rela\\u00e7\\u00f5es jur\\u00eddicas p\\u00fablicas (seguindo um crit\\u00e9rio estatut\\u00e1rio, que combina sujeitos, fins e meios) aquelas em que um dos sujeitos, pelo menos, seja uma entidade p\\u00fablica ou uma entidade particular no exerc\\u00edcio de um poder p\\u00fablico, actuando com vista \\u00e0 realiza\\u00e7\\u00e3o de um interesse p\\u00fablico legalmente definido\\u00bb.\\n\\n4. Como uniformemente se tem observado, nomeadamente no Tribunal dos Conflitos, a compet\\u00eancia determina-se tendo em conta os \\u201ctermos da ac\\u00e7\\u00e3o, tal como definidos pelo autor \\u2014 objectivos, pedido e da causa de pedir, e subjectivos, respeitantes \\u00e0 identidade das partes (cfr., por todos, os ac\\u00f3rd\\u00e3os de 28 de Setembro de 2010, www.dgsi.pt, proc. n\\u00ba 023/09 e de 20 de Setembro de 2011, www.dgsi.pt, proc. n.\\u00ba 03/11\\u201d \\u2013 ac\\u00f3rd\\u00e3o de 10 de Julho de 2012, www.dgsi.pt, proc. n\\u00ba 3/12 ou, mais recentemente, o ac\\u00f3rd\\u00e3o de 18 de Fevereiro de 2019, www.dgsi.pt, proc. n.\\u00ba 12/19, quanto aos elementos objectivos de identifica\\u00e7\\u00e3o da ac\\u00e7\\u00e3o; ou, ainda, no ac\\u00f3rd\\u00e3o do Tribunal dos Conflitos, de 8 de Novembro de 2018, www.dgsi.pt, processo n.\\u00ba 020/18, \\u201ccomo tem sido s\\u00f3lida e uniformemente entendido pela jurisprud\\u00eancia deste Tribunal de Conflitos, a compet\\u00eancia dos tribunais em raz\\u00e3o da mat\\u00e9ria afere-se em fun\\u00e7\\u00e3o da configura\\u00e7\\u00e3o da rela\\u00e7\\u00e3o jur\\u00eddica controvertida, isto \\u00e9, em fun\\u00e7\\u00e3o dos termos em que \\u00e9 deduzida a pretens\\u00e3o do autor na peti\\u00e7\\u00e3o inicial, incluindo os seus fundamentos (\\u2026). A compet\\u00eancia em raz\\u00e3o da mat\\u00e9ria \\u00e9, assim, quest\\u00e3o que se resolve em raz\\u00e3o do modo como o autor estrutura a causa, e exprime a sua pretens\\u00e3o em ju\\u00edzo, n\\u00e3o importando para o efeito averiguar quais deveriam ser os correctos termos dessa pretens\\u00e3o considerando a realidade f\\u00e1ctica efectivamente existente, nem o correcto entendimento sobre o regime jur\\u00eddico aplic\\u00e1vel \\u2013 ver, por elucidativo sobre esta metodologia jur\\u00eddica, o AC do Tribunal de Conflitos de 01.10.2015, 08/14, onde se diz, al\\u00e9m do mais, que \\u00abo tribunal \\u00e9 livre na indaga\\u00e7\\u00e3o do direito e na qualifica\\u00e7\\u00e3o jur\\u00eddica dos factos. Mas n\\u00e3o pode antecipar esse ju\\u00edzo para o momento de aprecia\\u00e7\\u00e3o do pressuposto da compet\\u00eancia\\u2026\\u00bb].\\u201d.\\nNo caso dos autos, como se viu, a autora alega, por um lado, que o acidente se deveu \\u201cn\\u00e3o s\\u00f3\\u201d \\u00e0 conduta do condutor do ve\\u00edculo pesado, que efectuou a travessia da passagem de n\\u00edvel sem se certificar de que o podia fazer sem perigo para si ou para terceiros, \\u201cmas tamb\\u00e9m\\u201d ao mau funcionamento das meias barreiras da passagem de n\\u00edvel; ora, cabendo \\u00e0 r\\u00e9 IP \\u2013 Infraestruturas de Portugal, S.A., a gest\\u00e3o da infraestrutura da rede ferrovi\\u00e1ria nacional (por for\\u00e7a do disposto no artigo 2.\\u00ba do Decreto-Lei n.\\u00ba 104/97, de 29 de Abril) e n\\u00e3o tendo promovido o seu bom e regular funcionamento, a responsabilidade caber\\u00e1 tamb\\u00e9m ou apenas \\u00e0 r\\u00e9 IP, S.A.. Assim, a autora entende que, ainda que n\\u00e3o sejam respons\\u00e1veis ambas as r\\u00e9s que demandou, pelo menos uma s\\u00ea-lo-\\u00e1. \\nN\\u00e3o se pode, pois, dizer que a autora formula um pedido principal e outro subsidi\\u00e1rio; nem t\\u00e3o pouco que se possa enquadrar a sua pretens\\u00e3o na pluralidade de partes subsidi\\u00e1ria prevista no artigo 39.\\u00ba do C\\u00f3digo de Processo Civil, que pressup\\u00f5e que uma das partes \\u00e9 demandada a t\\u00edtulo subsidi\\u00e1rio. Interpreta-se a peti\\u00e7\\u00e3o inicial no sentido de a autora demandar as duas r\\u00e9s iniciais com o fundamento de, eventualmente, ter ocorrido uma concorr\\u00eancia de causas do acidente, que pode conduzir \\u00e0 responsabiliza\\u00e7\\u00e3o das duas, solidariamente ou n\\u00e3o, ou apenas de uma delas. \\nEsta interpreta\\u00e7\\u00e3o constitui um passo necess\\u00e1rio para a defini\\u00e7\\u00e3o da jurisdi\\u00e7\\u00e3o competente, desde logo porque a compet\\u00eancia se define em fun\\u00e7\\u00e3o da forma como a autora define os termos da causa, como se disse j\\u00e1.\\nA interven\\u00e7\\u00e3o de F..., S.A., tem o efeito de, sendo caso disso, ser conhecida a rela\\u00e7\\u00e3o que lhe respeita, ficando abrangida pelo caso julgado que vier a formar-se.\\n\\n5. O Decreto-Lei n.\\u00ba 104/97, de 29 de Abril, criou a Rede Ferrovi\\u00e1ria Nacional \\u2013 REFER, E. P., com \\u201ca natureza de pessoa colectiva de direito p\\u00fablico, dotada de autonomia administrativa e financeira e de patrim\\u00f3nio pr\\u00f3prio\\u201d e \\u201csujeita \\u00e0 tutela dos Ministros das Finan\\u00e7as e do Equipamento, do Planeamento e da Administra\\u00e7\\u00e3o do Territ\\u00f3rio\\u201d (n.\\u00ba 1 do artigo 2.\\u00ba). O \\u201cobjecto principal\\u201d atribu\\u00eddo \\u00e0 REFER foi o de \\u201cpresta\\u00e7\\u00e3o do servi\\u00e7o p\\u00fablico de gest\\u00e3o da infra-estrutura integrante da rede ferrovi\\u00e1ria nacional, que nela \\u00e9 delegado por efeito autom\\u00e1tico do presente diploma.\\u201d (n.\\u00ba 2).\\nDo artigo 32.\\u00ba do Anexo I do citado Decreto-Lei n.\\u00ba 104/97, que cont\\u00e9m os Estatutos da REFER, E.P., resultava que, salvo tratando-se de taxas devidas \\u00e0 REFER, competia \\u201caos tribunais judiciais o julgamento de todos os lit\\u00edgios em que\\u201d era \\u201cparte a REFER, E. P., incluindo as ac\\u00e7\\u00f5es para efectiva\\u00e7\\u00e3o da responsabilidade civil dos titulares dos seus \\u00f3rg\\u00e3os para com a respectiva empresa.\\u201d Esta regra, todavia, foi tacitamente revogada pela al. g) do n.\\u00ba 1 do artigo 4.\\u00ba do Estatuto dos Tribunais Administrativos e Fiscais, na sua reda\\u00e7\\u00e3o inicial, como se entendeu, por exemplo, no ac\\u00f3rd\\u00e3o do Tribunal dos Conflitos de 12 de Maio de 2016, www.dgsi.pt, proc. n.\\u00ba 049/15: \\u201cCompete aos tribunais administrativos o julgamento de a\\u00e7\\u00e3o para efetiva\\u00e7\\u00e3o de responsabilidade civil extracontratual da REFER, E.P.E., pessoa coletiva de direito p\\u00fablico, por efeito de aplica\\u00e7\\u00e3o do art. 4.\\u00b0, n.\\u00b0 1, al. g), do ETAF, na reda\\u00e7\\u00e3o de 2002, que se deve entender como lei geral revogat\\u00f3ria da norma especial do art. 32.\\u00ba dos respetivos Estatutos,  constantes do anexo I ao DL n.\\u00ba 104/97, de 29-04, alterado pelo DL n.\\u00ba 141/2008, de 22-07\\u201d.\\nO Decreto-Lei n.\\u00ba 91/2015, de 29 de Maio, procedeu \\u00e0 fus\\u00e3o, por incorpora\\u00e7\\u00e3o, da E\\u2026, S. A., na REFER \\u2013 Rede Ferrovi\\u00e1ria Nacional, E. P. E., e transformou a REFER em sociedade an\\u00f3nima, denominada Infraestruturas de Portugal, S. A. (IP, S. A.) \\u2013 artigo 1.\\u00ba, n.\\u00ba 1.\\nNos termos do n.\\u00ba 1 do respectivo artigo 4.\\u00ba, a IP, S. A., reveste a natureza de empresa p\\u00fablica sob forma de sociedade an\\u00f3nima. Rege-se \\u201cpelo presente decreto-lei, pelos seus estatutos, pelo regime jur\\u00eddico do sector p\\u00fablico empresarial, aprovado pelo Decreto-Lei n.\\u00ba 133/2013, de 3 de Outubro, pelo C\\u00f3digo das Sociedades Comerciais, pelos seus regulamentos internos e pelas normas especiais que lhe sejam aplic\\u00e1veis\\u201d (n.\\u00ba 2) e \\u201ctem por objecto a concep\\u00e7\\u00e3o, projecto, constru\\u00e7\\u00e3o, financiamento, conserva\\u00e7\\u00e3o, explora\\u00e7\\u00e3o, requalifica\\u00e7\\u00e3o, alargamento e moderniza\\u00e7\\u00e3o das redes rodovi\\u00e1ria e ferrovi\\u00e1ria nacionais, incluindo-se nesta \\u00faltima o comando e o controlo da circula\\u00e7\\u00e3o\\u201d, assumindo \\u201ca posi\\u00e7\\u00e3o de gestor de infraestruturas, nos termos do contrato de concess\\u00e3o geral da rede rodovi\\u00e1ria nacional celebrado com o Estado e dos contratos de concess\\u00e3o que com o mesmo venham a ser celebrados, bem como a gest\\u00e3o das demais infraestruturas sob sua administra\\u00e7\\u00e3o.\\u201d (n.\\u00bas 1 e 2 do artigo 6.\\u00ba).\\nDo artigo 12.\\u00ba do mesmo Decreto-Lei n.\\u00ba 91/2015, cuja ep\\u00edgrafe \\u00e9 \\u201cpoderes de autoridade\\u201d, resulta (n.\\u00ba 1) que \\u201cCompete \\u00e0 IP, S. A., relativamente \\u00e0s infraestruturas rodovi\\u00e1rias e ferrovi\\u00e1rias nacionais sob sua administra\\u00e7\\u00e3o, zelar pela manuten\\u00e7\\u00e3o permanente das condi\\u00e7\\u00f5es de infraestrutura\\u00e7\\u00e3o e conserva\\u00e7\\u00e3o e pela seguran\\u00e7a da circula\\u00e7\\u00e3o ferrovi\\u00e1ria e rodovi\\u00e1ria\\u201d; e do n.\\u00ba 2 decorre que \\u201cPara o desenvolvimento da sua atividade principal, a IP, S. A., det\\u00e9m os poderes, prerrogativas e obriga\\u00e7\\u00f5es conferidos ao Estado pelas disposi\\u00e7\\u00f5es legais e regulamentares aplic\\u00e1veis, designadamente no que respeita:\\n(\\u2026) k) \\u00c0 responsabilidade civil extracontratual, no exerc\\u00edcio dos respetivos poderes p\\u00fablicos\\u201d.\\nPor seu lado, o n.\\u00ba 3 do mesmo artigo 12.\\u00ba confere \\u00e0 IP, S. A., nos termos da lei, os poderes de autoridade necess\\u00e1rios para garantir a integridade dos bens que lhe est\\u00e3o confiados, bem como a seguran\\u00e7a da circula\\u00e7\\u00e3o e das infraestruturas a seu cargo, que ali se enunciam.\\nDo artigo 22.\\u00ba do regime jur\\u00eddico do sector p\\u00fablico empresarial, aprovado pelo Decreto-Lei n.\\u00ba 133/2013, de 3 de Outubro \\u2013 aplic\\u00e1vel como se viu, \\u00e0 IP, S.A \\u2013, consta a regra de que \\u201c1 - As empresas p\\u00fablicas podem exercer poderes e prerrogativas de autoridade de que goza o Estado, designadamente quanto a: (\\u2026) b) Utiliza\\u00e7\\u00e3o, prote\\u00e7\\u00e3o e gest\\u00e3o das infraestruturas afetas ao servi\\u00e7o p\\u00fablico;(\\u2026)\\u00bb Esta norma cont\\u00e9m, para as empresas p\\u00fablicas, uma \\u201chabilita\\u00e7\\u00e3o legal expressa\\u201d para o \\u201cexerc\\u00edcio de poderes p\\u00fablicos de autoridade\\u201d, como recorda M\\u00e1rio Aroso de Almeida, Teoria Geral do Direito Administrativo, 5.\\u00aa ed., 2018, Coimbra, p\\u00e1g.32.\\nOra, de acordo com o n.\\u00ba 1 do artigo 23.\\u00ba, \\u201cPara efeitos de determina\\u00e7\\u00e3o da compet\\u00eancia para o julgamento dos lit\\u00edgios respeitantes a actos praticados e a contratos celebrados no exerc\\u00edcio dos poderes de autoridade a que se refere o artigo anterior\\u201d \\u2013 como \\u00e9 o caso \\u2013, as empresas p\\u00fablicas s\\u00e3o equiparadas a entidades administrativas.\\u201d\\nImporta tamb\\u00e9m ter em conta que, segundo a Lei n.\\u00ba 67/2007, de 31 de Dezembro, que aprovou o Regime da Responsabilidade Civil Extracontratual do Estado e demais Entidades P\\u00fablicas, e no respectivo contexto, se esclarece, no n.\\u00ba 2 do seu artigo 1.\\u00ba, que \\u201c(\\u2026) correspondem ao exerc\\u00edcio da fun\\u00e7\\u00e3o administrativa as ac\\u00e7\\u00f5es e omiss\\u00f5es adoptadas no exerc\\u00edcio de prerrogativas de poder p\\u00fablico ou reguladas por disposi\\u00e7\\u00f5es ou princ\\u00edpios de direito administrativo\\u201d, resultando do n.\\u00ba 5 que as regras relativas \\u00e0 \\u201cresponsabilidade das pessoas colectivas de direito p\\u00fablico (\\u2026) s\\u00e3o tamb\\u00e9m aplic\\u00e1veis \\u00e0 responsabilidade civil de pessoas colectivas de direito privado (\\u2026) por ac\\u00e7\\u00f5es ou omiss\\u00f5es que adoptem no exerc\\u00edcio de prerrogativas de poder p\\u00fablico ou que sejam reguladas por disposi\\u00e7\\u00f5es ou princ\\u00edpio de direito administrativo\\u201d. \\n\\n6. Da al. h) do n.\\u00ba 1 do artigo 4.\\u00ba do Estatuto dos Tribunais Administrativos e Fiscais decorre que compete aos tribunais da jurisdi\\u00e7\\u00e3o administrativa e fiscal a aprecia\\u00e7\\u00e3o de lit\\u00edgios que tenham por objeto quest\\u00f5es relativas a \\u201cresponsabilidade civil extracontratual dos demais sujeitos [que n\\u00e3o os referidos nas al\\u00edneas anteriores, como as pessoas colectivas p\\u00fablicas] aos quais seja aplic\\u00e1vel o regime espec\\u00edfico da responsabilidade do Estado e demais pessoas colectivas de direito p\\u00fablico\\u201d.\\nAssim, deve, pois, concluir-se que a aprecia\\u00e7\\u00e3o da eventual responsabilidade extracontratual da r\\u00e9 IP, S.A., cabe aqui \\u00e0 jurisdi\\u00e7\\u00e3o administrativa, nos termos do disposto no artigo 4.\\u00ba, n.\\u00ba 1, al. h), do ETAF. Neste mesmo sentido, e a prop\\u00f3sito de quest\\u00e3o similar, entendeu-se no ac\\u00f3rd\\u00e3o de 29 de Janeiro de 2015 do Tribunal dos Conflitos, www.dgsi.pt, proc. n.\\u00ba 050/14: \\u00abO DL n\\u00ba 374/2007, de 7/11, transformou a E..., EPE em sociedade an\\u00f3nima de capitais p\\u00fablicos, com a designa\\u00e7\\u00e3o de E..., S.A (cfr. art. 1\\u00ba).\\nApesar de ser uma sociedade an\\u00f3nima, a lei atribuiu-lhe poderes, prerrogativas e deveres de autoridade t\\u00edpicos dos atribu\\u00eddos ao Estado.\\nAssim, no que respeita ao seu estatuto prev\\u00ea o art. 10\\u00ba, n\\u00ba 1 do DL n\\u00ba 374/2007 que: \\u201ccompete \\u00e0 E..., S.A., relativamente \\u00e0s infra-estruturas rodovi\\u00e1rias nacionais que integrem o objecto da concess\\u00e3o a que se refere o n.\\u00ba 1 do artigo 4.\\u00ba, zelar pela manuten\\u00e7\\u00e3o permanente de condi\\u00e7\\u00f5es de infra-estrutura\\u00e7\\u00e3o e conserva\\u00e7\\u00e3o e de salvaguarda do estatuto da estrada que permitam a livre circula\\u00e7\\u00e3o\\u201d.\\nE no n\\u00ba 2 do mesmo preceito prev\\u00ea-se que, \\u201cPara o desenvolvimento da sua actividade, a E..., S.A., det\\u00e9m os poderes, prerrogativas e obriga\\u00e7\\u00f5es conferidos ao Estado pelas disposi\\u00e7\\u00f5es legais e regulamentares aplic\\u00e1veis no que respeita:(\\u2026)h) A responsabilidade civil extracontratual, nos dom\\u00ednios dos actos de gest\\u00e3o p\\u00fablica;\\u201d.\\nPor outro lado, determina o art. 8\\u00ba, n\\u00ba 1 do mesmo diploma que, \\u201cas infra-estruturas rodovi\\u00e1rias nacionais que integram o dom\\u00ednio p\\u00fablico e que estejam em regime de afecta\\u00e7\\u00e3o ao tr\\u00e2nsito p\\u00fablico ficam nesse regime sob administra\\u00e7\\u00e3o da E..., S.A.\\u201d. Daqui decorre que pertence \\u00e0 aqui R\\u00e9 EP, a representa\\u00e7\\u00e3o do Estado no que respeita \\u00e0s infra-estruturas rodovi\\u00e1rias. Ou seja, estes normativos, nas fun\\u00e7\\u00f5es atribu\\u00eddas \\u00e0 EP (quanto \\u00e0s infra-estruturas rodovi\\u00e1rias nacionais que integram o objecto da sua concess\\u00e3o), concedem-lhe poderes de autoridade pr\\u00f3prios do Estado.\\nDestas normas \\u00e9 poss\\u00edvel inferir-se que a responsabilidade extracontratual por que a R\\u00e9 \\u00e9 demandada, derivando das suas legais atribui\\u00e7\\u00f5es (designadamente conserva\\u00e7\\u00e3o da rede rodovi\\u00e1ria nacional), se desenvolve num quadro de ambi\\u00eancia p\\u00fablica.\\nAssim, a sua eventual responsabiliza\\u00e7\\u00e3o por actos ou omiss\\u00f5es dessa sua actividade insere-se no quadro de aplica\\u00e7\\u00e3o da norma do art. 1\\u00ba, n\\u00ba 5 da Lei n\\u00ba 67/2007, acima mencionada, e, consequentemente, ser\\u00e3o os tribunais administrativos os competentes, em raz\\u00e3o da mat\\u00e9ria, para conhecer do lit\\u00edgio, nos termos do disposto no art. 4\\u00ba, n\\u00ba 1, al\\u00ednea i) [corresponde \\u00e0 actual al. h)] do ETAF - cfr. neste sentido o Ac\\u00f3rd\\u00e3o do STJ de 16.10.2012, proc. 950/10.6TBFAF.G1 e o Ac\\u00f3rd\\u00e3o deste Tribunal dos Conflitos n\\u00ba 048/13, de 27.02.2014.\\u00bb \\nE no ac\\u00f3rd\\u00e3o do Tribunal dos Conflitos de 09/12/2014, www.dgsi.pt,  proc. n.\\u00ba 035/14, entendeu-se o seguinte:\\n\\u00abII - Pedindo-se a condena\\u00e7\\u00e3o dos RR em indemniza\\u00e7\\u00e3o por danos causados na sua casa de habita\\u00e7\\u00e3o com a utiliza\\u00e7\\u00e3o de explosivos na constru\\u00e7\\u00e3o de um tro\\u00e7o de auto-estrada e detendo a R\\u00e9 E..., S.A prerrogativas concedidas ao Estado pelas disposi\\u00e7\\u00f5es legais e regulamentares aplic\\u00e1veis no que respeita \\u00e0 responsabilidade civil extra-contratual, no dom\\u00ednio dos actos de gest\\u00e3o p\\u00fablica, \\u00e9 de concluir que a aprecia\\u00e7\\u00e3o da eventual responsabilidade extra-contratual dessa mesma R\\u00e9 cabe \\u00e0 jurisdi\\u00e7\\u00e3o administrativa.\\u00bb\\n\\n7. Nesta ac\\u00e7\\u00e3o foi demandada a Companhia de Seguros Allianz Portugal, S.A., e interveio a F..., S.A., sociedades privadas que n\\u00e3o exercem poderes de autoridade e que n\\u00e3o s\\u00e3o abrangidas por nenhuma das al\\u00edneas do n.\\u00ba 1 do artigo 4.\\u00ba do Estatuto dos Tribunais Administrativos e Fiscais.\\nNo entanto, o n.\\u00ba 2 do mesmo artigo 4.\\u00ba, introduzido pelo Decreto-Lei n.\\u00ba 214-G/2015, de 2 de Outubro (\\u201c2 - Pertence \\u00e0 jurisdi\\u00e7\\u00e3o administrativa e fiscal a compet\\u00eancia para dirimir os lit\\u00edgios nos quais devam ser conjuntamente demandadas entidades p\\u00fablicas e particulares entre si ligados por v\\u00ednculos jur\\u00eddicos de solidariedade, designadamente por terem concorrido em conjunto para a produ\\u00e7\\u00e3o dos mesmos danos ou por terem celebrado entre si contrato de seguro de responsabilidade.\\u201d) \\u2013 e que deve ser entendido em conjunto com o n.\\u00ba 10 do artigo 9.\\u00ba do C\\u00f3digo de Processo nos Tribunais Administrativos, relativo \\u00e0 legitimidade passiva \\u2013 traz para o \\u00e2mbito da jurisdi\\u00e7\\u00e3o administrativa o conhecimento de lit\\u00edgios que envolvem entidades privadas, desprovidas de poderes de autoridade, quando est\\u00e3o ligadas a entidades p\\u00fablicas por v\\u00ednculos de solidariedade, nomeadamente nos exemplos referidos no citado n.\\u00ba 2. A amplia\\u00e7\\u00e3o da compet\\u00eancia da jurisdi\\u00e7\\u00e3o administrativa verifica-se relativamente a essas entidades privadas, ou seja, s\\u00f3 ocorre quando aquela compet\\u00eancia abrange as entidades p\\u00fablicas nos termos das diversas al\\u00edneas do n.\\u00ba 1 do artigo 4.\\u00ba (ou de outra disposi\\u00e7\\u00e3o legal) e justifica-se pela vantagem manifesta de possibilitar o conhecimento global do lit\\u00edgio, sem obrigar \\u00e0 propositura de ac\\u00e7\\u00f5es diferentes em diferentes jurisdi\\u00e7\\u00f5es, com a duplica\\u00e7\\u00e3o de actividade processual e o risco de decis\\u00f5es contradit\\u00f3rias (\\u201cO art. 4.\\u00ba, n.\\u00ba 2, do ETAF apresenta-se como uma concretiza\\u00e7\\u00e3o do princ\\u00edpio da tutela jurisdicional efectiva, designadamente dos sub-princ\\u00edpios da economia e da celeridade processual (\\u2026)\\u201d, escreve Sandra dos Reis Lu\\u00eds, O artigo 4.\\u00ba, n.\\u00ba 2, do Estatuto dos Tribunais Administrativos e Fiscais: sentido e alcance, in Coment\\u00e1rios \\u00e0 Legisla\\u00e7\\u00e3o Processual Administrativa, vol. I, 5.\\u00aa ed.,  Lisboa, 2020, p\\u00e1g. 407 e segs.., p\\u00e1g. 434).\\nNo caso, a solidariedade foi invocada pela autora \\u2013 h\\u00e1 que ter sempre presente que a compet\\u00eancia se afere pela forma como o autor desenha o lit\\u00edgio \\u2013 e verifica-se, justamente, que invocou concorr\\u00eancia de causas dos danos que pretende que sejam ressarcidos. \\u00c9 claro que a Companhia de Seguros Allianz Portugal, S.A. foi demandada por ser a seguradora do ve\\u00edculo de mercadorias envolvido no acidente, tendo sido a responsabilidade transferida por virtude desse contrato; a concorr\\u00eancia de causas alegada respeita naturalmente \\u00e0 actua\\u00e7\\u00e3o do respectivo condutor. \\nJ\\u00e1 a interven\\u00e7\\u00e3o de F..., S.A., preenche a hip\\u00f3tese da parte final do n.\\u00ba 2, quanto \\u00e0s suas rela\\u00e7\\u00f5es com a r\\u00e9 IP \\u2013 Infraestruturas de Portugal, S.A.\\nA dificuldade que se pode encontrar na aplica\\u00e7\\u00e3o ao caso presente da amplia\\u00e7\\u00e3o de jurisdi\\u00e7\\u00e3o \\u00e0 1.\\u00aa r\\u00e9 e \\u00e0 seguradora da r\\u00e9 IP \\u2013 Infraestruturas de Portugal, S.A. decorre, como \\u00e9 bom de ver, da circunst\\u00e2ncia de IP \\u2013 Infraestruturas de Portugal, S.A., n\\u00e3o ser uma entidade p\\u00fablica, mas sim uma empresa p\\u00fablica sob a forma de sociedade an\\u00f3nima. No entanto, tratando-se de uma ac\\u00e7\\u00e3o de responsabilidade civil extracontratual por alegada omiss\\u00e3o do exerc\\u00edcio de compet\\u00eancias abrangidas pela atribui\\u00e7\\u00e3o legal de prerrogativas de autoridade, correspondentes, como se viu, \\u201cao exerc\\u00edcio da fun\\u00e7\\u00e3o administrativa\\u201d (n.\\u00ba 2 do artigo 1.\\u00ba da Lei 67/2007), quanto a si, a compet\\u00eancia da jurisdi\\u00e7\\u00e3o administrativa est\\u00e1 assegurada pela al. h) do n.\\u00ba 1 do artigo 4.\\u00ba do Estatuto dos Tribunais Administrativos e Fiscais e pelo n.\\u00ba 1 do artigo 23.\\u00ba do Decreto-Lei n.\\u00ba 133/2013.\\nDeve, assim, interpretar-se o n.\\u00ba 2 do artigo 4.\\u00ba do Estatuto dos Tribunais Administrativos e Fiscais no sentido de que a amplia\\u00e7\\u00e3o da jurisdi\\u00e7\\u00e3o administrativa a entidades privadas, nas condi\\u00e7\\u00f5es ali previstas, pode ser provocada por entidades privadas \\u00e0s quais \\u201cseja aplic\\u00e1vel o regime espec\\u00edfico da responsabilidade do Estado e demais pessoas colectivas de direito p\\u00fablico\\u201d (al. h) do n.\\u00ba 1 do artigo 4.\\u00ba do Estatuto dos Tribunais Administrativos e Fiscais), respeitando o lit\\u00edgio a esse \\u00e2mbito de aplica\\u00e7\\u00e3o. \\nA equipara\\u00e7\\u00e3o \\u2013 e a correspondente interpreta\\u00e7\\u00e3o extensiva do referido n.\\u00ba 2 do artigo 4.\\u00ba do Estatuto dos Tribunais Administrativos e Fiscais \\u2013 encontra justifica\\u00e7\\u00e3o na atribui\\u00e7\\u00e3o legal de prerrogativas de autoridade no exerc\\u00edcio das compet\\u00eancias de gest\\u00e3o das infraestruturas ferrovi\\u00e1rias e \\u00e0 sua qualifica\\u00e7\\u00e3o legal como exerc\\u00edcio (embora privado) da fun\\u00e7\\u00e3o administrativa.\\n\\tOra a autora invocou factos aptos a desenhar uma rela\\u00e7\\u00e3o de solidariedade entre os demandados, por descreverem uma concorr\\u00eancia de causas (actos do condutor do ve\\u00edculo de mercadorias e omiss\\u00f5es da r\\u00e9 IP, S.A.) que conduziram, sempre na sua configura\\u00e7\\u00e3o da ac\\u00e7\\u00e3o, aos danos cuja indemniza\\u00e7\\u00e3o pretende; e ao demandar a Companhia de Seguros Allianz Portugal, S.A., alegou a transfer\\u00eancia da responsabilidade pelo sinistro por contrato de seguro. A interven\\u00e7\\u00e3o da F..., S.A., foi requerida pela r\\u00e9 I.P., S.A., com fundamento tamb\\u00e9m em ter transferido para esta seguradora a responsabilidade relativa \\u00e0 gest\\u00e3o da infraestrutura rodovi\\u00e1ria, atrav\\u00e9s de um contrato de seguro, e foi admitida por esse motivo.\\n\\tComo se escreveu no ac\\u00f3rd\\u00e3o do Tribunal dos Conflitos de 17 de Maio de 2018, www.dgsi.pt, proc. n.\\u00ba 052/17, para ser aplic\\u00e1vel o n.\\u00ba 2 do artigo 4.\\u00ba do Estatuto dos Tribunais Administrativos e Fiscais, \\u201cpara o efeito de aferir a compet\\u00eancia da jurisdi\\u00e7\\u00e3o administrativa\\u201d, \\u00e9 necess\\u00e1rio \\u201cque na peti\\u00e7\\u00e3o inicial tenham sido articulados factos que permitam, primo conspectu, fundamentar a imputa\\u00e7\\u00e3o de responsabilidade solid\\u00e1ria \\u00e0s entidades p\\u00fablicas e particulares que nela s\\u00e3o demandadas. N\\u00e3o basta, para tal, a mera invoca\\u00e7\\u00e3o, \\u00aboca de factos\\u00bb, dessa mesma responsabiliza\\u00e7\\u00e3o solid\\u00e1ria (\\u2026)\\u201d, como ali sucedia \\u2013 mas n\\u00e3o no caso presente.\\n \\u201cA seu tempo\\u201d, como no mesmo ac\\u00f3rd\\u00e3o se escreveu e atr\\u00e1s se recordou, o tribunal que for competente apreciar\\u00e1, e decidir\\u00e1, de acordo com o regime jur\\u00eddico que deva ser aplicado aos factos provados.\\u201d\\n\\n 8. Cabe, portanto, \\u00e0 jurisdi\\u00e7\\u00e3o administrativa e fiscal a compet\\u00eancia para apreciar esta ac\\u00e7\\u00e3o; concretamente, ao Ju\\u00edzo Administrativo Comum do Tribunal Administrativo e Fiscal de Leiria (artigos 18.\\u00ba, n.\\u00ba 1, do C\\u00f3digo de Processo nos Tribunais Administrativos, 9.\\u00ba do Estatuto dos Tribunais Administrativos e Fiscais, 7.\\u00ba do Decreto-Lei n.\\u00ba 174/2019, de 13 de Dezembro e 1.\\u00ba, f), da Portaria n.\\u00ba 121/2020, de 22 de Maio e artigo 3.\\u00ba e mapa anexo ao Decreto-Lei n.\\u00ba 325/2003, de 29 de Dezembro).\\n\\n9. Assim, nos termos do disposto no artigo 17\\u00b0 da Lei n\\u00b0 91/2019, de 4 de Setembro, acordam em emitir pron\\u00fancia no sentido de que cabe \\u00e0 Jurisdi\\u00e7\\u00e3o Administrativa e Fiscal conhecer da presente ac\\u00e7\\u00e3o; no caso, ao Tribunal Administrativo e Fiscal de Leiria.Sem custas (n.\\u00ba 2 do artigo 5.\\u00ba da Lei n.\\u00ba 91/2019, de 4 de Setembro).\\n\\n\\nLisboa, 13 de Julho de 2022. - Maria dos Prazeres Couceiro Pizarro Beleza (relatora) - Teresa Maria Sena Ferreira de Sousa - Henrique Lu\\u00eds de Brito Ara\\u00fajo.\",\n        \"url\": \"/jcon.nsf/35fbbbf22e1bb1e680256f8e003ea931/bcc67faf1ea3a6c0802588a60047c9c9?OpenDocument\",\n        \"tribunal\": \"jcon\",\n        \"Tribunal Recurso\": \"CONFLITOS\",\n        \"Recorrido\": \"1 : COMPANHIA DE SEGUROS ALLIANZ PORTUGAL, S.A.\\n\",\n        \"\\u00c1rea Tem\\u00e1tica\": \"*;\",\n        \"Descritores\": []\n    }",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -296,12 +296,12 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/records/",
+							"raw": "{{url}}/acordaos/",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"records",
+								"acordaos",
 								""
 							]
 						}
@@ -324,25 +324,20 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{url}}/records?id=2219cd73-6984-4e70-8a2c-b2fa898784e2",
+							"raw": "{{url}}/acordaos/",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"records"
-							],
-							"query": [
-								{
-									"key": "id",
-									"value": "2219cd73-6984-4e70-8a2c-b2fa898784e2"
-								}
+								"acordaos",
+								""
 							]
 						}
 					},
 					"response": []
 				},
 				{
-					"name": "list most volume acordãos",
+					"name": "list records",
 					"request": {
 						"auth": {
 							"type": "bearer",
@@ -357,13 +352,73 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{url}}/records/mostRecent",
+							"raw": "{{url}}/acordaos/records/526af892-c877-4ddb-9992-1aacb51c36d6/",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
+								"acordaos",
 								"records",
-								"mostRecent"
+								"526af892-c877-4ddb-9992-1aacb51c36d6",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "retrieve Acordao",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "JZxUCOL2PKp8aiIMbxwcv3AK9agfvx",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/acordaos/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"acordaos",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "retrieve Record",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "JZxUCOL2PKp8aiIMbxwcv3AK9agfvx",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/acordaos/record/f65b3502-d353-4eb1-8ad9-bc8eb708226c/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"acordaos",
+								"record",
+								"f65b3502-d353-4eb1-8ad9-bc8eb708226c",
+								""
 							]
 						}
 					},
@@ -385,12 +440,12 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{url}}/records/tags/",
+							"raw": "{{url}}/acordaos/tags/",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"records",
+								"acordaos",
 								"tags",
 								""
 							]
@@ -414,12 +469,12 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{url}}/records/fields/",
+							"raw": "{{url}}/acordaos/fields/",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"records",
+								"acordaos",
 								"fields",
 								""
 							]
@@ -428,7 +483,7 @@
 					"response": []
 				},
 				{
-					"name": "get acordão",
+					"name": "list change requests",
 					"request": {
 						"auth": {
 							"type": "bearer",
@@ -443,13 +498,14 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{url}}/records/97-0847/",
+							"raw": "{{url}}/acordaos/changeRequests/526af892-c877-4ddb-9992-1aacb51c36d6/",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"records",
-								"97-0847",
+								"acordaos",
+								"changeRequests",
+								"526af892-c877-4ddb-9992-1aacb51c36d6",
 								""
 							]
 						}
@@ -457,7 +513,7 @@
 					"response": []
 				},
 				{
-					"name": "get change requests",
+					"name": "retrieve change request",
 					"request": {
 						"auth": {
 							"type": "bearer",
@@ -472,45 +528,14 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{url}}/records/97-0847/alteracoes/",
+							"raw": "{{url}}/acordaos/changeRequest/8b524b58-d547-4df4-a283-cf2553404521/",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"records",
-								"97-0847",
-								"alteracoes",
-								""
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "get change request",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "DFrdImIufDdJbsntVVmRhGbPLZSGOf",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{url}}/records/97-0847/alteracoes/f4db4fe5-89f5-461c-a577-8dcaf90f4851/",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"records",
-								"97-0847",
-								"alteracoes",
-								"f4db4fe5-89f5-461c-a577-8dcaf90f4851",
+								"acordaos",
+								"changeRequest",
+								"8b524b58-d547-4df4-a283-cf2553404521",
 								""
 							]
 						}
@@ -525,7 +550,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "DFrdImIufDdJbsntVVmRhGbPLZSGOf",
+									"value": "JZxUCOL2PKp8aiIMbxwcv3AK9agfvx",
 									"type": "string"
 								}
 							]
@@ -533,15 +558,14 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "{{url}}/records/97-0847/alteracoes/f4db4fe5-89f5-461c-a577-8dcaf90f4851/",
+							"raw": "{{url}}/acordaos/changeRequest/8b524b58-d547-4df4-a283-cf2553404521/",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"records",
-								"97-0847",
-								"alteracoes",
-								"f4db4fe5-89f5-461c-a577-8dcaf90f4851",
+								"acordaos",
+								"changeRequest",
+								"8b524b58-d547-4df4-a283-cf2553404521",
 								""
 							]
 						}
@@ -573,15 +597,14 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/records/97-0847/alteracoes/1f2060b0-11c7-44c7-822b-25f9b90e1f24/",
+							"raw": "{{url}}/acordaos/changeRequest/124aed4a-dc68-48a6-adc7-9b2b575ea1d3/",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"records",
-								"97-0847",
-								"alteracoes",
-								"1f2060b0-11c7-44c7-822b-25f9b90e1f24",
+								"acordaos",
+								"changeRequest",
+								"124aed4a-dc68-48a6-adc7-9b2b575ea1d3",
 								""
 							]
 						}
@@ -613,14 +636,14 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/records/97-0847/alteracoes/",
+							"raw": "{{url}}/acordaos/changeRequests/526af892-c877-4ddb-9992-1aacb51c36d6/",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"records",
-								"97-0847",
-								"alteracoes",
+								"acordaos",
+								"changeRequests",
+								"526af892-c877-4ddb-9992-1aacb51c36d6",
 								""
 							]
 						}
@@ -677,7 +700,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"processo\":\"97-0215\",\n    \"description\":\"Este é o melhor processo de sempre\"\n}",
+							"raw": "{\n    \"acordao\":\"70f4d14e-972a-4382-b54a-050a6c389847\",\n    \"description\":\"Este é o melhor processo de sempre\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -705,7 +728,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "DFrdImIufDdJbsntVVmRhGbPLZSGOf",
+									"value": "JZxUCOL2PKp8aiIMbxwcv3AK9agfvx",
 									"type": "string"
 								}
 							]
@@ -734,7 +757,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "DFrdImIufDdJbsntVVmRhGbPLZSGOf",
+									"value": "JZxUCOL2PKp8aiIMbxwcv3AK9agfvx",
 									"type": "string"
 								}
 							]
@@ -763,7 +786,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "DFrdImIufDdJbsntVVmRhGbPLZSGOf",
+									"value": "JZxUCOL2PKp8aiIMbxwcv3AK9agfvx",
 									"type": "string"
 								}
 							]
@@ -772,7 +795,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n        \"processo\": \"97-0215\",\n        \"description\": \"Este é o pior processo de sempre\",\n        \"id\": 2\n}",
+							"raw": "{\n    \"acordao\": \"526af892-c877-4ddb-9992-1aacb51c36d6\",\n    \"description\": \"Este é o pior processo de sempre\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"

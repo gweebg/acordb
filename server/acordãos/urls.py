@@ -47,7 +47,7 @@ urlpatterns = [
     path('api-auth/', include('drf_social_oauth2.urls',namespace='drf')),
     path('accounts/', include('accounts.urls',namespace="accounts")),
     path('favorites/', include('favorites.urls',namespace="favorites")),
-    path('records/', include('records.urls',namespace="records")),
+    path('acordaos/', include('records.urls',namespace="records")),
     path('statistics/',Statistics.as_view(),name="global-statistics"),
     re_path(r"^static/(?P<path>.*)$", serve, {"document_root": settings.STATIC_ROOT}),
 ]

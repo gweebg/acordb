@@ -5,7 +5,7 @@ from rest_framework import permissions,status,mixins,generics,viewsets
 from .mongo import *
 import uuid
 import bson
-from .models import Record,ChangeRequest,Tag,Field
+from .models import Record,ChangeRequest,Tag,Field,Acordao
 from .permissions import IsAdministrator,IsConsumer,BelongsToUser
 # Create your views here.
 
@@ -24,90 +24,102 @@ class Fields(mixins.ListModelMixin,
     permission_classes=[permissions.AllowAny]
     queryset=Field.objects.all()
     serializer_class=FieldSerializer
-
-class RecordsMostRecent(APIView):
-    def get_permissions(self):
-        if self.request.method == 'GET':
-            return [permissions.AllowAny()] 
-        return super().get_permissions()
     
-    def get(self, request):
-        d=request.GET.dict()
-        idQ = d.pop('id',None)
-        if idQ is not None:
-            d['_id']=bson.Binary.from_uuid(uuid.UUID(idQ))
-        return Response(Record.objects.getMostRecentMany(d),status=status.HTTP_200_OK)
-            
-class Records(APIView):
+class AcordaoView(APIView):
     def get_permissions(self):
         if self.request.method == 'GET':
             return [permissions.AllowAny()] 
         elif self.request.method == 'POST':
             return [IsAdministrator()]
         return super().get_permissions()
-    
-    def get(self, request, processo=None):
-        if processo==None:
-            d=request.GET.dict()
-            idQ = d.pop('id',None)
-            if idQ is not None:
-                d['_id']=bson.Binary.from_uuid(uuid.UUID(idQ))
-            return Response(Record.objects.getMany(d),status=status.HTTP_200_OK)
-        else:
-            #Retrieve
-            r=Record.objects.getOne(processo)
-            if r is None:
-                return Response(status=status.HTTP_404_NOT_FOUND)
+
+    def get(self, request, acordao=None):
+            if acordao==None:
+                d=request.GET.dict()
+                return Response(Acordao.objects.getMany(d),status=status.HTTP_200_OK)
             else:
-                return Response(r,status=status.HTTP_200_OK)
-            
+                #Retrieve
+                r=Acordao.objects.getOne(acordao)
+                if r is None:
+                    return Response(status=status.HTTP_404_NOT_FOUND)
+                else:
+                    return Response(r,status=status.HTTP_200_OK)
+
     def post(self, request, format=None):
-        if 'Processo' in request.data:
-            r = Record.objects.create(request.data,request.user)
-            if r is not None:
-                return Response(r,status=status.HTTP_201_CREATED)
+        r = Acordao.objects.create(request.data,request.user)
+        if r is not None:
+            return Response(r,status=status.HTTP_201_CREATED)
         return Response({},status=status.HTTP_400_BAD_REQUEST)
 
+class RecordsView(APIView):
+    def get_permissions(self):
+        if self.request.method == 'GET':
+            return [permissions.AllowAny()] 
+        return super().get_permissions()
+    
+    def get(self, request, acordao):
+        if Acordao.objects.filter(id=acordao).exists():
+            return Response(Record.objects.getMany(acordao),status=status.HTTP_200_OK)
+        return Response(status=status.HTTP_404_NOT_FOUND)
+class RecordView(APIView):
+    def get_permissions(self):
+        if self.request.method == 'GET':
+            return [permissions.AllowAny()] 
+        return super().get_permissions()
+    
+    def get(self, request, id):
+        r=Record.objects.getOne(id)
+        if r is not None:
+            return Response(r,status=status.HTTP_200_OK)
+        return Response(status=status.HTTP_404_NOT_FOUND)
+    
 
 
-class ChangeRequests(APIView):
+
+class ChangeRequestsView(APIView):
     def get_permissions(self):
         if self.request.method == 'GET':
             return [permissions.AllowAny()] 
         elif self.request.method == 'POST':
             return [permissions.IsAuthenticated()]
+        return super().get_permissions()
+    
+    def get(self, request,acordao):
+        #list
+        r=ChangeRequest.objects.getRequests(acordao)
+        if r is not None:
+            return Response(r,status=status.HTTP_200_OK)
+        else:
+            return Response(status=status.HTTP_404_NOT_FOUND) 
+            
+    def post(self,request,acordao):
+        if not Record.objects.filter(acordao=acordao).exists():
+            return Response(status=status.HTTP_404_NOT_FOUND)
+        r = ChangeRequest.objects.create(acordao,request.data,request.user)
+        if r is not None:
+            return Response(r,status=status.HTTP_201_CREATED)
+        else:
+            return Response({},status=status.HTTP_400_BAD_REQUEST)
+         
+        
+class ChangeRequestView(APIView):
+    def get_permissions(self):
+        if self.request.method == 'GET':
+            return [permissions.AllowAny()] 
         elif self.request.method == 'DELETE':
             return [BelongsToUser()]
         elif self.request.method == 'PATCH':
             return [IsAdministrator()]
         return super().get_permissions()
     
-    def get(self, request,processo, requestId=None):
-        if requestId is None:
-            #list
-            r=ChangeRequest.objects.getRequests(processo)
-            if r is not None:
-                return Response(r,status=status.HTTP_200_OK)
-            else:
-                return Response(status=status.HTTP_404_NOT_FOUND) 
-        else:
-            #retrieve
-            r=ChangeRequest.objects.getRequest(requestId)
-            if r is not None:
-                return Response(r,status=status.HTTP_200_OK)
-            else:
-                return Response(status=status.HTTP_404_NOT_FOUND)
-            
-    def post(self,request,processo):
-        if not Record.objects.filter(processo=processo).exists():
-            return Response(status=status.HTTP_404_NOT_FOUND)
-        r = ChangeRequest.objects.create(processo,request.data,request.user)
+    def get(self, request,requestId=None):
+        r=ChangeRequest.objects.getRequest(requestId)
         if r is not None:
-            return Response(r,status=status.HTTP_201_CREATED)
+            return Response(r,status=status.HTTP_200_OK)
         else:
-            return Response({},status=status.HTTP_400_BAD_REQUEST)
-         
-    def delete(self, request,requestId,processo=None, format=None):
+            return Response(status=status.HTTP_404_NOT_FOUND)
+    
+    def delete(self, request,requestId, format=None):
         r=ChangeRequest.objects.deleteRequest(requestId)
         if r is None:
             return Response(status=status.HTTP_404_NOT_FOUND)
@@ -116,7 +128,7 @@ class ChangeRequests(APIView):
         else:
             return Response(r,status=status.HTTP_204_NO_CONTENT)
         
-    def patch(self, request, requestId,processo=None, format=None):
+    def patch(self, request, requestId, format=None):
         request_status=request.data.pop('status',None)
         if request_status and (request_status=='accepted' or request_status=='denied'):
             if request_status=='accepted':
@@ -129,5 +141,3 @@ class ChangeRequests(APIView):
                 return Response(r,status=status.HTTP_202_ACCEPTED)
         else:
             return Response({},status=status.HTTP_400_BAD_REQUEST)
-        
-            

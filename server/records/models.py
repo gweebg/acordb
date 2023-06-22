@@ -5,7 +5,7 @@ import uuid
 import bson
 from django.utils import timezone
 from abc import ABCMeta, abstractmethod
-from .mongo import createRecord,getManyRecords,getOneRecord,updateRecord,deleteRecord
+from .mongo import createRecord,getManyRecords,getOneRecord,updateRecord,deleteRecord,createManyRecord
 from .mongo import createchangeRequest,getOnechangeRequest,deletechangeRequest
 from django.db.models import Max
 
@@ -25,15 +25,57 @@ class Tag(models.Model):
 
 class FieldManager(models.Manager):
     def get_or_create(self,name):
-        tag = self.filter(name=name).first()
-        if tag is None:
-            tag=self.model(name=name)
-            tag.save()
-        return tag
+        field = self.filter(name=name).first()
+        if field is None:
+            field=self.model(name=name)
+            field.save()
+        return field
 
 class Field(models.Model):
     name = models.CharField(max_length=128,primary_key=True)
     objects = FieldManager()
+    
+
+
+    
+    
+class Acordaomanager(models.Manager):
+    def create(self,data,user):
+        c=self.model()
+        c.save()
+        return Record.objects.create(c,data,user)
+    def createMany(self,data,user):
+        def createAcordao(datat):
+            c=self.model()
+            c.save()
+            return (c,datat)
+        Record.objects.createMany(map(createAcordao,data),user)
+        
+        
+    
+    def getOne(self,id):
+        try:
+            acordao = self.get(id=id)
+            most_recent_record = acordao.record_set.aggregate(max_added_at=Max('added_at'))
+            return Record.objects.getOne(acordao.record_set.get(added_at=most_recent_record['max_added_at']).id)
+        except Acordao.DoesNotExist:
+            # Handle the case when Acordao with the given ID does not exist
+            return None
+        except Record.DoesNotExist:
+            # Handle the case when there are no records for the given Acordao
+            return None
+        
+    def getMany(self,query):
+        return Record.objects.getMostRecentMany(query)
+            
+        
+        
+    
+    
+class Acordao(models.Model):
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    objects=Acordaomanager()
+    
 
 def recordSerializer(record,record_data):
     del record_data['_id']
@@ -41,71 +83,87 @@ def recordSerializer(record,record_data):
                 "id":str(record.id),
                 "added_by":str(record.added_by),
                 "added_at":record.added_at.strftime("%H:%M:%S %d/%m/%Y"),
+                "acordao":str(record.acordao.id),
                 "tags":[i.name for i in record.tags.all()],
                 "data":record_data            
             }
     
-
-
-
 class RecordManager(models.Manager):
-    def create(self,data,user):
+    def create(self,acordao,data,user):
         try:
             data=data.dict()
         except:
             pass
-        if 'Processo' in data and 'Descritores' in data:
-            rec=self.model(processo=data['Processo'],added_by=user)
+        if 'Descritores' not in data:
+            data['Descritores']=[]
+        rec=self.model(acordao=acordao,added_by=user)
+        descritores = data.pop("Descritores")
+        fields = [Field.objects.get_or_create(name=key) for key in data.keys()]
+        tags = [Tag.objects.get_or_create(name=descritor) for descritor in descritores]
+        data["_id"]=bson.Binary.from_uuid(rec.id)
+        r=createRecord(data)
+        if r is not None:
+            rec.save()
+            rec.tags.set(tags)
+            rec.fields.set(fields)
+            rec.save()
+            return recordSerializer(rec,r)
+        return None
+    def createMany(self,acordaoData,user):
+        l=[]
+        for (acordao,data) in acordaoData:
+            try:
+                data=data.dict()
+            except:
+                pass
+            if 'Descritores' not in data:
+                data['Descritores']=[]
+            rec=self.model(acordao=acordao,added_by=user)
             descritores = data.pop("Descritores")
             fields = [Field.objects.get_or_create(name=key) for key in data.keys()]
             tags = [Tag.objects.get_or_create(name=descritor) for descritor in descritores]
             data["_id"]=bson.Binary.from_uuid(rec.id)
-            r=createRecord(data)
-            if r is not None:
-                rec.save()
-                rec.tags.set(tags)
-                rec.fields.set(fields)
-                rec.save()
-                return recordSerializer(rec,r)
-        return None
+            rec.save()
+            rec.tags.set(tags)
+            rec.fields.set(fields)
+            rec.save()
+            l.append(data)
+        createManyRecord(l)
+            
     
     def getMostRecentMany(self,query):
         records = getManyRecords(query)
         r=[]
         for record_data in records:
             record=self.get(id=uuid.UUID(bytes=record_data["_id"]))
-            most_recent_added_at = Record.objects.filter(processo=record.processo).aggregate(Max("added_at"))["added_at__max"]
+            most_recent_added_at = Record.objects.filter(acordao=record.acordao).aggregate(Max("added_at"))["added_at__max"]
             if record.added_at==most_recent_added_at:
                 r.append(recordSerializer(record,record_data))
         return r
     
-    def getMany(self,query):
-        records = getManyRecords(query)
+    def getMany(self,acordao):
+        records=self.filter(acordao=acordao)
         r=[]
-        for record_data in records:
-            record=self.get(id=uuid.UUID(bytes=record_data["_id"]))
-            r.append(recordSerializer(record,record_data))
+        for record in records:
+            r.append(recordSerializer(record,getOneRecord(bson.Binary.from_uuid(record.id))))
         return r
     
-    def getOne(self,processo):
-        records=self.filter(processo=processo).order_by('-added_at')
-        if records is not None:
-            r=[]
-            for record in records:
-                record_data = getOneRecord(bson.Binary.from_uuid(record.id))
-                r.append(recordSerializer(record,record_data))
-            return r
+    def getOne(self,id):
+        record=self.filter(id=id).first()
+        if record is not None:
+            record_data = getOneRecord(bson.Binary.from_uuid(record.id))
+            return recordSerializer(record,record_data)
         return None
 
         
 class Record(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
-    processo = models.CharField(max_length=32)
+    acordao = models.ForeignKey(Acordao,on_delete=models.CASCADE)
     added_by = models.ForeignKey(Account, on_delete=models.CASCADE,null=True,default=None,blank=True)
     added_at = models.DateTimeField(default=timezone.now)
     tags = models.ManyToManyField(Tag)
     fields = models.ManyToManyField(Field)
-    objects = RecordManager()            
+    objects = RecordManager()
 
     
 
@@ -114,10 +172,11 @@ def changeRequestSerializer(changeRequest,request_data):
     return {
                 'id':changeRequest.id,
                 'sujested_by':str(changeRequest.sujested_by),
-                'processo':changeRequest.processo,
+                'acordao':str(changeRequest.acordao.id),
                 'added_at':changeRequest.added_at.strftime("%H:%M:%S %d/%m/%Y"),
                 'status':changeRequest.status,
                 'reviewer':str(changeRequest.reviewer) if changeRequest.reviewer else None,
+                'merged':str(changeRequest.merged.id) if changeRequest.merged else None,
                 'data':request_data
                 }
 
@@ -126,10 +185,11 @@ def changeRequestSerializer(changeRequest,request_data):
     
 class ChangeRequestManager(models.Manager):
     
-    def create(self,processo,data,user):
-        if not Record.objects.filter(processo=processo).exists():
+    def create(self,acordao,data,user):
+        ac=Acordao.objects.filter(id=acordao).first()
+        if ac is None:
             return None
-        changeRequest=self.model(processo=processo,sujested_by=user)
+        changeRequest=self.model(acordao=ac,sujested_by=user)
         data['_id']=bson.Binary.from_uuid(changeRequest.id)
         request_data=createchangeRequest(data)
         if request_data is None:
@@ -138,8 +198,8 @@ class ChangeRequestManager(models.Manager):
             changeRequest.save()
             return changeRequestSerializer(changeRequest,request_data)
     
-    def getRequests(self,processo):
-        requests=self.filter(processo=processo).order_by('-added_at')
+    def getRequests(self,acordao):
+        requests=self.filter(acordao=acordao).order_by('-added_at')
         if requests is None:
             return None
         r=[]
@@ -164,7 +224,10 @@ class ChangeRequestManager(models.Manager):
             changeRequest.reviewer=user
             changeRequest.save()
             request_data=getOnechangeRequest(bson.Binary.from_uuid(changeRequest.id))
-            Record.objects.create(request_data,changeRequest.sujested_by)
+            r=Record.objects.create(changeRequest.acordao,request_data,changeRequest.sujested_by)
+            rec=Record.objects.get(id=r['id'])
+            changeRequest.merged=rec
+            changeRequest.save()
             return changeRequestSerializer(changeRequest,request_data)
         
     def denyRequest(self,request,user):
@@ -199,10 +262,11 @@ class ChangeRequest(models.Model):
     )
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     sujested_by = models.ForeignKey(Account, on_delete=models.CASCADE,related_name='sujested')
-    processo = models.CharField(max_length=32)
+    acordao = models.ForeignKey(Acordao,on_delete=models.CASCADE)
     added_at = models.DateTimeField(default=timezone.now)
     status = models.CharField(max_length=20, choices=STATUS_CHOICES,default="pending")
     reviewer = models.ForeignKey(Account,on_delete=models.CASCADE,null=True,default=None,related_name='reviewer')
+    merged = models.ForeignKey(Record,on_delete=models.CASCADE,null=True,default=None)
     
     objects = ChangeRequestManager()
 

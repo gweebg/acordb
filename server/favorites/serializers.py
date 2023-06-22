@@ -1,16 +1,17 @@
 from rest_framework import serializers
 from accounts.serializers import AccountSerializer
 from .models import Favorites
-from records.models import Record
+import uuid
+from records.models import Acordao
 
 class FavoritesSerializer(serializers.ModelSerializer):
     class Meta:
         model=Favorites
-        fields=('processo','description','id')
+        fields=('acordao','description','id')
         extra_kwargs={'id':{'read_only':True}}
 
-    def validate_processo(self, value):
+    def validate_acordao(self, value):
         # Check if a Record with the given processo exists
-        if not Record.objects.filter(processo=value).exists():
-            raise serializers.ValidationError("A Record with this processo does not exist.")
+        if not Acordao.objects.filter(id=value.id).exists():
+            raise serializers.ValidationError("A Acordao with this value does not exist.")
         return value

@@ -15,6 +15,8 @@ def createRecord(data):
         return getOneRecord(result.inserted_id)
     else:
         return None
+def createManyRecord(data):
+    settings.MONGO_DB['records'].insert_many(data)
     
 def deleteRecord(id):
     #Returns True on Success
