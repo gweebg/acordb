@@ -187,10 +187,13 @@ class RecordManager(models.Manager):
                 stags.add(tag)
             data["_id"]=bson.Binary.from_uuid(rec.id)
             mongoData.append(data)
+        print("Creating Records")
         Record.objects.bulk_create(records)
+        print("Creating Tags")
         Tag.objects.createIfNotExists(stags)
+        print("Creating Fields")
         Field.objects.createIfNotExists(sfields)
-
+        print("Atributing Tags and Fields")
         for p,rec in enumerate(records):
             rec.tags.set(Tag.objects.filter(name__in=tags[p]))
             rec.fields.set(Field.objects.filter(name__in=fields[p]))
