@@ -1,9 +1,12 @@
 <script>
     import Navbar from "$lib/components/home/Navbar.svelte";
     import GeneralSection from "$lib/components/new/GeneralSection.svelte";
-    import {inputs, process, url, tags} from "$lib/stores/form.js";
+    import {inputs, process, url, tags, body} from "$lib/stores/form.js";
 
     import jsonToFormData from '@ajoelp/json-to-formdata';
+    import ContentSection from "$lib/components/new/ContentSection.svelte";
+    import ReviewSection from "$lib/components/new/ReviewSection.svelte";
+    import Footer from "$lib/components/Footer.svelte";
 
     export let data;
 
@@ -76,9 +79,9 @@
             url => data.url = url
         );
 
-        // const body = inputs.subscribe(
-        //     values => data.fields = values
-        // );
+        const unsubBody = body.subscribe(
+            obj => data.body = obj
+        );
 
         const formData = jsonToFormData(data);
 
@@ -87,7 +90,7 @@
             body: formData
         });
 
-        unsubFields(); unsubProcess(); unsubTags(); unsubUrl();
+        unsubFields(); unsubProcess(); unsubTags(); unsubUrl(); unsubBody();
     }
 
 </script>
@@ -119,11 +122,11 @@
             <div>
                 {#if sections.details === true}
 
-                    <p>Details</p>
+                    <ReviewSection/>
 
                 {:else if sections.content === true}
 
-                    <p>Content</p>
+                    <ContentSection/>
 
                 {:else}
 
@@ -135,12 +138,14 @@
             <!-- Next/Submit Button -->
             <div class="ml-auto">
                 <button id="back" disabled='{isDisabled}' type="button" class="btn" on:click={prevSection}>Back</button>
-                <button id="submit" class="btn btn-accent" type="button" on:click={nextSection}>{buttonContent}</button>
+                <button id="submit" class="btn btn-primary" type="button" on:click={nextSection}>{buttonContent}</button>
             </div>
 
         </form>
 
     </div>
+
+    <Footer/>
 
 </div>
 
