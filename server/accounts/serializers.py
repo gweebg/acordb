@@ -33,4 +33,3 @@ class AccountSerializer(serializers.ModelSerializer):
         if password:
             instance.set_password(password)
         return super().update(instance, validated_data)
-

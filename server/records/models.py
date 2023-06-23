@@ -164,6 +164,7 @@ class RecordManager(models.Manager):
             rec.save()
             return recordSerializer(rec,r)
         return None
+        
     
     def createMany(self,acordaoData,user):
         mongoData=[]
@@ -270,6 +271,22 @@ class ChangeRequestManager(models.Manager):
         else:
             changeRequest.save()
             return changeRequestSerializer(changeRequest,request_data)
+    
+    def sujested_by(self,consumer):
+        requests=self.filter(sujested_by=consumer).order_by('-added_at')
+        r=[]
+        for request in requests:
+            request_data=getOnechangeRequest(bson.Binary.from_uuid(request.id))
+            r.append(changeRequestSerializer(request,request_data))
+        return r
+    
+    def getAllRequests(self):
+        requests=self.all().order_by('-added_at')
+        r=[]
+        for request in requests:
+            request_data=getOnechangeRequest(bson.Binary.from_uuid(request.id))
+            r.append(changeRequestSerializer(request,request_data))
+        return r
     
     def getRequests(self,acordao):
         requests=self.filter(acordao=acordao).order_by('-added_at')

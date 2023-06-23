@@ -8,7 +8,8 @@ from .views import (CurrentUser,
                     PasswordBasedLogin,
                     FacebookBasedLogin,
                     GoogleBasedLogin,
-                    MakeConsumerAdmin)
+                    MakeConsumerAdmin,
+                    Requests)
 
 app_name = 'users'
 
@@ -23,8 +24,9 @@ urlpatterns = [
    path('user/<id>/makeadmin/',MakeConsumerAdmin.as_view(),name="makeadmin"),
    path('search/<x>/',Search.as_view(),name="search"),
    path('statistics/',Statistics.as_view(),name="user-statistics"),
+   path('requests/',Requests.as_view(),name="user-requests"),
    path('genAPIKey/',GenerateApiKey.as_view(),name="gen_apikey"),
-   path('', include('social_django.urls', namespace='social'))
+   path('', include('social_django.urls', namespace='social')),
 ]
 
 urlpatterns+=router.urls

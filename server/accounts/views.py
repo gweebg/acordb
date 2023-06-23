@@ -38,6 +38,17 @@ class CurrentUser(mixins.ListModelMixin,
         serializer = self.get_serializer(queryset.first())  # Get the first item from the queryset
         return Response(serializer.data)
 
+
+class Requests(APIView):
+    permission_classes=[permissions.IsAuthenticated]
+    def get(self,request):
+        if not request.user.is_administrator:
+            return Response(ChangeRequest.objects.sujested_by(request.user),status=status.HTTP_200_OK)
+        else:
+            return Response(ChangeRequest.objects.getAllRequests(),status=status.HTTP_200_OK)
+        
+
+
 class Search(APIView):
     permission_classes=[permissions.AllowAny]
     def get(self,request,x):
