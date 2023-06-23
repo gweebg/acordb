@@ -6,7 +6,6 @@
     import { enhance } from '$app/forms';
     import {superForm} from "sveltekit-superforms/client";
 
-
     export let data; // Data returned from the load function at +page.server.js
     export let form; // Data returned from the form genKey.
 
@@ -38,7 +37,6 @@
 
     const resetForm = () => {
 
-        console.log("ran")
         firstName = originalData.first_name;
         lastName = originalData.last_name;
 
