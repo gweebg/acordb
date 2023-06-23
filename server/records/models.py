@@ -5,7 +5,7 @@ import uuid
 import bson
 from django.utils import timezone
 from abc import ABCMeta, abstractmethod
-from .mongo import createRecord,getManyRecords,getOneRecord,updateRecord,deleteRecord,createManyRecord
+from .mongo import createRecord,getManyRecords,getOneRecord,updateRecord,deleteRecord,createManyRecord,getMostRecentRecords
 from .mongo import createchangeRequest,getOnechangeRequest,deletechangeRequest
 from django.db.models import Max
 
@@ -130,6 +130,8 @@ class Acordao(models.Model):
 
 def recordSerializer(record,record_data):
     del record_data['_id']
+    del record_data['id_acordao']
+    del record_data['record_added_at']
     return {
                 "id":str(record.id),
                 "added_by":str(record.added_by),
@@ -152,6 +154,8 @@ class RecordManager(models.Manager):
         fields = [Field.objects.get_or_create(name=key) for key in data.keys()]
         tags = [Tag.objects.get_or_create(name=descritor) for descritor in descritores]
         data["_id"]=bson.Binary.from_uuid(rec.id)
+        data["id_acordao"]=bson.Binary.from_uuid(acordao.id)
+        data["record_added_at"]=rec.added_at
         r=createRecord(data)
         if r is not None:
             rec.save()
@@ -186,6 +190,8 @@ class RecordManager(models.Manager):
             for tag in descritores:
                 stags.add(tag)
             data["_id"]=bson.Binary.from_uuid(rec.id)
+            data["id_acordao"]=bson.Binary.from_uuid(acordao.id)
+            data["record_added_at"]=rec.added_at
             mongoData.append(data)
         print("Creating Records")
         Record.objects.bulk_create(records)
@@ -202,13 +208,10 @@ class RecordManager(models.Manager):
             
     
     def getMostRecentMany(self,query):
-        records = getManyRecords(query)
+        records = getMostRecentRecords(query)
         r=[]
-        for record_data in records:
-            record=self.get(id=uuid.UUID(bytes=record_data["_id"]))
-            most_recent_added_at = Record.objects.filter(acordao=record.acordao).aggregate(Max("added_at"))["added_at__max"]
-            if record.added_at==most_recent_added_at:
-                r.append(recordSerializer(record,record_data))
+        for record in records:
+            r.append(recordSerializer(self.filter(id=uuid.UUID(bytes=record['_id'])).first(),record))
         return r
     
     def getMany(self,acordao):

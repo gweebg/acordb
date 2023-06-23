@@ -17,6 +17,29 @@ def createRecord(data):
         return None
 def createManyRecord(data):
     settings.MONGO_DB['records'].insert_many(data)
+def getMostRecentRecords(query):
+    pipeline = [
+        {
+            '$match': query
+        },
+        {
+            '$group': {
+                '_id': '$id_acordao',
+                'most_recent_record_added_at': {'$max': '$record_added_at'}
+            }
+        },
+        {
+            '$lookup': {
+                'from': 'records',
+                'localField': '_id',
+                'foreignField': 'id_acordao',
+                'as': 'documents'
+            }
+        }
+    ]
+    result = settings.MONGO_DB['records'].aggregate(pipeline)
+
+    return list(map(lambda x:x['documents'],result))[0]
     
 def deleteRecord(id):
     #Returns True on Success
