@@ -77,7 +77,7 @@ export const actions = {
 
             const putData = {
                 id: data.get('id'),
-                processo: data.get('process'),
+                acordao: data.get('process'),
                 description: data.get('description')
             };
 

@@ -32,8 +32,11 @@
                 </ul>
             </div>
 
-
-            <h2 class="text-3xl font-bold">Incoming Change Requests</h2>
+            {#if data.user.is_administrator}
+                <h2 class="text-3xl font-bold">Incoming Change Requests</h2>
+            {:else}
+                <h2 class="text-3xl font-bold">Outgoing Change Requests</h2>
+            {/if}
             <div class="divider"></div>
 
         </header>

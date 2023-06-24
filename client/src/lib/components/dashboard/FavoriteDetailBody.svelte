@@ -1,9 +1,6 @@
 <script>
 
-    import { enhance } from '$app/forms';
-
     export let favData;
-    export let auth;
 
     let isEditing = false;
     let currPath = "/icons/edit.svg";
@@ -31,7 +28,7 @@
     <div class="flex flex-row items-center">
 
         <!-- Title -->
-        <h2 class="text-xl">Process {favData.processo} <span class="opacity-40">#{favData.id}</span></h2>
+        <h2 class="text-xl">Favorite <span class="opacity-40">#{favData.id}</span></h2>
 
         <!-- Controls -->
         <div class="ml-auto flex flex-row gap-1">
@@ -44,7 +41,7 @@
             <!-- Delete Button -->
             <form action="?/delete" method="POST">
                 <input type="text" name="id" class="hidden" value={favData.id}>
-                <input type="text" name="process" class="hidden" value={favData.processo}>
+                <input type="text" name="process" class="hidden" value={favData.acordao}>
                 <button class="btn btn-error btn-sm px-0">
                     <img src="/icons/delete.svg" alt="Delete">
                 </button>
@@ -53,6 +50,9 @@
         </div>
 
     </div>
+
+    <p class="opacity-50">Ref: {favData.acordao}</p>
+
 
     <div class="divider mt-0"></div>
 
@@ -74,7 +74,7 @@
         <form action="?/edit" method="POST">
 
             <input type="text" name="id" class="hidden" value={favData.id}>
-            <input type="text" name="process" class="hidden" value={favData.processo}>
+            <input type="text" name="process" class="hidden" value={favData.acordao}>
             <textarea
                     id="description"
                     name="description"
