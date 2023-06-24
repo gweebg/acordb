@@ -18,6 +18,8 @@ def createRecord(data):
 def createManyRecord(data):
     settings.MONGO_DB['records'].insert_many(data)
 def getMostRecentRecords(query):
+    limit = query.pop('limit',None)
+    skip = query.pop('skip',None)
     pipeline = [
         {
             '$match': query
@@ -37,8 +39,11 @@ def getMostRecentRecords(query):
             }
         }
     ]
+    if limit is not None:
+        pipeline.append({'$limit':limit})
+    if skip is not None:
+        pipeline.append({'$skip':skip})
     result = settings.MONGO_DB['records'].aggregate(pipeline)
-
     return list(map(lambda x:x['documents'],result))[0]
     
 def deleteRecord(id):
