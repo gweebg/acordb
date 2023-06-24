@@ -2,6 +2,7 @@
 <script>
 
     import { superForm } from 'sveltekit-superforms/client';
+    import {switchPassword} from "$lib/scripts/passwordInputState.js";
 
     export let data;
     const { form, errors, enhance } = superForm(data.form);
@@ -36,11 +37,28 @@
                     <small class="text-error">{$errors.username}</small>
                 {/if}
 
-                <label class="label pt-4" for="password">
+                <!-- Password -->
+                <label for="password" class="label pt-4">
                     <span class="label-text">Insert your password</span>
                 </label>
-                <input id="password" name="password" type="password" placeholder="Your password" class="input input-bordered w-full"/>
-            
+                <div class="form-control">
+                    <div class="input-group">
+                        <input id="password"
+                               name="password"
+                               type="password"
+                               placeholder="Password"
+                               class="input input-bordered w-full" />
+
+                        <button type="button" class="btn btn-square btn-accent" on:click={switchPassword}>
+                            <img id="passwordIcon" src="/icons/profile/eye-closed.svg" alt="Eye">
+                        </button>
+
+                    </div>
+                </div>
+                {#if $errors.password}
+                    <small class="text-error">{$errors.password}</small>
+                {/if}
+
                 <label class="label cursor-pointer pt-6 justify-start" for="remember">
                     <input id="remember" name="remember" type="checkbox" class="checkbox checkbox-accent checkbox-sm mr-2" />
                     <span class="text-md">Remember me</span>
