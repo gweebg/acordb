@@ -3,8 +3,10 @@
     import SideBar from "$lib/components/dashboard/SideBar.svelte";
     import UserStats from "$lib/components/dashboard/UserStats.svelte";
 
-    import { enhance } from '$app/forms';
+    import {enhance} from '$app/forms';
     import {superForm} from "sveltekit-superforms/client";
+    import {switchPassword} from "$lib/scripts/passwordInputState.js";
+
 
     export let data; // Data returned from the load function at +page.server.js
     export let form; // Data returned from the form genKey.
@@ -21,19 +23,6 @@
     let firstName = data.user.first_name;
     let lastName = data.user.last_name;
 
-    const switchPassword = () => {
-
-        const passwordInput = document.getElementById("password");
-
-        if (passwordInput.type === "password") passwordInput.type = "text";
-        else passwordInput.type = "password";
-
-        const passwordIcon = document.getElementById("passwordIcon");
-
-        if (passwordIcon.src.endsWith("eye-open.svg")) passwordIcon.src = "/icons/profile/eye-closed.svg";
-        else passwordIcon.src = "/icons/profile/eye-open.svg";
-
-    };
 
     const resetForm = () => {
 
@@ -58,7 +47,7 @@
 
     <div class="fixed">
         <SideBar
-            active={{profile: true, rulings: false, favourites: false, settings: false, add: false}}
+            active={{profile: true, rulings: false, favourites: false, settings: false, requests: false}}
             name={data.user.email}
             basePath={"/user/" + data.user.id}
             isAdmin={data.user.is_administrator}

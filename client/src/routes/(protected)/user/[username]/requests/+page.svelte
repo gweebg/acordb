@@ -12,7 +12,7 @@
 
     <div class="fixed">
         <SideBar
-                active={{profile: false, rulings: true, favourites: false, settings: false, add: false}}
+                active={{profile: false, rulings: false, favourites: false, settings: false, requests: true}}
                 name={data.user.email}
                 basePath={"/user/" + data.user.id}
                 isAdmin={data.user.is_administrator}
@@ -32,8 +32,11 @@
                 </ul>
             </div>
 
-
-            <h2 class="text-3xl font-bold">Incoming Change Requests</h2>
+            {#if data.user.is_administrator}
+                <h2 class="text-3xl font-bold">Incoming Change Requests</h2>
+            {:else}
+                <h2 class="text-3xl font-bold">Outgoing Change Requests</h2>
+            {/if}
             <div class="divider"></div>
 
         </header>
@@ -41,7 +44,7 @@
         <!-- Content -->
         <div class="flex flex-col">
 
-            <RequestsIn requests=""/>
+            <RequestsIn requests={data.data} isAdmin={data.user.is_administrator}/>
 
         </div>
 

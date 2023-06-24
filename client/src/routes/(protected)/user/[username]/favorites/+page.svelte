@@ -20,7 +20,7 @@
     const openMultiple = () => {
 
         for (let i = 0; i < itemsChecked.length; i++) {
-            if (itemsChecked[i] === true) window.open(`/process/${data.data[i].processo}`, "_blank");
+            if (itemsChecked[i] === true) window.open(`/process/${data.data[i].acordao}`, "_blank");
         }
 
     };
@@ -36,7 +36,7 @@
 
     <div class="fixed">
         <SideBar
-                active={{profile: false, rulings: false, favourites: true, settings: false, add: false}}
+                active={{profile: false, rulings: false, favourites: true, settings: false, requests: false}}
                 name={data.user.email}
                 basePath={"/user/" + data.user.id}
                 isAdmin={data.user.is_administrator}
@@ -82,7 +82,7 @@
             <!-- If there is no favorites show alternative message. -->
             {#if data.data.length === 0}
 
-                <h2 class="text-xl flex justify-center">You should try adding some favorites...</h2>
+                <h2 class="text-xl flex justify-center">You should try adding some favorites!</h2>
 
             {:else}
 
@@ -99,7 +99,7 @@
                                     <label>
                                         <input type="checkbox" class="checkbox mt-1" bind:checked={itemsChecked[i]}/>
                                     </label>
-                                    <h2 class="card-title">Process {fav.processo}</h2>
+                                    <h2 class="card-title">Favorite #{fav.id}</h2>
                                 </div>
 
                                 <!-- Card Description -->
@@ -113,14 +113,14 @@
                                 <div class="card-actions justify-end">
                                     <label for={fav.id} class="btn btn-sm mt-2">Details</label>
 
-                                    <a href={"/process/" + fav.processo} target="_blank" class="btn btn-accent btn-sm mt-2">
+                                    <a href={"/process/" + fav.acordao} target="_blank" class="btn btn-accent btn-sm mt-2">
                                         <img src="/icons/hyperlink.svg" alt="redirect">
                                     </a>
 
                                     <input type="checkbox" id={fav.id} class="modal-toggle">
 
                                     <div class="modal">
-                                        <FavoriteDetailBody favData={fav} auth={data.token}/>
+                                        <FavoriteDetailBody favData={fav}/>
                                     </div>
                                 </div>
 

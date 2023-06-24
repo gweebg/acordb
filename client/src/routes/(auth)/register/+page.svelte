@@ -1,9 +1,20 @@
 <script>
 
     import { superForm } from 'sveltekit-superforms/client';
+    import {switchPassword} from "$lib/scripts/passwordInputState.js";
 
     export let data;
     const { form, errors, enhance } = superForm(data.form);
+
+    let isLoading = false;
+
+    const handleSubmit = async () => {
+
+        isLoading = true;
+        await fetch('?/signup', { method: 'POST', /* ... */ });
+        isLoading = false;
+
+    }
 
 </script>
 
@@ -26,40 +37,78 @@
             <h1 class="text-center gap-2 text-3xl font-semibold leading-7">Sign up to Acordb</h1>
 
             <!-- Card Body and Form -->
-            <form method="POST" class="pt-4" use:enhance>
+            <form action="?/signup" method="POST" class="pt-4" use:enhance>
 
-                <label class="label" for="username">
-                    <span id="username" class="label-text">Choose a username</span>
-                </label>
-                <input name="username" type="text" placeholder="Username" class="input input-bordered w-full" bind:value={$form.username}/>
-                {#if $errors.username}
-                    <small class="text-error">{$errors.username}</small>
+                <!-- First/Last Names -->
+                <div class="flex flex-row flex-grow gap-2">
+
+                    <div class="w-full">
+                        <label class="label" for="first_name">
+                            <span id="first_name" class="label-text">First name</span>
+                        </label>
+                        <input name="first_name" type="text" placeholder="First name" class="input input-bordered w-full" bind:value={$form.first_name}/>
+                    </div>
+
+                    <div class="w-full">
+                        <label class="label" for="last_name">
+                            <span id="last_name" class="label-text">Last name</span>
+                        </label>
+                        <input name="last_name" type="text" placeholder="Last name" class="input input-bordered w-full" bind:value={$form.last_name}/>
+                    </div>
+
+                </div>
+
+                {#if $errors.first_name || $errors.last_name}
+                    <small class="text-error">{$errors.first_name}</small>
+                    <small class="text-error">{$errors.last_name}</small>
                 {/if}
 
+                <!-- Email -->
                 <label class="label pt-4" for="email">
                     <span id="email" class="label-text">Insert your address</span>
                 </label>
-                <input name="email" type="text" placeholder="example@service.domain" class="input input-bordered w-full bind:value={$form.email}"/>
+                <input name="email" type="text" placeholder="Email" class="input input-bordered w-full bind:value={$form.email}"/>
                 {#if $errors.email}
                     <small class="text-error">{$errors.email}</small>
                 {/if}
 
-                <label class="label pt-4" for="password">
-                    <span id="password" class="label-text">State your password</span>
+                <!-- Filiation -->
+                <label class="label pt-4" for="filiation">
+                    <span id="filiation" class="label-text">Filiation (optional)</span>
                 </label>
-                <input name="password" type="password" placeholder="Password" class="input input-bordered w-full"/>
+                <input name="filiation" type="text" placeholder="Filiation" class="input input-bordered w-full bind:value={$form.filiation}"/>
 
+                <!-- Password -->
+                <label for="password" class="label">
+                    <span class="label-text">State your password</span>
+                </label>
+                <div class="form-control">
+                    <div class="input-group">
+                        <input id="password"
+                               name="password"
+                               type="password"
+                               placeholder="Password"
+                               class="input input-bordered w-full" />
+
+                        <button type="button" class="btn btn-square btn-accent" on:click={switchPassword}>
+                            <img id="passwordIcon" src="/icons/profile/eye-closed.svg" alt="Eye">
+                        </button>
+
+                    </div>
+                </div>
+
+                <!-- Terms of Service -->
                 <label for="tos" class="label cursor-pointer pt-6 justify-start">
                     <input id="tos" name="tos" type="checkbox" class="checkbox checkbox-accent checkbox-sm mr-2" bind:value={$form.tos}/>
-                    <span class="text-md">I accept the <a href="/tos" class="text-accent">Terms and Conditions</a></span>
+                    <span class="text-md">I accept the <a href="/" class="text-accent">Terms and Conditions</a></span>
                 </label>
                 {#if $errors.tos}
                     <small class="text-error">{$errors.tos}</small>
                 {/if}
 
-                <div class="pt-4">
-                    <button class="btn btn-accent w-full" type="submit"> Sign Up</button>
-                </div>
+                <button class="btn btn-accent w-full">
+                    Sign Up
+                </button>
 
             </form>
 

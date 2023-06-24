@@ -2,7 +2,19 @@
 
     import RequestBody from "$lib/components/dashboard/RequestBody.svelte";
 
-    export let details = {};
+    import {convertDate} from "$lib/scripts/dateConvert.js";
+
+    export let details;
+    export let isAdmin;
+
+    const date = new Date().toDateString();
+
+    const getStatusColor = (status) => {
+
+        if (status === "pending") return "badge-error";
+        else return "badge-accent";
+
+    }
 
 </script>
 
@@ -17,28 +29,40 @@
 
             <div class="flex flex-col">
                 <div class="flex flex-row gap-2 items-center">
-                    <div class="badge badge-accent badge-md"></div>
-                    <p>Change request for ruling <span class="font-semibold">P91-124</span></p>
+                    <div class="badge {getStatusColor(details.status)} badge-md"></div>
+                    <p>Ruling Update Request</p>
                 </div>
 
-                <small class="opacity-50 text-xs">Requested by Guilherme Sampaio</small>
+                <small class="opacity-50 text-xs">Requested by {details.sujested_by}</small>
             </div>
 
             <div class="ml-auto flex-row flex">
                 <div class="badge mr-2">
-                    22 Jun 2023
+                    {convertDate(details.added_at)}
                 </div>
 
-                <div class="badge">
-                    JTCA
-                </div>
+                {#if details.reviewer}
+                    <div class="badge">
+                        Reviewed by {details.reviewer}
+                    </div>
+                {/if}
             </div>
 
         </div>
     </div>
 
-    <div class="collapse-content">
-        <RequestBody/>
-    </div>
+    {#if details.status === "pending"}
+        <div class="collapse-content">
+            <RequestBody details={details} {isAdmin}/>
+        </div>
+    {:else}
+        <div class="collapse-content">
+            <div class="divider mt-0"></div>
+            <div class="flex flex-row items-center">
+                <p>Reviewed at: {date}</p>
+                <a href={"/record/" + details.acordao} class="btn btn-accent btn-sm ml-auto">Open</a>
+            </div>
+        </div>
+    {/if}
 
 </div>

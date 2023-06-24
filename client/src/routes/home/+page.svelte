@@ -13,7 +13,7 @@
 <div>
 
     <!-- Navbar -->
-    <Navbar isAuthenticated={data.isAuthed}/>
+    <Navbar isAuthenticated={data.isAuthed} isAdmin={data.isAdmin}/>
 
     <!-- Main content -->
     <div>
