@@ -7,6 +7,7 @@
     let windowY;
 
     export let isAuthenticated;
+    export let isAdmin;
 
 </script>
 
@@ -47,7 +48,7 @@
 
                 {#if isAuthenticated}
 
-                    <NavbarAuthSection/>
+                    <NavbarAuthSection {isAdmin}/>
 
                 {:else}
 
