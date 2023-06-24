@@ -1,15 +1,41 @@
 
 <script>
 
+    import { beforeNavigate } from "$app/navigation";
+    import { page } from "$app/stores";
+
+    import { initFlash } from "sveltekit-flash-message/client";
     import { superForm } from 'sveltekit-superforms/client';
+
     import {switchPassword} from "$lib/scripts/passwordInputState.js";
 
     export let data;
+
     const { form, errors, enhance } = superForm(data.form);
+    const flash = initFlash(page);
+
+    let alert = true;
+
+    beforeNavigate((nav) => {
+        if ($flash && nav.from?.url.toString() !== nav.to?.url.toString()) {
+            $flash = undefined;
+        }
+    });
 
 </script>
 
 <div class="flex justify-center items-center h-screen flex-col">
+
+    <!-- Flash Message Alert -->
+    {#if $flash && $flash.message && alert}
+
+        <div class="alert alert-info w-1/3 mb-4">
+            <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+            <span>{$flash.message}</span>
+            <button class="ml-auto btn btn-sm btn-ghost btn-circle" on:click={() => alert = false}>×</button>
+        </div>
+
+    {/if}
 
     <div class="card w-1/3 shadow-xl bg-white">
 

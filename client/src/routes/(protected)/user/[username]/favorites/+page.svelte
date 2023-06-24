@@ -1,11 +1,17 @@
 <script>
 
-    import SideBar from "$lib/components/dashboard/SideBar.svelte";
-    import FavoriteDetailBody from "$lib/components/dashboard/FavoriteDetailBody.svelte";
+    import { page } from "$app/stores";
 
-    export let data; // Data returned from the load function at +page.server.js
+    import { initFlash } from "sveltekit-flash-message/client";
+    import { toast, Toaster } from "svelte-french-toast";
+
+    import FavoriteDetailBody from "$lib/components/dashboard/FavoriteDetailBody.svelte";
+    import SideBar from "$lib/components/dashboard/SideBar.svelte";
+
+    export let data;
 
     let visible = false;
+    const flash = initFlash(page);
 
     let itemsChecked = Array(data.data.length).fill(false);
     let totalChecked = 0;
@@ -17,20 +23,36 @@
 
     $: totalChecked = itemsChecked.filter(e => e === true).length;
 
-    const openMultiple = () => {
+    $: if ($flash) {
+    	switch ($flash.type) {
+    		case "success":
+    			toast.success($flash.message);
+    			break;
+    		case "error":
+    			toast.error($flash.message);
+    			break;
+    	}
+    }
 
+    const openMultiple = () => {
         for (let i = 0; i < itemsChecked.length; i++) {
             if (itemsChecked[i] === true) window.open(`/process/${data.data[i].acordao}`, "_blank");
         }
-
     };
 
     const uncheckAll = () => {
         itemsChecked = itemsChecked.fill(false);
     }
 
+
 </script>
 
+
+<svelte:head>
+    <title>Acordb - Favorites</title>
+</svelte:head>
+
+<Toaster/>
 
 <div class="flex flex-row">
 
