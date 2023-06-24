@@ -2,25 +2,40 @@
 
     import {compareRulings} from "$lib/scripts/jsonDiff.js";
     import {onMount} from "svelte";
+    import {PUBLIC_API_URL} from "$env/static/public";
 
-    export let content = {};
+    export let details;
+    export let isAdmin;
 
     let diffHTML = '';
 
-    onMount(() => {
-        const originalString = {
-            Processo: "P123-321",
-            Descritores: ["MIN", "MAX"],
-            "Texto Integral": "Isto é um texto gigante xd, tenho de meter o word wrap no pre, não me posso esquecer! Tenho de me lembrar, agora estou apenas a spammar chars para garantir que da trigger hahahaa."
-        };
-        const modifiedString = {
-            Processo: "P123-321",
-            Descritores: ["MIN", "MAX"],
-            "Texto Integral": "Isto é um texto pequeno xD, tenho de meter o word wrap no pre, não me posso esquecer!! Tenho de me lembrar, agora estou apenas a spammar chars para garantir que da trigger hahahaa.",
-            Data: "22 Jun 2023",
-            Data: "22 Jun 2023",
-        };
-        diffHTML = compareRulings(originalString, modifiedString);
+    const loadDiff = async (rulingId) => {
+
+        let originalData;
+
+        try {
+
+            const response = await fetch(`${PUBLIC_API_URL}/acordaos/${rulingId}`,
+                {
+                    method: 'GET',
+                    headers: { 'Content-Type': 'application/json' },
+                });
+
+            if (response.ok) {
+                originalData = await response.json();
+            }
+            else {
+                console.log(`[Error ${response.status}] loadDiff @ RequestItem`);
+            }
+
+        } catch (err) {console.log(`[Error] loadDiff @ RequestItem ${err}`);}
+
+        return compareRulings(originalData, details.data);
+
+    }
+
+    onMount(async () => {
+        diffHTML = await loadDiff(details.acordao)
     });
 
 </script>
@@ -46,30 +61,32 @@
     <div class="flex flex-row my-4">
 
         <div class="scroll-container w-full mx-2 p-2 bg-base-100 rounded-xl max-h-[800px] overflow-y-scroll p-4">
-
-            <header class="flex flex-row mb-4 items-center">
-
-
-
-            </header>
-
             <div>
                 {@html diffHTML}
             </div>
         </div>
     </div>
 
-    <form action="default" method="POST">
-        <div class="flex items-center">
 
-            <a href="/" class="text-xs opacity-80 underline">See ruling details</a>
+    <div class="flex items-center">
 
-            <div class="ml-auto">
+        <a href={"/record/" + details.acordao} class="text-xs opacity-80 underline">See ruling details</a>
+
+
+        {#if isAdmin}
+
+            <form action="?/deny" method="POST" class="ml-auto mr-2">
+                <input type="text" class="hidden" value={details.id} name="id">
                 <button class="btn btn-sm btn-error">Deny</button>
-                <button class="btn btn-sm btn-accent">Accept</button>
-            </div>
+            </form>
 
-        </div>
-    </form>
+            <form action="?/accept" method="POST">
+                <input type="text" class="hidden" value={details.id} name="id">
+                <button class="btn btn-sm btn-accent">Accept</button>
+            </form>
+
+        {/if}
+
+    </div>
 
 </main>

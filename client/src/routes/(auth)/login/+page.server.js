@@ -14,6 +14,11 @@ const loginSchema = z.object({
 });
 
 export const load = async (event) => {
+
+    if (event.locals.user) {
+        throw redirect(301, '/home');
+    }
+
     const form = await superValidate(event, loginSchema);
     return { form };
 };

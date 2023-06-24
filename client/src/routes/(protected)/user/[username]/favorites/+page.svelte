@@ -36,7 +36,7 @@
 
     <div class="fixed">
         <SideBar
-                active={{profile: false, rulings: false, favourites: true, settings: false, add: false}}
+                active={{profile: false, rulings: false, favourites: true, settings: false, requests: false}}
                 name={data.user.email}
                 basePath={"/user/" + data.user.id}
                 isAdmin={data.user.is_administrator}
@@ -82,7 +82,7 @@
             <!-- If there is no favorites show alternative message. -->
             {#if data.data.length === 0}
 
-                <h2 class="text-xl flex justify-center">You should try adding some favorites...</h2>
+                <h2 class="text-xl flex justify-center">You should try adding some favorites!</h2>
 
             {:else}
 

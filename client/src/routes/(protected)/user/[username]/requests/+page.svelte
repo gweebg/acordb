@@ -12,7 +12,7 @@
 
     <div class="fixed">
         <SideBar
-                active={{profile: false, rulings: true, favourites: false, settings: false, add: false}}
+                active={{profile: false, rulings: false, favourites: false, settings: false, requests: true}}
                 name={data.user.email}
                 basePath={"/user/" + data.user.id}
                 isAdmin={data.user.is_administrator}
@@ -41,7 +41,7 @@
         <!-- Content -->
         <div class="flex flex-col">
 
-            <RequestsIn requests=""/>
+            <RequestsIn requests={data.data} isAdmin={data.user.is_administrator}/>
 
         </div>
 

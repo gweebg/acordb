@@ -58,7 +58,7 @@
 
     <div class="fixed">
         <SideBar
-            active={{profile: true, rulings: false, favourites: false, settings: false, add: false}}
+            active={{profile: true, rulings: false, favourites: false, settings: false, requests: false}}
             name={data.user.email}
             basePath={"/user/" + data.user.id}
             isAdmin={data.user.is_administrator}
