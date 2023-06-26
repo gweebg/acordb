@@ -16,36 +16,36 @@ def createRecord(data):
     else:
         return None
 def createManyRecord(data):
-    settings.MONGO_DB['records'].insert_many(data)
+    def split_list(lst, size):
+        return [lst[i:i+size] for i in range(0, len(lst), size)]
+    for i in split_list(data,100):
+        settings.MONGO_DB['records'].insert_many(i)
+
 def getMostRecentRecords(query):
     limit = query.pop('limit',None)
     skip = query.pop('skip',None)
-    pipeline = [
-        {
-            '$match': query
-        },
-        {
-            '$group': {
-                '_id': '$id_acordao',
-                'most_recent_record_added_at': {'$max': '$record_added_at'}
-            }
-        },
-        {
-            '$lookup': {
-                'from': 'records',
-                'localField': '_id',
-                'foreignField': 'id_acordao',
-                'as': 'documents'
-            }
-        }
-    ]
-    if limit is not None:
-        pipeline.append({'$limit':limit})
-    if skip is not None:
-        pipeline.append({'$skip':skip})
-    result = settings.MONGO_DB['records'].aggregate(pipeline)
-    return list(map(lambda x:x['documents'],result))[0]
     
+    
+    settings.MONGO_DB['records'].create_index([('id_acordao', 1), ('record_added_at', -1)])
+
+    # Define the aggregation pipeline
+    pipeline = [
+        # Sort by id_acordao and record_added_at in descending order
+        {'$sort': {'id_acordao': 1, 'record_added_at': -1}},
+        # Group by id_acordao and take the first document for each group
+        {'$group': {
+            '_id': '$id_acordao',
+            'most_recent': {'$first': '$record_added_at'},
+            'doc': {'$first': '$$ROOT'}
+        }},
+        # Replace the document with the nested doc field
+        {'$replaceRoot': {'newRoot': '$doc'}}
+    ]
+
+    # Execute the aggregation query
+    result = settings.MONGO_DB['records'].aggregate(pipeline)
+    return list(result)
+
 def deleteRecord(id):
     #Returns True on Success
     result = settings.MONGO_DB['records'].delete_one({'_id': id})

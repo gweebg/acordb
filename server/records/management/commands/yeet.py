@@ -9,8 +9,6 @@ class Command(BaseCommand):
     help = 'delete acordaos'
     
     def handle(self, *args, **options):
-        Field.objects.all().delete()
-        Tag.objects.all().delete()
         LogEntry.objects.all().delete()
         Acordao.objects.all().delete()
         self.stdout.write("deleted")
