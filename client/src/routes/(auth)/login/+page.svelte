@@ -3,6 +3,7 @@
 
     import { beforeNavigate } from "$app/navigation";
     import { page } from "$app/stores";
+    import { enhance } from "$app/forms";
 
     import { initFlash } from "sveltekit-flash-message/client";
     import { superForm } from 'sveltekit-superforms/client';
@@ -11,10 +12,26 @@
 
     export let data;
 
-    const { form, errors, enhance } = superForm(data.form);
+    const { form, errors } = superForm(data.form);
     const flash = initFlash(page);
 
     let alert = true;
+    let buttonContent = "Sign In";
+    let loading = false;
+
+
+    const submitHandler = () => {
+
+        loading = true;
+        buttonContent = "Signing in..."
+
+        return async ({ update}) => {
+            await update();
+            loading = false;
+            buttonContent = "Sign In"
+        }
+
+    }
 
     beforeNavigate((nav) => {
         if ($flash && nav.from?.url.toString() !== nav.to?.url.toString()) {
@@ -53,12 +70,20 @@
             <h1 class="text-text_base text-center gap-2 text-3xl font-semibold leading-7">Sign into Acordb</h1>
 
             <!-- Card Body and Form -->
-            <form method="POST" class="pt-4" use:enhance>
+            <form method="POST" class="pt-4" use:enhance={submitHandler}>
 
                 <label class="label" for="username">
                     <span class="label-text">Insert your email</span>
                 </label>
-                <input id="username" name="username" type="text" placeholder="Username" class="input input-bordered w-full" bind:value={$form.username}/>
+                <input
+                        id="username"
+                        name="username"
+                        type="text"
+                        placeholder="Username"
+                        class="input input-bordered w-full"
+                        disabled={loading}
+                        bind:value={$form.username}/>
+
                 {#if $errors.username}
                     <small class="text-error">{$errors.username}</small>
                 {/if}
@@ -73,7 +98,9 @@
                                name="password"
                                type="password"
                                placeholder="Password"
-                               class="input input-bordered w-full" />
+                               class="input input-bordered w-full"
+                               disabled={loading}
+                        />
 
                         <button type="button" class="btn btn-square btn-accent" on:click={switchPassword}>
                             <img id="passwordIcon" src="/icons/profile/eye-closed.svg" alt="Eye">
@@ -94,7 +121,7 @@
                 {/if}
 
                 <div class="pt-4">
-                    <button class="btn btn-accent w-full"> Sign In</button>
+                    <button class="btn btn-accent w-full" disabled={loading}>{buttonContent}</button>
                 </div>
 
             </form>

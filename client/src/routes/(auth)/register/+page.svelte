@@ -3,17 +3,24 @@
     import { superForm } from 'sveltekit-superforms/client';
     import {switchPassword} from "$lib/scripts/passwordInputState.js";
 
+    import { enhance } from "$app/forms";
+
     export let data;
-    const { form, errors, enhance } = superForm(data.form);
+    const { form, errors } = superForm(data.form);
 
-    let isLoading = false;
+    let buttonContent = "Sign Up";
+    let loading = false;
 
-    const handleSubmit = async () => {
+    const submitHandler = () => {
 
-        isLoading = true;
-        await fetch('?/signup', { method: 'POST', /* ... */ });
-        isLoading = false;
+        loading = true;
+        buttonContent = "Creating Account..."
 
+        return async ({ update}) => {
+            await update();
+            loading = false;
+            buttonContent = "Sign Up"
+        }
     }
 
 </script>
@@ -37,7 +44,7 @@
             <h1 class="text-center gap-2 text-3xl font-semibold leading-7">Sign up to Acordb</h1>
 
             <!-- Card Body and Form -->
-            <form action="?/signup" method="POST" class="pt-4" use:enhance>
+            <form action="?/signup" method="POST" class="pt-4" use:enhance={submitHandler}>
 
                 <!-- First/Last Names -->
                 <div class="flex flex-row flex-grow gap-2">
@@ -46,14 +53,14 @@
                         <label class="label" for="first_name">
                             <span id="first_name" class="label-text">First name</span>
                         </label>
-                        <input name="first_name" type="text" placeholder="First name" class="input input-bordered w-full" bind:value={$form.first_name}/>
+                        <input disabled={loading} name="first_name" type="text" placeholder="First name" class="input input-bordered w-full" bind:value={$form.first_name}/>
                     </div>
 
                     <div class="w-full">
                         <label class="label" for="last_name">
                             <span id="last_name" class="label-text">Last name</span>
                         </label>
-                        <input name="last_name" type="text" placeholder="Last name" class="input input-bordered w-full" bind:value={$form.last_name}/>
+                        <input disabled={loading} name="last_name" type="text" placeholder="Last name" class="input input-bordered w-full" bind:value={$form.last_name}/>
                     </div>
 
                 </div>
@@ -67,7 +74,14 @@
                 <label class="label pt-4" for="email">
                     <span id="email" class="label-text">Insert your address</span>
                 </label>
-                <input name="email" type="text" placeholder="Email" class="input input-bordered w-full bind:value={$form.email}"/>
+                <input
+                        name="email"
+                        type="text"
+                        placeholder="Email"
+                        class="input input-bordered w-full"
+                        disabled={loading}
+                        bind:value={$form.email}
+                />
                 {#if $errors.email}
                     <small class="text-error">{$errors.email}</small>
                 {/if}
@@ -76,7 +90,14 @@
                 <label class="label pt-4" for="filiation">
                     <span id="filiation" class="label-text">Filiation (optional)</span>
                 </label>
-                <input name="filiation" type="text" placeholder="Filiation" class="input input-bordered w-full bind:value={$form.filiation}"/>
+                <input
+                        name="filiation"
+                        type="text"
+                        placeholder="Filiation"
+                        class="input input-bordered w-full"
+                        bind:value={$form.filiation}
+                        disabled={loading}
+                />
 
                 <!-- Password -->
                 <label for="password" class="label">
@@ -88,9 +109,11 @@
                                name="password"
                                type="password"
                                placeholder="Password"
-                               class="input input-bordered w-full" />
+                               class="input input-bordered w-full"
+                               disabled={loading}
+                        />
 
-                        <button type="button" class="btn btn-square btn-accent" on:click={switchPassword}>
+                        <button type="button" class="btn btn-square btn-accent" disabled={loading} on:click={switchPassword}>
                             <img id="passwordIcon" src="/icons/profile/eye-closed.svg" alt="Eye">
                         </button>
 
@@ -106,8 +129,8 @@
                     <small class="text-error">{$errors.tos}</small>
                 {/if}
 
-                <button class="btn btn-accent w-full">
-                    Sign Up
+                <button class="btn btn-accent w-full" disabled={loading}>
+                    {buttonContent}
                 </button>
 
             </form>
