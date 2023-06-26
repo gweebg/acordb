@@ -1,60 +1,54 @@
-import { z } from "zod";
 import { superValidate } from 'sveltekit-superforms/server';
-import { fail, redirect } from "@sveltejs/kit";
+import { loadFlashMessage } from 'sveltekit-flash-message/server';
+import { redirect } from 'sveltekit-flash-message/server';
 import { PUBLIC_API_URL } from '$env/static/public';
-const loginSchema = z.object({
+import { loginSchema } from "$lib/schemas/schemas.js";
+import { fail } from "@sveltejs/kit";
 
-    username: z.string().email({message: "Invalid email address."}),
-    password: z.string({
-        required_error: "Please fill in the password field.",
-        invalid_type_error: "Password must be a string."
-      }).min(1),
-    remember: z.boolean()
-
-});
-
-export const load = async (event) => {
+export const load = loadFlashMessage(async (event) => {
 
     if (event.locals.user) {
-        throw redirect(301, '/home');
+        throw redirect(
+            301,
+            '/home',
+            { type: "error", message: "Please sign out first before logging in!" },
+            event
+        );
     }
 
     const form = await superValidate(event, loginSchema);
     return { form };
-};
+});
 
 export const actions = {
 
-    /* Default is local password login. */
     default: async (event) => {
 
         const form = await superValidate(event, loginSchema);
 
-        /* Validate form inputs. */
+        /* Validate form inputs according to zod schema. */
         if (!form.valid) {
             fail(400, { form });
             return { form };
         }
 
         let response;
-
         try {
 
             /* Logging in the user via the backend API. */
-            response = await fetch(`${PUBLIC_API_URL}/accounts/login/password/`,
+            response = await fetch(
+            `${PUBLIC_API_URL}/accounts/login/password/`,
             {
-                method: 'POST', 
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(form.data)
-            });
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(form.data)
+                }
+            );
 
         } catch (err) {
-
-            /* The server is down, alert the user. */
-            console.log("Error -", err);
+            /* Handle server errors. */
             form.errors["password"] = ["There was a problem on our side, please try again later."];
             return {form};
-
         }
 
         /* Handle successful response, store access tokens in secure cookie. */
@@ -64,6 +58,7 @@ export const actions = {
 
             if (form.data.remember) responseData.expires_in = 2628000; /* If remember me is set to true, token lasts 1 month. */
 
+            /* Setting Authorization and Refresh tokens. */
             event.cookies.set('AuthorizationToken', `Bearer ${responseData.access_token}`, {
                 httpOnly: true,
                 path: '/',
@@ -82,14 +77,16 @@ export const actions = {
             
 
         } else {
-
+            /* Handle sign in errors. */
             form.errors["password"] = ["Invalid username or password, try again."];
             return {form};
-
         }
 
         /* If everything went well, put the user on the homepage. */
-        throw redirect(302, '/');
+        throw redirect(
+            301,
+            '/home'
+        );
 
     }
 };

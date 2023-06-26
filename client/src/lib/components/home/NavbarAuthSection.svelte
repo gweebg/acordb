@@ -10,10 +10,7 @@
     <a
         class="btn btn-ghost gap-2 text-left justify-start items-center text-base-100-focus"
         href="/user">
-
-        <img src="/icons/navbar/dashboard.svg" alt="dashboard">
-
-        <p class="pt-1">Dashboard</p>
+        Dashboard
     </a>
 
     {#if isAdmin}
@@ -22,10 +19,7 @@
         <a
             class="btn btn-ghost gap-2 text-left justify-start items-center text-base-100-focus"
             href="/new">
-
-            <img src="/icons/menu/add.svg" alt="dashboard" class="dark-icon">
-
-            <p class="pt-1">New</p>
+            New
         </a>
 
     {/if}
