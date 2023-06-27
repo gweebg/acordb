@@ -23,7 +23,9 @@ services:
       - lost
     environment:
       - PORT=80
-      - PUBLIC_API_URL=http://api-server:8000
+      # - PUBLIC_API_URL=http://eivarin.xyz:8000
+      - PUBLIC_API_URL=http://127.0.0.1:8000
+      - PRIVATE_API_URL=http://api-server:8000
     depends_on:
       - api-server
 

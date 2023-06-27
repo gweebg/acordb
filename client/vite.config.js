@@ -12,5 +12,8 @@ export default defineConfig({
 		watch: {
 		  usePolling: true,
 		},
-	  }
+	},
+	ssr: {
+        noExternal: ['sveltekit-flash-message'],
+    },
 });

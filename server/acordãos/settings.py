@@ -28,7 +28,7 @@ SECRET_KEY = "django-insecure-9ciqs71-bhdsf_tnc^+f@r-oe0w$gzt$-^lfge21ceb*2_9_wu
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['0.0.0.0','localhost','127.0.0.1', 'api-server','*','172.26.113.96']
+ALLOWED_HOSTS = ['0.0.0.0','localhost','127.0.0.1', 'api-server','*','172.26.113.96', 'eivarin.xyz']
 
 
 # Application definition
@@ -83,10 +83,11 @@ OAUTH2_PROVIDER = {
     'ACCESS_TOKEN_EXPIRE_SECONDS': 26784000,
 }
 
-CORS_ALLOWED_ORIGINS = [
-   "http://localhost:8000",
-   "http://127.0.0.1:8000"
-]
+CORS_ORIGIN_ALLOW_ALL = True
+# CORS_ALLOWED_ORIGINS = [
+#    "http://localhost:8000",
+#    "http://127.0.0.1:8000"
+# ]
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",

@@ -201,9 +201,12 @@ class RecordManager(models.Manager):
         print("Creating Fields")
         Field.objects.createIfNotExists(sfields)
         print("Atributing Tags and Fields")
+        total=len(acordaoData)
         for p,rec in enumerate(records):
             rec.tags.set(Tag.objects.filter(name__in=tags[p]))
             rec.fields.set(Field.objects.filter(name__in=fields[p]))
+            if p%1000==0:
+                print(f"{user}: Processed {100*p/total}% - {p}/{total}")
         print("starting MongoInsertion")
         createManyRecord(mongoData)
             
@@ -211,6 +214,8 @@ class RecordManager(models.Manager):
     def getMostRecentMany(self,query):
         records = getMostRecentRecords(query)
         r=[]
+        if records is None:
+            records=[]
         for record in records:
             r.append(recordSerializer(self.filter(id=uuid.UUID(bytes=record['_id'])).first(),record))
         return r

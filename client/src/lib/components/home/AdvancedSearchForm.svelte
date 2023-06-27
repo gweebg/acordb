@@ -1,4 +1,6 @@
 <script>
+	import SmallCard from "../record/SmallCard.svelte";
+
 
 
 </script>
@@ -87,4 +89,42 @@
 
     </form>
 
+    <!-- <button class="btn" on:load={advanced_search_modal.showModal()}>open modal</button>
+        <dialog id="advanced_search_modal" class="modal">
+        <form method="dialog" class="modal-box h-5/6 w-10/12 max-h-full max-w-full p-0 flex flex-col overflow-hidden">
+            <div class="basis-12 bg-primary flex justify-between items-center h-12">
+                <h3 class="text-primary-content font-bold text-xl pl-4">Pesquisa Avancada:</h3>
+                <button class="w-1/12 btn btn-accent rounded-none focus-visible:outline-none h-full flex flex-row justify-center items-center">close</button>
+            </div>
+            <div class="flex w-full h-[calc(100%-3em)]">
+                <div class="flex flex-col basis-1/2 overflow-hidden">
+                    <div class="px-8 mt-8">
+                        <span>
+                            <h2 class="inline text-3xl font-bold align-middle">Campos</h2>
+                            <p class="inline text-lg align-middle">- Selecione o campo pelo qual pretende pesquisar</p>
+                        </span>
+                        <div class="divider mb-0"></div>
+                    </div>
+                    <div class="flex flex-wrap gap-8 p-8 overflow-y-auto">
+                        {#each ["juiz", "alo", "alo", "alo", "alo", "alo", "alo", "alo", "alo", "alo"] as campo}
+                        <div class="basis-1/3 grow">
+                            <div class="card bg-card-accent shadow-lg min-h-full">
+                                <div class="card-body">
+                                    <h2 class="px-1 card-title">campo</h2>
+                                    <p class="break-all">bla</p>
+                                </div>
+                            </div>
+                        </div>
+                        {/each}
+                    </div>
+                </div>
+                <div class="flex flex-col basis-1/2 overflow-hidden">
+
+                </div>
+            </div>
+        </form>
+        <form method="dialog" class="modal-backdrop">
+            <button>close</button>
+        </form>
+    </dialog> -->
 </div>

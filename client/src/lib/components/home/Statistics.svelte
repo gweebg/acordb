@@ -72,7 +72,7 @@
                     <img src="/icons/stats/file.svg" alt="file">
                 </div>
                 <div class="stat-title">Total Rulings</div>
-                <div class="stat-value text-accent">{stats.Processo}</div>
+                <div class="stat-value text-accent">{stats.Processos}</div>
             </div>
 
             <div class="stat">
@@ -104,7 +104,7 @@
                     <img src="/icons/stats/user.svg" alt="users">
                 </div>
                 <div class="stat-title">Total Consumers</div>
-                <div class="stat-value text-accent">{stats.Cosumidores}</div>
+                <div class="stat-value text-accent">{stats.Consumidores}</div>
             </div>
 
         </div>

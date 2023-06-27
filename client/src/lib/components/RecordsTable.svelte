@@ -17,6 +17,8 @@
         window.location.href = `/record/${id}`;
     }
 
+    console.log(list);
+
 </script>
 
 <table class="table table-zebra shadow-xl rounded-xl overflow-hidden">
@@ -32,7 +34,7 @@
         <!-- row 1 -->
         {#each list as r}
         <a href={`/record/${r.id}`} on:click|preventDefault={() => handleRowClick(r.id)}  class="table-row hover:bg-base-200 transition duration-100"> 
-            {#each [r.added_at, r.added_by, r.data.tribunal, r.data.Relator, r.data["Votação"], r.data["Meio Processual"]] as valor}
+            {#each [r.added_at, r.added_by, r.data.Processo ,r.data.tribunal, r.data.Relator, r.data["Votação"], r.data["Meio Processual"]] as valor}
                 <td class="whitespace-pre-wrap break-all">{valor}</td>
             {/each}
         </a>
