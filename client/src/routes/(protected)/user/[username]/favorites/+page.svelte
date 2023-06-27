@@ -7,11 +7,18 @@
 
     import FavoriteDetailBody from "$lib/components/dashboard/FavoriteDetailBody.svelte";
     import SideBar from "$lib/components/dashboard/SideBar.svelte";
+    import Ruling from "$lib/components/ruling/Ruling.svelte";
 
     export let data;
 
     let visible = false;
     const flash = initFlash(page);
+
+    const toastStyle = {
+        style: 'border: 1px solid #2dbcab; background-color: #e4e9ec;',
+        position: "bottom-right",
+        duration: 5000
+    };
 
     let itemsChecked = Array(data.data.length).fill(false);
     let totalChecked = 0;
@@ -26,10 +33,10 @@
     $: if ($flash) {
     	switch ($flash.type) {
     		case "success":
-    			toast.success($flash.message);
+    			toast.success($flash.message, toastStyle);
     			break;
     		case "error":
-    			toast.error($flash.message);
+    			toast.error($flash.message, toastStyle);
     			break;
     	}
     }
@@ -43,7 +50,7 @@
     const uncheckAll = () => {
         itemsChecked = itemsChecked.fill(false);
     }
-
+    
 
 </script>
 
@@ -104,7 +111,9 @@
             <!-- If there is no favorites show alternative message. -->
             {#if data.data.length === 0}
 
-                <h2 class="text-xl flex justify-center">You should try adding some favorites!</h2>
+                <Ruling/>
+
+<!--                <h2 class="text-xl flex justify-center">You should try adding some favorites!</h2>-->
 
             {:else}
 

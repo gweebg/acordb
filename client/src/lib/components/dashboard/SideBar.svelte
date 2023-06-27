@@ -9,7 +9,7 @@
 
 </script>
 
-<div class="text-base-100 bg-neutral h-screen w-96 p-5 pt-8 flex flex-col">
+<div class="text-base-100 bg-neutral h-screen w-96 p-5 pt-8 flex flex-col custom">
 
     <div class="flex justify-between items-center px-2">
 
@@ -71,3 +71,12 @@
 
 
 </div>
+
+
+<style>
+
+    .custom {
+        box-shadow: 1px 0 20px 5px rgba(0, 0, 0, 0.3);
+    }
+
+</style>

@@ -2,7 +2,7 @@ import { redirect } from 'sveltekit-flash-message/server';
 import { loadFlashMessage } from 'sveltekit-flash-message/server';
 
 import { PUBLIC_API_URL } from '$env/static/public';
-import {error} from "@sveltejs/kit";
+import { error } from "@sveltejs/kit";
 
 export const load = loadFlashMessage(async (event) => {
 
@@ -38,39 +38,48 @@ const fetchFavorites = async (authCookie) => {
         if (response.ok) return response.json();
         else console.log(response.status);
 
-    } catch (err) { console.log("Server is down - ", err); }
+    } catch (err) { throw error(500, "Server is down."); }
 
 }
 
 export const actions = {
 
-    delete: async ({ cookies, request, locals }) => {
+    delete: async (event) => {
 
-        const authCookie = cookies.get('AuthorizationToken');
+        const authCookie = event.cookies.get('AuthorizationToken');
 
         if (authCookie) {
 
-            const data = await request.formData();
+            const data = await event.request.formData();
 
+            let response;
             try {
 
-                var response = await fetch(`${PUBLIC_API_URL}/favorites/${data.get('id')}/`,
-                    {
+                response = await fetch(
+                `${PUBLIC_API_URL}/favorites/${data.get('id')}/`,
+                {
                         method: 'DELETE',
                         headers: { 'Content-Type': 'application/json', 'Authorization': authCookie },
-                    });
-
-                if (!response.ok) {
-                    console.log(response.status);
-                }
+                    }
+                );
 
             } catch (err) {
-
-                /* The server is down, alert the user. */
-                console.log("Server is down - ", err);
+                throw error(500, "Server is down.");
             }
 
-            throw redirect(301, `/user/${locals.user.id}/favorites`);
+            if (response.ok) {
+                throw redirect(
+                    { type: "success", message: "Successfully deleted favorite!" },
+                    event
+                )
+            }
+
+            else {
+                throw redirect(
+                    { type: "error", message: "Could not delete the bookmark." },
+                    event
+                )
+            }
         }
     },
 
