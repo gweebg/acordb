@@ -10,6 +10,18 @@
         const obj = await res.json();
 
         if (res.ok) {
+            
+            for (let i = 0; i < obj.length; i++) {
+                console.log(obj[i])
+                let arr = ["Processo" ,"tribunal", "Relator", "Votação", "Meio Processual"]
+                arr.forEach(
+                    (v) => {
+                        if (obj[i].data[v] === undefined) {
+                            obj[i].data[v] = "N/A"
+                        }
+                    }
+                )
+            }
             return obj;
         } else {
             throw new Error(obj);
@@ -31,7 +43,7 @@
         <div class="opacity-60 text-white">
             <p>If the table did not update, please refresh the page!</p>
         </div>
-
+        
         <div class="divider border-t border-white"></div>
 
 
