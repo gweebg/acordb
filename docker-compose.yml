@@ -6,9 +6,13 @@ services:
     ports:
       - 8000:8000
     volumes:
-      - ./data:/code/data
+      - api-data:/code/data
     networks:
       - lost
+    depends_on:
+      - mongodb
+      - postgres
+
   frontend:
     build: ./client
     ports:
@@ -20,6 +24,36 @@ services:
     environment:
       - PORT=80
       - PUBLIC_API_URL=http://api-server:8000
+    depends_on:
+      - api-server
+
+  mongodb:
+    image: mongo
+    ports:
+      - 27017:27017
+    volumes:
+      - mongo-data:/data/db
+    networks:
+      - lost
+
+  postgres:
+    image: postgres
+    ports:
+      - 5432:5432
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    networks:
+      - lost
+    environment:
+      - POSTGRES_DB=acordaos
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=admin
+
+volumes:
+  api-data:
+  mongo-data:
+  postgres-data:
+
 networks:
   lost:
     driver: bridge

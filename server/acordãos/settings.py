@@ -132,11 +132,10 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'acordaos',
-        'USER': 'ACORDB_ADMIN',
-        'PASSWORD': 'Subamolimitepara25',
-        'HOST': 'acordb-postgres.postgres.database.azure.com',
-        'PORT': '5432',
-        'sslmode':'require'
+        'USER': 'admin',
+        'PASSWORD': 'admin',
+        'HOST': 'postgres',
+        'PORT': '5432'
     }
 }
 
@@ -212,6 +211,6 @@ SOCIAL_AUTH_GOOGLE_OAUTH2_SCOPE = [
 DEFAULT_CLIENT_ID="TIB1j6dKXtEQoB3kAp8dXTsYlBkUfG3GkLmO1Oph"
 DEFAULT_CLIENT_SECRET="qlBGPrFBzH05tJxciMzfPCVRIrdFacDXS3GAacCixyQWBLfOB6LP4iMSEr77nu7s80X84KCQZuxT6h4Z0Qa7WCjLJFcCOho37STViWVo1vA55tOoYqdb2vznQtl0ZN7d"
 
-MONGO_DB = MongoClient('mongodb://acordb:YpKMqDBwVDmrNLMwJOdOfYSHE72GsFqlOuiUCTP8z6juvCSmot23UmlOcFejyleeWpBlSUGntFvDACDbB7Raeg==@acordb.mongo.cosmos.azure.com:10255/?ssl=true&retrywrites=false&replicaSet=globaldb&maxIdleTimeMS=120000&appName=@acordb@',socketTimeoutMS=500000)['acordaos']
+MONGO_DB = MongoClient('mongodb://mongodb:27017/',socketTimeoutMS=500000)['acordaos']
 
 DATA_UPLOAD_MAX_NUMBER_FIELDS=1000000
