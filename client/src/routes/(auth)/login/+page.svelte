@@ -4,6 +4,7 @@
     import { beforeNavigate } from "$app/navigation";
     import { page } from "$app/stores";
     import { enhance } from "$app/forms";
+    import { fade } from "svelte/transition";
 
     import { initFlash } from "sveltekit-flash-message/client";
     import { superForm } from 'sveltekit-superforms/client';
@@ -46,7 +47,7 @@
     <!-- Flash Message Alert -->
     {#if $flash && $flash.message && alert}
 
-        <div class="alert alert-info w-1/3 mb-4">
+        <div class="alert alert-warning w-1/3 mb-4" transition:fade>
             <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
             <span>{$flash.message}</span>
             <button class="ml-auto btn btn-sm btn-ghost btn-circle" on:click={() => alert = false}>×</button>
@@ -116,8 +117,8 @@
                     <input id="remember" name="remember" type="checkbox" class="checkbox checkbox-accent checkbox-sm mr-2" />
                     <span class="text-md">Remember me</span>
                 </label>
-                {#if $errors.password}
-                    <small class="text-error">{$errors.password}</small>
+                {#if $errors.general}
+                    <small class="text-error">{$errors.general}</small>
                 {/if}
 
                 <div class="pt-4">

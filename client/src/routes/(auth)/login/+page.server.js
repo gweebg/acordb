@@ -78,7 +78,7 @@ export const actions = {
 
         } else {
             /* Handle sign in errors. */
-            form.errors["password"] = ["Invalid username or password, try again."];
+            form.errors["general"] = ["Invalid username or password, try again."];
             return {form};
         }
 
