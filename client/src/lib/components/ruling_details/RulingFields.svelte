@@ -1,12 +1,17 @@
 <script>
 
-    import {capitalize} from "$lib/scripts/utils.js";
+    // import { enhance } from "$app/forms";
+    import { Toaster } from "svelte-french-toast";
+
+    import { capitalize } from "$lib/scripts/utils.js";
+    import FavoriteButton from "$lib/components/FavoriteButton.svelte";
 
     export let fields;
     export let isAuthenticated;
 
 </script>
 
+<Toaster/>
 
 <div class="w-1/4 p-2 sticky top-24 h-full">
 
@@ -22,12 +27,18 @@
 
     <div class="mt-4 flex flex-row flex-wrap gap-2">
 
-        <a href={"http://www.dgsi.pt/" + fields.data.url} target="_blank" class="btn btn-sm">DGSI</a>
+        <a href={"http://www.dgsi.pt/" + fields.data.url} target="_blank" class="btn btn-sm">Open in DGSI</a>
 
-        <!-- TODO Dar funções aos botões e meter icons :) -->
         {#if isAuthenticated}
-            <button class="btn btn-sm">Bookmark</button>
-            <button class="btn btn-sm">Suggest Change</button>
+
+            <FavoriteButton id={fields.id}/>
+
+            <form action="?/suggest" method="POST">
+                <button class="btn btn-sm">
+                    Suggest a Change
+                </button>
+            </form>
+
         {/if}
 
     </div>

@@ -25,7 +25,7 @@
     <!-- head -->
     <thead>
         <tr>
-            {#each ["Added_At", "Added_By", "Processo" ,"Tribunal", "Relator", "Votação", "Meio Processual"] as r}
+            {#each ["Added At", "Added By", "Processo" ,"Tribunal", "Relator", "Votação", "Meio Processual"] as r}
                 <th class="bg-accent text-accent-content">{r}</th>
             {/each}
         </tr>

@@ -38,7 +38,7 @@
         {#await list}
 
             <div class="flex justify-center items-center">
-                <span class="loading loading-spinner text-primary"></span>
+                <span class="loading loading-spinner text-primary loading-lg"></span>
             </div>
 
         {:then plist}
