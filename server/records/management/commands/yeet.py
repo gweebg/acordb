@@ -11,5 +11,7 @@ class Command(BaseCommand):
     def handle(self, *args, **options):
         LogEntry.objects.all().delete()
         Acordao.objects.all().delete()
+        Field.objects.all().delete()
+        Tag.objects.all().delete()
         self.stdout.write("deleted")
                         
