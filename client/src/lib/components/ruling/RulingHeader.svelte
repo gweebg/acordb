@@ -1,5 +1,7 @@
 <script>
 
+    import {convertDate} from "$lib/scripts/dateConvert.js";
+
     export let rulingData;
 
 </script>
@@ -13,7 +15,7 @@
 
         <div class="ml-auto opacity-50">
             <p>{rulingData.added_by}</p>
-            <p class="text-right">{rulingData.added_at}</p>
+            <p class="text-right">{convertDate(rulingData.added_at)}</p>
         </div>
     </header>
 

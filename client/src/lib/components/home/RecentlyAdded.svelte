@@ -2,8 +2,9 @@
 
     import RecordsTable from "$lib/components/RecordsTable.svelte";
 	
-    let list = getRecentList();
     import { PUBLIC_API_URL } from '$env/static/public';
+
+    let list = getRecentList();
     async function getRecentList() {
         const res = await fetch(`${PUBLIC_API_URL}/acordaos?limit=10&sort=desc`);
         const obj = await res.json();
@@ -34,15 +35,26 @@
         <div class="divider border-t border-white"></div>
 
 
-        <button class="btn btn-base-100 btn-sm mt-4 float-right">View All</button>
-
         {#await list}
-            <p>...waiting</p>
+
+            <div class="flex justify-center items-center">
+                <span class="loading loading-spinner text-primary"></span>
+            </div>
+
         {:then plist}
-            <RecordsTable list={plist} />
+
+            <RecordsTable list={plist}/>
+
         {:catch error}
-            <p style="color: red">{error.message}</p>
+
+            <div class="flex justify-center items-center">
+                <span class="loading loading-spinner text-primary"></span>
+                <p class="text-error">{error.message}</p>
+            </div>
+
         {/await}
+
+        <button class="btn btn-base-100 btn-sm mt-4 float-right">View All</button>
 
     </div>
 

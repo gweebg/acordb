@@ -6,7 +6,7 @@
 
 <main>
 
-    <section>
+    <section class="mt-2">
         <p class="text-lg mb-1">
             <span class="font-bold">Court House:</span>
             {rulingData.court}
@@ -21,11 +21,10 @@
             <span class="font-bold">Ruling Date:</span>
             {rulingData.ruling_date}
         </p>
-
     </section>
 
 
-    <section class="flex flex-row gap-2 flex-wrap mb-2">
+    <section class="flex flex-row gap-2 flex-wrap my-4">
         {#each rulingData.descriptors as d}
             <div class="badge badge-neutral badge-lg">{d}</div>
         {/each}

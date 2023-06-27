@@ -7,7 +7,6 @@
 
     import FavoriteDetailBody from "$lib/components/dashboard/FavoriteDetailBody.svelte";
     import SideBar from "$lib/components/dashboard/SideBar.svelte";
-    import Ruling from "$lib/components/ruling/Ruling.svelte";
 
     export let data;
 
@@ -111,9 +110,7 @@
             <!-- If there is no favorites show alternative message. -->
             {#if data.data.length === 0}
 
-                <Ruling/>
-
-<!--                <h2 class="text-xl flex justify-center">You should try adding some favorites!</h2>-->
+                <h2 class="text-xl flex justify-center">You should try adding some favorites!</h2>
 
             {:else}
 
