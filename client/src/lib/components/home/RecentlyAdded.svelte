@@ -35,14 +35,20 @@
 </script>
 
 <section id="recently-uploaded" class="bg-neutral">
-
+    
     <div class="px-4 py-20 my-[100px] mx-48">
-
-        <h2 class="text-3xl font-bold text-white">Recently Uploaded Rulings</h2>
-
-        <div class="opacity-60 text-white">
-            <p>If the table did not update, please refresh the page!</p>
+        
+        <div class="flex items-center justify-between">
+            <div class="">
+                <h2 class="text-3xl font-bold text-white">Recently Uploaded Rulings</h2>
+                
+                <div class="opacity-60 text-white">
+                    <p>If the table did not update, please refresh the page!</p>
+                </div>
+            </div>
+            <a class="btn btn-base-100 btn-sm mx-4" href="/search">View All</a>
         </div>
+
         
         <div class="divider border-t border-white"></div>
 
@@ -66,7 +72,6 @@
 
         {/await}
 
-        <button class="btn btn-base-100 btn-sm mt-4 float-right">View All</button>
 
     </div>
 
