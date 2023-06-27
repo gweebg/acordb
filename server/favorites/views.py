@@ -1,11 +1,24 @@
 from django.shortcuts import render
 from rest_framework import mixins,status,generics,permissions,viewsets
 from rest_framework.response import Response
+from rest_framework.views import APIView
 from .models import Favorites
+from records.models import Acordao
 from .serializers import FavoritesSerializer
 from .permissions import FavoritesPermission
 import uuid
+from django.shortcuts import get_object_or_404
 # Create your views here.
+
+class IsFavorite(APIView):
+    permission_classes=[permissions.IsAuthenticated]
+    def get(self, request,acordao):
+        acordao = get_object_or_404(Acordao,pk=acordao)
+        fav = Favorites.objects.filter(user=request.user, acordao=acordao).first()
+        if fav is not None:
+            return Response(FavoritesSerializer(fav).data,status=status.HTTP_200_OK)
+        else:
+            return Response(status=status.HTTP_204_NO_CONTENT)
 
 class FavoritesData(mixins.ListModelMixin,
                     mixins.RetrieveModelMixin,

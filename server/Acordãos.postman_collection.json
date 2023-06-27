@@ -269,6 +269,16 @@
 				{
 					"name": "New Request",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "0MDOZCrFia1U1khCA7HN3n95ZKEvfv",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
 						"header": [],
 						"url": {
@@ -335,7 +345,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "0MDOZCrFia1U1khCA7HN3n95ZKEvfv",
+									"value": "fldnypcHX6N82BOu1EPaD1WxYS4a99",
 									"type": "string"
 								}
 							]
@@ -343,13 +353,19 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{url}}/acordaos/",
+							"raw": "{{url}}/acordaos/?limit=10",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"acordaos",
 								""
+							],
+							"query": [
+								{
+									"key": "limit",
+									"value": "10"
+								}
 							]
 						}
 					},
@@ -703,6 +719,36 @@
 					"response": []
 				},
 				{
+					"name": "Acordao é favorito",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "fldnypcHX6N82BOu1EPaD1WxYS4a99",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/favorites/isFavorite/00000f72-a149-4bd4-a8f7-697a48c771e5/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"favorites",
+								"isFavorite",
+								"00000f72-a149-4bd4-a8f7-697a48c771e5",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "criar favorito",
 					"request": {
 						"auth": {
@@ -710,7 +756,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "JZxUCOL2PKp8aiIMbxwcv3AK9agfvx",
+									"value": "fldnypcHX6N82BOu1EPaD1WxYS4a99",
 									"type": "string"
 								}
 							]
@@ -719,7 +765,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"acordao\":\"70f4d14e-972a-4382-b54a-050a6c389847\",\n    \"description\":\"Este é o melhor processo de sempre\"\n}",
+							"raw": "{\n    \"acordao\":\"00000f72-a149-4bd4-a8f7-697648c771e5\",\n    \"description\":\"Este é o melhor processo de sempre\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -847,7 +893,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"username\":\"filipe@massa.com\",\n    \"password\":\"croissant2\"\n}",
+					"raw": "{\n    \"username\":\"lumafepe@gmail.com\",\n    \"password\":\"password\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
