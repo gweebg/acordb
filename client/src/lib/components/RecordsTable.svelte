@@ -1,17 +1,6 @@
 <script>
     export let list;
 
-    list.map(
-        (r) => {
-            if (r.data["Votação"] === undefined) {
-                r.data["Votação"] = "Não disponível"
-            }
-            if (r.data["Relator"] === undefined) {
-                r.data["Relator"] = "Não disponível"
-            }
-        }
-    );
-
     function handleRowClick(id) {
         // Redirect to the link with the object ID.
         window.location.href = `/ruling/${id}`;
