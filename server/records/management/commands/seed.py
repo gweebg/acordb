@@ -24,8 +24,14 @@ class Command(BaseCommand):
         parser.add_argument('file_path', type=str, help='Path to the file')
 
     def handle(self, *args, **options):
-        file_path = options['file_path']
-        if os.path.isfile(file_path):
-            process_file(file_path, os.path.basename(file_path),self.stdout)
+        path = options['file_path']
+        if os.path.isfile(path):
+            process_file(path, os.path.basename(path),self.stdout)
+        elif os.path.isdir(path):
+            for filename in os.listdir(path):
+                file_path = os.path.join(path, filename)
+                if os.path.isfile(file_path):
+                    process_file(file_path, filename, self.stdout)
+            
 
                         
