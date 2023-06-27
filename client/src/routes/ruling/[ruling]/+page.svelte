@@ -7,7 +7,9 @@
     export let data;
 
     const isAuthenticated = !!data.user;
-    const isAdmin = data.user.is_administrator;
+
+    let isAdmin = false;
+    if (data.user) isAdmin = data.user.is_administrator;
 
 </script>
 

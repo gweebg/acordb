@@ -42,7 +42,7 @@
 
     const openMultiple = () => {
         for (let i = 0; i < itemsChecked.length; i++) {
-            if (itemsChecked[i] === true) window.open(`/process/${data.data[i].acordao}`, "_blank");
+            if (itemsChecked[i] === true) window.open(`/acordao/${data.data[i].acordao}`, "_blank");
         }
     };
 
@@ -141,7 +141,7 @@
                                 <div class="card-actions justify-end">
                                     <label for={fav.id} class="btn btn-sm mt-2">Details</label>
 
-                                    <a href={"/process/" + fav.acordao} target="_blank" class="btn btn-accent btn-sm mt-2">
+                                    <a href={"/ruling/" + fav.acordao} target="_blank" class="btn btn-accent btn-sm mt-2">
                                         <img src="/icons/hyperlink.svg" alt="redirect">
                                     </a>
 
