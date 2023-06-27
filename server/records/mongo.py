@@ -24,12 +24,21 @@ def createManyRecord(data):
 def getMostRecentRecords(query):
     limit = query.pop('limit',None)
     skip = query.pop('skip',None)
+    if limit:
+        if not limit.isdigit():
+            return None
+        limit=int(limit)
+    if skip:
+        if not skip.isdigit():
+            return None
+        skip=int(skip)
     
     
     settings.MONGO_DB['records'].create_index([('id_acordao', 1), ('record_added_at', -1)])
 
     # Define the aggregation pipeline
     pipeline = [
+        {'$match':query},
         # Sort by id_acordao and record_added_at in descending order
         {'$sort': {'id_acordao': 1, 'record_added_at': -1}},
         # Group by id_acordao and take the first document for each group
@@ -41,7 +50,10 @@ def getMostRecentRecords(query):
         # Replace the document with the nested doc field
         {'$replaceRoot': {'newRoot': '$doc'}}
     ]
-
+    if limit is not None:
+        pipeline.append({'$limit':limit})
+    if skip is not None:
+        pipeline.append({'$skip':skip})
     # Execute the aggregation query
     result = settings.MONGO_DB['records'].aggregate(pipeline)
     return list(result)
