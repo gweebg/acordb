@@ -1,6 +1,5 @@
 <script>
 
-    // import { enhance } from "$app/forms";
     import { Toaster } from "svelte-french-toast";
 
     import { capitalize } from "$lib/scripts/utils.js";
@@ -8,6 +7,9 @@
 
     export let fields;
     export let isAuthenticated;
+    export let isFav;
+
+    console.log(isFav);
 
 </script>
 
@@ -31,7 +33,11 @@
 
         {#if isAuthenticated}
 
-            <FavoriteButton id={fields.id}/>
+            <FavoriteButton id={fields.id}>
+
+                <button class="btn btn-sm" disabled={isFav}>Save in Favorites</button>
+
+            </FavoriteButton>
 
             <form action="?/suggest" method="POST">
                 <button class="btn btn-sm">

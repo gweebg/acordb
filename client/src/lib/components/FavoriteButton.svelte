@@ -3,13 +3,6 @@
     import { toast } from "svelte-french-toast";
     import { enhance } from "$app/forms";
 
-    /*
-        TODO
-        Verificar se o acordão já está adicionado nos favoritos do utilizador
-        e mudar o estilo do botão conforme.
-        Possibilitar mais estilos para o botão.
-     */
-
     export let id;
 
     const toastStyle = {
@@ -46,7 +39,10 @@
 
 <main>
 
-    <button class="btn btn-sm" onclick="fav.showModal()">Save In Favorites</button>
+    <div onclick="fav.showModal()">
+        <slot/>
+    </div>
+
     <dialog id="fav" class="modal modal-bottom sm:modal-middle">
 
         <div class="modal-box">
@@ -79,6 +75,7 @@
 
         </div>
     </dialog>
+
 </main>
 
 

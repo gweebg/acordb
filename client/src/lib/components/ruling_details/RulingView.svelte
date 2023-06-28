@@ -3,7 +3,6 @@
     import RulingTags from "$lib/components/ruling_details/RulingTags.svelte";
     import RulingFields from "$lib/components/ruling_details/RulingFields.svelte";
     import RulingContent from "$lib/components/ruling_details/RulingContent.svelte";
-
     export let details;
 
     const { ruling, user } = details;
@@ -26,7 +25,7 @@
 
     <div class="flex gap-6 mt-4">
 
-        <RulingFields fields={{fields: fields, data: data, id: acordao}} isAuthenticated={auth}/>
+        <RulingFields fields={{fields: fields, data: data, id: acordao}} isAuthenticated={auth} isFav={details.favorite} />
 
         <RulingContent content={data}/>
 
