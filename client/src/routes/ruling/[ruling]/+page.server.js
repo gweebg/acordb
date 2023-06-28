@@ -3,9 +3,35 @@ import { fail } from "@sveltejs/kit";
 import {PUBLIC_API_URL} from "$env/static/public";
 
 
-export async function load({ params, locals }) {
+const fetchFavorite = async (rulingId, cookie) => {
+
+    let response;
+    try {
+
+        response = await fetch(
+            `${PUBLIC_API_URL}/favorites/isFavorite/${rulingId}/`,
+            {
+                method: 'GET',
+                headers: { 'Content-Type': 'application/json', 'Authorization': cookie },
+            }
+        );
+
+    } catch (err) { throw new Error(err); }
+
+    return response.status === 200;
+
+}
+
+export async function load({ params, locals, cookies }) {
 
     const ruling = await fetchRuling(params.ruling);
+
+    const auth = cookies.get('AuthorizationToken');
+
+    let isFavorited = false;
+    if (auth) {
+        isFavorited = await fetchFavorite(params.ruling, auth);
+    }
 
     let user;
 
@@ -14,7 +40,8 @@ export async function load({ params, locals }) {
 
     return {
         ruling: ruling,
-        user: user
+        user: user,
+        favorite: isFavorited
     };
 }
 
@@ -43,11 +70,14 @@ export const actions = {
                         })
                     });
 
-            } catch (err) { throw fail(500, "Server is down."); }
+            } catch (err) {
+                console.log("Servidor em baixo");
+                return fail(500, "Server is down.");
+            }
 
             if (!response.ok) {
                 const data = await response.json();
-                throw fail(400, data.toString());
+                return fail(400, data.toString());
             }
         }
     }

@@ -42,7 +42,7 @@
 
     const openMultiple = () => {
         for (let i = 0; i < itemsChecked.length; i++) {
-            if (itemsChecked[i] === true) window.open(`/acordao/${data.data[i].acordao}`, "_blank");
+            if (itemsChecked[i] === true) window.open(`/ruling/${data.data[i].acordao}`, "_blank");
         }
     };
 

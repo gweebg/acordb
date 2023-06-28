@@ -22,7 +22,7 @@
             <div class="divider divider-horizontal mx-0"/>
 
             <div class="container mx-auto basis-1/4 grow px-4 py-4">
-                <h2 class="px-2 py-1 font-bold text-xl">Ruling Id:</h2>
+                <h2 class="px-2 py-1 font-bold text-xl">Ruling Ref:</h2>
                 <p class="px-2">{record.id}</p>
             </div>
         </div>

@@ -26,7 +26,7 @@
 
     <section class="flex flex-row gap-2 flex-wrap my-4">
         {#each rulingData.descriptors as d}
-            <div class="badge badge-neutral badge-lg">{d}</div>
+            <div class="badge badge-accent badge-lg text-white">{d}</div>
         {/each}
     </section>
 

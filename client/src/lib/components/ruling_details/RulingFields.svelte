@@ -22,7 +22,7 @@
 
     {#each fields.fields as field}
         <div class="mb-1">
-            <p class="text-neutral">{capitalize(field)}</p>
+            <p class="text-neutral font-semibold">{capitalize(field)}</p>
             <p class="opacity-70">{fields.data[field]}</p>
         </div>
     {/each}
