@@ -3,45 +3,45 @@
     import RecordsTable from "$lib/components/RecordsTable.svelte";
 	
     import { PUBLIC_API_URL } from '$env/static/public';
+    import { onMount } from "svelte";
 
-    let list = getRecentList();
-    async function getRecentList() {
-        const res = await fetch(`${PUBLIC_API_URL}/acordaos?limit=10&sort=desc`);
-        const obj = await res.json();
+    let list = [];
+    let loading = true;
 
-        if (res.ok) {
-            
+    const getRecentList = async () => {
+
+        const response = await fetch(`${PUBLIC_API_URL}/acordaos?limit=10&sort=desc`);
+        const obj = await response.json();
+
+        if (response.ok) {
+
             for (let i = 0; i < obj.length; i++) {
-                console.log(obj[i])
-                let arr = ["Processo" ,"tribunal", "Relator", "Votação", "Meio Processual"]
+                let arr = ["Processo" ,"tribunal", "Relator", "Votação", "Meio Processual"];
                 arr.forEach(
-                    (v) => {
-                        if (obj[i].data[v] === undefined) {
-                            obj[i].data[v] = "N/A"
-                        }
-                    }
+                    (v) => { if (obj[i].data[v] === undefined) obj[i].data[v] = "N/A" }
                 )
             }
+
             return obj;
-        } else {
-            throw new Error(obj);
-        }
+
+        } else throw new Error(obj);
     }
 
-    function refreshList() {
-        list = getRecentList();
-    }
+    onMount(async () => {
+        list = await getRecentList();
+        loading = false;
+    })
 
 </script>
 
 <section id="recently-uploaded" class="bg-neutral">
-    
+
     <div class="px-4 py-20 my-[100px] mx-48">
-        
+
         <div class="flex items-center justify-between">
             <div class="">
                 <h2 class="text-3xl font-bold text-white">Recently Uploaded Rulings</h2>
-                
+
                 <div class="opacity-60 text-white">
                     <p>If the table did not update, please refresh the page!</p>
                 </div>
@@ -49,29 +49,16 @@
             <a class="btn btn-base-100 btn-sm mx-4" href="/search">View All</a>
         </div>
 
-        
+
         <div class="divider border-t border-white"></div>
 
-
-        {#await list}
-
+        {#if loading}
             <div class="flex justify-center items-center">
                 <span class="loading loading-spinner text-primary loading-lg"></span>
             </div>
-
-        {:then plist}
-
-            <RecordsTable list={plist}/>
-
-        {:catch error}
-
-            <div class="flex justify-center items-center">
-                <span class="loading loading-spinner text-primary"></span>
-                <p class="text-error">{error.message}</p>
-            </div>
-
-        {/await}
-
+        {:else}
+            <RecordsTable {list}/>
+        {/if}
 
     </div>
 
