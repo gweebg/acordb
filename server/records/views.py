@@ -36,7 +36,8 @@ class AcordaoView(APIView):
     def get(self, request, acordao=None):
             if acordao==None:
                 d=request.GET.dict()
-                return Response(Acordao.objects.getMany(d),status=status.HTTP_200_OK)
+                data,count = Acordao.objects.getMany(d)
+                return Response({'data':data,'count':count},status=status.HTTP_200_OK)
             else:
                 #Retrieve
                 r=Acordao.objects.getOne(acordao)

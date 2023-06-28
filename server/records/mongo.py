@@ -63,14 +63,26 @@ def getMostRecentRecords(query):
         {'$replaceRoot': {'newRoot': '$doc'}}
     ]
     if sort is not None:
-        pipeline.append({'$sort':{'record_added_at':sort}})
-    if skip is not None:
-        pipeline.append({'$skip':skip})
-    if limit is not None:
-        pipeline.append({'$limit':limit})
+        pipeline.append({'$sort': {'record_added_at': sort}})
+    
+    # Add the count, skip, and limit stages in a single operation
+    pipeline.append({'$facet': {
+        'results': [{'$skip': skip or 0}, {'$limit': limit or 0}],
+        'total_count': [{'$count': 'count'}]
+    }})
+    pipeline.append({'$project': {
+        'results': 1,
+        'total_count': {'$arrayElemAt': ['$total_count.count', 0]}
+    }})
+
     # Execute the aggregation query
-    result = settings.MONGO_DB['records'].aggregate(pipeline)
-    return list(result)
+    result = list(settings.MONGO_DB['records'].aggregate(pipeline))
+    if result:
+        result,total_count = result[0].values()
+    else:
+        result = []
+        total_count = 0
+    return result,total_count
 
 def deleteRecord(id):
     #Returns True on Success

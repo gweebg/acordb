@@ -212,13 +212,13 @@ class RecordManager(models.Manager):
             
     
     def getMostRecentMany(self,query):
-        records = getMostRecentRecords(query)
+        records,count = getMostRecentRecords(query)
         r=[]
         if records is None:
             records=[]
         for record in records:
             r.append(recordSerializer(self.filter(id=uuid.UUID(bytes=record['_id'])).first(),record))
-        return r
+        return r,count
     
     def getMany(self,acordao):
         records=self.filter(acordao=acordao)
