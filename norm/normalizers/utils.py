@@ -135,14 +135,19 @@ import unicodedata
 def remove_accents(input_string):
     nfkd_form = unicodedata.normalize('NFKD', input_string)
     return ''.join([c for c in nfkd_form if not unicodedata.combining(c)])
-
 def normDesc(item):
-
     desc=item["Descritores"]
     res=set()
     for string in desc:
         elements = re.split(r"\n+|\t\t+|\s\s+|\;|\.\s",string)
         cleaned_elements = [elem.strip() for elem in elements]
-        res.update(map(remove_accents,filter(lambda x:len(x)>1,cleaned_elements)))
+        cleaned_elements = [elem[1:] if elem.startswith('-') else elem for elem in cleaned_elements]
+        cleaned_elements = [remove_accents(elem.strip()) for elem in cleaned_elements]
+        res.update(filter(lambda x:len(x)>2,cleaned_elements))
     item["Descritores"]=replace_matching_words(res)
+
+def printStuff():
+    global allTags
+    print('\n'.join(allTags).encode('utf-8'))
+    print("")
     
