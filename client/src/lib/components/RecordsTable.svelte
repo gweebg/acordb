@@ -4,7 +4,12 @@
         // Redirect to the link with the object ID.
         window.location.href = `/ruling/${id}`;
     }
-
+    for (let i = 0; i < list.length; i++) {
+        let arr = ["Processo" ,"tribunal", "Relator", "Votação", "Meio Processual"];
+        arr.forEach(
+            (v) => { if (list[i].data[v] === undefined) list[i].data[v] = "N/A" }
+            )
+    }
 </script>
 
 <table class="table table-zebra shadow-xl rounded-xl overflow-hidden">

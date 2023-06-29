@@ -5,10 +5,12 @@
     import { PUBLIC_API_URL } from '$env/static/public';
     let list: any[] = [];
     let loading = true;
-    let items_per_page = 12;
+    let items_per_page = 10;
     let currentPage = 1;
     let totalPages = 10;
-    let visiblePages = [];
+    let visiblePages = 10;
+
+    let pages = [];
 
     const getSearchResults = async (query_params: object, page_number: number) => {
         page_number = page_number || 0;
@@ -19,66 +21,94 @@
         const obj = await response.json();
 
         if (response.ok) {
-            for (let i = 0; i < obj.length; i++) {
-                let arr = ["Processo" ,"tribunal", "Relator", "Votação", "Meio Processual"];
-                arr.forEach(
-                    (v) => { if (obj[i].data[v] === undefined) obj[i].data[v] = "N/A" }
-                )
-            }
             return obj;
         } else throw new Error(obj);
     }
 
-    const updateVisiblePages = () => {
-        const maxVisiblePages = 5;
-        const halfVisiblePages = Math.floor(maxVisiblePages / 2);
-        let startPage = currentPage - halfVisiblePages;
-        let endPage = currentPage + halfVisiblePages;
+    const updateVisiblePages = async () => {
+        loading = true;
+        let res = await getSearchResults(query, currentPage);
+        list = res["data"];
+        totalPages =  Math.ceil(res["count"] / items_per_page)
+        
 
-        if (startPage < 1) {
-            startPage = 1;
-            endPage = startPage + maxVisiblePages - 1;
+        let pageArray = [];
+        if (currentPage < 7) {
+            let range = visiblePages - 3
+            for (let i = 1; i <= range; i++) {
+                pageArray.push(i);
+            }
+            pageArray.push('...');
+            pageArray.push(totalPages-1);
+            pageArray.push(totalPages);
         }
-
-        if (endPage > totalPages) {
-            endPage = totalPages;
-            startPage = endPage - maxVisiblePages + 1;
-            if (startPage < 1) {
-                startPage = 1;
+        else if (currentPage > totalPages - 6) {
+            let range = visiblePages - 3
+            pageArray.push(1);
+            pageArray.push(2);
+            pageArray.push('...');
+            for (let i = totalPages - range; i <= totalPages; i++) {
+                pageArray.push(i);
             }
         }
+        else {
+            let range = visiblePages - 6
+            pageArray.push(1);
+            pageArray.push(2);
+            pageArray.push('...');
+            for (let i = currentPage - range/2; i <= currentPage + range/2; i++) {
+                pageArray.push(i);
+            }
+            pageArray.push('...');
+            pageArray.push(totalPages-1);
+            pageArray.push(totalPages);
+        }
 
-        visiblePages = Array(endPage - startPage + 1).fill().map((_, i) => startPage + i);
-    };
+        pages = pageArray;
+        loading = false;
+    }
 
     onMount(async () => {
-        list = await getSearchResults(query, currentPage);
-        updateVisiblePages();
-        loading = false;
+        await updateVisiblePages();
     })
 
     const goToPage = async (page: number) => {
         currentPage = page;
-        loading = true;
-        list = await getSearchResults(query, currentPage);
-        updateVisiblePages();
-        loading = false;
+        await updateVisiblePages();
     };
 </script>
 
-
-{#if loading}
+<div class="mx-48">
+    {#if loading}
     <div class="flex justify-center items-center">
         <span class="loading loading-spinner text-primary loading-lg"></span>
     </div>
 {:else}
-    <RecordsTable list={list}/>
-
+<RecordsTable list={list}/>
+<div class="flex w-full justify-center my-6">
     <div class="join">
-        {#each visiblePages as page}
-            <button class="join-item btn pagination-item {currentPage === page ? 'btn-active' : ''}" on:click={() => goToPage(page)}>
-                {page}
+        {#if currentPage > 1}
+            <button class="join-item btn" on:click={() => goToPage(currentPage-1)}>
+                &lt; Anterior
             </button>
+        {:else}
+            <button class="join-item btn btn-disabled">&lt; Anterior</button>
+        {/if}
+        {#each pages as page}
+            {#if page === '...'}
+                <button class="join-item btn btn-disabled">...</button>
+            {:else}
+                <button class="join-item btn  {currentPage === page ? 'btn-active' : ''}" on:click={() => goToPage(page)}>
+                {page}
+                </button>
+            {/if}
         {/each}
+        {#if currentPage < totalPages}
+            <button class="join-item btn" on:click={() => goToPage(currentPage+1)}>Próxima &gt;</button>
+        {:else}
+            <button class="join-item btn btn-disabled">Próxima &gt;</button>
+        {/if}
     </div>
+</div>
 {/if}
+</div>
