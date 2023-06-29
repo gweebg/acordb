@@ -150,7 +150,7 @@ class RecordManager(models.Manager):
         if 'Descritores' not in data:
             data['Descritores']=[]
         rec=self.model(acordao=acordao,added_by=user)
-        descritores = data.pop("Descritores")
+        descritores = data.get("Descritores")
         fields = [Field.objects.get_or_create(name=key) for key in data.keys()]
         tags = [Tag.objects.get_or_create(name=descritor) for descritor in descritores]
         data["_id"]=bson.Binary.from_uuid(rec.id)
@@ -183,7 +183,7 @@ class RecordManager(models.Manager):
                 data['Descritores']=[]
             rec=self.model(acordao=acordao,added_by=user)
             records.append(rec)
-            descritores = data.pop("Descritores")
+            descritores = data.get("Descritores")
             fields.append(list(data.keys()))
             for field in data.keys():
                 sfields.add(field)

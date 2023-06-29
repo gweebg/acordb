@@ -32,6 +32,7 @@ def getMostRecentRecords(query):
     limit = query.pop('limit',None)
     skip = query.pop('skip',None)
     sort = query.pop('sort',None)
+    tags = query.pop('tags[]',None)
     if limit:
         if not limit.isdigit():
             return None
@@ -44,7 +45,8 @@ def getMostRecentRecords(query):
         if sort not in ['asc','desc']:
             return None
         sort = 1 if sort == 'asc' else -1
-    
+    if tags is not None:
+        query['Descritores']={'$all': tags}
     
     settings.MONGO_DB['records'].create_index([('id_acordao', 1), ('record_added_at', -1)])
 
