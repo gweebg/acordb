@@ -64,21 +64,24 @@ def getMostRecentRecords(query):
         # Replace the document with the nested doc field
         {'$replaceRoot': {'newRoot': '$doc'}}
     ]
+    results: dict
     if sort is not None:
-        pipeline.append({'$sort': {'record_added_at': sort}})
+        results = [{'$sort': {'record_added_at': sort}}, {'$skip': skip or 0}, {'$limit': limit or 0}]
+    else:
+        results = [{'$skip': skip or 0}, {'$limit': limit or 0}]
     
     # Add the count, skip, and limit stages in a single operation
     pipeline.append({'$facet': {
-        'results': [{'$skip': skip or 0}, {'$limit': limit or 0}],
+        'results': results,
         'total_count': [{'$count': 'count'}]
     }})
     pipeline.append({'$project': {
         'results': 1,
         'total_count': {'$arrayElemAt': ['$total_count.count', 0]}
     }})
-
+    print(pipeline)
     # Execute the aggregation query
-    result = list(settings.MONGO_DB['records'].aggregate(pipeline))
+    result = list(settings.MONGO_DB['records'].aggregate(pipeline, allowDiskUse=True))
     if result:
         result,total_count = result[0].values()
     else:

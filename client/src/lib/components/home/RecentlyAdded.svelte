@@ -11,7 +11,8 @@
     const getRecentList = async () => {
 
         const response = await fetch(`${PUBLIC_API_URL}/acordaos?limit=10&sort=desc`);
-        const obj = await response.json();
+        let obj = await response.json();
+        obj = obj.data;
 
         if (response.ok) {
 

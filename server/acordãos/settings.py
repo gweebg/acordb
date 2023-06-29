@@ -213,5 +213,6 @@ DEFAULT_CLIENT_ID="TIB1j6dKXtEQoB3kAp8dXTsYlBkUfG3GkLmO1Oph"
 DEFAULT_CLIENT_SECRET="qlBGPrFBzH05tJxciMzfPCVRIrdFacDXS3GAacCixyQWBLfOB6LP4iMSEr77nu7s80X84KCQZuxT6h4Z0Qa7WCjLJFcCOho37STViWVo1vA55tOoYqdb2vznQtl0ZN7d"
 
 MONGO_DB = MongoClient('mongodb://mongodb:27017/',socketTimeoutMS=500000)['acordaos']
-
+MONGO_DB['records'].create_index([('id_acordao', 1), ('record_added_at', -1)])
+MONGO_DB['records'].create_index([('record_added_at', -1)])
 DATA_UPLOAD_MAX_NUMBER_FIELDS=1000000

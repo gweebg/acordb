@@ -78,7 +78,7 @@
     };
 </script>
 
-<div class="mx-48">
+<div class="mx-48 mb-16">
     {#if loading}
     <div class="flex justify-center items-center">
         <span class="loading loading-spinner text-primary loading-lg"></span>
