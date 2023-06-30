@@ -44,6 +44,7 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     
     path('api-auth/', include('rest_framework.urls')),
+    path('social-auth/', include('social_django.urls', namespace='social')),
     path('api-auth/', include('drf_social_oauth2.urls',namespace='drf')),
     path('accounts/', include('accounts.urls',namespace="accounts")),
     path('favorites/', include('favorites.urls',namespace="favorites")),

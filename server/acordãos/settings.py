@@ -62,6 +62,7 @@ AUTHENTICATION_BACKENDS = (
     'social_core.backends.google.GoogleOAuth2',
     'social_core.backends.facebook.FacebookAppOAuth2',
     'social_core.backends.facebook.FacebookOAuth2',
+    'social_core.backends.github.GithubOAuth2',
     
     'drf_social_oauth2.backends.DjangoOAuth2',
     'django.contrib.auth.backends.ModelBackend',
@@ -202,6 +203,9 @@ SOCIAL_AUTH_USER_FIELDS=['email','first_name','username','password']
 
 SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = "316555827922-thlb7qjblpqovk9033h29ub4rejimaqd.apps.googleusercontent.com"
 SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = "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"
+
+SOCIAL_AUTH_GITHUB_KEY = 'c048c9348cc4806b54f6'
+SOCIAL_AUTH_GITHUB_SECRET = 'f441631759055d5b2eec7871bd9b14457d3d7780'
 
 # Define SOCIAL_AUTH_GOOGLE_OAUTH2_SCOPE to get extra permissions from Google.
 SOCIAL_AUTH_GOOGLE_OAUTH2_SCOPE = [
