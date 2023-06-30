@@ -1,7 +1,8 @@
-import { fail, redirect } from "@sveltejs/kit";
+import {fail, redirect} from "@sveltejs/kit";
 import { z } from "zod";
 import { superValidate } from 'sveltekit-superforms/server';
 import { PUBLIC_API_URL } from '$env/static/public';
+import {invalidate} from "$app/navigation";
 const updateSchema = z.object({
 
     first_name: z.string()
@@ -139,5 +140,46 @@ export const actions = {
             throw redirect(302, '/user');
         }
 
+    },
+
+    setAdmin: async ({ cookies, request }) => {
+
+        const authCookie = cookies.get('AuthorizationToken');
+
+        if (authCookie) {
+
+            const data = await request.formData();
+            const userId = data.get('id');
+
+            let response;
+            try {
+
+                response = await fetch(
+                    `${PUBLIC_API_URL}/accounts/user/${userId}/makeadmin`,
+                    {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json', 'Authorization': authCookie },
+                    }
+                );
+
+            } catch (err) {
+                return {
+                    success: false,
+                    message: "There is a problem on our side, please try again later."
+                }
+            }
+
+            if (!response.ok) {
+                return {
+                    success: false,
+                    message: "The user does not exist."
+                }
+            }
+
+            return {
+                success: true
+            }
+
+        }
     }
 };

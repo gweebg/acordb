@@ -7,6 +7,11 @@
 
 </script>
 
+<svelte:head>
+    <title>
+        Acordb - Rulings
+    </title>
+</svelte:head>
 
 <div class="flex flex-row">
 

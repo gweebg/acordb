@@ -6,6 +6,7 @@
     import {enhance} from '$app/forms';
     import {superForm} from "sveltekit-superforms/client";
     import {switchPassword} from "$lib/scripts/passwordInputState.js";
+    import SetAdmin from "$lib/components/dashboard/SetAdmin.svelte";
 
 
     export let data; // Data returned from the load function at +page.server.js
@@ -25,10 +26,8 @@
 
 
     const resetForm = () => {
-
         firstName = originalData.first_name;
         lastName = originalData.last_name;
-
     }
 
     const copyToClipboard = () => {
@@ -42,6 +41,11 @@
 
 </script>
 
+<svelte:head>
+    <title>
+        Acordb - Profile
+    </title>
+</svelte:head>
 
 <div class="flex flex-row">
 
@@ -174,6 +178,8 @@
         <!-- API Key -->
         <div class="mt-4">
 
+            <div class="divider"></div>
+
             <!-- Header -->
             <header>
                 <h3 class="text-xl font-bold pb-4">Generate API Key</h3>
@@ -229,5 +235,22 @@
             </div>
 
         </div>
+
+
+        <!-- Make Admin -->
+        <div class="mt-4">
+
+            <div class="divider"></div>
+
+            <!-- Header -->
+            <header>
+                <h3 class="text-xl font-bold pb-4">Make User Administrator</h3>
+                <p>Fill in the form bellow to turn any user into administator.</p>
+            </header>
+
+            <SetAdmin/>
+
+        </div>
+
     </div>
 </div>

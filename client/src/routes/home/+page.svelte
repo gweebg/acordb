@@ -10,6 +10,12 @@
 
 </script>
 
+<svelte:head>
+    <title>
+        Acordb - Home
+    </title>
+</svelte:head>
+
 <div>
 
     <!-- Navbar -->

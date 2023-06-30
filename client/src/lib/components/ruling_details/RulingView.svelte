@@ -8,7 +8,7 @@
 
     export let details;
 
-    const { ruling, user } = details;
+    const { ruling, versions, user } = details;
     const { added_by, added_at, acordao, tags, data } = ruling;
 
     let fields = Object.keys(data);
@@ -36,7 +36,19 @@
     <div class="mt-10">
         <h2 class="font-bold text-xl">Other Versions</h2>
         <div class="divider mt-0"></div>
-        <Ruling ruling={ruling}/>
+
+        {#if versions.length > 0}
+
+            {#each versions as ruling}
+                <Ruling ruling={ruling}/>
+            {/each}
+
+        {:else}
+
+            <p>There are no other versions of this ruling.</p>
+
+        {/if}
+
 
     </div>
 

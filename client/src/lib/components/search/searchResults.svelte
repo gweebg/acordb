@@ -1,13 +1,17 @@
 <script lang="ts">
-    export let query: any = {};
+
     import { onMount } from "svelte";
 	import RecordsTable from "../RecordsTable.svelte";
     import { PUBLIC_API_URL } from '$env/static/public';
+    import Ruling from "$lib/components/ruling/Ruling.svelte";
+
+    export let query: any = {};
+
     let list: any[] = [];
     let loading = true;
     let items_per_page = 10;
     let currentPage = 1;
-    let totalPages = 10;
+    let totalPages = 0;
     let visiblePages = 10;
 
     let pages = [];
@@ -76,39 +80,70 @@
         currentPage = page;
         await updateVisiblePages();
     };
+
 </script>
 
-<div class="mx-48 mb-16">
-    {#if loading}
-    <div class="flex justify-center items-center">
-        <span class="loading loading-spinner text-primary loading-lg"></span>
-    </div>
-{:else}
-<RecordsTable list={list}/>
-<div class="flex w-full justify-center my-6">
-    <div class="join">
-        {#if currentPage > 1}
-            <button class="join-item btn" on:click={() => goToPage(currentPage-1)}>
-                &lt; Anterior
-            </button>
+
+<main>
+
+    <div class="mx-48 mb-16">
+
+        <header class="flex flex-row items-center">
+            <h1 class="text-3xl font-bold">Search Results</h1>
+            <p class="ml-auto opacity-70">({totalPages * items_per_page} Results)</p>
+        </header>
+        <div class="divider mt-0"></div>
+
+        {#if loading}
+
+            <div class="flex justify-center items-center">
+                <span class="loading loading-spinner text-primary loading-lg"></span>
+            </div>
+
         {:else}
-            <button class="join-item btn btn-disabled">&lt; Anterior</button>
-        {/if}
-        {#each pages as page}
-            {#if page === '...'}
-                <button class="join-item btn btn-disabled">...</button>
-            {:else}
-                <button class="join-item btn  {currentPage === page ? 'btn-active' : ''}" on:click={() => goToPage(page)}>
-                {page}
-                </button>
-            {/if}
-        {/each}
-        {#if currentPage < totalPages}
-            <button class="join-item btn" on:click={() => goToPage(currentPage+1)}>Próxima &gt;</button>
-        {:else}
-            <button class="join-item btn btn-disabled">Próxima &gt;</button>
+
+            {#each list as ruling}
+
+                <div class="my-4">
+                    <Ruling {ruling}/>
+                </div>
+
+            {/each}
+
+
+            <!-- Pagination Controls -->
+            <div class="flex w-full justify-center my-6">
+                <div class="join">
+
+                    {#if currentPage > 1}
+                        <button class="join-item btn" on:click={() => goToPage(currentPage-1)}>
+                            &lt;
+                        </button>
+                    {:else}
+                        <button class="join-item btn btn-disabled">&lt;</button>
+                    {/if}
+
+                    {#each pages as page}
+                        {#if page === '...'}
+                            <button class="join-item btn btn-disabled">...</button>
+                        {:else}
+                            <button class="join-item btn  {currentPage === page ? 'btn-active' : ''}" on:click={() => goToPage(page)}>
+                                {page}
+                            </button>
+                        {/if}
+                    {/each}
+
+                    {#if currentPage < totalPages}
+                        <button class="join-item btn" on:click={() => goToPage(currentPage+1)}> &gt;</button>
+                    {:else}
+                        <button class="join-item btn btn-disabled"> &gt;</button>
+                    {/if}
+
+                </div>
+            </div>
+
         {/if}
     </div>
-</div>
-{/if}
-</div>
+
+</main>
+

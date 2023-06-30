@@ -6,7 +6,7 @@ export const fetchRuling = async (rulingId) => {
     let response;
     try {
 
-        response = await fetch(`${PUBLIC_API_URL}/acordaos/${rulingId}/`);
+        response = await fetch(`${PUBLIC_API_URL}/acordaos/records/${rulingId}/`);
 
     } catch (err) { throw error(500, "Server is down."); }
 

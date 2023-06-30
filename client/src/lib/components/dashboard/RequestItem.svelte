@@ -60,7 +60,7 @@
             <div class="divider mt-0"></div>
             <div class="flex flex-row items-center">
                 <p>Reviewed at: {date}</p>
-                <a href={"/record/" + details.acordao} class="btn btn-accent btn-sm ml-auto">Open</a>
+                <a href={"/ruling/" + details.acordao} class="btn btn-accent btn-sm ml-auto">Open</a>
             </div>
         </div>
     {/if}

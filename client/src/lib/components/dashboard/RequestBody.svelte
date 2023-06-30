@@ -30,7 +30,7 @@
 
         } catch (err) {console.log(`[Error] loadDiff @ RequestItem ${err}`);}
 
-        return compareRulings(originalData, details.data);
+        return compareRulings(originalData.data, details.data);
 
     }
 

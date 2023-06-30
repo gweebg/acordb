@@ -1,6 +1,6 @@
 import { writable } from 'svelte/store';
 
-export const inputs = writable([{ id: 0, value: { selectable: 'Acordão', input: '...' } }]);
+export const inputs = writable([{ id: 0, value: { selectable: '', input: '' } }]);
 
 export const process = writable("");
 

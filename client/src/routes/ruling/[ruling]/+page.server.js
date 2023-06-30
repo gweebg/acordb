@@ -39,7 +39,8 @@ export async function load({ params, locals, cookies }) {
     else user = null;
 
     return {
-        ruling: ruling,
+        ruling: ruling[0],
+        versions: ruling.shift(),
         user: user,
         favorite: isFavorited
     };
@@ -71,7 +72,6 @@ export const actions = {
                     });
 
             } catch (err) {
-                console.log("Servidor em baixo");
                 return fail(500, "Server is down.");
             }
 

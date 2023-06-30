@@ -5,21 +5,21 @@
 
 <div class="container mx-auto flex items-stretch gap-4">
     <div class="flex flex-col grow">
-        <div class="grow flex mx-auto container bg-base-200 shadow-lg rounded-2xl">
+        <div class="grow flex mx-auto container bg-base-100 shadow-lg rounded-2xl">
 
             <div class="container mx-auto basis-1/4 grow px-4 py-4">
                 <h2 class="px-2 py-1 font-bold text-xl">Added by:</h2>
                 <p class="px-2">{record.added_by}</p>
             </div>
 
-            <div class="divider divider-horizontal mx-0"/>
+            <div class="divider divider-horizontal mx-0"></div>
 
             <div class="container mx-auto basis-1/4 grow px-4 py-4">
                 <h2 class="px-2 py-1 font-bold text-xl">Added at:</h2>
                 <p class="px-2">{record.added_at}</p>
             </div>
 
-            <div class="divider divider-horizontal mx-0"/>
+            <div class="divider divider-horizontal mx-0"></div>
 
             <div class="container mx-auto basis-1/4 grow px-4 py-4">
                 <h2 class="px-2 py-1 font-bold text-xl">Ruling Ref:</h2>

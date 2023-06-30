@@ -39,7 +39,7 @@
 
             <div class="divider border-t border-white mb-1"></div>
 
-            <SideBarItem params={{text: "Add New", iconPath: "/icons/menu/add.svg", isActive: active.add, link: "/new"}}/>
+            <SideBarItem params={{text: "Add New Ruling", iconPath: "/icons/menu/add.svg", isActive: active.add, link: "/new"}}/>
 
         {:else}
 

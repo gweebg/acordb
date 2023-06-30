@@ -1,11 +1,10 @@
 <script>
 
-    import {inputs, url, process} from "$lib/stores/form.js";
-
-    import {addInput, removeInput, updateInput, updateSelectable} from "$lib/scripts/formHandler.js";
-
-    import TagsInput from "$lib/components/new/TagsInput.svelte";
     import Select from "svelte-select";
+    import TagsInput from "$lib/components/new/TagsInput.svelte";
+
+    import {inputs, url, process} from "$lib/stores/form.js";
+    import {addInput, removeInput, updateInput, updateSelectable} from "$lib/scripts/formHandler.js";
 
     export let fields;
 

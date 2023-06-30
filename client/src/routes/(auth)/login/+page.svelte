@@ -42,6 +42,12 @@
 
 </script>
 
+<svelte:head>
+    <title>
+        Acordb - Sign In
+    </title>
+</svelte:head>
+
 <div class="flex justify-center items-center h-screen flex-col">
 
     <!-- Flash Message Alert -->

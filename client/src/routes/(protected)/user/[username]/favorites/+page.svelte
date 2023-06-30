@@ -58,6 +58,7 @@
     <title>Acordb - Favorites</title>
 </svelte:head>
 
+
 <Toaster/>
 
 <div class="flex flex-row">

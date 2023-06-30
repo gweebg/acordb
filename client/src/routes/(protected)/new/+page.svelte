@@ -95,10 +95,15 @@
 
 </script>
 
+<svelte:head>
+    <title>
+        New Ruling
+    </title>
+</svelte:head>
 
 <div>
 
-    <Navbar isAuthenticated={data.user.is_administrator}/>
+    <Navbar isAuthenticated={true} isAdmin={data.user.is_administrator}/>
 
     <!-- New judgment form. -->
     <div class="px-4 mb-[100px] mt-[80px] mx-48">

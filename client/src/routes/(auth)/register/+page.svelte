@@ -25,6 +25,12 @@
 
 </script>
 
+<svelte:head>
+    <title>
+        Acordb - Sign Up
+    </title>
+</svelte:head>
+
 <!-- Centering content -->
 <div class="flex justify-center items-center h-screen flex-col">
 

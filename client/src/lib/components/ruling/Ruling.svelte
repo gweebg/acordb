@@ -5,9 +5,10 @@
     import { checkValue } from "$lib/scripts/utils.js";
 
     export let ruling;
+    export let isResult;
 
 
-    const { added_by, added_at, tags, data } = ruling;
+    const { added_by, added_at, tags, acordao, data } = ruling;
 
     const headerData = {
         process: checkValue(data.Processo),
@@ -24,8 +25,14 @@
     }
 
     const redirectToRuling = () => {
-        console.log("Redirected!");
+        window.location.href = `/ruling/${acordao}`;
     }
+
+    /*
+    TODO:
+        Menu ... no Ruling que permita abrir noutra tab e favoritar.
+        Form de pesquisa.
+    */
 
 </script>
 

@@ -29,7 +29,7 @@
     </title>
 </svelte:head>
 
-<div>
+<div class="flex flex-col h-screen">
 
     <!-- Navbar -->
     <Navbar isAuthenticated={isAuthenticated} isAdmin={isAdmin}/>
@@ -38,6 +38,8 @@
 
     <SearchResults query={query}/>
 
-    <Footer/>
-    
+    <div class="mt-auto">
+        <Footer/>
+    </div>
+
 </div>
