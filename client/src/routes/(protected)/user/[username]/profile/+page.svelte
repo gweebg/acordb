@@ -246,7 +246,7 @@
                 <!-- Header -->
                 <header>
                     <h3 class="text-xl font-bold pb-4">Make User Administrator</h3>
-                    <p>Fill in the form bellow to turn any user into administator.</p>
+                    <p>Fill in the form bellow to turn any user into administrator.</p>
                 </header>
 
                 <SetAdmin/>

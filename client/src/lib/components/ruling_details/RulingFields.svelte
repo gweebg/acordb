@@ -4,6 +4,7 @@
 
     import { capitalize } from "$lib/scripts/utils.js";
     import FavoriteButton from "$lib/components/FavoriteButton.svelte";
+    import SuggestButton from "$lib/components/SuggestButton.svelte";
 
     export let fields;
     export let isAuthenticated;
@@ -23,7 +24,7 @@
     {#each fields.fields as field}
         <div class="mb-1">
             <p class="text-neutral font-semibold">{capitalize(field)}</p>
-            <p class="opacity-70">{fields.data[field]}</p>
+            <p class="opacity-70 break-words">{fields.data[field]}</p>
         </div>
     {/each}
 
@@ -39,11 +40,11 @@
 
             </FavoriteButton>
 
-            <form action="?/suggest" method="POST">
-                <button class="btn btn-sm">
-                    Suggest a Change
-                </button>
-            </form>
+            <SuggestButton>
+
+                <button class="btn btn-sm">Suggest a Change</button>
+
+            </SuggestButton>
 
         {/if}
 

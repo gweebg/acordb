@@ -51,7 +51,7 @@
 
             <header>
                 <h3 class="font-bold text-lg">Create New Administrator!</h3>
-                <p class="opacity-50">Type in the id of the user to turn into an admin.</p>
+                <p class="opacity-50">Type in the email of the user to turn into an admin.</p>
                 <div class="divider mt-0"></div>
             </header>
 

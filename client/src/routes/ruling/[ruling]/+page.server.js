@@ -26,6 +26,8 @@ export async function load({ params, locals, cookies }) {
 
     const ruling = await fetchRuling(params.ruling);
 
+    console.log(ruling);
+
     const auth = cookies.get('AuthorizationToken');
 
     let isFavorited = false;
@@ -38,10 +40,7 @@ export async function load({ params, locals, cookies }) {
     if (locals.user) user = locals.user;
     else user = null;
 
-    // TODO FIX THIS!!
-    let versions;
-    if (ruling.length === 2) versions = [ruling.pop()]
-    else versions = ruling.pop()
+    let versions = ruling.slice(0, -1);
 
     return {
         ruling: ruling[ruling.length - 1],

@@ -17,7 +17,9 @@
     let pages = [];
 
     const getSearchResults = async (query_params: object, page_number: number) => {
+
         page_number = page_number || 0;
+
         query_params["limit"] = items_per_page;
         query_params["skip"] = (page_number-1)*query_params["limit"];
 

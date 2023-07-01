@@ -25,7 +25,7 @@
 
                 <!-- Logo -->
                 <a href="/home" class="btn btn-ghost normal-case text-2xl text-neutral-focus ml-0">
-                    Accordb
+                    Acordb
                 </a>
 
                 <!-- Controls -->
@@ -36,12 +36,6 @@
 
             </div>
 
-
-            <!-- Center Items -->
-            <div class="navbar-center">
-                <!-- Simple Search Bar -->
-                <input type="text" placeholder="Begin search..." class="input input-bordered input-sm w-full max-w-xs" />
-            </div>
 
             <!-- Right Items -->
             <div class="navbar-end">

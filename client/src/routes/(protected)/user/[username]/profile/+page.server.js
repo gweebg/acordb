@@ -155,10 +155,11 @@ export const actions = {
             try {
 
                 response = await fetch(
-                    `${PUBLIC_API_URL}/accounts/user/${userId}/makeadmin`,
+                    `${PUBLIC_API_URL}/accounts/makeadmin/`,
                     {
                         method: 'POST',
                         headers: { 'Content-Type': 'application/json', 'Authorization': authCookie },
+                        body: JSON.stringify({email: userId})
                     }
                 );
 

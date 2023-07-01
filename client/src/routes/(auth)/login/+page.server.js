@@ -56,23 +56,24 @@ export const actions = {
 
             const responseData = await response.json();
 
-            if (form.data.remember) responseData.expires_in = 2628000; /* If remember me is set to true, token lasts 1 month. */
+            let expires_in = 60 * 60 * 24 * 7;
+            if (form.data.remember) expires_in = 2628000; /* If remember me is set to true, token lasts 1 month. */
 
             /* Setting Authorization and Refresh tokens. */
-            event.cookies.set('AuthorizationToken', `Bearer ${responseData.access_token}`, {
+            event.cookies.set('AuthorizationToken', `Bearer ${responseData.access}`, {
                 httpOnly: true,
                 path: '/',
                 secure: true,
                 sameSite: 'strict',
-                maxAge: responseData.expires_in
+                maxAge: expires_in
             });
 
-            event.cookies.set('RefreshToken', `Refresh ${responseData.refresh_token}`, {
+            event.cookies.set('RefreshToken', `Refresh ${responseData.refresh}`, {
                 httpOnly: true,
                 path: '/',
                 secure: true,
                 sameSite: 'strict',
-                maxAge: responseData.expires_in
+                maxAge: expires_in
             });
             
 
