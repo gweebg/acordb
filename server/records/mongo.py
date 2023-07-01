@@ -1,5 +1,6 @@
 from django.conf import settings
 from datetime import datetime
+import re
 def getManyRecords(query):
     limit = query.pop("limit", None)
     skip = query.pop("skip", None)
@@ -47,7 +48,7 @@ def getMostRecentRecords(query):
         if sort not in ['asc','desc']:
             return None
         sort = 1 if sort == 'asc' else -1
-    query = {key:{"$regex": value} for key,value in query.items()}
+    query = {key:{"$regex": re.compile(value, re.IGNORECASE)} for key,value in query.items()}
     if from_date is not None or to_date is not None:
         query['record_added_at']={}
         if from_date is not None:
