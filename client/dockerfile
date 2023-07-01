@@ -6,6 +6,7 @@ EXPOSE 80
 WORKDIR /src
 # COPY . /src/
 # RUN npm install
+# ENV PUBLIC_API_URL=http://eivarin.xyz:8000
 # RUN npm run build
 # CMD ["node", "-r", "dotenv/config", "build"]
 

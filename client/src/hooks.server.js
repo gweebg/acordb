@@ -1,4 +1,37 @@
 import { PUBLIC_API_URL } from '$env/static/public';
+
+import { SvelteKitAuth } from "@auth/sveltekit"
+import Google from '@auth/core/providers/google';
+import Credentials from "@auth/core/providers/credentials"
+
+// export const handle = SvelteKitAuth({
+//   providers: [
+// 	Credentials({
+// 		async authorize(credentials) {
+// 		  const authResponse = await fetch("/users/login", {
+// 			method: "POST",
+// 			headers: {
+// 			  "Content-Type": "application/json",
+// 			},
+// 			body: JSON.stringify(credentials),
+// 		  })
+  
+// 		  if (!authResponse.ok) {
+// 			return null
+// 		  }
+  
+// 		  const user = await authResponse.json()
+  
+// 		  return user
+// 		},
+// 	  }),
+//     Google({
+		// clientId: "316555827922-thlb7qjblpqovk9033h29ub4rejimaqd.apps.googleusercontent.com",
+    	// clientSecret: "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"
+// 	})
+//   ]
+// });
+
 export const handle = async ({ event, resolve }) => {
 
     const authCookie = event.cookies.get('AuthorizationToken');
