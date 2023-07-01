@@ -140,8 +140,6 @@
                 Don't have an account ? <a href="/register" class="text-accent">Sign up here</a>
             </p>
 
-            <div class="divider">Or</div>
-
             <div class="flex justify-center">
                 <div id="g_id_onload"
                      data-client_id="173987535517-ea5ko2je1d80uqqmi6ipo743kaula7nb.apps.googleusercontent.com"
@@ -151,23 +149,6 @@
                 <div class="g_id_signin" data-type="standard"></div>
             </div>
 
-<!--            &lt;!&ndash; Continue with section &ndash;&gt;-->
-<!--            <div class="divider"> Or continue with </div>-->
-
-<!--            <div class="btn-group justify-center">-->
-
-<!--                <ImageButton iconAlt="google-icon" iconPath="icons/google-color-icon.svg" buttonText="Google"/>-->
-<!--                <ImageButton iconAlt="github-icon" iconPath="icons/facebook-color.svg" buttonText="Facebook"/>-->
-<!--                <ImageButton iconAlt="github-icon" iconPath="icons/github-mark-white.svg" buttonText="GitHub"/>-->
-<!--            -->
-<!--            </div>-->
         </div>
     </div>
 </div>
-
-<!--<div id="g_id_onload"-->
-<!--    data-client_id="173987535517-ea5ko2je1d80uqqmi6ipo743kaula7nb.apps.googleusercontent.com"-->
-<!--    data-ux_mode="redirect"-->
-<!--    data-login_uri="http://localhost:5173/api/login/google">-->
-<!--</div>-->
-<!--<div class="g_id_signin" data-type="standard"></div>-->

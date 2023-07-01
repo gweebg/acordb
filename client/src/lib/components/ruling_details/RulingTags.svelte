@@ -3,7 +3,7 @@
     export let tags;
 
     const onClick = (tag) => {
-        console.log(tag);
+        window.location.href = `/search?tags[]=${tag}`;
     }
 
 </script>

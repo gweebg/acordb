@@ -27,7 +27,7 @@
     <div class="dropdown dropdown-end">
 
         <div class="dropdown dropdown-hover">
-            <label tabindex="0" class="btn btn-ghost btn-circle avatar">
+            <label tabindex="0" class="btn btn-ghost avatar">
                 <div class="w-10 rounded-full">
                     <img src="/icons/navbar/avatar.svg" />
                 </div>
@@ -35,8 +35,8 @@
 
             <ul tabindex="0" class="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52">
                 <li><a href="/user">Profile</a></li>
-                <li>
-                    <form action="/logout" method="POST">
+                <li class="">
+                    <form action="/logout" method="POST" class="w-full">
                         <button type="submit">
                             Logout
                         </button>
