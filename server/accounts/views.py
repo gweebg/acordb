@@ -7,7 +7,8 @@ from favorites.models import Favorites
 from django.shortcuts import get_object_or_404
 from .permissions import IsUser,IsAdministrator
 from .serializers import (  AccountSerializer,
-                            APIKeySerializer)
+                            APIKeySerializer,
+                            EmailSerializer)
 from django.db.models import Q,Value
 from django.db.models.functions import Concat
 from rest_framework_simplejwt.tokens import RefreshToken
@@ -15,6 +16,10 @@ from django.views.decorators.csrf import csrf_exempt
 import jwt
 from django.http import JsonResponse
 import json
+from google.oauth2 import id_token as google_id_token
+from google.auth.transport import requests as google_requests
+from django.conf import settings
+from django.contrib.auth import login
 
 
 class CurrentUser(mixins.ListModelMixin, 
@@ -88,13 +93,15 @@ class Statistics(APIView):
 class MakeConsumerAdmin(APIView):
     permission_classes=[IsAdministrator]
     
-    def post(self, request,id):
-        account = get_object_or_404(Account, id=id)
-        if account.is_administrator:
-            return Response(status=status.HTTP_403_FORBIDDEN)
-        account.is_administrator=True
-        account.save()
-        return Response(AccountSerializer(account).data,status=status.HTTP_201_CREATED)
+    def post(self, request):
+        ser = EmailSerializer(data=request.data)
+        if ser.is_valid():
+            account = get_object_or_404(Account, email=request.data['email'])
+            if account.is_administrator:
+                return Response({'errors':'the account is already an administrator'},status=400)
+            account.is_administrator=True
+            account.save()
+            return Response(AccountSerializer(account).data,status=status.HTTP_201_CREATED)
     
 
 class GenerateApiKey(APIView):
@@ -113,7 +120,7 @@ def google_auth_token(request):
         try:
             data = json.loads(request.body)
             google_token = data.get('token')
-            decoded_token = jwt.decode(google_token.encode(), verify=False)
+            decoded_token = google_id_token.verify_oauth2_token(google_token.encode(),google_requests.Request(),settings.GOOGLE_CLIENT_ID)
             email = decoded_token['email']
             account = Account.objects.filter(email=email).first()
             if account is None:
@@ -128,7 +135,7 @@ def google_auth_token(request):
             refresh = RefreshToken.for_user(account)
             return JsonResponse({ 'refresh': str(refresh),'access': str(refresh.access_token)}, status=200)
                     
-        except (jwt.DecodeError, jwt.ExpiredSignatureError) as e:
+        except (ValueError) as e:
             return JsonResponse({'error': 'Invalid token'}, status=400)
         except json.JSONDecodeError as e:
             return JsonResponse({'error': 'Invalid JSON data'}, status=400)

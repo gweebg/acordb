@@ -45,6 +45,7 @@ def getMostRecentRecords(query):
         if sort not in ['asc','desc']:
             return None
         sort = 1 if sort == 'asc' else -1
+    query = {key:{"$regex": value} for key,value in query.items()}
     if tags is not None:
         query['Descritores']={'$all': tags}
     

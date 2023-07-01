@@ -14,6 +14,10 @@ from pathlib import Path
 from pymongo import MongoClient
 import os
 import datetime
+import environ
+# Initialise environment variables
+env = environ.Env()
+environ.Env.read_env()
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -24,7 +28,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "django-insecure-9ciqs71-bhdsf_tnc^+f@r-oe0w$gzt$-^lfge21ceb*2_9_wu"
+SECRET_KEY = env('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -85,10 +89,7 @@ SPECTACULAR_SETTINGS = {
 }
 
 CORS_ORIGIN_ALLOW_ALL = True
-# CORS_ALLOWED_ORIGINS = [
-#    "http://localhost:8000",
-#    "http://127.0.0.1:8000"
-# ]
+
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
@@ -130,11 +131,11 @@ WSGI_APPLICATION = "acordãos.wsgi.application"
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'acordaos',
-        'USER': 'admin',
-        'PASSWORD': 'admin',
-        'HOST': 'postgres',
-        'PORT': '5432'
+        'NAME': env('POSTGRESQL_NAME'),
+        'USER': env('POSTGRESQL_USER'),
+        'PASSWORD': env('POSTGRESQL_PASSWORD'),
+        'HOST': env('POSTGRESQL_HOST'),
+        'PORT': env('POSTGRESQL_PORT')
     }
 }
 
@@ -163,7 +164,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = "en-us"
 
-TIME_ZONE = 'Europe/Lisbon'
+TIME_ZONE = env("TIME_ZONE")
 
 USE_I18N = True
 
@@ -194,13 +195,13 @@ SOCIALACCOUNTS = {
         'client_id': '172096125699052',
         'secret': '4129a410c152648a9775efa402f9eb98',
     },
-    'google': {
-        'client_id': '316555827922-suhft2pc84e4q4bfr00erb4h4jbid7ac.apps.googleusercontent.com',
-        'secret': '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',
-    }
 }
+GOOGLE_CLIENT_ID=env('GOOGLE_CLIENT_ID')
+GOOGLE_SECRET=env('GOOGLE_SECRET')
+MONGO_DB_CONNECTION_STRING=env('MONGO_DB_CONNECTION_STRING')
+MONGO_DB_NAME=env('MONGO_DB_NAME')
 
-MONGO_DB = MongoClient('mongodb://mongodb:27017/',socketTimeoutMS=500000)['acordaos']
+MONGO_DB = MongoClient(MONGO_DB_CONNECTION_STRING,socketTimeoutMS=500000)[MONGO_DB_NAME]
 MONGO_DB['records'].create_index([('id_acordao', 1), ('record_added_at', -1)])
 MONGO_DB['records'].create_index([('record_added_at', -1)])
 DATA_UPLOAD_MAX_NUMBER_FIELDS=1000000
