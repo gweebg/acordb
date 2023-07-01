@@ -1,5 +1,5 @@
 from django.conf import settings
-
+from datetime import datetime
 def getManyRecords(query):
     limit = query.pop("limit", None)
     skip = query.pop("skip", None)
@@ -33,6 +33,14 @@ def getMostRecentRecords(query):
     skip = query.pop('skip',None)
     sort = query.pop('sort',None)
     tags = query.pop('tags[]',None)
+    from_date = query.pop('from_date',None)
+    to_date = query.pop('to_date',None)
+    if from_date is not None or to_date is not None:
+        query['record_added_at']={}
+        if from_date is not None:
+            query['record_added_at']['$gte']=datetime.strptime(from_date, '%Y-%m-%d')
+        if to_date is not None:
+            query['record_added_at']['$lte']=datetime.strptime(to_date, '%Y-%m-%d')
     if limit:
         if not limit.isdigit():
             return None
