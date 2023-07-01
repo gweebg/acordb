@@ -87,10 +87,10 @@ def getMostRecentRecords(query):
         'results': 1,
         'total_count': {'$arrayElemAt': ['$total_count.count', 0]}
     }})
-    print(pipeline)
+    # print(pipeline)
     # Execute the aggregation query
     result = list(settings.MONGO_DB['records'].aggregate(pipeline, allowDiskUse=True))
-    print(result)
+    # print(result)
     if result[0]["results"] != []:
         result,total_count = result[0].values()
     else:
