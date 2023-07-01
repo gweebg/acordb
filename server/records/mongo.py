@@ -32,15 +32,9 @@ def getMostRecentRecords(query):
     limit = query.pop('limit',None)
     skip = query.pop('skip',None)
     sort = query.pop('sort',None)
-    tags = query.pop('tags[]',None)
+    tags = query.pop('tags',None)
     from_date = query.pop('from_date',None)
     to_date = query.pop('to_date',None)
-    if from_date is not None or to_date is not None:
-        query['record_added_at']={}
-        if from_date is not None:
-            query['record_added_at']['$gte']=datetime.strptime(from_date, '%Y-%m-%d')
-        if to_date is not None:
-            query['record_added_at']['$lte']=datetime.strptime(to_date, '%Y-%m-%d')
     if limit:
         if not limit.isdigit():
             return None
@@ -54,10 +48,14 @@ def getMostRecentRecords(query):
             return None
         sort = 1 if sort == 'asc' else -1
     query = {key:{"$regex": value} for key,value in query.items()}
+    if from_date is not None or to_date is not None:
+        query['record_added_at']={}
+        if from_date is not None:
+            query['record_added_at']['$gte']=datetime.strptime(from_date, '%Y-%m-%d')
+        if to_date is not None:
+            query['record_added_at']['$lte']=datetime.strptime(to_date, '%Y-%m-%d')
     if tags is not None:
-        query['Descritores']={'$all': tags}
-    
-    settings.MONGO_DB['records'].create_index([('id_acordao', 1), ('record_added_at', -1)])
+        query['Descritores']={'$all': tags.split(',')}
 
     # Define the aggregation pipeline
     pipeline = [
@@ -91,7 +89,8 @@ def getMostRecentRecords(query):
     print(pipeline)
     # Execute the aggregation query
     result = list(settings.MONGO_DB['records'].aggregate(pipeline, allowDiskUse=True))
-    if result:
+    print(result)
+    if result[0]["results"] != []:
         result,total_count = result[0].values()
     else:
         result = []

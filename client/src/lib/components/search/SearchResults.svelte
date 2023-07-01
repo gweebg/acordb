@@ -92,7 +92,9 @@
 
         <header class="flex flex-row items-center">
             <h1 class="text-3xl font-bold">Search Results</h1>
-            <p class="ml-auto opacity-70">({totalPages * items_per_page} Results)</p>
+            {#if !loading}
+                <p class="ml-auto opacity-70">({totalPages * items_per_page} Results)</p>
+            {/if}
         </header>
         <div class="divider mt-0"></div>
 

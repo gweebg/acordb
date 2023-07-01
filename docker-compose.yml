@@ -7,6 +7,7 @@ services:
       - 8000:8000
     volumes:
       - api-data:/code/data
+      - ./out:/code/out
     networks:
       - lost
     depends_on:
@@ -23,8 +24,8 @@ services:
       - lost
     environment:
       - PORT=80
-      # - PUBLIC_API_URL=http://eivarin.xyz:8000
-      - PUBLIC_API_URL=http://127.0.0.1:8000
+      - PUBLIC_API_URL=http://eivarin.xyz:8000
+      # - PUBLIC_API_URL=http://localhost:8000
       - PRIVATE_API_URL=http://api-server:8000
     depends_on:
       - api-server
