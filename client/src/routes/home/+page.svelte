@@ -5,6 +5,7 @@
     import Statistics from "$lib/components/home/Statistics.svelte";
     import Footer from "$lib/components/Footer.svelte";
     import Navbar from "$lib/components/home/Navbar.svelte";
+    import SearchForm from "$lib/components/search/SearchForm.svelte";
 
     export let data;
 
@@ -25,7 +26,7 @@
     <div>
 
         <!-- Advanced Search -->
-        <AdvancedSearchForm/>
+        <SearchForm fields={data.fields}/>
         <!-- Recently Added Rulings -->
         <RecentlyAdded/>
         <!-- Statistics -->

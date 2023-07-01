@@ -20,7 +20,7 @@
         page_number = page_number || 0;
         query_params["limit"] = items_per_page;
         query_params["skip"] = (page_number-1)*query_params["limit"];
-        console.log(query_params);
+
         const response = await fetch(`${PUBLIC_API_URL}/acordaos?${new URLSearchParams(query_params)}`)
         const obj = await response.json();
 

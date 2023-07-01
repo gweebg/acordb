@@ -47,8 +47,6 @@ export const load = async ({cookies, locals}) => {
     if (authCookie) requestData = await fetchRequests(authCookie);
     else throw redirect(301, '/login');
 
-    console.log(requestData);
-
     return {
         user: locals.user,
         data: requestData

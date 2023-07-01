@@ -14,45 +14,45 @@ export const load = async ({ locals }) => {
 
 };
 
-export const actions = {
-
-    setAdmin: async ({ cookies, request }) => {
-
-        console.log("Action!");
-
-        const authCookie = cookies.get('AuthorizationToken');
-
-        if (authCookie) {
-
-            const data = await request.formData();
-            const userId = data.get('id');
-
-            let response;
-            try {
-
-                response = await fetch(
-                    `${PUBLIC_API_URL}/accounts/user/${userId}/makeadmin`,
-                    {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/json', 'Authorization': authCookie },
-                    }
-                );
-
-            } catch (err) {
-                return {
-                    success: false,
-                    message: "There is a problem on our side, please try again later."
-                }
-            }
-
-            if (!response.ok) {
-                return {
-                    success: false,
-                    message: "User not found."
-                }
-            }
-
-        }
-
-    }
-};
+// export const actions = {
+//
+//     setAdmin: async ({ cookies, request }) => {
+//
+//         console.log("Action!");
+//
+//         const authCookie = cookies.get('AuthorizationToken');
+//
+//         if (authCookie) {
+//
+//             const data = await request.formData();
+//             const userId = data.get('id');
+//
+//             let response;
+//             try {
+//
+//                 response = await fetch(
+//                     `${PUBLIC_API_URL}/accounts/user/${userId}/makeadmin`,
+//                     {
+//                         method: 'POST',
+//                         headers: { 'Content-Type': 'application/json', 'Authorization': authCookie },
+//                     }
+//                 );
+//
+//             } catch (err) {
+//                 return {
+//                     success: false,
+//                     message: "There is a problem on our side, please try again later."
+//                 }
+//             }
+//
+//             if (!response.ok) {
+//                 return {
+//                     success: false,
+//                     message: "User not found."
+//                 }
+//             }
+//
+//         }
+//
+//     }
+// };

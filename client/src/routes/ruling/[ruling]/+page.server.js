@@ -38,9 +38,14 @@ export async function load({ params, locals, cookies }) {
     if (locals.user) user = locals.user;
     else user = null;
 
+    // TODO FIX THIS!!
+    let versions;
+    if (ruling.length === 2) versions = [ruling.pop()]
+    else versions = ruling.pop()
+
     return {
-        ruling: ruling[0],
-        versions: ruling.shift(),
+        ruling: ruling[ruling.length - 1],
+        versions: versions,
         user: user,
         favorite: isFavorited
     };

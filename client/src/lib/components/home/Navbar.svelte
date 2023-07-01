@@ -30,8 +30,8 @@
 
                 <!-- Controls -->
                 <div class="ml-4">
-                    <a href="/home" class="btn btn-ghost">Advanced Search</a>
-                    <a href="#stats" class="btn btn-ghost">Statistics</a>
+                    <a href="/search" class="btn btn-ghost">Advanced Search</a>
+                    <a href="/home#stats" class="btn btn-ghost">Statistics</a>
                 </div>
 
             </div>

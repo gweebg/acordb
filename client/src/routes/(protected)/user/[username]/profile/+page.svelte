@@ -237,20 +237,22 @@
         </div>
 
 
-        <!-- Make Admin -->
-        <div class="mt-4">
+        {#if data.user.is_administrator}
+            <!-- Make Admin -->
+            <div class="mt-4">
 
-            <div class="divider"></div>
+                <div class="divider"></div>
 
-            <!-- Header -->
-            <header>
-                <h3 class="text-xl font-bold pb-4">Make User Administrator</h3>
-                <p>Fill in the form bellow to turn any user into administator.</p>
-            </header>
+                <!-- Header -->
+                <header>
+                    <h3 class="text-xl font-bold pb-4">Make User Administrator</h3>
+                    <p>Fill in the form bellow to turn any user into administator.</p>
+                </header>
 
-            <SetAdmin/>
+                <SetAdmin/>
 
-        </div>
+            </div>
+        {/if}
 
     </div>
 </div>

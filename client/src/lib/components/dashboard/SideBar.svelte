@@ -33,7 +33,6 @@
         {#if isAdmin}
 
             <SideBarItem params={{text: "Profile", iconPath: "/icons/menu/profile.svg", isActive: active.profile, link: `${basePath}/profile`}}/>
-            <SideBarItem params={{text: "Your Rulings", iconPath: "/icons/menu/ruling.svg", isActive: active.rulings, link: `${basePath}/rulings`}}/>
             <SideBarItem params={{text: "Favourites", iconPath: "/icons/menu/favourites.svg", isActive: active.favourites, link: `${basePath}/favorites`}}/>
             <SideBarItem params={{text: "Requests", iconPath: "/icons/menu/request_in.svg", isActive: active.requests, link: `${basePath}/requests`}}/>
 

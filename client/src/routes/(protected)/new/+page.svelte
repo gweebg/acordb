@@ -7,8 +7,10 @@
     import ContentSection from "$lib/components/new/ContentSection.svelte";
     import ReviewSection from "$lib/components/new/ReviewSection.svelte";
     import Footer from "$lib/components/Footer.svelte";
+    import {goto} from "$app/navigation";
 
     export let data;
+    export let form;
 
     let sections = { general: true, content: false, details: false };
     let buttonContent = "Next";
@@ -136,6 +138,9 @@
                 {:else}
 
                     <GeneralSection fields={data.fields}/>
+                    {#if form?.success === false}
+                        <small class="text-error">{form?.message}</small>
+                    {/if}
                     
                 {/if}
             </div>
