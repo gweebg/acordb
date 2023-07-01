@@ -124,11 +124,9 @@ def google_auth_token(request):
             email = decoded_token['email']
             account = Account.objects.filter(email=email).first()
             if account is None:
-                if 'filiation' not in data:
-                    return JsonResponse({'error': 'Missing filiation for new account'}, status=400)
                 first_name = decoded_token['given_name']
                 last_name = decoded_token['family_name']
-                filiation = data.get('filiation')
+                filiation = "google"
                 account=Account.objects.create_consumer(email,first_name,last_name,"akdsklhnyauftbg121341",filiation)
                 account.set_unusable_password()
                 account.save()
