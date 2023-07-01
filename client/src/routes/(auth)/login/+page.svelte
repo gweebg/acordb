@@ -44,6 +44,7 @@
 </script>
 
 <svelte:head>
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
     <title>
         Acordb - Sign In
     </title>
@@ -152,9 +153,6 @@
         </div>
     </div>
 </div>
-<svelte:head>
-    <script src="https://accounts.google.com/gsi/client" async defer></script>
-</svelte:head>
 
 <div id="g_id_onload"
     data-client_id="173987535517-ea5ko2je1d80uqqmi6ipo743kaula7nb.apps.googleusercontent.com"

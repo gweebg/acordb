@@ -1,8 +1,8 @@
 import { PUBLIC_API_URL } from '$env/static/public';
 
-import { SvelteKitAuth } from "@auth/sveltekit"
-import Google from '@auth/core/providers/google';
-import Credentials from "@auth/core/providers/credentials"
+// import { SvelteKitAuth } from "@auth/sveltekit"
+// import Google from '@auth/core/providers/google';
+// import Credentials from "@auth/core/providers/credentials"
 
 // export const handle = SvelteKitAuth({
 //   providers: [

@@ -7,23 +7,18 @@ export const POST = async (requestEvent) => {
     const credential = result.credential;
     console.log(result)
     console.log(credential)
+    let b = JSON.stringify({ token: credential, filiation: "DI" });
     fetch(`${PUBLIC_API_URL}/accounts/login/google/`, {
         method: 'POST',
         headers: {
-            'Content-Type': 'application/json',
-            'X-CSRFToken': result.g_csrf_token,
+            'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ token: credential }),
-        credentials: 'include'
+        body: b,
     })
-        // .then((res) => res.json())
+        .then((res) => res.json())
         .then((data) => {
-            // console.log(data);
-            // if (data.error) {
-            //     console.error(data.error);
-            // } else {
-            //     window.location.href = '/home';
-            // }
+            console.log(data);
+            //TRABALHA GWEE(E)
         })
         .catch((err) => {
             console.error(err);

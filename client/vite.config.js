@@ -18,6 +18,6 @@ export default defineConfig({
 	},
 	plugins: [sveltekit()],
 	ssr: {
-        noExternal: ['sveltekit-flash-message', '@auth/sveltekit', '@vitejs/plugin-basic-ssl'],
+        noExternal: ['sveltekit-flash-message', '@vitejs/plugin-basic-ssl'],
     },
 });
