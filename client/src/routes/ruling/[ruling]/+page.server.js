@@ -84,5 +84,54 @@ export const actions = {
                 return fail(400, data.toString());
             }
         }
-    }
+    },
+
+    suggest: async (event) => {
+
+        const authCookie = event.cookies.get('AuthorizationToken');
+
+        if (authCookie) {
+
+            const data = await event.request.formData();
+            console.log(data);
+            const id = data.get('id');
+
+            let dataAsJson = {"Descritores": []};
+
+            data.forEach((value, key) => {
+
+                if (key.includes("Descritores[")) {
+                    dataAsJson["Descritores"].push(value)
+                }
+                else if (!Reflect.has(dataAsJson, key)){
+                    dataAsJson[key] = value;
+                }
+
+            });
+
+            delete dataAsJson.id;
+
+            let response;
+            try {
+
+                response = await fetch(
+                    `${PUBLIC_API_URL}/acordaos/changeRequests/${id}/`,
+                    {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json', 'Authorization': authCookie },
+                        body: JSON.stringify(dataAsJson)
+                    });
+
+            } catch (err) {
+                return fail(500, "Server is down.");
+            }
+
+            if (!response.ok) {
+                const data = await response.json();
+                return fail(400, data.toString());
+            }
+        }
+    },
+
+
 };

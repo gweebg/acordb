@@ -4,13 +4,11 @@
 
     import { capitalize } from "$lib/scripts/utils.js";
     import FavoriteButton from "$lib/components/FavoriteButton.svelte";
-    import SuggestButton from "$lib/components/SuggestButton.svelte";
+    import SuggestButton from "$lib/components/sugestion/SuggestButton.svelte";
 
     export let fields;
     export let isAuthenticated;
     export let isFav;
-
-    console.log(isFav);
 
 </script>
 
@@ -40,7 +38,7 @@
 
             </FavoriteButton>
 
-            <SuggestButton>
+            <SuggestButton ruling={fields.data} id={fields.id}>
 
                 <button class="btn btn-sm">Suggest a Change</button>
 

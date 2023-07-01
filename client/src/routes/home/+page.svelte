@@ -1,5 +1,5 @@
 <script>
-
+    import { page } from '$app/stores';
     import RecentlyAdded from "$lib/components/home/RecentlyAdded.svelte";
     import Statistics from "$lib/components/home/Statistics.svelte";
     import Footer from "$lib/components/Footer.svelte";

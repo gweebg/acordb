@@ -13,6 +13,7 @@
     let currentPage = 1;
     let totalPages = 0;
     let visiblePages = 10;
+    let totalCount = 0;
 
     let pages = [];
 
@@ -35,6 +36,7 @@
         loading = true;
         let res = await getSearchResults(query, currentPage);
         list = res["data"];
+        totalCount = res["count"];
         totalPages =  Math.ceil(res["count"] / items_per_page)
         
 
@@ -93,7 +95,7 @@
         <header class="flex flex-row items-center">
             <h1 class="text-3xl font-bold">Search Results</h1>
             {#if !loading}
-                <p class="ml-auto opacity-70">({totalPages * items_per_page} Results)</p>
+                <p class="ml-auto opacity-70">({totalCount} results spread over {totalPages} pages)</p>
             {/if}
         </header>
         <div class="divider mt-0"></div>
