@@ -8,6 +8,7 @@
 ./server/acordãos/__pycache__
 ./server/venv
 .env
+./out
 ./.vscode
 __pycache__
 norm/acordãos_in/atco1_acordaos.json
