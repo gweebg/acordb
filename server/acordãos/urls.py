@@ -16,7 +16,6 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path,include,re_path
-from drf_social_oauth2 import urls
 from rest_framework_swagger.views import get_swagger_view
 from drf_yasg.views import get_schema_view
 from drf_yasg import openapi
@@ -43,9 +42,6 @@ urlpatterns = [
     path('redoc/', schema_view.with_ui('redoc', cache_timeout=0), name='schema-redoc'),
     path("admin/", admin.site.urls),
     
-    path('api-auth/', include('rest_framework.urls')),
-    path('social-auth/', include('social_django.urls', namespace='social')),
-    path('api-auth/', include('drf_social_oauth2.urls',namespace='drf')),
     path('accounts/', include('accounts.urls',namespace="accounts")),
     path('favorites/', include('favorites.urls',namespace="favorites")),
     path('acordaos/', include('records.urls',namespace="records")),

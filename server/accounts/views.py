@@ -1,5 +1,3 @@
-import requests
-from django.conf import settings
 from rest_framework import mixins, permissions, status, viewsets
 from rest_framework.response import Response
 from rest_framework.views import APIView
@@ -9,11 +7,14 @@ from favorites.models import Favorites
 from django.shortcuts import get_object_or_404
 from .permissions import IsUser,IsAdministrator
 from .serializers import (  AccountSerializer,
-                            PasswordBasedLoginSerializer,
-                            SocialMediaLoginSerializer,
                             APIKeySerializer)
 from django.db.models import Q,Value
 from django.db.models.functions import Concat
+from rest_framework_simplejwt.tokens import RefreshToken
+from django.views.decorators.csrf import csrf_exempt
+import jwt
+from django.http import JsonResponse
+import json
 
 
 class CurrentUser(mixins.ListModelMixin, 
@@ -106,53 +107,29 @@ class GenerateApiKey(APIView):
             return Response({'key':key[1]},status=status.HTTP_201_CREATED)
         return Response(status=status.HTTP_400_BAD_REQUEST)
             
-            
-
-
-class PasswordBasedLogin(APIView):
-    
-    permission_classes=[permissions.AllowAny]
-    
-    def post(self,request):
-        
-        reg_serializer=PasswordBasedLoginSerializer(data=request.data)
-        
-        if reg_serializer.is_valid():
-            
-            r=requests.post('http://127.0.0.1:8000/api-auth/token', data = {
-                    'username':request.data['username'],
-                    'password':request.data['password'],
-                    'client_id':settings.DEFAULT_CLIENT_ID,
-                    'client_secret':settings.DEFAULT_CLIENT_SECRET,
-                    'grant_type':'password'
-                })
-            return Response(r.json(),status=r.status_code)
-        
-class FacebookBasedLogin(APIView):
-    permission_classes=[permissions.AllowAny]
-    def post(self,request):
-        reg_serializer=SocialMediaLoginSerializer(data=request.data)
-        if reg_serializer.is_valid():
-            r=requests.post('http://127.0.0.1:8000/api-auth/convert-token', data = {
-                    'token': request.data["token"],
-                    'backend': "facebook",
-                    'client_id':settings.DEFAULT_CLIENT_ID,
-                    'client_secret':settings.DEFAULT_CLIENT_SECRET,
-                    'grant_type':'convert_token'
-                })
-            return Response(r.json(),status=r.status_code)
-class GoogleBasedLogin(APIView):
-    permission_classes=[permissions.AllowAny]
-    def post(self,request):
-        reg_serializer=SocialMediaLoginSerializer(data=request.data)
-        if reg_serializer.is_valid():
-            r=requests.post('http://127.0.0.1:8000/api-auth/convert-token', data = {
-                    'token': request.data["token"],
-                    'backend': "google-oauth2",
-                    'client_id':settings.DEFAULT_CLIENT_ID,
-                    'client_secret':settings.DEFAULT_CLIENT_SECRET,
-                    'grant_type':'convert_token'
-                })
-            return Response(r.json(),status=r.status_code)
-
-        
+@csrf_exempt
+def google_auth_token(request):
+    if request.method == 'POST':
+        try:
+            data = json.loads(request.body)
+            google_token = data.get('token')
+            decoded_token = jwt.decode(google_token.encode(), verify=False)
+            email = decoded_token['email']
+            account = Account.objects.filter(email=email).first()
+            if account is None:
+                if 'filiation' not in data:
+                    return JsonResponse({'error': 'Missing filiation for new account'}, status=400)
+                first_name = decoded_token['given_name']
+                last_name = decoded_token['family_name']
+                filiation = data.get('filiation')
+                account=Account.objects.create_consumer(email,first_name,last_name,"akdsklhnyauftbg121341",filiation)
+                account.set_unusable_password()
+                account.save()
+            refresh = RefreshToken.for_user(account)
+            return JsonResponse({ 'refresh': str(refresh),'access': str(refresh.access_token)}, status=200)
+                    
+        except (jwt.DecodeError, jwt.ExpiredSignatureError) as e:
+            return JsonResponse({'error': 'Invalid token'}, status=400)
+        except json.JSONDecodeError as e:
+            return JsonResponse({'error': 'Invalid JSON data'}, status=400)
+    return JsonResponse({'error': 'Invalid request method'}, status=405)

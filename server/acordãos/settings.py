@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 from pathlib import Path
 from pymongo import MongoClient
 import os
+import datetime
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -45,9 +46,6 @@ INSTALLED_APPS = [
     'rest_framework_api_key',
     "rest_framework_swagger",
     'drf_yasg',
-    'oauth2_provider',
-    'social_django',
-    'drf_social_oauth2',
     'corsheaders',
     'drf_spectacular',
     
@@ -59,29 +57,31 @@ AUTH_USER_MODEL='accounts.Account'
 
 AUTHENTICATION_BACKENDS = (
     'accounts.authentication.APIKeyAuthenticationBackend',
-    'social_core.backends.google.GoogleOAuth2',
-    'social_core.backends.facebook.FacebookAppOAuth2',
-    'social_core.backends.facebook.FacebookOAuth2',
-    'social_core.backends.github.GithubOAuth2',
-    
-    'drf_social_oauth2.backends.DjangoOAuth2',
     'django.contrib.auth.backends.ModelBackend',
 )
+
+SITE_ID = 1
+ACCOUNT_EMAIL_VERIFICATION = 'none'
+
 REST_FRAMEWORK = {
    'DEFAULT_AUTHENTICATION_CLASSES': (
-       'accounts.authentication.APIKeyAuthenticationBackend',
-       'oauth2_provider.contrib.rest_framework.OAuth2Authentication',  
-       'drf_social_oauth2.authentication.SocialAuthentication',
+        'accounts.authentication.APIKeyAuthenticationBackend',
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
    ),
    
    'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema'
 }
 
+
+# JWT settings
+SIMPLE_JWT = {
+    'ACCESS_TOKEN_LIFETIME': datetime.timedelta(days=31),
+    'REFRESH_TOKEN_LIFETIME': datetime.timedelta(days=365),
+}
+
+
 SPECTACULAR_SETTINGS = {
     'TITLE': 'Acordb Server'
-}
-OAUTH2_PROVIDER = {
-    'ACCESS_TOKEN_EXPIRE_SECONDS': 26784000,
 }
 
 CORS_ORIGIN_ALLOW_ALL = True
@@ -116,14 +116,11 @@ TEMPLATES = [
                 "django.template.context_processors.request",
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
-                
-                'social_django.context_processors.backends',
-                'social_django.context_processors.login_redirect',
             ],
         },
     },
 ]
-
+ACCOUNT_AUTHENTICATED_LOGIN_REDIRECTS=False
 WSGI_APPLICATION = "acordãos.wsgi.application"
 
 
@@ -185,36 +182,23 @@ STATICFILES_DIRS = [
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
-SOCIAL_AUTH_URL_NAMESPACE = 'accounts:social'
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
-# Facebook configuration
-SOCIAL_AUTH_FACEBOOK_KEY = '172096125699052'
-SOCIAL_AUTH_FACEBOOK_SECRET = '4129a410c152648a9775efa402f9eb98'
 
-# Define SOCIAL_AUTH_FACEBOOK_SCOPE to get extra permissions from Facebook.
-# Email is not sent by default, to get it, you must request the email permission.
-SOCIAL_AUTH_FACEBOOK_SCOPE = ['email']
-SOCIAL_AUTH_FACEBOOK_PROFILE_EXTRA_PARAMS = {
-   'fields': 'id, name, email'
+
+
+# Facebook API settings
+SOCIALACCOUNTS = {
+    'facebook': {
+        'client_id': '172096125699052',
+        'secret': '4129a410c152648a9775efa402f9eb98',
+    },
+    'google': {
+        'client_id': '316555827922-suhft2pc84e4q4bfr00erb4h4jbid7ac.apps.googleusercontent.com',
+        'secret': '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',
+    }
 }
-SOCIAL_AUTH_USER_FIELDS=['email','first_name','username','password']
-
-SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = "316555827922-suhft2pc84e4q4bfr00erb4h4jbid7ac.apps.googleusercontent.com"
-SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = "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"
-
-SOCIAL_AUTH_GITHUB_KEY = 'c048c9348cc4806b54f6'
-SOCIAL_AUTH_GITHUB_SECRET = 'f441631759055d5b2eec7871bd9b14457d3d7780'
-
-# Define SOCIAL_AUTH_GOOGLE_OAUTH2_SCOPE to get extra permissions from Google.
-SOCIAL_AUTH_GOOGLE_OAUTH2_SCOPE = [
-   'https://www.googleapis.com/auth/userinfo.email',
-   'https://www.googleapis.com/auth/userinfo.profile',
-]
-
-DEFAULT_CLIENT_ID="TIB1j6dKXtEQoB3kAp8dXTsYlBkUfG3GkLmO1Oph"
-DEFAULT_CLIENT_SECRET="qlBGPrFBzH05tJxciMzfPCVRIrdFacDXS3GAacCixyQWBLfOB6LP4iMSEr77nu7s80X84KCQZuxT6h4Z0Qa7WCjLJFcCOho37STViWVo1vA55tOoYqdb2vznQtl0ZN7d"
 
 MONGO_DB = MongoClient('mongodb://mongodb:27017/',socketTimeoutMS=500000)['acordaos']
 MONGO_DB['records'].create_index([('id_acordao', 1), ('record_added_at', -1)])

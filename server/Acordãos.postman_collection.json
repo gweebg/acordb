@@ -893,7 +893,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"username\":\"lumafepe@gmail.com\",\n    \"password\":\"password\"\n}",
+					"raw": "{\n    \"email\":\"admin@admin.pt\",\n    \"password\":\"admin\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -909,6 +909,70 @@
 						"accounts",
 						"login",
 						"password",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "add google Account",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"token\":\"eyJhbGciOiJSUzI1NiIsImtpZCI6IjkzNDFkZWRlZWUyZDE4NjliNjU3ZmE5MzAzMDAwODJmZTI2YjNkOTIiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJodHRwczovL2FjY291bnRzLmdvb2dsZS5jb20iLCJuYmYiOjE2ODgxNzA5OTQsImF1ZCI6IjE3Mzk4NzUzNTUxNy1lYTVrbzJqZTFkODB1cXFtaTZpcG83NDNrYXVsYTduYi5hcHBzLmdvb2dsZXVzZXJjb250ZW50LmNvbSIsInN1YiI6IjExMjgxMDI3NjIxODEwMjQyMTMxMSIsImVtYWlsIjoicm9kcmlnb21tcGVyZWlyYTMwOUBnbWFpbC5jb20iLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwiYXpwIjoiMTczOTg3NTM1NTE3LWVhNWtvMmplMWQ4MHVxcW1pNmlwbzc0M2thdWxhN25iLmFwcHMuZ29vZ2xldXNlcmNvbnRlbnQuY29tIiwibmFtZSI6IlJvZHJpZ28gUGVyZWlyYSIsInBpY3R1cmUiOiJodHRwczovL2xoMy5nb29nbGV1c2VyY29udGVudC5jb20vYS9BQWNIVHRjUjZpclVnWDJIZGxYeUpfekE2SlFiRUFEVS1iWllyZmxIZVlWLW1hOGNxZz1zOTYtYyIsImdpdmVuX25hbWUiOiJSb2RyaWdvIiwiZmFtaWx5X25hbWUiOiJQZXJlaXJhIiwiaWF0IjoxNjg4MTcxMjk0LCJleHAiOjE2ODgxNzQ4OTQsImp0aSI6Ijc1Y2E0MDg0M2I1OGYwM2Y3NDM2MjBhMGJiNGRiMTYxMmIwMTIwZDQifQ.PmvADr-KwEZ0yh7xGejbo1z-GQU9FLWbp3H7gEDLkwd9z6IseuOyFQcpZ1W-OGWlI3KJVAkFE0o2zv-cRhgDaSREceIueYehsRa5sRoKDGDuAe6rYHS-HrpavGoBxRXdrnBsNIbvc174hNjGrA-_T4fkZMmrBcP7lsXWermc_BpeuaBq5b8rW-MBgSiNzOiJPW8xILkUadalqgaAQpVXHrfEK9q8WWjjNJ_5KQ6jJ56rJ7OoVzkHuT3SI-0ml4UPl6mxaLcGa_2L6MBWvdZpWotwMeKVewImEin5zVsYGPQ3rcDbwyQlhqG3DsJ3vwf8fI76NXva032rnYm3eJO9BQ\",\n    \"filiation\":\"barista\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/accounts/login/google/",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"accounts",
+						"login",
+						"google",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "google Account login",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"token\":\"eyJhbGciOiJSUzI1NiIsImtpZCI6IjkzNDFkZWRlZWUyZDE4NjliNjU3ZmE5MzAzMDAwODJmZTI2YjNkOTIiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJodHRwczovL2FjY291bnRzLmdvb2dsZS5jb20iLCJuYmYiOjE2ODgxNzMyOTUsImF1ZCI6IjE3Mzk4NzUzNTUxNy1lYTVrbzJqZTFkODB1cXFtaTZpcG83NDNrYXVsYTduYi5hcHBzLmdvb2dsZXVzZXJjb250ZW50LmNvbSIsInN1YiI6IjExMjgxMDI3NjIxODEwMjQyMTMxMSIsImVtYWlsIjoicm9kcmlnb21tcGVyZWlyYTMwOUBnbWFpbC5jb20iLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwiYXpwIjoiMTczOTg3NTM1NTE3LWVhNWtvMmplMWQ4MHVxcW1pNmlwbzc0M2thdWxhN25iLmFwcHMuZ29vZ2xldXNlcmNvbnRlbnQuY29tIiwibmFtZSI6IlJvZHJpZ28gUGVyZWlyYSIsInBpY3R1cmUiOiJodHRwczovL2xoMy5nb29nbGV1c2VyY29udGVudC5jb20vYS9BQWNIVHRjUjZpclVnWDJIZGxYeUpfekE2SlFiRUFEVS1iWllyZmxIZVlWLW1hOGNxZz1zOTYtYyIsImdpdmVuX25hbWUiOiJSb2RyaWdvIiwiZmFtaWx5X25hbWUiOiJQZXJlaXJhIiwiaWF0IjoxNjg4MTczNTk1LCJleHAiOjE2ODgxNzcxOTUsImp0aSI6IjMzNjAzYTlmODQxNTE2MjNhNmNkNmRlM2FmYWQwZDY4NDMwOThhMGYifQ.NR64F1UGTNJy5W7-fPQ4d12Rxfhi1rBg3DuUUQ6Ft4DWHJgTT0R1q6pzicMA2CztForwdBi_2mX7Cj_jyS_OnbaQQM4-W2umWvXJKiaAQMo-jQEpQund1dcaONfr4Zll5vX5BPGfk0aAH4WRDJocOv0BC-uGsJV4_kpOl30SNjAGIndTEQs96reA1MRL1UieDNOfLW4pkVo_BhY6QnZUZL41j2mIsX1tRuCcoF488_kcT8dHTone0d6RQ8mSSv6TMBNYS9z-XUOXTp_vTOK27oXUsesCz9Svet1Dmm9eE3rvhsSD_rqu420ttCbxN5opTDHvTpgg67lI6e7CO5e5mw\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/accounts/login/google/",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"accounts",
+						"login",
+						"google",
 						""
 					]
 				}
