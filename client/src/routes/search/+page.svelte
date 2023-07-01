@@ -1,18 +1,24 @@
 <script>
     import { page } from '$app/stores';
-    import Footer from "$lib/components/Footer.svelte";
-	import AdvancedSearchForm from '$lib/components/home/AdvancedSearchForm.svelte';
+
+	import SearchResults from '$lib/components/search/SearchResults.svelte';
+    import SearchForm from "$lib/components/search/SearchForm.svelte";
     import Navbar from "$lib/components/home/Navbar.svelte";
-	import SearchResults from '$lib/components/search/searchResults.svelte';
+    import Footer from "$lib/components/Footer.svelte";
 
     export let data;
 
     let query = {};
 
-    page.subscribe((value) => {
-        for (const key of value.url.searchParams.keys()) {
-            query[key] = value.url.searchParams.get(key);
+    $page.url.searchParams.forEach((value, key) => {
+
+        if (key === "tags[]") {
+            if (!query.tags) query["tags"] = [];
+            query.tags.push(value);
         }
+
+        else query[key] = value;
+
     });
 
     const isAuthenticated = !!data.user;
@@ -34,7 +40,7 @@
     <!-- Navbar -->
     <Navbar isAuthenticated={isAuthenticated} isAdmin={isAdmin}/>
 
-    <AdvancedSearchForm/>
+    <SearchForm fields={data.fields}/>
 
     <SearchResults query={query}/>
 

@@ -1,6 +1,23 @@
+import {fetchFields} from "$lib/scripts/utils.js";
+
 export const load = async ({ locals }) => {
 
-    if (locals.user) return {isAuthed: true, isAdmin: locals.user.is_administrator};
-    else return {isAuthed: false};
+    const fields = await fetchFields();
+
+    if (locals.user) {
+        return {
+            isAuthed: true,
+            isAdmin: locals.user.is_administrator,
+            fields: fields
+        }
+    }
+
+    else {
+        return {
+            isAuthed: false,
+            isAdmin: false,
+            fields: fields
+        }
+    }
 
 };

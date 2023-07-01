@@ -1,7 +1,4 @@
 <script>
-	import SmallCard from "../record/SmallCard.svelte";
-
-
 
 </script>
 
