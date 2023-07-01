@@ -1,8 +1,10 @@
 import { sveltekit } from '@sveltejs/kit/vite';
 import { defineConfig } from 'vite';
+import basicSsl from '@vitejs/plugin-basic-ssl'
+
+
 
 export default defineConfig({
-	plugins: [sveltekit()],
 	server: {
 		host: "0.0.0.0",
 		hmr: {
@@ -12,8 +14,10 @@ export default defineConfig({
 		watch: {
 		  usePolling: true,
 		},
+		// https: true
 	},
+	plugins: [sveltekit()],
 	ssr: {
-        noExternal: ['sveltekit-flash-message'],
+        noExternal: ['sveltekit-flash-message', '@auth/sveltekit', '@vitejs/plugin-basic-ssl'],
     },
 });
