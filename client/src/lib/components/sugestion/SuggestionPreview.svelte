@@ -143,7 +143,7 @@
 
     {/each}
 
-    <button onclick="addF.showModal()" class="btn w-full btn-sm btn-neutral"><span class="text-xl">+</span></button>
+    <button type="button" onclick="addF.showModal()" class="btn btn-sm"><span class="">New Field +</span></button>
 
     <dialog id="addF" class="modal modal-bottom sm:modal-middle">
 
@@ -185,7 +185,7 @@
             {/if}
 
             <div class="modal-action">
-                <button class="btn btn-sm btn-accent" on:click={newField}>
+                <button type="button" class="btn btn-sm btn-accent" on:click={newField}>
                     Create
                 </button>
             </div>

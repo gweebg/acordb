@@ -3,8 +3,11 @@
     import { toast } from "svelte-french-toast";
     import { enhance } from "$app/forms";
     import SuggestionPreview from "$lib/components/sugestion/SuggestionPreview.svelte";
+    import {body, inputs, process, tags, url} from "$lib/stores/form.js";
+    import jsonToFormData from "@ajoelp/json-to-formdata";
 
     export let ruling;
+    export let id;
 
     let changedRuling = ruling;
 
@@ -14,28 +17,21 @@
         duration: 5000
     };
 
-    const submitSuggestion = () => {
+    const submitSuggestion = async (event) => {
 
-        return async ({ result, update }) => {
+        event.preventDefault();
 
-            switch (result.type) {
+        changedRuling.id = id;
+        const formData = jsonToFormData(changedRuling);
 
-                case "success":
-                    toast.success("Suggestion made with success.", toastStyle);
-                    break;
+        await fetch('?/suggest', {
+            method: 'POST',
+            body: formData
+        });
 
-                case "invalid":
-                    toast.error("Something went wrong!", toastStyle);
-                    break;
+        toast.success("Suggestion made with success.", toastStyle);
+        document.getElementById("sug").close();
 
-                default:
-                    break;
-
-            }
-
-            document.getElementById("sug").close();
-            await update();
-        }
     }
 
     const handleChange = (event) => {
@@ -67,10 +63,16 @@
                 <div class="divider m-0"></div>
             </form>
 
-            <div class="mt-4">
-                <SuggestionPreview bind:ruling={changedRuling} on:valueChange={handleChange} />
-            </div>
+            <form action="?/suggest" method="POST" on:submit={submitSuggestion}>
 
+                <div class="mt-4">
+                    <SuggestionPreview bind:ruling={changedRuling} on:valueChange={handleChange} />
+                </div>
+
+                <div class="flex mt-4">
+                    <button class="btn ml-auto btn-accent btn-sm">Save</button>
+                </div>
+            </form>
         </div>
     </dialog>
 

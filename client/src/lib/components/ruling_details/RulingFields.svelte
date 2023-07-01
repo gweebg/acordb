@@ -38,7 +38,7 @@
 
             </FavoriteButton>
 
-            <SuggestButton ruling={fields.data}>
+            <SuggestButton ruling={fields.data} id={fields.id}>
 
                 <button class="btn btn-sm">Suggest a Change</button>
 
