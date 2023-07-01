@@ -144,7 +144,7 @@
                 <div id="g_id_onload"
                      data-client_id="173987535517-ea5ko2je1d80uqqmi6ipo743kaula7nb.apps.googleusercontent.com"
                      data-ux_mode="redirect"
-                     data-login_uri="http://localhost:5173/api/login/google">
+                     data-login_uri="http://localhost/api/login/google">
                 </div>
                 <div class="g_id_signin" data-type="standard"></div>
             </div>
