@@ -15,7 +15,7 @@
 
 <svelte:head>
     <title>
-        Acórdão {data.ruling.data.Processo}
+        Ruling {data.ruling.data.Processo}
     </title>
 </svelte:head>
 
@@ -26,9 +26,9 @@
 
     <!-- Main content -->
     <div>
-        <RulingView details={data}/>
+        <RulingView details={data} isRecord={true}/>
     </div>
 
     <Footer/>
-    
+
 </div>

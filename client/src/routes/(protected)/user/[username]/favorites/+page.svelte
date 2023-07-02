@@ -55,7 +55,7 @@
 
 
 <svelte:head>
-    <title>Acordb - Favorites</title>
+    <title>Acordb - Favoritos</title>
 </svelte:head>
 
 
@@ -81,12 +81,12 @@
             <div class="text-sm breadcrumbs">
                 <ul>
                     <li><p>Dashboard</p></li>
-                    <li><p>Favorites</p></li>
+                    <li><p>Favoritos</p></li>
                 </ul>
             </div>
 
 
-            <h2 class="text-3xl font-bold">Bookmarked Rulings</h2>
+            <h2 class="text-3xl font-bold">Acórdãos Guardados</h2>
             <div class="divider"></div>
 
         </header>
@@ -98,11 +98,11 @@
             {#if visible }
                 <div class="flex w-full h-14 rounded-xl gap-2">
 
-                    <p>{totalChecked} rulings selected</p>
+                    <p>{totalChecked} acórdãos selecionados</p>
 
                     <div class="ml-auto">
-                        <button class="btn btn-sm btn-accent" on:click={openMultiple}>Open All</button>
-                        <button class="btn btn-sm" on:click={uncheckAll}>Uncheck All</button>
+                        <button class="btn btn-sm btn-accent" on:click={openMultiple}>Abrir Todos</button>
+                        <button class="btn btn-sm" on:click={uncheckAll}>Desselecionar</button>
                     </div>
 
                 </div>
@@ -111,7 +111,7 @@
             <!-- If there is no favorites show alternative message. -->
             {#if data.data.length === 0}
 
-                <h2 class="text-xl flex justify-center">You should try adding some favorites!</h2>
+                <h2 class="text-xl flex justify-center">Não te esqueças que podes guardar acórdãos! É muito simples!</h2>
 
             {:else}
 
@@ -128,19 +128,19 @@
                                     <label>
                                         <input type="checkbox" class="checkbox mt-1" bind:checked={itemsChecked[i]}/>
                                     </label>
-                                    <h2 class="card-title">Favorite #{fav.id}</h2>
+                                    <h2 class="card-title">Favorito #{fav.id}</h2>
                                 </div>
 
                                 <!-- Card Description -->
                                 {#if fav.description.length === 0}
-                                    <p class="opacity-40">No description available.</p>
+                                    <p class="opacity-40">Nenhuma descrição disponível.</p>
                                 {:else}
                                     <p class="overflow-hidden nowrap truncate">{fav.description}</p>
                                 {/if}
 
                                 <!-- Card Controls -->
                                 <div class="card-actions justify-end">
-                                    <label for={fav.id} class="btn btn-sm mt-2">Details</label>
+                                    <label for={fav.id} class="btn btn-sm mt-2">Detalhes</label>
 
                                     <a href={"/ruling/" + fav.acordao} target="_blank" class="btn btn-accent btn-sm mt-2">
                                         <img src="/icons/hyperlink.svg" alt="redirect">

@@ -45,14 +45,14 @@
 
     <div class="divider mt-0"></div>
     <header class="flex flex-row mt-4">
-        <h1 class="text-lg">Viewing differences between original and requested:</h1>
+        <h1 class="text-lg">A ver diferenças entre o original e o sugerido:</h1>
         <div class="ml-auto">
             <div class="badge badge-accent">
-                Added
+                Adicionado
             </div>
 
             <div class="ml-2 badge badge-warning">
-                Removed
+                Removido
             </div>
         </div>
     </header>
@@ -70,19 +70,19 @@
 
     <div class="flex items-center">
 
-        <a href={"/record/" + details.acordao} class="text-xs opacity-80 underline">See ruling details</a>
+        <a href={"/record/" + details.acordao} class="text-xs opacity-80 underline">Ver detalhes do acórdão</a>
 
 
         {#if isAdmin}
 
             <form action="?/deny" method="POST" class="ml-auto mr-2">
                 <input type="text" class="hidden" value={details.id} name="id">
-                <button class="btn btn-sm btn-error">Deny</button>
+                <button class="btn btn-sm btn-error">Rejeitar</button>
             </form>
 
             <form action="?/accept" method="POST">
                 <input type="text" class="hidden" value={details.id} name="id">
-                <button class="btn btn-sm btn-accent">Accept</button>
+                <button class="btn btn-sm btn-accent">Aceitar</button>
             </form>
 
         {/if}

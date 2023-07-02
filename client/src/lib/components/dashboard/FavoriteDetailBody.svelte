@@ -28,7 +28,7 @@
     <div class="flex flex-row items-center">
 
         <!-- Title -->
-        <h2 class="text-xl">Favorite <span class="opacity-40">#{favData.id}</span></h2>
+        <h2 class="text-xl">Favorito <span class="opacity-40">#{favData.id}</span></h2>
 
         <!-- Controls -->
         <div class="ml-auto flex flex-row gap-1">
@@ -60,13 +60,13 @@
     {#if !isEditing}
 
         {#if favData.description.length === 0}
-            <p class="opacity-40">No description available.</p>
+            <p class="opacity-40">Nenhuma descrição disponível.</p>
         {:else}
             <p>{favData.description}</p>
         {/if}
 
         <div class="modal-action">
-            <label for={favData.id} class="btn btn-sm">Close</label>
+            <label for={favData.id} class="btn btn-sm">Fechar</label>
         </div>
 
     {:else}
@@ -78,13 +78,13 @@
             <textarea
                     id="description"
                     name="description"
-                    placeholder="Type a new description"
+                    placeholder="Escreve uma nova descrição"
                     bind:value={description}
                     class="textarea textarea-accent w-full"></textarea>
 
             <div class="modal-action">
-                <button class="btn btn-accent btn-sm mt-2">Save</button>
-                <label for={favData.id} class="btn btn-sm mt-2">Close</label>
+                <button class="btn btn-accent btn-sm mt-2">Guardar</button>
+                <label for={favData.id} class="btn btn-sm mt-2">Fechar</label>
             </div>
 
         </form>

@@ -7,9 +7,16 @@
     import Ruling from "$lib/components/ruling/Ruling.svelte";
 
     export let details;
+    export let isRecord;
 
-    const { ruling, versions, user } = details;
+
+    const { ruling, user } = details;
     const { added_by, added_at, acordao, tags, data } = ruling;
+
+    let versions = [];
+    if (!isRecord) {
+        versions = details.versions;
+    }
 
     let fields = Object.keys(data);
     fields = fields.filter((field) => {
@@ -18,6 +25,7 @@
     })
 
     const auth = user !== null;
+
 </script>
 
 
@@ -27,30 +35,32 @@
 
     <div class="flex gap-6 mt-4">
 
-        <RulingFields fields={{fields: fields, data: data, id: acordao}} isAuthenticated={auth} isFav={details.favorite} />
+        <RulingFields fields={{fields: fields, data: data, id: acordao}} isAuthenticated={auth} isFav={details.favorite} {isRecord}/>
 
         <RulingContent content={data}/>
 
     </div>
 
-    <div class="mt-10">
-        <h2 class="font-bold text-xl">Other Versions</h2>
-        <div class="divider mt-0"></div>
+    {#if !isRecord}
 
-        {#if versions.length > 0}
+        <div class="mt-10">
+            <h2 class="font-bold text-xl">Outras Versões</h2>
+            <div class="divider mt-0"></div>
 
-            {#each versions as ruling}
-                <Ruling ruling={ruling}/>
-            {/each}
+            {#if versions.length > 0}
 
-        {:else}
+                {#each versions as ruling}
+                    <Ruling ruling={ruling} isRecord={true}/>
+                {/each}
 
-            <p>There are no other versions of this ruling.</p>
+            {:else}
 
-        {/if}
+                <p>Não existem outras versões para este acórdão.</p>
 
+            {/if}
+        </div>
 
-    </div>
+    {/if}
 
     <div class="mt-10">
         <div class="divider"></div>

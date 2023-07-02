@@ -7,15 +7,14 @@ export const convert = (data) => {
 
     for (const key in asJson) {
 
-        if (key.endsWith("[value]")) {
+        // Fields array handling.
+        if (key.endsWith("[value][field]")) {
             let id = key.slice(7, 8);
             let actualKey = asJson[key];
-
-            let value = asJson[`fields[${id}][value][input]`];
-
-            result[actualKey] = value;
+            result[actualKey] = asJson[`fields[${id}][value][value]`];
         }
 
+        // Body handling.
         if (key.endsWith("[summary]")) {
             result["Sumário"] = asJson[key];
         }
@@ -28,6 +27,7 @@ export const convert = (data) => {
             result["Decisão"] = asJson[key];
         }
 
+        // Others
         if (key === "process") {
             result["Processo"] = asJson[key];
         }
@@ -36,6 +36,7 @@ export const convert = (data) => {
             result["url"] = asJson[key];
         }
 
+        // Tags
         if (key.startsWith("tags")) {
             result["Descritores"].push(asJson[key]);
         }

@@ -43,3 +43,5 @@ export const fetchFields = async () => {
 }
 
 export const checkValue = (value) => { return value || "N/A" }
+
+export const normalizeString = (string) => {return string.normalize("NFD").replace(/[\u0300-\u036f]/g, "")}

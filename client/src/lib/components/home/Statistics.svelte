@@ -50,15 +50,15 @@
 
     <div class="flex justify-between">
 
-        <h2 class="text-3xl font-bold">Service Statistics</h2>
+        <h2 class="text-3xl font-bold">Estatísticas do Serviço</h2>
 
-        <small class="opacity-40">Updated at {date} </small>
+        <small class="opacity-40">Atualizado em {date} </small>
 
     </div>
 
 
     <div class="opacity-60">
-        <p>In the area you can see general statistics about Accordb.</p>
+        <p>Nesta área podes ver algumas estatísticas gerais sobre o Acordb.</p>
     </div>
 
     <div class="divider"></div>
@@ -71,7 +71,7 @@
                 <div class="stat-figure text-primary">
                     <img src="/icons/stats/file.svg" alt="file">
                 </div>
-                <div class="stat-title">Total Rulings</div>
+                <div class="stat-title">#Acórdãos Totais</div>
                 <div class="stat-value text-accent">{stats.Processos}</div>
             </div>
 
@@ -79,7 +79,7 @@
                 <div class="stat-figure text-primary">
                     <img src="/icons/stats/clock.svg" alt="clock">
                 </div>
-                <div class="stat-title">Total Rulings (Last 24 Hours)</div>
+                <div class="stat-title">#Acórdãos Totais (Últimas 24H)</div>
                 <div class="stat-value text-accent">{stats.Processos24horas}</div>
             </div>
 
@@ -87,7 +87,7 @@
                 <div class="stat-figure text-primary">
                     <img src="/icons/stats/avg.svg" alt="avg">
                 </div>
-                <div class="stat-title">Average Rulings Per Month</div>
+                <div class="stat-title">#Acórdãos Médios por Mês</div>
                 <div class="stat-value text-accent">{calculateAvg(stats.RecordsMes)}</div>
             </div>
 
@@ -95,7 +95,7 @@
                 <div class="stat-figure text-primary">
                     <img src="/icons/stats/admins.svg" alt="admin">
                 </div>
-                <div class="stat-title">Total Admins</div>
+                <div class="stat-title">Total de Administradores</div>
                 <div class="stat-value text-accent">{stats.Administradores}</div>
             </div>
 
@@ -103,7 +103,7 @@
                 <div class="stat-figure text-primary">
                     <img src="/icons/stats/user.svg" alt="users">
                 </div>
-                <div class="stat-title">Total Consumers</div>
+                <div class="stat-title">Total de Consumidores</div>
                 <div class="stat-value text-accent">{stats.Consumidores}</div>
             </div>
 

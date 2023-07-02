@@ -3,8 +3,8 @@
     import Select from "svelte-select";
     import TagsInput from "$lib/components/new/TagsInput.svelte";
 
-    import {inputs, url, process} from "$lib/stores/form.js";
-    import {addInput, removeInput, updateInput, updateSelectable} from "$lib/scripts/formHandler.js";
+    import {newForm} from "$lib/stores/form.js";
+    import {addInput, removeInput} from "$lib/scripts/formHandler.js";
 
     export let fields;
 
@@ -15,8 +15,8 @@
 
     <!-- Title -->
     <header>
-        <h2 class="text-2xl font-bold">General Information</h2>
-        <p class="opacity-50">Please try to fill in as much data as possible.</p>
+        <h2 class="text-2xl font-bold">Informações Gerais</h2>
+        <p class="opacity-50">Por favor tenta inserir o máximo de informação possível!</p>
         <div class="divider mt-0"></div>
     </header>
 
@@ -25,41 +25,38 @@
 
         <!-- Process Number Input Field -->
         <div class="form-control w-full max-w-xs">
+
             <label class="label" for="process">
-                <span class="label-text">Process Number (Mandatory)</span>
+                <span class="label-text">Número do Processo (Obrigatório)</span>
             </label>
 
             <input
                     id="process"
                     type="text"
-                    placeholder="Process Identification"
+                    placeholder="Número do processo"
                     class="input input-bordered w-full max-w-xs"
-                    bind:value={$process}
-                    on:input={() => {process.set($process)}}
+                    bind:value={$newForm.process}
             />
+
         </div>
 
         <!-- Tags Input Field -->
         <div class="form-control w-full max-w-xs">
-            <label class="label">
-                <span class="label-text">Process Descriptors (Mandatory)</span>
-            </label>
-
             <TagsInput/>
         </div>
 
         <!-- URL Input Field -->
         <div class="form-control flex-grow">
-            <label class="label">
-                <span class="label-text">URL (Optional)</span>
+            <label class="label" for="url">
+                <span class="label-text">URL (Opcional)</span>
             </label>
 
             <input id="url"
                    type="text"
-                   placeholder="DSGI link"
+                   placeholder="Link para DSGI"
                    class="input input-bordered w-full"
-                   bind:value={$url}
-                   on:input={() => {url.set($url)}}/>
+                   bind:value={$newForm.url}
+            />
         </div>
 
     </div>
@@ -67,12 +64,11 @@
     <!-- Optional Fields -->
     <div>
 
-        <div class="divider"><span class="opacity-50">Optional Fields</span></div>
+        <div class="divider"><span class="opacity-50">Campos Opcionais</span></div>
 
-        {#each $inputs as input (input.id)}
+        {#each $newForm.fields as field (field.id)}
 
             <div class="flex items-center">
-
 
                 <div class="flex flex-row gap-2 my-2 w-full">
                     <div class="join w-full">
@@ -80,22 +76,21 @@
                         <div class="join-item">
                             <Select
                                     items={fields}
-                                    placeholder="Select ruling field"
+                                    placeholder="Escolhe um campo"
                                     --width="300px"
                                     --border-radius="0.5rem 0 0 0.5rem"
                                     --height="48px"
-                                    bind:value={input.value.selectable}
-                                    on:change={() => updateSelectable(input.id, input.value.selectable)}
+                                     bind:value={field.value.field}
                             />
+
                         </div>
 
                         <div class="flex-grow mr-4">
                             <div>
                                 <input
                                         class="input input-bordered join-item w-full"
-                                        placeholder="Field value"
-                                        bind:value={input.value.input}
-                                        on:input={() => updateInput(input.id, input.value.input)}
+                                        placeholder="Insere um valor"
+                                        bind:value={field.value.value}
                                 />
                             </div>
                         </div>
@@ -103,14 +98,14 @@
                     </div>
                 </div>
 
-                <button type="button" class="btn btn-circle btn-xs ml-auto" on:click={() => removeInput(input.id)}>
+                <button type="button" class="btn btn-circle btn-xs ml-auto" on:click={() => removeInput(field.id)}>
                     <img src="/icons/cross.svg" alt="delete">
                 </button>
             </div>
 
         {/each}
 
-        <button type="button" class="btn w-full mt-4" on:click={addInput}>Add Field</button>
+        <button type="button" class="btn w-full mt-4" on:click={addInput}>Novo Campo</button>
 
     </div>
 </main>

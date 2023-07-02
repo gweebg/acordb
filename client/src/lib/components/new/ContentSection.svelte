@@ -1,20 +1,6 @@
 <script>
 
-    import {body} from "$lib/stores/form.js";
-
-    const update = (field, newValue) => {
-
-        let newBodyObj = {};
-
-        const unsubscribe = body.subscribe((bodyObj) => {
-            newBodyObj = bodyObj;
-            newBodyObj[field] = newValue;
-        });
-
-        body.set(newBodyObj);
-        unsubscribe();
-
-    }
+    import {newForm} from "$lib/stores/form.js";
 
 </script>
 
@@ -23,8 +9,8 @@
 
     <!-- Title -->
     <header>
-        <h2 class="text-2xl font-bold">Ruling Content</h2>
-        <p class="opacity-50">Here you can specify the ruling decision, summary and integral text.</p>
+        <h2 class="text-2xl font-bold">Conteúdo do Acórdão</h2>
+        <p class="opacity-50">Aqui, podes especificar o sumário, decisão e texto integral do acódão.</p>
         <div class="divider mt-0"></div>
     </header>
 
@@ -34,45 +20,42 @@
         <!-- Decision -->
         <div class="form-control">
             <label class="label" for="decision">
-                <span class="label-text">Ruling Decision</span>
+                <span class="label-text">Decisão do Acordão</span>
             </label>
             <textarea
-                    bind:value={$body.decision}
-                    on:input={() => update("decision", $body.decision)}
+                    bind:value={$newForm.body.decision}
                     id="decision"
                     class="textarea textarea-bordered h-24"
-                    placeholder="Here you can specify the decision that the court ruled for the ruling"></textarea>
+                    placeholder="Aqui podes especificar a decisão do acórdão"></textarea>
         </div>
 
 
         <!-- Summary -->
         <div class="form-control">
             <label class="label" for="summary">
-                <span class="label-text">Summary</span>
+                <span class="label-text">Sumário</span>
             </label>
             <textarea
-                    bind:value={$body.summary}
-                    on:input={() => update("summary", $body.summary)}
+                    bind:value={$newForm.body.summary}
                     id="summary"
                     class="textarea textarea-bordered h-24"
-                    placeholder="Here you can specify the summary for the ruling"></textarea>
+                    placeholder="Aqui podes especificar o sumário do acórdão"></textarea>
         </div>
 
         <!-- Summary -->
         <div class="form-control">
             <label class="label" for="text">
-                <span class="label-text">Integral Text</span>
+                <span class="label-text">Texto Integral</span>
             </label>
             <textarea
-                    bind:value={$body.text}
-                    on:input={() => update("text", $body.text)}
+                    bind:value={$newForm.body.text}
                     id="text"
                     class="textarea textarea-bordered h-24"
-                    placeholder="Here you can specify the full content of the ruling"></textarea>
+                    placeholder="Aqui podes especificar o texto integral do acórdão"></textarea>
         </div>
 
     </div>
 
 
-    <small class="text-warning pt-4">(!) Note that none of the above fields are mandatory.</small>
+    <small class="text-warning pt-4">(!) Repara que todos os campos acima são opcionais.</small>
 </main>

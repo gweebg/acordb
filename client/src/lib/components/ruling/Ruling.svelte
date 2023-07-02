@@ -5,10 +5,9 @@
     import { checkValue } from "$lib/scripts/utils.js";
 
     export let ruling;
-    export let isResult;
+    export let isRecord = false;
 
-
-    const { added_by, added_at, tags, acordao, data } = ruling;
+    const { id, added_by, added_at, acordao, tags, data } = ruling;
 
     const headerData = {
         process: checkValue(data.Processo),
@@ -25,19 +24,16 @@
     }
 
     const redirectToRuling = () => {
-        window.location.href = `/ruling/${acordao}`;
+        if (isRecord)
+            window.location.href = `/record/${id}`;
+        else
+            window.location.href = `/ruling/${acordao}`;
     }
-
-    /*
-    TODO:
-        Menu ... no Ruling que permita abrir noutra tab e favoritar.
-        Form de pesquisa.
-    */
 
 </script>
 
 
-<main class="w-full">
+<main class="w-full my-4">
 
     <div class="card bg-base-100 shadow-lg transition ease-in-out delay-150
                 hover:-translate-y-1 hover:cursor-pointer hover:bg-card-hover hover:shadow-xl duration-300"

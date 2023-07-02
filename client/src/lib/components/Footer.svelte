@@ -8,7 +8,7 @@
     <div>
         <p>Copyright © 2023 - All right reserved by
             <a href="https://github.com/gweebg/genere-et-moribus" target="_blank">
-                <span class="text-secondary">Accordb</span>
+                <span class="text-secondary">Acordb</span>
             </a>
         </p>
     </div>

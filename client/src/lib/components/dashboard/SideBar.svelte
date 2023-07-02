@@ -32,19 +32,19 @@
         <!-- If user is administrator -->
         {#if isAdmin}
 
-            <SideBarItem params={{text: "Profile", iconPath: "/icons/menu/profile.svg", isActive: active.profile, link: `${basePath}/profile`}}/>
-            <SideBarItem params={{text: "Favourites", iconPath: "/icons/menu/favourites.svg", isActive: active.favourites, link: `${basePath}/favorites`}}/>
-            <SideBarItem params={{text: "Requests", iconPath: "/icons/menu/request_in.svg", isActive: active.requests, link: `${basePath}/requests`}}/>
+            <SideBarItem params={{text: "Perfil", iconPath: "/icons/menu/profile.svg", isActive: active.profile, link: `${basePath}/profile`}}/>
+            <SideBarItem params={{text: "Favoritos", iconPath: "/icons/menu/favourites.svg", isActive: active.favourites, link: `${basePath}/favorites`}}/>
+            <SideBarItem params={{text: "Pedidos de Revisão", iconPath: "/icons/menu/request_in.svg", isActive: active.requests, link: `${basePath}/requests`}}/>
 
             <div class="divider border-t border-white mb-1"></div>
 
-            <SideBarItem params={{text: "Add New Ruling", iconPath: "/icons/menu/add.svg", isActive: active.add, link: "/new"}}/>
+            <SideBarItem params={{text: "Adicionar Novo Acórdão", iconPath: "/icons/menu/add.svg", isActive: active.add, link: "/new"}}/>
 
         {:else}
 
-            <SideBarItem params={{text: "Profile", iconPath: "/icons/menu/profile.svg", isActive: active.profile, link: `${basePath}/profile`}}/>
-            <SideBarItem params={{text: "Requests", iconPath: "/icons/menu/request_out.svg", isActive: active.requests, link: `${basePath}/requests`}}/>
+            <SideBarItem params={{text: "Perfil", iconPath: "/icons/menu/profile.svg", isActive: active.profile, link: `${basePath}/profile`}}/>
             <SideBarItem params={{text: "Favourites", iconPath: "/icons/menu/favourites.svg", isActive: active.favourites, link: `${basePath}/favorites`}}/>
+            <SideBarItem params={{text: "Pedidos de Revisão", iconPath: "/icons/menu/request_out.svg", isActive: active.requests, link: `${basePath}/requests`}}/>
 
             <div class="divider border-t border-white mb-1"></div>
 

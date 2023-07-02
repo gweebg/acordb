@@ -33,17 +33,12 @@ export const actions = {
             let final = convert(data); /* This holds the form data, formatted as readable JSON. */
 
             if (!final.Processo || final.Descritores.length === 0) {
-                return {
-                    success: false,
-                    message: "The fields 'Processo' and 'Descritores' are mandatory."
-                }
+                return fail(400, "Os campos 'Processo' e 'Descritores' são obrigatórios.");
             }
 
             let response;
             try {
 
-                console.log("what ?")
-                console.log("aqui");
                 response = await fetch(
                     `${PUBLIC_API_URL}/acordaos/`,
                     {
@@ -54,18 +49,66 @@ export const actions = {
                 );
 
             } catch (err) {
-                console.log("wtf!?");
-                throw error(500, "Server is down.");
+                return fail(400, "Houve um problema do nosso lado, tente mais tarde.");
             }
-
 
             if (!response.ok) {
-                console.log("xd?")
-                return {
-                    success: false,
-                    message: "Something went wrong, try again later."
-                }
+                return fail(400, "Algo de mal aconteceu com o seu pedido, tente novamente.")
             }
+
+
+            let content = await response.json();
+            return content.acordao;
+        }
+    },
+
+    upload: async ({ cookies, request }) => {
+
+        const authCookie = cookies.get('AuthorizationToken');
+
+        if (authCookie) {
+
+            let data = await request.formData(); /* This holds the form data, un-formatted because of black magic. */
+            console.log(data);
+
+            const asJsonString = JSON.stringify(Object.fromEntries(data));
+            const asJson = JSON.parse(asJsonString);
+            const asObj = {};
+
+            for (const key in asJson) {
+
+                if (key.startsWith("Descritores")) {
+
+                    if (!asObj["Descritores"]) asObj["Descritores"] = [];
+                    asObj["Descritores"].push(asJson[key])
+
+                } else asObj[key] = asJson[key];
+
+            }
+
+            let response;
+            try {
+
+                response = await fetch(
+                    `${PUBLIC_API_URL}/acordaos/`,
+                    {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json', 'Authorization': authCookie },
+                        body: JSON.stringify(asObj)
+                    }
+                );
+
+            } catch (err) {
+                return fail(400, "Houve um problema do nosso lado, tente mais tarde.");
+            }
+
+            if (!response.ok) {
+                return fail(400, "Algo de mal aconteceu com o seu pedido, tente novamente.")
+            }
+
+
+            let content = await response.json();
+            return content.acordao;
         }
     }
 };

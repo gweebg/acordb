@@ -8,17 +8,17 @@
 
     <section class="mt-2">
         <p class="text-lg mb-1">
-            <span class="font-bold">Court House:</span>
+            <span class="font-bold">Tribunal:</span>
             {rulingData.court}
         </p>
 
         <p class="text-lg mb-1">
-            <span class="font-bold">Rapporteur:</span>
+            <span class="font-bold">Relator:</span>
             {rulingData.rapporteur}
         </p>
 
         <p class="text-lg mb-2">
-            <span class="font-bold">Ruling Date:</span>
+            <span class="font-bold">Data do Acórdão:</span>
             {rulingData.ruling_date}
         </p>
     </section>

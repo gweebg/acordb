@@ -12,7 +12,7 @@
 
     {#if requests.length === 0}
 
-        <h2 class="text-xl flex justify-center">You should try making some requests!</h2>
+        <h2 class="text-xl flex justify-center">Experimenta fazer um pedido de revisão!</h2>
 
     {:else}
         {#each requests as req (req.id)}

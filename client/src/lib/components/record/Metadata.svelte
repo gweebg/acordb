@@ -8,21 +8,21 @@
         <div class="grow flex mx-auto container bg-base-100 shadow-lg rounded-2xl">
 
             <div class="container mx-auto basis-1/4 grow px-4 py-4">
-                <h2 class="px-2 py-1 font-bold text-xl">Added by:</h2>
+                <h2 class="px-2 py-1 font-bold text-xl">Adicionado por:</h2>
                 <p class="px-2">{record.added_by}</p>
             </div>
 
             <div class="divider divider-horizontal mx-0"></div>
 
             <div class="container mx-auto basis-1/4 grow px-4 py-4">
-                <h2 class="px-2 py-1 font-bold text-xl">Added at:</h2>
+                <h2 class="px-2 py-1 font-bold text-xl">Adicionado em:</h2>
                 <p class="px-2">{record.added_at}</p>
             </div>
 
             <div class="divider divider-horizontal mx-0"></div>
 
             <div class="container mx-auto basis-1/4 grow px-4 py-4">
-                <h2 class="px-2 py-1 font-bold text-xl">Ruling Ref:</h2>
+                <h2 class="px-2 py-1 font-bold text-xl">Referência do acórdão:</h2>
                 <p class="px-2">{record.id}</p>
             </div>
         </div>

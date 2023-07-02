@@ -46,7 +46,7 @@
     <input
             class="input input-ghost focus:outline-none m-0 p-0 flex-grow"
             type="text"
-            placeholder="Search by tags"
+            placeholder="Adiciona descritores"
             value={inputValue}
             on:input={handleInput}
             on:keydown={handleKeyDown}
