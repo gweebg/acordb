@@ -3,6 +3,6 @@
 // ...Your other imports
 
 if (browser) { // to prevent error window is not defined, because it's SSR
-    window.location.href = 'http://localhost/login';
+    window.location.href = 'http://localhost/home';
 }
 </script>

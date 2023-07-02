@@ -27,4 +27,3 @@ print("jtrl")
 import jtrl_acordaos
 print("jtrp")
 import jtrp_acordaos
-utils.printStuff()

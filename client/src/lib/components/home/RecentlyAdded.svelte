@@ -2,7 +2,7 @@
 
     import RecordsTable from "$lib/components/RecordsTable.svelte";
 	
-    import { PUBLIC_API_URL } from '$env/static/public';
+    import { PUBLIC_CLIENT_API_URL } from '$env/static/public';
     import { onMount } from "svelte";
 
     let list = [];
@@ -10,7 +10,7 @@
 
     const getRecentList = async () => {
 
-        const response = await fetch(`${PUBLIC_API_URL}/acordaos/?limit=10&sort=desc`);
+        const response = await fetch(`${PUBLIC_CLIENT_API_URL}/acordaos/?limit=10&sort=desc`);
         let obj = await response.json();
         obj = obj.data;
 
@@ -47,7 +47,7 @@
                     <p>Se esta tabela não atualizou, experimenta re-carregar a página!</p>
                 </div>
             </div>
-            <a class="btn btn-base-100 btn-sm mx-4" href="/search">Ver Todos</a>
+            <a class="btn btn-outline btn-primary btn-sm mx-4" href="/search">Ver Todos</a>
         </div>
 
 

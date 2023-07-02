@@ -146,12 +146,12 @@
     </title>
 </svelte:head>
 
-<div>
+<div class="flex flex-col h-screen">
 
     <Navbar isAuthenticated={true} isAdmin={data.user.is_administrator}/>
 
     <!-- New judgment form. -->
-    <div class="px-4 mb-[100px] mt-[80px] mx-48">
+    <div class="px-4 mb-[100px] mt-[80px] mx-48 flex-grow">
 
         <!-- Header (Text & Steps) -->
         <header class="flex flex-row">

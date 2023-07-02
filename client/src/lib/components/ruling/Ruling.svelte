@@ -36,7 +36,7 @@
 <main class="w-full my-4">
 
     <div class="card bg-base-100 shadow-lg transition ease-in-out delay-150
-                hover:-translate-y-1 hover:cursor-pointer hover:bg-card-hover hover:shadow-xl duration-300"
+                hover:-translate-y-1 hover:cursor-pointer hover:bg-card-hover hover:shadow-xl duration-300  border-accent hover:border-[1px]"
          on:click={redirectToRuling}>
 
         <div class="card-body">

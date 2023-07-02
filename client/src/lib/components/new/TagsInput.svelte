@@ -71,7 +71,7 @@
 
         <div class="flex flex-wrap mb-2">
             {#each $newForm.tags as tag}
-                <div class="mt-2 bg-base-100 rounded flex items-center px-2 py-1 mr-1 mb-1">
+                <div class="mt-2 badge badge-info text-white  flex items-center px-2 py-1 mr-1 mb-1">
                     <span>{tag}</span>
                     <button class="cursor-pointer ml-2" on:click={() => removeTag(tag)}>×</button>
                 </div>

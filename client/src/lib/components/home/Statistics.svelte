@@ -1,7 +1,7 @@
 <script>
 
     import {onMount} from "svelte";
-    import {PUBLIC_API_URL} from "$env/static/public";
+    import { PUBLIC_CLIENT_API_URL } from '$env/static/public';
 
 
     const calculateAvg = (list) => {
@@ -22,7 +22,7 @@
 
         try {
 
-            const response = await fetch(`${PUBLIC_API_URL}/statistics/`,
+            const response = await fetch(`${PUBLIC_CLIENT_API_URL}/statistics/`,
                 {
                     method: 'GET',
                     headers: { 'Content-Type': 'application/json' },

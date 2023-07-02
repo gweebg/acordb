@@ -18,7 +18,7 @@ export const compareRulings = (original, incoming) => {
 
     let result = '<pre style="white-space: pre-wrap;">';
     differences.forEach(part => {
-        const prefix = part.added ? '<span style="background-color: #2dbcab;">' : part.removed ? '<span style="background-color: #faab57;">' : '';
+        const prefix = part.added ? '<span class="bg-success">' : part.removed ? '<span class="bg-error">' : '';
         const suffix = part.added || part.removed ? '</span>' : '';
 
         result += `${prefix}${part.value}${suffix}`;

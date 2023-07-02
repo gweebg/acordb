@@ -38,7 +38,7 @@
 
 <div class="flex flex-wrap items-center input input-bordered">
     {#each tags as tag, index}
-        <div class="tag" on:click={() => removeTag(index)}>
+        <div class="badge badge-info text-white tag" on:click={() => removeTag(index)}>
             {tag}
             <span class="tag-remove">x</span>
         </div>
@@ -58,12 +58,8 @@
     .tag {
         display: flex;
         align-items: center;
-        background-color: hsl(var(--a));
-        color: black;
-        padding: 2px;
         margin-right: 4px;
         margin-bottom: 4px;
-        border-radius: 4px;
         font-size: 14px;
         cursor: pointer;
     }

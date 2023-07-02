@@ -7,7 +7,6 @@
 ./server/favorites/migrations/__pycache__
 ./server/acordãos/__pycache__
 ./server/venv
-.env
 out/*
 ./.vscode
 __pycache__

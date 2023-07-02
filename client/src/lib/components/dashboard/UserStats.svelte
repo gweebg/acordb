@@ -27,7 +27,7 @@
 
         <div class="stats shadow">
             <div class="stat">
-                <div class="stat-title">Foram <span class="text-accent">aceites</span> </div>
+                <div class="stat-title">Foram <span class="text-success">aceites</span> </div>
                 <div class="stat-value">{user.stats.ChangesAccepted}</div>
                 <div class="stat-desc">pedidos de revisão.</div>
             </div>

@@ -78,7 +78,7 @@
                         class="textarea textarea-bordered textarea-md w-full mt-4 mb-0" ></textarea>
 
                 <div class="modal-action">
-                    <button class="btn btn-sm btn-accent">
+                    <button class="btn btn-sm btn-primary">
                         Guardar
                     </button>
                 </div>

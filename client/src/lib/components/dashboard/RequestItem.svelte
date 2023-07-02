@@ -11,8 +11,8 @@
 
     const getStatusColor = (status) => {
 
-        if (status === "pending") return "badge-error";
-        else return "badge-accent";
+        if (status === "pending") return "badge-warning";
+        else return "badge-success";
 
     }
 
@@ -21,7 +21,7 @@
 <div class="collapse collapse-arrow bg-base-200">
 
     <!-- Hidden input for controls. -->
-    <input type="radio" name="my-accordion-2" checked="checked" />
+    <input type="checkbox" name="my-accordion-2"/>
 
     <!-- Collapse Title   -->
     <div class="collapse-title text-xl font-medium">
@@ -60,7 +60,7 @@
             <div class="divider mt-0"></div>
             <div class="flex flex-row items-center">
                 <p>Revisto em: {date}</p>
-                <a href={"/ruling/" + details.acordao} class="btn btn-accent btn-sm ml-auto">Abrir</a>
+                <a href={"/ruling/" + details.acordao} class="btn btn-primary btn-sm ml-auto">Abrir</a>
             </div>
         </div>
     {/if}

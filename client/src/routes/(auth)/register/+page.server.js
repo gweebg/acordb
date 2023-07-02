@@ -4,7 +4,7 @@ import { redirect } from "sveltekit-flash-message/server";
 
 import { fail } from "@sveltejs/kit";
 
-import { PUBLIC_API_URL } from "$env/static/public";
+import { PUBLIC_SERVER_API_URL } from '$env/static/public';
 import { accountSchema } from "$lib/schemas/schemas.js";
 
 
@@ -34,7 +34,7 @@ export const actions = {
 
             /* Registering the account via the backend API. */
             response = await fetch(
-                `${PUBLIC_API_URL}/accounts/user/`,
+                `${PUBLIC_SERVER_API_URL}/accounts/user/`,
                 {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },

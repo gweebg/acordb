@@ -101,7 +101,7 @@
                     <p>{totalChecked} acórdãos selecionados</p>
 
                     <div class="ml-auto">
-                        <button class="btn btn-sm btn-accent" on:click={openMultiple}>Abrir Todos</button>
+                        <button class="btn btn-sm btn-primary" on:click={openMultiple}>Abrir Todos</button>
                         <button class="btn btn-sm" on:click={uncheckAll}>Desselecionar</button>
                     </div>
 
@@ -126,7 +126,7 @@
                                 <!-- Card Header -->
                                 <div class="flex flex-row gap-2 items-center">
                                     <label>
-                                        <input type="checkbox" class="checkbox mt-1" bind:checked={itemsChecked[i]}/>
+                                        <input type="checkbox" class="checkbox checkbox-primary mt-1" bind:checked={itemsChecked[i]}/>
                                     </label>
                                     <h2 class="card-title">Favorito #{fav.id}</h2>
                                 </div>
@@ -142,7 +142,7 @@
                                 <div class="card-actions justify-end">
                                     <label for={fav.id} class="btn btn-sm mt-2">Detalhes</label>
 
-                                    <a href={"/ruling/" + fav.acordao} target="_blank" class="btn btn-accent btn-sm mt-2">
+                                    <a href={"/ruling/" + fav.acordao} target="_blank" class="btn btn-primary btn-sm mt-2">
                                         <img src="/icons/hyperlink.svg" alt="redirect">
                                     </a>
 

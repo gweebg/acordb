@@ -1,6 +1,6 @@
 import { fetchRuling } from "$lib/scripts/fetchRuling.js";
 import { fail } from "@sveltejs/kit";
-import {PUBLIC_API_URL} from "$env/static/public";
+import { PUBLIC_SERVER_API_URL } from '$env/static/public';
 
 
 const fetchFavorite = async (rulingId, cookie) => {
@@ -9,7 +9,7 @@ const fetchFavorite = async (rulingId, cookie) => {
     try {
 
         response = await fetch(
-            `${PUBLIC_API_URL}/favorites/isFavorite/${rulingId}/`,
+            `${PUBLIC_SERVER_API_URL}/favorites/isFavorite/${rulingId}/`,
             {
                 method: 'GET',
                 headers: { 'Content-Type': 'application/json', 'Authorization': cookie },
@@ -63,7 +63,7 @@ export const actions = {
             try {
 
                 response = await fetch(
-                    `${PUBLIC_API_URL}/favorites/`,
+                    `${PUBLIC_SERVER_API_URL}/favorites/`,
                     {
                         method: 'POST',
                         headers: { 'Content-Type': 'application/json', 'Authorization': authCookie },
@@ -112,7 +112,7 @@ export const actions = {
             try {
 
                 response = await fetch(
-                    `${PUBLIC_API_URL}/acordaos/changeRequests/${id}/`,
+                    `${PUBLIC_SERVER_API_URL}/acordaos/changeRequests/${id}/`,
                     {
                         method: 'POST',
                         headers: { 'Content-Type': 'application/json', 'Authorization': authCookie },

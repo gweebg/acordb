@@ -1,5 +1,5 @@
 import {error, fail, redirect} from "@sveltejs/kit";
-import {PUBLIC_API_URL} from "$env/static/public";
+import { PUBLIC_SERVER_API_URL } from '$env/static/public';
 import {convert} from "$lib/scripts/formdataToJson.js";
 
 import {fetchFields} from "$lib/scripts/utils.js";
@@ -40,7 +40,7 @@ export const actions = {
             try {
 
                 response = await fetch(
-                    `${PUBLIC_API_URL}/acordaos/`,
+                    `${PUBLIC_SERVER_API_URL}/acordaos/`,
                     {
                         method: 'POST',
                         headers: { 'Content-Type': 'application/json', 'Authorization': authCookie },
@@ -90,7 +90,7 @@ export const actions = {
             try {
 
                 response = await fetch(
-                    `${PUBLIC_API_URL}/acordaos/`,
+                    `${PUBLIC_SERVER_API_URL}/acordaos/`,
                     {
                         method: 'POST',
                         headers: { 'Content-Type': 'application/json', 'Authorization': authCookie },

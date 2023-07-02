@@ -2,8 +2,8 @@
 
     import { onMount } from "svelte";
 	import RecordsTable from "../RecordsTable.svelte";
-    import { PUBLIC_API_URL } from '$env/static/public';
     import Ruling from "$lib/components/ruling/Ruling.svelte";
+    import { PUBLIC_CLIENT_API_URL } from "$env/static/public";
 
     export let query: any = {};
 
@@ -24,7 +24,7 @@
         query_params["limit"] = items_per_page;
         query_params["skip"] = (page_number-1)*query_params["limit"];
 
-        const response = await fetch(`${PUBLIC_API_URL}/acordaos?${new URLSearchParams(query_params)}`)
+        const response = await fetch(`${PUBLIC_CLIENT_API_URL}/acordaos?${new URLSearchParams(query_params)}`)
         const obj = await response.json();
 
         if (response.ok) {

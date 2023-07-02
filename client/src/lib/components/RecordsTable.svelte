@@ -18,7 +18,7 @@
     <thead>
         <tr>
             {#each ["Adicionado Em", "Adicionado Por", "Processo" ,"Tribunal", "Relator", "Votação", "Meio Processual"] as r}
-                <th class="bg-accent text-accent-content text-[15px]">{r}</th>
+                <th class="bg-primary text-primary-content text-[15px]">{r}</th>
             {/each}
         </tr>
     </thead>

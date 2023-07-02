@@ -2,7 +2,7 @@
 
     import {compareRulings} from "$lib/scripts/jsonDiff.js";
     import {onMount} from "svelte";
-    import {PUBLIC_API_URL} from "$env/static/public";
+    import { PUBLIC_CLIENT_API_URL } from "$env/static/public";
 
     export let details;
     export let isAdmin;
@@ -15,7 +15,7 @@
 
         try {
 
-            const response = await fetch(`${PUBLIC_API_URL}/acordaos/${rulingId}`,
+            const response = await fetch(`${PUBLIC_CLIENT_API_URL}/acordaos/${rulingId}`,
                 {
                     method: 'GET',
                     headers: { 'Content-Type': 'application/json' },
@@ -47,11 +47,11 @@
     <header class="flex flex-row mt-4">
         <h1 class="text-lg">A ver diferenças entre o original e o sugerido:</h1>
         <div class="ml-auto">
-            <div class="badge badge-accent">
+            <div class="bg-success inline">
                 Adicionado
             </div>
 
-            <div class="ml-2 badge badge-warning">
+            <div class="ml-2 bg-error inline">
                 Removido
             </div>
         </div>
@@ -77,12 +77,12 @@
 
             <form action="?/deny" method="POST" class="ml-auto mr-2">
                 <input type="text" class="hidden" value={details.id} name="id">
-                <button class="btn btn-sm btn-error">Rejeitar</button>
+                <button class="btn btn-sm btn-error text-primary-content">Rejeitar</button>
             </form>
 
             <form action="?/accept" method="POST">
                 <input type="text" class="hidden" value={details.id} name="id">
-                <button class="btn btn-sm btn-accent">Aceitar</button>
+                <button class="btn btn-sm btn-success text-primary-content">Aceitar</button>
             </form>
 
         {/if}

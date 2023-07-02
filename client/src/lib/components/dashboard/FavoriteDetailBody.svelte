@@ -34,7 +34,7 @@
         <div class="ml-auto flex flex-row gap-1">
 
             <!-- Edit Button -->
-            <button class="btn btn-accent btn-sm px-0 btn-circle" on:click={editMode}>
+            <button class="btn btn-accent rounded-md btn-sm px-0 btn-circle" on:click={editMode}>
                 <img src={currPath} alt="Edit">
             </button>
 
@@ -42,7 +42,7 @@
             <form action="?/delete" method="POST">
                 <input type="text" name="id" class="hidden" value={favData.id}>
                 <input type="text" name="process" class="hidden" value={favData.acordao}>
-                <button class="btn btn-error btn-sm px-0 btn-circle">
+                <button class="btn btn-error rounded-md btn-sm px-0 btn-circle">
                     <img src="/icons/delete.svg" alt="Delete">
                 </button>
             </form>
@@ -83,7 +83,7 @@
                     class="textarea textarea-accent w-full"></textarea>
 
             <div class="modal-action">
-                <button class="btn btn-accent btn-sm mt-2">Guardar</button>
+                <button class="btn btn-primary btn-sm mt-2">Guardar</button>
                 <label for={favData.id} class="btn btn-sm mt-2">Fechar</label>
             </div>
 

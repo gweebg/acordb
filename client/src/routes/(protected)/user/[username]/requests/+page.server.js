@@ -1,5 +1,5 @@
 import {error, fail, redirect} from "@sveltejs/kit";
-import { PUBLIC_API_URL } from '$env/static/public';
+import { PUBLIC_SERVER_API_URL } from '$env/static/public';
 import {superValidate} from "sveltekit-superforms/server";
 
 
@@ -11,7 +11,7 @@ const fetchRequests = async (authCookie) => {
 
     try {
 
-        const response = await fetch(`${PUBLIC_API_URL}/accounts/requests/`,
+        const response = await fetch(`${PUBLIC_SERVER_API_URL}/accounts/requests/`,
     {
             method: 'GET',
             headers: { 'Content-Type': 'application/json', 'Authorization': authCookie },
@@ -66,7 +66,7 @@ export const actions = {
 
             try {
 
-                const response = await fetch(`${PUBLIC_API_URL}/acordaos/changeRequest/${data.get('id')}/`,
+                const response = await fetch(`${PUBLIC_SERVER_API_URL}/acordaos/changeRequest/${data.get('id')}/`,
             {
                     method: 'PATCH',
                     headers: { 'Content-Type': 'application/json', 'Authorization': authCookie },
@@ -95,7 +95,7 @@ export const actions = {
 
             try {
 
-                const response = await fetch(`${PUBLIC_API_URL}/acordaos/changeRequest/${data.get('id')}/`,
+                const response = await fetch(`${PUBLIC_SERVER_API_URL}/acordaos/changeRequest/${data.get('id')}/`,
                     {
                         method: 'DELETE',
                         headers: { 'Content-Type': 'application/json', 'Authorization': authCookie },
