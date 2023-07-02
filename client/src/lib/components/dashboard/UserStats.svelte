@@ -46,7 +46,7 @@
         <div class="stats shadow">
             <div class="stat">
                 <div class="stat-title">Tu criaste</div>
-                <div class="stat-value">{user.stats["Processos"]}</div>
+                <div class="stat-value">{user.stats["Acordãos"]}</div>
                 <div class="stat-desc">novo(s) acórdão(s)!</div>
             </div>
         </div>
