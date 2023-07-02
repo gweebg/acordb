@@ -59,7 +59,10 @@ class FavoritesData(mixins.ListModelMixin,
     serializer_class=FavoritesSerializer
     
     def get_queryset(self, *args, **kwargs):
-        return Favorites.objects.filter(user=self.request.user)
+        user = self.request.user
+        if user.is_authenticated:
+            return Favorites.objects.filter(user=user)
+        return Favorites.objects.none()
     
     def perform_create(self, serializer):
         user = self.request.user

@@ -54,7 +54,33 @@ class AcordaoView(APIView):
                     properties={
                         "data": openapi.Schema(
                             type=openapi.TYPE_ARRAY,
-                            items={"$ref": "#/components/schemas/Acordao"},
+                            items= openapi.Schema(
+    type=openapi.TYPE_OBJECT,
+    properties={
+        "id": openapi.Schema(type=openapi.TYPE_STRING),
+        "sujested_by": openapi.Schema(type=openapi.TYPE_STRING),
+        "acordao": openapi.Schema(type=openapi.TYPE_STRING),
+        "added_at": openapi.Schema(type=openapi.TYPE_STRING),
+        "status": openapi.Schema(type=openapi.TYPE_STRING),
+        "reviewer": openapi.Schema(type=openapi.TYPE_STRING),
+        "merged": openapi.Schema(type=openapi.TYPE_STRING),
+        "data": openapi.Schema(
+            type=openapi.TYPE_OBJECT,
+            additional_properties=openapi.Schema(type=openapi.TYPE_STRING),
+            properties={
+                "Processo": openapi.Schema(type=openapi.TYPE_STRING),
+                "Acordão": openapi.Schema(type=openapi.TYPE_STRING),
+                "Data do Acordão": openapi.Schema(type=openapi.TYPE_STRING),
+                "Descritores": openapi.Schema(
+                    type=openapi.TYPE_ARRAY,
+                    items=openapi.Schema(type=openapi.TYPE_STRING),
+                ),
+            },
+            required=["Processo", "Acordão", "Data do Acordão", "Descritores"],
+        ),
+    },
+    required=[],
+),
                         ),
                         "count": openapi.Schema(
                             type=openapi.TYPE_INTEGER,
@@ -120,7 +146,26 @@ class AcordaoView(APIView):
         responses={
             status.HTTP_201_CREATED: openapi.Response(
                 description="Acordão created successfully",
-                items={"$ref": "#/components/schemas/Acordao"},
+                items= openapi.Schema(
+    type=openapi.TYPE_OBJECT,
+    properties={
+        "data": openapi.Schema(
+            type=openapi.TYPE_OBJECT,
+            additional_properties=openapi.Schema(type=openapi.TYPE_STRING),
+            properties={
+                "Processo": openapi.Schema(type=openapi.TYPE_STRING),
+                "Acordão": openapi.Schema(type=openapi.TYPE_STRING),
+                "Data do Acordão": openapi.Schema(type=openapi.TYPE_STRING),
+                "Descritores": openapi.Schema(
+                    type=openapi.TYPE_ARRAY,
+                    items=openapi.Schema(type=openapi.TYPE_STRING),
+                ),
+            },
+            required=["Processo", "Acordão", "Data do Acordão", "Descritores"],
+        ),
+    },
+    required=[],
+),
             ),
             status.HTTP_400_BAD_REQUEST: openapi.Response(
                 description="Bad request",
@@ -175,7 +220,33 @@ class RecordView(APIView):
                     properties={
                         "data": openapi.Schema(
                             type=openapi.TYPE_ARRAY,
-                            items={"$ref": "#/components/schemas/Acordao"},
+                            items= openapi.Schema(
+    type=openapi.TYPE_OBJECT,
+    properties={
+        "id": openapi.Schema(type=openapi.TYPE_STRING),
+        "sujested_by": openapi.Schema(type=openapi.TYPE_STRING),
+        "acordao": openapi.Schema(type=openapi.TYPE_STRING),
+        "added_at": openapi.Schema(type=openapi.TYPE_STRING),
+        "status": openapi.Schema(type=openapi.TYPE_STRING),
+        "reviewer": openapi.Schema(type=openapi.TYPE_STRING),
+        "merged": openapi.Schema(type=openapi.TYPE_STRING),
+        "data": openapi.Schema(
+            type=openapi.TYPE_OBJECT,
+            additional_properties=openapi.Schema(type=openapi.TYPE_STRING),
+            properties={
+                "Processo": openapi.Schema(type=openapi.TYPE_STRING),
+                "Acordão": openapi.Schema(type=openapi.TYPE_STRING),
+                "Data do Acordão": openapi.Schema(type=openapi.TYPE_STRING),
+                "Descritores": openapi.Schema(
+                    type=openapi.TYPE_ARRAY,
+                    items=openapi.Schema(type=openapi.TYPE_STRING),
+                ),
+            },
+            required=["Processo", "Acordão", "Data do Acordão", "Descritores"],
+        ),
+    },
+    required=[],
+),
                         ),
                     },
                 ),
@@ -219,7 +290,33 @@ class ChangeRequestsView(APIView):
                 description="Successful operation",
                 schema=openapi.Schema(
                     type=openapi.TYPE_ARRAY,
-                   items={"$ref": "#/components/schemas/Acordao"},
+                   items= openapi.Schema(
+    type=openapi.TYPE_OBJECT,
+    properties={
+        "id": openapi.Schema(type=openapi.TYPE_STRING),
+        "sujested_by": openapi.Schema(type=openapi.TYPE_STRING),
+        "acordao": openapi.Schema(type=openapi.TYPE_STRING),
+        "added_at": openapi.Schema(type=openapi.TYPE_STRING),
+        "status": openapi.Schema(type=openapi.TYPE_STRING),
+        "reviewer": openapi.Schema(type=openapi.TYPE_STRING),
+        "merged": openapi.Schema(type=openapi.TYPE_STRING),
+        "data": openapi.Schema(
+            type=openapi.TYPE_OBJECT,
+            additional_properties=openapi.Schema(type=openapi.TYPE_STRING),
+            properties={
+                "Processo": openapi.Schema(type=openapi.TYPE_STRING),
+                "Acordão": openapi.Schema(type=openapi.TYPE_STRING),
+                "Data do Acordão": openapi.Schema(type=openapi.TYPE_STRING),
+                "Descritores": openapi.Schema(
+                    type=openapi.TYPE_ARRAY,
+                    items=openapi.Schema(type=openapi.TYPE_STRING),
+                ),
+            },
+            required=["Processo", "Acordão", "Data do Acordão", "Descritores"],
+        ),
+    },
+    required=[],
+),
                 ),
             ),
             status.HTTP_404_NOT_FOUND: openapi.Response(
@@ -260,7 +357,16 @@ class ChangeRequestsView(APIView):
         responses={
             status.HTTP_201_CREATED: openapi.Response(
                 description="Change request created successfully",
-                items={"$ref": "#/components/schemas/ChangeRequest"},
+                items=openapi.Schema(
+    type=openapi.TYPE_OBJECT,
+    properties={
+        "data": openapi.Schema(
+            type=openapi.TYPE_OBJECT,
+            additional_properties=openapi.Schema(type=openapi.TYPE_STRING),
+        ),
+    },
+    required=["id", "sujested_by", "acordao", "added_at", "status"],
+),
             ),
             status.HTTP_400_BAD_REQUEST: openapi.Response(
                 description="Bad request",
@@ -303,7 +409,23 @@ class ChangeRequestView(APIView):
         responses={
             status.HTTP_200_OK: openapi.Response(
                 description="Successful operation",
-                 items={"$ref": "#/components/schemas/ChangeRequest"},
+                 items=openapi.Schema(
+    type=openapi.TYPE_OBJECT,
+    properties={
+        "id": openapi.Schema(type=openapi.TYPE_STRING),
+        "sujested_by": openapi.Schema(type=openapi.TYPE_STRING),
+        "acordao": openapi.Schema(type=openapi.TYPE_STRING),
+        "added_at": openapi.Schema(type=openapi.TYPE_STRING),
+        "status": openapi.Schema(type=openapi.TYPE_STRING),
+        "reviewer": openapi.Schema(type=openapi.TYPE_STRING, nullable=True),
+        "merged": openapi.Schema(type=openapi.TYPE_STRING, nullable=True),
+        "data": openapi.Schema(
+            type=openapi.TYPE_OBJECT,
+            additional_properties=openapi.Schema(type=openapi.TYPE_STRING),
+        ),
+    },
+    required=["id", "sujested_by", "acordao", "added_at", "status"],
+),
             ),
             status.HTTP_404_NOT_FOUND: openapi.Response(
                 description="Change Request not found",
@@ -367,7 +489,13 @@ class ChangeRequestView(APIView):
         responses={
             status.HTTP_202_ACCEPTED: openapi.Response(
                 description="Change Request updated successfully",
-                 items={"$ref": "#/components/schemas/ChangeRequest"},
+                 items=openapi.Schema(
+    type=openapi.TYPE_OBJECT,
+    properties={
+        "status": openapi.Schema(type=openapi.TYPE_STRING),
+    },
+    required=["id", "sujested_by", "acordao", "added_at", "status"],
+),
             ),
             status.HTTP_400_BAD_REQUEST: openapi.Response(
                 description="Bad request",
