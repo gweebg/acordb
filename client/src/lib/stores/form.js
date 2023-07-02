@@ -1,15 +1,21 @@
 import { writable } from 'svelte/store';
 
-export const inputs = writable([{ id: 0, value: { selectable: '', input: '' } }]);
+export const newForm = writable({
+       process: "",
+       tags: [],
+       fields: [
+          {
+             id: "1",
+             value: {field: "Relator", value: ""}
+          }
+       ],
+       url: "",
+       body: {
 
-export const process = writable("");
+          summary: "",
+          decision: "",
+          text: ""
 
-export const url = writable("");
-
-export const tags = writable([]);
-
-export const body = writable({
-   summary: "",
-   decision: "",
-   text: ""
-});
+       }
+    }
+);

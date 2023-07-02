@@ -2,6 +2,8 @@
 
     export let tags;
 
+    import {searchForm} from "$lib/stores/search.js";
+
     const onClick = (tag) => {
         window.location.href = `/search?tags[]=${tag}`;
     }

@@ -9,6 +9,7 @@
     export let fields;
     export let isAuthenticated;
     export let isFav;
+    export let isRecord;
 
 </script>
 
@@ -30,9 +31,9 @@
 
         <a href={"http://www.dgsi.pt/" + fields.data.url} target="_blank" class="btn btn-sm">Open in DGSI</a>
 
-        {#if isAuthenticated}
+        {#if isAuthenticated && !isRecord}
 
-            <FavoriteButton id={fields.id}>
+            <FavoriteButton id={fields.id} isDisabled={isFav}>
 
                 <button class="btn btn-sm" disabled={isFav}>Save in Favorites</button>
 

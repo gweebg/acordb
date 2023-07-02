@@ -1,13 +1,13 @@
 <script>
 
-    import {body, inputs, url, tags, process} from "$lib/stores/form.js";
+    import {newForm} from "$lib/stores/form.js";
 
     const tagsAsString = () => {
 
         let result = "";
 
-        const unsubscribe = tags.subscribe((tagList) => {
-            result = tagList.toString();
+        const unsubscribe = newForm.subscribe((formData) => {
+            result = formData.tags.toString();
         });
 
         unsubscribe();
@@ -31,14 +31,14 @@
 
         <section>
 
-            <p><span class="font-bold text-neutral mb-2">Processo:</span> {$process}</p>
+            <p><span class="font-bold text-neutral mb-2">Processo:</span> {$newForm.process}</p>
 
             <p><span class="font-bold text-neutral mb-2">Descritores:</span> {tagsAsString()}</p>
 
-            {#if $inputs.length > 0}
-                {#each $inputs as input}
+            {#if $newForm.fields.length > 0}
+                {#each $newForm.fields as input}
 
-                    <p><span class="font-bold text-neutral mb-2">{input.value.selectable.value}:</span> {input.value.input}</p>
+                    <p><span class="font-bold text-neutral mb-2">{input.value.field.value}:</span> {input.value.value}</p>
 
                 {/each}
             {/if}
@@ -48,8 +48,8 @@
         <section>
 
             <div class="divider"><span class="opacity-50">Decision</span></div>
-            {#if $body.decision !== ''}
-                <p>{$body.decision}</p>
+            {#if $newForm.body.decision !== ''}
+                <p>{$newForm.body.decision}</p>
             {:else}
                 <p>N/A</p>
             {/if}
@@ -57,16 +57,16 @@
 
 
             <div class="divider"><span class="opacity-50">Summary</span></div>
-            {#if $body.summary !== ''}
-                <p>{$body.summary}</p>
+            {#if $newForm.body.summary !== ''}
+                <p>{$newForm.body.summary}</p>
             {:else}
                 <p>N/A</p>
             {/if}
 
 
             <div class="divider"><span class="opacity-50">Integral Text</span></div>
-            {#if $body.text !== ''}
-                <p>{$body.text}</p>
+            {#if $newForm.body.text !== ''}
+                <p>{$newForm.body.text}</p>
             {:else}
                 <p>N/A</p>
             {/if}

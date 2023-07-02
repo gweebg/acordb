@@ -4,6 +4,7 @@
     import { enhance } from "$app/forms";
 
     export let id;
+    export let isDisabled;
 
     const toastStyle = {
         style: 'border: 1px solid #2dbcab; background-color: #e4e9ec;',
@@ -39,9 +40,19 @@
 
 <main>
 
-    <div onclick="fav.showModal()">
-        <slot/>
-    </div>
+    {#if !isDisabled}
+
+        <div onclick="fav.showModal()">
+            <slot/>
+        </div>
+
+    {:else}
+
+        <div>
+            <slot/>
+        </div>
+
+    {/if}
 
     <dialog id="fav" class="modal modal-bottom sm:modal-middle">
 

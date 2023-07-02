@@ -26,7 +26,6 @@ export async function load({ params, locals, cookies }) {
 
     const ruling = await fetchRuling(params.ruling);
 
-    console.log(ruling);
 
     const auth = cookies.get('AuthorizationToken');
 
@@ -59,7 +58,6 @@ export const actions = {
         if (authCookie) {
 
             const data = await event.request.formData();
-            console.log(data);
 
             let response;
             try {
@@ -93,7 +91,6 @@ export const actions = {
         if (authCookie) {
 
             const data = await event.request.formData();
-            console.log(data);
             const id = data.get('id');
 
             let dataAsJson = {"Descritores": []};

@@ -1,20 +1,6 @@
 <script>
 
-    import {body} from "$lib/stores/form.js";
-
-    const update = (field, newValue) => {
-
-        let newBodyObj = {};
-
-        const unsubscribe = body.subscribe((bodyObj) => {
-            newBodyObj = bodyObj;
-            newBodyObj[field] = newValue;
-        });
-
-        body.set(newBodyObj);
-        unsubscribe();
-
-    }
+    import {newForm} from "$lib/stores/form.js";
 
 </script>
 
@@ -37,8 +23,7 @@
                 <span class="label-text">Ruling Decision</span>
             </label>
             <textarea
-                    bind:value={$body.decision}
-                    on:input={() => update("decision", $body.decision)}
+                    bind:value={$newForm.body.decision}
                     id="decision"
                     class="textarea textarea-bordered h-24"
                     placeholder="Here you can specify the decision that the court ruled for the ruling"></textarea>
@@ -51,8 +36,7 @@
                 <span class="label-text">Summary</span>
             </label>
             <textarea
-                    bind:value={$body.summary}
-                    on:input={() => update("summary", $body.summary)}
+                    bind:value={$newForm.body.summary}
                     id="summary"
                     class="textarea textarea-bordered h-24"
                     placeholder="Here you can specify the summary for the ruling"></textarea>
@@ -64,8 +48,7 @@
                 <span class="label-text">Integral Text</span>
             </label>
             <textarea
-                    bind:value={$body.text}
-                    on:input={() => update("text", $body.text)}
+                    bind:value={$newForm.body.text}
                     id="text"
                     class="textarea textarea-bordered h-24"
                     placeholder="Here you can specify the full content of the ruling"></textarea>

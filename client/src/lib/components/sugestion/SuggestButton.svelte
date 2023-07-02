@@ -1,9 +1,7 @@
 <script>
 
     import { toast } from "svelte-french-toast";
-    import { enhance } from "$app/forms";
     import SuggestionPreview from "$lib/components/sugestion/SuggestionPreview.svelte";
-    import {body, inputs, process, tags, url} from "$lib/stores/form.js";
     import jsonToFormData from "@ajoelp/json-to-formdata";
 
     export let ruling;

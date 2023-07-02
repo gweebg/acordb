@@ -2,6 +2,7 @@
 
 
     import { createEventDispatcher } from 'svelte';
+    import {normalizeString} from "$lib/scripts/utils.js";
 
     export let ruling;
 
@@ -33,11 +34,9 @@
         if (!field) {
 
             if (param === "Descritores") {
-                ruling[param] = ruling[param].split(",")
+                ruling[param] = ruling[param].split(",").map((tag) => normalizeString(tag));
             }
-
         }
-
     }
 
     const deleteField = (param) => {
@@ -47,7 +46,6 @@
         delete ruling[param];
 
         dispatch('valueChange', ruling);
-
     }
 
     let fieldName = "";

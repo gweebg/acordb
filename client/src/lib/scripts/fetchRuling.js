@@ -14,3 +14,19 @@ export const fetchRuling = async (rulingId) => {
     else throw fail(404, "Ruling does not exist.");
 
 }
+
+
+export const fetchRecord = async (recordId) => {
+
+    let response;
+    try {
+
+        response = await fetch(`${PUBLIC_API_URL}/acordaos/record/${recordId}/`);
+
+    } catch (err) { throw error(500, "Server is down."); }
+
+    if (response.ok) return response.json();
+    else throw fail(404, "Ruling does not exist.");
+
+}
+
