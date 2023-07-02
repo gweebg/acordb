@@ -17,6 +17,9 @@
 
     let pages = [];
 
+    let sort = query["sort"];
+    let sortArrow = sort === "asc" ? "↑" : sort === "desc" ? "↓" : "-";
+
     const getSearchResults = async (query_params: object, page_number: number) => {
 
         page_number = page_number || 0;
@@ -85,6 +88,24 @@
         await updateVisiblePages();
     };
 
+    const changeSorting = async () => {
+        if (sort === "desc") {
+            delete query["sort"];
+            sort = undefined;        
+        }
+        else if (sort === "asc") {
+            query["sort"] = "desc";
+            sort = "desc";
+        }
+        else{
+            query["sort"] = "asc";
+            sort = "asc";
+        }
+        sortArrow = sort === "asc" ? "↑" : sort === "desc" ? "↓" : "-";
+        currentPage = 1;
+        await updateVisiblePages();
+    }
+
 </script>
 
 
@@ -96,6 +117,7 @@
             <h1 class="text-3xl font-bold">Resultados da Pesquisa</h1>
             {#if !loading}
                 <p class="ml-auto opacity-70">({totalCount} resultados espalhados por {totalPages} páginas)</p>
+                <btn on:click={() => changeSorting()} class="ml-4 btn btn-primary btn-sm">Ordenar por data {sortArrow}</btn>
             {/if}
         </header>
         <div class="divider mt-0"></div>

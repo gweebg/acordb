@@ -47,7 +47,7 @@
                     <p>Se esta tabela não atualizou, experimenta re-carregar a página!</p>
                 </div>
             </div>
-            <a class="btn btn-outline btn-primary btn-sm mx-4" href="/search">Ver Todos</a>
+            <a class="btn btn-outline btn-primary btn-sm mx-4" href="/search?sort=desc">Ver Todos</a>
         </div>
 
 
