@@ -11,7 +11,6 @@
         <div class="stat">
             <div class="stat-title">Conta criada em</div>
             <div class="stat-value">{convertDate(user.stats.Criação)}</div>
-            <div class="stat-desc">Account creation date</div>
         </div>
 
     </div>
@@ -39,6 +38,24 @@
                 <div class="stat-title">Foram <span class="text-error">rejeitados</span></div>
                 <div class="stat-value">{user.stats.ChangesDenied}</div>
                 <div class="stat-desc"> pedidos de alteração</div>
+            </div>
+        </div>
+
+    {:else}
+
+        <div class="stats shadow">
+            <div class="stat">
+                <div class="stat-title">Tu criaste</div>
+                <div class="stat-value">{user.stats["Processos"]}</div>
+                <div class="stat-desc">novo(s) acórdão(s)!</div>
+            </div>
+        </div>
+
+        <div class="stats shadow">
+            <div class="stat">
+                <div class="stat-title">Tu reviste</div>
+                <div class="stat-value">{user.stats["Reviews"]}</div>
+                <div class="stat-desc">acórdãos!</div>
             </div>
         </div>
 
