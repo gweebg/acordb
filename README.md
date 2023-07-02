@@ -1,15 +1,13 @@
-# Relatório
-
 # Acordb
 
-Através da realização deste projeto foi criada a plataforma **Acordb** com o intuído de auxiliar qualquer tipo pessoa ou organização a procurar, guardar ou editar acórdãos.
+Através da realização deste projeto foi criada a plataforma **Acordb** com o intuído de auxiliar qualquer tipo de pessoa ou organização a procurar, guardar ou editar acórdãos.
 Dado a que cada tribunal, com autonomia própria, disponibiliza periodicamente um conjunto de acórdãos públicos, a aplicação, por defeito, possui aproximadamente 340.000 acórdãos espalhados por 14 tribunais diferentes. Tais registos podem ser pesquisados a qualquer nível de detalhe, guardados nos favoritos ou até alterados através de pedidos de sugestão.
 
-Ao longo do projeto, foram utilizadas diferentes *stacks* de tecnologias. De um modo geral, o *backend* foi desenvolvido em Python (Django), devivo à facilidade de processamento, parsing, manipulação e normalização de dados. E no *frontend* Svelte (Sveltekit + JavaScript) devido à sua grande abstração de tarefas que noutras ***********frameworks*********** seriam, no mínimo, cansativas. 
+Ao longo do projeto, foram utilizadas diferentes *stacks* de tecnologias. De um modo geral, o *backend* foi desenvolvido em Python (Django), devivo à facilidade de processamento, parsing, manipulação e normalização de dados. E no *frontend* Sveltekit (Svelte + JavaScript) devido à sua grande abstração de tarefas que noutras ***********frameworks*********** seriam, no mínimo, cansativas. 
 
 Relativamente às bases de dados, o conteúdo dos acórdãos é maioritariamente guardado em MongoDB enquanto que os meta-dados relativos a acórdãos e dados de utilizadores são guardados em Postgres. Devido aos limites de velocidade impostos por serviços de *******hosting,*******  todas as bases de dados são alojadas localmente num ****************docker container**************** (assim como todo o projeto).
 
-Nesta aplicação, existem três tipos de acesso. Utilizadores sem conta apenas conseguem consultar e pesquisar acórdãos, consumidores (utilizadores com conta) conseguem têm as mesmas vantagens que os anteriores, porém também conseguem sugerir alterações aos acórdãos e adicioná-los aos favoritos. Finalmente, os administradores conseguem realizar qualquer funcionalidade anteriormente descrita, e também aceitar sugestões realizadas. 
+Nesta aplicação, existem três tipos de acesso. Utilizadores sem conta apenas conseguem consultar e pesquisar acórdãos, consumidores (utilizadores com conta) têm as mesmas vantagens que os anteriores, porém também conseguem sugerir alterações aos acórdãos e adicioná-los aos favoritos. Finalmente, os administradores conseguem realizar qualquer funcionalidade anteriormente descrita, e também aceitar sugestões realizadas. 
 
 No presente relatório, são explicadas as ferramentas e tecnologias usadas, a arquitetura implementada, o tratamento de dados feito, a implementação de bases de dados e ainda a interface da aplicação.
 
@@ -31,7 +29,7 @@ cd acordb
 docker-compose up --build
 ```
 
-Após isto, temos garantidamente a API de dados a ser executada em ***************[localhost:8000](http://localhost:8000)* e a interface em [localhost:80/home](http://localhost/home), ambas prontas a ser utilizadas.
+Após isto, temos garantidamente a API de dados a ser executada em [localhost:8000](http://localhost:8000) e a interface em [localhost:80/home](http://localhost/home), ambas prontas a ser utilizadas.
 
 Relativamente às bases de dados, estas podem ser acedidas através `mongodb://localhost:27017`(MongoDB) e `postgresql://localhost:5432` (Postgres).
 
