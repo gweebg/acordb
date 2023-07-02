@@ -31,7 +31,7 @@ A plataforma depende de vários serviços, pelo que é necessário ter instalada
 Para iniciar a aplicação temos de executar:
 
 ```
-git clone <https://github.com/gweebg/acordb>
+git clone <https://github.com/gweebg/ENGWEB2023-Projeto>
 cd acordb
 docker-compose up --build
 
