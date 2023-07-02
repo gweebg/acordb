@@ -1,4 +1,4 @@
-import {PUBLIC_API_URL} from "$env/static/public";
+import { PUBLIC_SERVER_API_URL } from "$env/static/public";
 
 
 export const capitalize = (word) => {
@@ -14,7 +14,7 @@ export const capitalize = (word) => {
 export const fetchFields = async () => {
 
     const fieldsResponse = await fetch(
-        `${PUBLIC_API_URL}/acordaos/fields/`,
+        `${PUBLIC_SERVER_API_URL}/acordaos/fields/`,
         {
             method: 'GET',
             headers: { 'Content-Type': 'application/json' }

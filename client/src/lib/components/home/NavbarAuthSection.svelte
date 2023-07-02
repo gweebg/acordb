@@ -35,10 +35,10 @@
 
             <form action="/logout" method="POST" class="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52">
                 <li class="h-8 mb-2 w-full flex items-center justify-center">
-                    <a href="/user" class="w-full flex justify-center">Perfil</a>
+                    <a href="/user" class="w-full flex justify-center font-semibold">Perfil</a>
                 </li>
                 <li class="h-8 w-full flex items-center justify-center">
-                    <button type="submit" class="w-full h-full flex justify-center">
+                    <button type="submit" class="w-full h-full flex justify-center hover:bg-error hover:text-white font-semibold">
                         Logout
                     </button>
                 </li>

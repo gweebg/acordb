@@ -1,7 +1,7 @@
 import { redirect } from 'sveltekit-flash-message/server';
 import { loadFlashMessage } from 'sveltekit-flash-message/server';
 
-import { PUBLIC_API_URL } from '$env/static/public';
+import { PUBLIC_SERVER_API_URL } from '$env/static/public';
 import { error } from "@sveltejs/kit";
 
 export const load = loadFlashMessage(async (event) => {
@@ -29,7 +29,7 @@ const fetchFavorites = async (authCookie) => {
 
     try {
 
-        const response = await fetch(`${PUBLIC_API_URL}/favorites/`,
+        const response = await fetch(`${PUBLIC_SERVER_API_URL}/favorites/`,
             {
                 method: 'GET',
                 headers: { 'Content-Type': 'application/json', 'Authorization': authCookie },
@@ -56,7 +56,7 @@ export const actions = {
             try {
 
                 response = await fetch(
-                `${PUBLIC_API_URL}/favorites/${data.get('id')}/`,
+                `${PUBLIC_SERVER_API_URL}/favorites/${data.get('id')}/`,
                 {
                         method: 'DELETE',
                         headers: { 'Content-Type': 'application/json', 'Authorization': authCookie },
@@ -101,7 +101,7 @@ export const actions = {
             try {
 
                 response = await fetch(
-                    `${PUBLIC_API_URL}/favorites/${data.get('id')}/`,
+                    `${PUBLIC_SERVER_API_URL}/favorites/${data.get('id')}/`,
                 {
                         method: 'PUT',
                         headers: { 'Content-Type': 'application/json', 'Authorization': authCookie },

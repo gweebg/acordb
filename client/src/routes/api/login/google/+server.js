@@ -1,4 +1,4 @@
-import { PUBLIC_API_URL } from '$env/static/public';
+import { PUBLIC_SERVER_API_URL } from '$env/static/public';
 import { redirect } from "@sveltejs/kit";
 import jwt_decode from "jwt-decode";
 import { browser } from '$app/environment';
@@ -31,7 +31,7 @@ export const POST = async (requestEvent) => {
     // console.log(credential)
     let b = JSON.stringify({ token: credential});
 
-    let response = await fetch(`${PUBLIC_API_URL}/accounts/login/google/`, {
+    let response = await fetch(`${PUBLIC_SERVER_API_URL}/accounts/login/google/`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'

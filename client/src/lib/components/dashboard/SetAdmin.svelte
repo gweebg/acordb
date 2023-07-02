@@ -38,7 +38,7 @@
 
     <!-- You can open the modal using ID.showModal() method -->
     <button
-            class="btn btn-accent mt-4"
+            class="btn btn-primary mt-4"
             onclick="setAdmin.showModal()">
         Adicionar Administrador
     </button>
@@ -62,7 +62,7 @@
                 {/if}
 
                 <div class="flex flex-row mt-4">
-                    <button class="btn btn-sm btn-accent ml-auto">Adicionar</button>
+                    <button class="btn btn-sm btn-primary ml-auto">Adicionar</button>
                 </div>
             </form>
 

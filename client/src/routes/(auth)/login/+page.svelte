@@ -10,6 +10,7 @@
     import { superForm } from 'sveltekit-superforms/client';
 
     import {switchPassword} from "$lib/scripts/passwordInputState.js";
+	import { PUBLIC_GOOGLE_CLIENT_ID } from "$env/static/public";
 
     export let data;
 
@@ -17,19 +18,19 @@
     const flash = initFlash(page);
 
     let alert = true;
-    let buttonContent = "Sign In";
+    let buttonContent = "Entrar";
     let loading = false;
 
 
     const submitHandler = () => {
 
         loading = true;
-        buttonContent = "Signing in..."
+        buttonContent = "A entrar..."
 
         return async ({ update}) => {
             await update();
             loading = false;
-            buttonContent = "Sign In"
+            buttonContent = "Entrar"
         }
 
     }
@@ -46,7 +47,7 @@
 <svelte:head>
     <script src="https://accounts.google.com/gsi/client" async defer></script>
     <title>
-        Acordb - Sign In
+        Acordb - Entrar
     </title>
 </svelte:head>
 
@@ -76,19 +77,19 @@
         <div class="card-body">
 
             <!-- Title -->
-            <h1 class="text-text_base text-center gap-2 text-3xl font-semibold leading-7">Sign into Acordb</h1>
+            <h1 class="text-text_base text-center gap-2 text-3xl font-semibold leading-7">Entrar em Acordb</h1>
 
             <!-- Card Body and Form -->
             <form method="POST" class="pt-4" use:enhance={submitHandler}>
 
                 <label class="label" for="email">
-                    <span class="label-text">Insert your email</span>
+                    <span class="label-text">Insira o email</span>
                 </label>
                 <input
                         id="email"
                         name="email"
                         type="text"
-                        placeholder="Username"
+                        placeholder="Email"
                         class="input input-bordered w-full"
                         disabled={loading}
                         bind:value={$form.email}/>
@@ -99,7 +100,7 @@
 
                 <!-- Password -->
                 <label for="password" class="label pt-4">
-                    <span class="label-text">Insert your password</span>
+                    <span class="label-text">Insira a password</span>
                 </label>
                 <div class="form-control">
                     <div class="input-group">
@@ -111,7 +112,7 @@
                                disabled={loading}
                         />
 
-                        <button type="button" class="btn btn-square btn-accent" on:click={switchPassword}>
+                        <button id="passwordIconBtn" type="button" class="btn btn-square btn-secondary" on:click={switchPassword}>
                             <img id="passwordIcon" src="/icons/profile/eye-closed.svg" alt="Eye">
                         </button>
 
@@ -122,27 +123,27 @@
                 {/if}
 
                 <label class="label cursor-pointer pt-6 justify-start" for="remember">
-                    <input id="remember" name="remember" type="checkbox" class="checkbox checkbox-accent checkbox-sm mr-2" />
-                    <span class="text-md">Remember me</span>
+                    <input id="remember" name="remember" type="checkbox" class="checkbox checkbox-primary checkbox-sm mr-2" />
+                    <span class="text-md">Lembrar-se de mim</span>
                 </label>
                 {#if $errors.general}
                     <small class="text-error">{$errors.general}</small>
                 {/if}
 
                 <div class="pt-4">
-                    <button class="btn btn-accent w-full" disabled={loading}>{buttonContent}</button>
+                    <button class="btn btn-primary w-full" disabled={loading}>{buttonContent}</button>
                 </div>
 
             </form>
 
             <!-- Want to sign up ? -->
             <p class="pt-2 text-gray-500 text-md">
-                Don't have an account ? <a href="/register" class="text-accent">Sign up here</a>
+                Não tem uma conta? <a href="/register" class="text-secondary">Registe-se</a>
             </p>
 
             <div class="flex justify-center">
                 <div id="g_id_onload"
-                     data-client_id="173987535517-ea5ko2je1d80uqqmi6ipo743kaula7nb.apps.googleusercontent.com"
+                     data-client_id="{PUBLIC_GOOGLE_CLIENT_ID}"
                      data-ux_mode="redirect"
                      data-login_uri="http://localhost/api/login/google">
                 </div>

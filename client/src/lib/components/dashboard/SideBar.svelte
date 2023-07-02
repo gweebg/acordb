@@ -59,8 +59,8 @@
 
         <div class="divider border-t border-white mb-1"></div>
 
-        <form action="/logout" method="POST">
-            <button type="submit" class="btn btn-neutral gap-4 text-base-100-focus float-right">
+        <form action="/logout" method="POST" class="h-full w-full">
+            <button type="submit" class="btn btn-neutral w-full gap-4 text-base-100-focus float-right hover:bg-error text-left justify-start items-center">
                 <img src="/icons/menu/logout.svg" alt="Logout">
                 Logout
             </button>

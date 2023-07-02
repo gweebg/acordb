@@ -133,7 +133,7 @@
                                    placeholder="Escreve uma nova password"
                                    class="input input-bordered w-full" />
 
-                            <button type="button" class="btn btn-square btn-accent" on:click={switchPassword}>
+                            <button id="passwordIconBtn" type="button" class="btn btn-square btn-secondary" on:click={switchPassword}>
                                 <img id="passwordIcon" src="/icons/profile/eye-closed.svg" alt="Eye">
                             </button>
 
@@ -157,7 +157,7 @@
 
                         <fieldset>
                             <button type="button" class="btn" on:click={resetForm}>Limpar</button>
-                            <button class="btn btn-accent">Guardar Alterações</button>
+                            <button class="btn btn-primary">Guardar Alterações</button>
                         </fieldset>
 
                     </div>
@@ -199,7 +199,7 @@
 
                     {#if visible}
 
-                        <button class="btn btn-accent">Gerar API Key</button>
+                        <button class="btn btn-primary">Gerar API Key</button>
 
                     {/if}
 
@@ -215,7 +215,7 @@
                                    value={form?.data.key}
                                    class="input input-bordered w-full" />
 
-                            <button type="button" on:click={copyToClipboard} class="btn btn-square btn-accent">
+                            <button type="button" on:click={copyToClipboard} class="btn btn-square btn-primary">
                                 <img id="copy" src="/icons/profile/copy.svg" alt="Eye">
                             </button>
 

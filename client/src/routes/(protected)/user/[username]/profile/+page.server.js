@@ -1,7 +1,7 @@
 import {fail, redirect} from "@sveltejs/kit";
 import { z } from "zod";
 import { superValidate } from 'sveltekit-superforms/server';
-import { PUBLIC_API_URL } from '$env/static/public';
+import { PUBLIC_SERVER_API_URL } from '$env/static/public';
 import {invalidate} from "$app/navigation";
 const updateSchema = z.object({
 
@@ -25,7 +25,7 @@ const fetchUserStats = async (authCookie) => {
 
     try {
 
-        var response = await fetch(`${PUBLIC_API_URL}/accounts/statistics/`,
+        var response = await fetch(`${PUBLIC_SERVER_API_URL}/accounts/statistics/`,
             {
                 method: 'GET',
                 headers: { 'Content-Type': 'application/json', 'Authorization': authCookie },
@@ -76,7 +76,7 @@ export const actions = {
 
             try {
 
-                var apiKeyResponse = await fetch(`${PUBLIC_API_URL}/accounts/genAPIKey/`,
+                var apiKeyResponse = await fetch(`${PUBLIC_SERVER_API_URL}/accounts/genAPIKey/`,
                     {
                         method: 'POST',
                         headers: { 'Content-Type': 'application/json', 'Authorization': authCookie },
@@ -120,7 +120,7 @@ export const actions = {
                 // Removing undefined fields since they will break the PUT request.
                 Object.keys(form.data).forEach(key => form.data[key] === undefined && delete form.data[key]);
 
-                var updateResponse = await fetch(`${PUBLIC_API_URL}/accounts/user/${event.locals.user.id}/`,
+                var updateResponse = await fetch(`${PUBLIC_SERVER_API_URL}/accounts/user/${event.locals.user.id}/`,
                     {
                         method: 'PATCH',
                         headers: { 'Content-Type': 'application/json', 'Authorization': authCookie },
@@ -155,7 +155,7 @@ export const actions = {
             try {
 
                 response = await fetch(
-                    `${PUBLIC_API_URL}/accounts/makeadmin/`,
+                    `${PUBLIC_SERVER_API_URL}/accounts/makeadmin/`,
                     {
                         method: 'POST',
                         headers: { 'Content-Type': 'application/json', 'Authorization': authCookie },

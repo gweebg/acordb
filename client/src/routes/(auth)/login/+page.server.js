@@ -1,7 +1,7 @@
 import { superValidate } from 'sveltekit-superforms/server';
 import { loadFlashMessage } from 'sveltekit-flash-message/server';
 import { redirect } from 'sveltekit-flash-message/server';
-import { PUBLIC_API_URL } from '$env/static/public';
+import { PUBLIC_SERVER_API_URL } from '$env/static/public';
 import { loginSchema } from "$lib/schemas/schemas.js";
 import { fail } from "@sveltejs/kit";
 
@@ -37,7 +37,7 @@ export const actions = {
 
             /* Logging in the user via the backend API. */
             response = await fetch(
-            `${PUBLIC_API_URL}/accounts/login/password/`,
+            `${PUBLIC_SERVER_API_URL}/accounts/login/password/`,
             {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
