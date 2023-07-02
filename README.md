@@ -87,7 +87,7 @@ A escolha de ter duas bases de dados veio da incompatibilidade base de Django co
 
 Na seguinte figura, podemos observar um diagrama que representa a arquitetura geral do sistema:
 
-![image.png]()
+![image.png](https://github.com/gweebg/acordb/blob/main/docs/arq.svg)
 
 # Desenvolvimento do *******Backend*******
 
