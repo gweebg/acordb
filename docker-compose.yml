@@ -8,6 +8,8 @@ services:
     volumes:
       - api-data:/code/data
       - ./out:/code/out
+    environment:
+      - TZ=Europe/Lisbon
     networks:
       - lost
     depends_on:
@@ -24,6 +26,7 @@ services:
       - lost
     environment:
       - PORT=80
+      - TZ=Europe/Lisbon
     depends_on:
       - api-server
 
@@ -31,6 +34,8 @@ services:
     image: mongo
     ports:
       - 27017:27017
+    environment:
+      - TZ=Europe/Lisbon
     volumes:
       - mongo-data:/data/db
     networks:
@@ -48,6 +53,7 @@ services:
       - POSTGRES_DB=acordaos
       - POSTGRES_USER=admin
       - POSTGRES_PASSWORD=admin
+      - TZ=Europe/Lisbon
 
 volumes:
   api-data:

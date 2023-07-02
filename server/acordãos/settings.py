@@ -168,7 +168,6 @@ TIME_ZONE = env("TIME_ZONE")
 
 USE_I18N = True
 
-USE_TZ = True
 
 
 # Static files (CSS, JavaScript, Images)

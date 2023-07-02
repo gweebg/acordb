@@ -59,7 +59,7 @@
         <div class="collapse-content">
             <div class="divider mt-0"></div>
             <div class="flex flex-row items-center">
-                <p>Revisto em: {date}</p>
+                <p>Revisto em: {details.added_at}</p>
                 <a href={"/ruling/" + details.acordao} class="btn btn-primary btn-sm ml-auto">Abrir</a>
             </div>
         </div>
