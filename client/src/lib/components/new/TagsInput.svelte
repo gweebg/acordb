@@ -54,7 +54,7 @@
 
 <main>
     <label class="label" for="tags">
-        <span class="label-text">Process Descriptors (Mandatory)</span>
+        <span class="label-text">Descritores (Obrigatório)</span>
     </label>
 
     <div class="flex flex-col mb-2">
@@ -64,7 +64,7 @@
                 id="tags"
                 type="text"
                 bind:value={inputValue}
-                placeholder="Enter a descriptor"
+                placeholder="Insere múltiplos descritores"
                 class="input input-bordered w-full max-w-xs"
                 on:keydown={handleInputKeydown}
         />

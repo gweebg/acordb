@@ -17,8 +17,8 @@
     <!-- Table Header -->
     <thead>
         <tr>
-            {#each ["Added At", "Added By", "Processo" ,"Tribunal", "Relator", "Votação", "Meio Processual"] as r}
-                <th class="bg-accent text-accent-content">{r}</th>
+            {#each ["Adicionado Em", "Adicionado Por", "Processo" ,"Tribunal", "Relator", "Votação", "Meio Processual"] as r}
+                <th class="bg-accent text-accent-content text-[15px]">{r}</th>
             {/each}
         </tr>
     </thead>

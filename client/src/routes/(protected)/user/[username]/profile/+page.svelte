@@ -43,7 +43,7 @@
 
 <svelte:head>
     <title>
-        Acordb - Profile
+        Acordb - Perfil
     </title>
 </svelte:head>
 
@@ -67,12 +67,12 @@
             <div class="text-sm breadcrumbs">
                 <ul>
                     <li><p>Dashboard</p></li>
-                    <li><p>Profile</p></li>
+                    <li><p>Perfil</p></li>
                 </ul>
             </div>
 
 
-            <h2 class="text-3xl font-bold">{data.user.first_name}'s Profile</h2>
+            <h2 class="text-3xl font-bold">Perfil de {data.user.first_name}</h2>
             <div class="divider"></div>
 
         </header>
@@ -83,12 +83,12 @@
             <!-- Account -->
             <div class="w-1/2 mr-12">
 
-                <h3 class="text-xl font-bold pb-4">Your Account</h3>
+                <h3 class="text-xl font-bold pb-4">A Tua Conta</h3>
 
                 <form method="POST" action="?/update">
 
                     <label for="email" class="label">
-                        <span class="label-text">Email Address</span>
+                        <span class="label-text">Endereço de Email</span>
                     </label>
                     <input id="email"
                            name="email"
@@ -101,7 +101,7 @@
 
                         <div class="flex-1">
                             <label for="first_name" class="label">
-                                <span class="label-text">First Name</span>
+                                <span class="label-text">Primeiro Nome</span>
                             </label>
                             <input id="first_name"
                                    name="first_name"
@@ -112,7 +112,7 @@
 
                         <div class="flex-1">
                             <label for="last_name" class="label">
-                                <span class="label-text">Last Name</span>
+                                <span class="label-text">Último Nome</span>
                             </label>
                             <input id="last_name"
                                    name="last_name"
@@ -130,7 +130,7 @@
                             <input id="password"
                                    name="password"
                                    type="password"
-                                   placeholder="Type a new password"
+                                   placeholder="Escreve uma nova password"
                                    class="input input-bordered w-full" />
 
                             <button type="button" class="btn btn-square btn-accent" on:click={switchPassword}>
@@ -156,8 +156,8 @@
                         </div>
 
                         <fieldset>
-                            <button type="button" class="btn" on:click={resetForm}>Reset</button>
-                            <button class="btn btn-accent">Save Changes</button>
+                            <button type="button" class="btn" on:click={resetForm}>Limpar</button>
+                            <button class="btn btn-accent">Guardar Alterações</button>
                         </fieldset>
 
                     </div>
@@ -168,7 +168,7 @@
 
             <!-- Stats -->
             <div class="w-1/2">
-                <h3 class="text-xl font-bold pb-4">Your Stats</h3>
+                <h3 class="text-xl font-bold pb-4">As Tuas Estatísticas</h3>
                 <UserStats user={data.user}/>
             </div>
 
@@ -182,14 +182,14 @@
 
             <!-- Header -->
             <header>
-                <h3 class="text-xl font-bold pb-4">Generate API Key</h3>
+                <h3 class="text-xl font-bold pb-4">Gerar Chave de API</h3>
 
                 <p>
-                    Please save this secret key somewhere safe and accessible. For security reasons,
-                    <strong>you won't be able to view it again</strong> through your Accordb account.
+                    Por favor guarda este segredo algures seguro e acessível. Devido a questões de segurança
+                    <strong>não poderás voltar a ver a chave</strong> através desta área.
                 </p>
 
-                <p>If you lose this secret key, you'll need to generate a new one.</p>
+                <p>Caso percas a chave, terás de gerar uma nova!</p>
             </header>
 
             <!-- Form -->
@@ -199,7 +199,7 @@
 
                     {#if visible}
 
-                        <button class="btn btn-accent">Generate API Key</button>
+                        <button class="btn btn-accent">Gerar API Key</button>
 
                     {/if}
 
@@ -245,8 +245,8 @@
 
                 <!-- Header -->
                 <header>
-                    <h3 class="text-xl font-bold pb-4">Make User Administrator</h3>
-                    <p>Fill in the form bellow to turn any user into administrator.</p>
+                    <h3 class="text-xl font-bold pb-4">Transformar Utilizador em Administrador</h3>
+                    <p>Preenche o formulário abaixo com o email do utilizador.</p>
                 </header>
 
                 <SetAdmin/>

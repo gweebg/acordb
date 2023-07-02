@@ -30,10 +30,10 @@
             <div class="flex flex-col">
                 <div class="flex flex-row gap-2 items-center">
                     <div class="badge {getStatusColor(details.status)} badge-md"></div>
-                    <p>Ruling Update Request</p>
+                    <p>Pedido de Revisão de Acórdão</p>
                 </div>
 
-                <small class="opacity-50 text-xs">Requested by {details.sujested_by}</small>
+                <small class="opacity-50 text-xs">Feito por {details.sujested_by}</small>
             </div>
 
             <div class="ml-auto flex-row flex">
@@ -43,7 +43,7 @@
 
                 {#if details.reviewer}
                     <div class="badge">
-                        Reviewed by {details.reviewer}
+                        Revisto por {details.reviewer}
                     </div>
                 {/if}
             </div>
@@ -59,8 +59,8 @@
         <div class="collapse-content">
             <div class="divider mt-0"></div>
             <div class="flex flex-row items-center">
-                <p>Reviewed at: {date}</p>
-                <a href={"/ruling/" + details.acordao} class="btn btn-accent btn-sm ml-auto">Open</a>
+                <p>Revisto em: {date}</p>
+                <a href={"/ruling/" + details.acordao} class="btn btn-accent btn-sm ml-auto">Abrir</a>
             </div>
         </div>
     {/if}

@@ -29,19 +29,19 @@
 
     <div class="mt-4 flex flex-row flex-wrap gap-2">
 
-        <a href={"http://www.dgsi.pt/" + fields.data.url} target="_blank" class="btn btn-sm">Open in DGSI</a>
+        <a href={"http://www.dgsi.pt/" + fields.data.url} target="_blank" class="btn btn-sm">Abrir na DGSI</a>
 
         {#if isAuthenticated && !isRecord}
 
             <FavoriteButton id={fields.id} isDisabled={isFav}>
 
-                <button class="btn btn-sm" disabled={isFav}>Save in Favorites</button>
+                <button class="btn btn-sm" disabled={isFav}>Guadar nos Favoritos</button>
 
             </FavoriteButton>
 
             <SuggestButton ruling={fields.data} id={fields.id}>
 
-                <button class="btn btn-sm">Suggest a Change</button>
+                <button class="btn btn-sm">Sugerir uma Alteração</button>
 
             </SuggestButton>
 

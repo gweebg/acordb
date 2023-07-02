@@ -15,8 +15,8 @@
 
     <!-- Title -->
     <header>
-        <h2 class="text-2xl font-bold">General Information</h2>
-        <p class="opacity-50">Please try to fill in as much data as possible.</p>
+        <h2 class="text-2xl font-bold">Informações Gerais</h2>
+        <p class="opacity-50">Por favor tenta inserir o máximo de informação possível!</p>
         <div class="divider mt-0"></div>
     </header>
 
@@ -27,13 +27,13 @@
         <div class="form-control w-full max-w-xs">
 
             <label class="label" for="process">
-                <span class="label-text">Process Number (Mandatory)</span>
+                <span class="label-text">Número do Processo (Obrigatório)</span>
             </label>
 
             <input
                     id="process"
                     type="text"
-                    placeholder="Process Identification"
+                    placeholder="Número do processo"
                     class="input input-bordered w-full max-w-xs"
                     bind:value={$newForm.process}
             />
@@ -48,12 +48,12 @@
         <!-- URL Input Field -->
         <div class="form-control flex-grow">
             <label class="label" for="url">
-                <span class="label-text">URL (Optional)</span>
+                <span class="label-text">URL (Opcional)</span>
             </label>
 
             <input id="url"
                    type="text"
-                   placeholder="DSGI link"
+                   placeholder="Link para DSGI"
                    class="input input-bordered w-full"
                    bind:value={$newForm.url}
             />
@@ -64,7 +64,7 @@
     <!-- Optional Fields -->
     <div>
 
-        <div class="divider"><span class="opacity-50">Optional Fields</span></div>
+        <div class="divider"><span class="opacity-50">Campos Opcionais</span></div>
 
         {#each $newForm.fields as field (field.id)}
 
@@ -76,11 +76,11 @@
                         <div class="join-item">
                             <Select
                                     items={fields}
-                                    placeholder="Select ruling field"
+                                    placeholder="Escolhe um campo"
                                     --width="300px"
                                     --border-radius="0.5rem 0 0 0.5rem"
                                     --height="48px"
-                                    bind:value={field.value.field}
+                                     bind:value={field.value.field}
                             />
 
                         </div>
@@ -89,7 +89,7 @@
                             <div>
                                 <input
                                         class="input input-bordered join-item w-full"
-                                        placeholder="Field value"
+                                        placeholder="Insere um valor"
                                         bind:value={field.value.value}
                                 />
                             </div>
@@ -105,7 +105,7 @@
 
         {/each}
 
-        <button type="button" class="btn w-full mt-4" on:click={addInput}>Add Field</button>
+        <button type="button" class="btn w-full mt-4" on:click={addInput}>Novo Campo</button>
 
     </div>
 </main>

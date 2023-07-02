@@ -41,13 +41,13 @@
 
         <div class="flex items-center justify-between">
             <div class="">
-                <h2 class="text-3xl font-bold text-white">Recently Uploaded Rulings</h2>
+                <h2 class="text-3xl font-bold text-white">Acórdãos Adicionados Recentemente</h2>
 
                 <div class="opacity-60 text-white">
-                    <p>If the table did not update, please refresh the page!</p>
+                    <p>Se esta tabela não atualizou, experimenta re-carregar a página!</p>
                 </div>
             </div>
-            <a class="btn btn-base-100 btn-sm mx-4" href="/search">View All</a>
+            <a class="btn btn-base-100 btn-sm mx-4" href="/search">Ver Todos</a>
         </div>
 
 

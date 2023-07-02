@@ -8,7 +8,6 @@
     import {newForm} from "$lib/stores/form.js";
     import jsonToFormData from "@ajoelp/json-to-formdata";
     import {goto} from "$app/navigation";
-    import {toast} from "svelte-french-toast";
 
     export let data;
 
@@ -18,7 +17,7 @@
     let files;
 
     let buttonState = {
-        content: "Next",
+        content: "Próximo",
         isDisabled: true
     }
 
@@ -29,7 +28,7 @@
             const button = document.getElementById('submit');
 
             sections.details = true;
-            buttonState.content = "Finish";
+            buttonState.content = "Submeter";
 
             button.addEventListener('click', function() {
                 button.setAttribute('type', 'submit');
@@ -58,7 +57,7 @@
             button.setAttribute('type', 'button');
         });
 
-        buttonState.content = "Next";
+        buttonState.content = "Próximo";
 
         error = "";
     }
@@ -143,7 +142,7 @@
 
 <svelte:head>
     <title>
-        New Ruling
+        Novo Acórdão
     </title>
 </svelte:head>
 
@@ -159,16 +158,16 @@
 
             <!-- Text -->
             <div>
-                <h2 class="text-3xl font-bold">Add a new ruling!</h2>
-                <p class="opacity-50">Pay attention to what fields are obligatory!</p>
+                <h2 class="text-3xl font-bold">Adiciona Um Novo Acórdão!</h2>
+                <p class="opacity-50">Presta atenção aos campos obrigatórios!</p>
             </div>
 
             <!-- Steps -->
             <div class="ml-auto">
                 <ul class="steps">
-                    <li class="step {sections.general ? 'step-primary' : ''}">General Information</li>
-                    <li class="step {sections.content ? 'step-primary' : ''}">Content</li>
-                    <li class="step {sections.details ? 'step-primary' : ''}">Review & Submit</li>
+                    <li class="step {sections.general ? 'step-primary' : ''}">Informações Gerais</li>
+                    <li class="step {sections.content ? 'step-primary' : ''}">Conteúdo</li>
+                    <li class="step {sections.details ? 'step-primary' : ''}">Rever e Submeter</li>
                 </ul>
             </div>
 
@@ -201,7 +200,7 @@
 
             <div class="flex flex-row mt-4">
 
-                <button class="btn" type="button" onclick="my_modal_3.showModal()">Upload File</button>
+                <button class="btn" type="button" onclick="my_modal_3.showModal()">Adicionar Ficheiro</button>
                 <dialog id="my_modal_3" class="modal">
                     <div class="modal-box">
 
@@ -216,7 +215,7 @@
                         <form action="?/upload" method="POST" class="my-4" on:submit={handleUpload}>
                             <input type="file" accept=".json" bind:files class="file-input file-input-bordered file-input-primary w-full">
                             <div class="flex flex-row">
-                                <button class="btn btn-sm ml-auto mt-4 mb-0 w-full">Upload</button>
+                                <button class="btn btn-sm ml-auto mt-4 mb-0 w-full">Carregar</button>
                             </div>
                         </form>
 
@@ -229,7 +228,7 @@
 
                 <!-- Next/Submit Button -->
                 <div class="ml-auto">
-                    <button id="back" disabled={buttonState.isDisabled} type="button" class="btn" on:click={prevSection}>Back</button>
+                    <button id="back" disabled={buttonState.isDisabled} type="button" class="btn" on:click={prevSection}>Voltar</button>
                     <button id="submit" class="btn btn-primary" type="button" on:click={nextSection}>{buttonState.content}</button>
                 </div>
             </div>

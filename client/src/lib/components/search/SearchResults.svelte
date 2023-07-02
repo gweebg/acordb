@@ -93,9 +93,9 @@
     <div class="mx-48 mb-16">
 
         <header class="flex flex-row items-center">
-            <h1 class="text-3xl font-bold">Search Results</h1>
+            <h1 class="text-3xl font-bold">Resultados da Pesquisa</h1>
             {#if !loading}
-                <p class="ml-auto opacity-70">({totalCount} results spread over {totalPages} pages)</p>
+                <p class="ml-auto opacity-70">({totalCount} resultados espalhados por {totalPages} páginas)</p>
             {/if}
         </header>
         <div class="divider mt-0"></div>

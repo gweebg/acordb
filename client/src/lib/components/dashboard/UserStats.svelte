@@ -9,7 +9,7 @@
     <div class="stats shadow overflow-x-hidden">
 
         <div class="stat">
-            <div class="stat-title">Created at</div>
+            <div class="stat-title">Conta criada em</div>
             <div class="stat-value">{convertDate(user.stats.Criação)}</div>
             <div class="stat-desc">Account creation date</div>
         </div>
@@ -20,32 +20,33 @@
 
         <div class="stats shadow">
             <div class="stat">
-                <div class="stat-title">You have made</div>
+                <div class="stat-title">Tu fizeste</div>
                 <div class="stat-value">{user.stats.Changes}</div>
-                <div class="stat-desc">requests</div>
+                <div class="stat-desc">pedidos de revisão!</div>
             </div>
         </div>
 
         <div class="stats shadow">
             <div class="stat">
-                <div class="stat-title">You have</div>
+                <div class="stat-title">Foram <span class="text-accent">aceites</span> </div>
                 <div class="stat-value">{user.stats.ChangesAccepted}</div>
-                <div class="stat-desc"><span class="text-accent">accepted</span> change requests.</div>
+                <div class="stat-desc">pedidos de revisão.</div>
             </div>
         </div>
 
         <div class="stats shadow">
             <div class="stat">
-                <div class="stat-title">You have</div>
+                <div class="stat-title">Foram <span class="text-error">rejeitados</span></div>
                 <div class="stat-value">{user.stats.ChangesDenied}</div>
-                <div class="stat-desc"><span class="text-error">denied</span> change requests.</div>
+                <div class="stat-desc"> pedidos de alteração</div>
             </div>
         </div>
+
     {/if}
 
     <div class="stats shadow">
         <div class="stat">
-            <div class="stat-title">Favorites</div>
+            <div class="stat-title">Total de Favoritos</div>
             <div class="stat-value">{user.stats.Favoritos}</div>
         </div>
     </div>

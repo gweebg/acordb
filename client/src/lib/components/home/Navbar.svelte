@@ -25,14 +25,14 @@
 
                 <!-- Logo -->
                 <a href="/home" class="btn btn-ghost normal-case text-2xl text-neutral-focus ml-0 items-center">
-                    <img class="w-12" src="logo-textless.svg" alt="logo"/>
+                    <img class="w-12" src="/logo-textless.svg" alt="logo"/>
                     <p class="pt-1">Acordb</p>
                 </a>
 
                 <!-- Controls -->
                 <div class="ml-4">
-                    <a href="/search" class="btn btn-ghost">Advanced Search</a>
-                    <a href="/home#stats" class="btn btn-ghost">Statistics</a>
+                    <a href="/search" class="btn btn-ghost">Procura Avançada</a>
+                    <a href="/home#stats" class="btn btn-ghost">Estatísticas</a>
                 </div>
 
             </div>

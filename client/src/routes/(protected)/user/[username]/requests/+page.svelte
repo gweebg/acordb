@@ -9,7 +9,7 @@
 
 <svelte:head>
     <title>
-        Acordb - Rulings
+        Acordb - Pedidos de Revisão
     </title>
 </svelte:head>
 
@@ -33,14 +33,14 @@
             <div class="text-sm breadcrumbs">
                 <ul>
                     <li><p>Dashboard</p></li>
-                    <li><p>Incoming Change Requests</p></li>
+                    <li><p>Pedidos de Revisão</p></li>
                 </ul>
             </div>
 
             {#if data.user.is_administrator}
-                <h2 class="text-3xl font-bold">Incoming Change Requests</h2>
+                <h2 class="text-3xl font-bold">Pedidos de Revisão Recebidos</h2>
             {:else}
-                <h2 class="text-3xl font-bold">Outgoing Change Requests</h2>
+                <h2 class="text-3xl font-bold">Pedidos de Revisão Enviados</h2>
             {/if}
             <div class="divider"></div>
 

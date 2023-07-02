@@ -44,7 +44,7 @@
     {#if !isRecord}
 
         <div class="mt-10">
-            <h2 class="font-bold text-xl">Other Versions</h2>
+            <h2 class="font-bold text-xl">Outras Versões</h2>
             <div class="divider mt-0"></div>
 
             {#if versions.length > 0}
@@ -55,7 +55,7 @@
 
             {:else}
 
-                <p>There are no other versions of this ruling.</p>
+                <p>Não existem outras versões para este acórdão.</p>
 
             {/if}
         </div>

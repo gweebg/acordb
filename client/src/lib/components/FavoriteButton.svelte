@@ -19,11 +19,11 @@
             switch (result.type) {
 
                 case "success":
-                    toast.success("Added to favorites!", toastStyle);
+                    toast.success("Adicionado aos favoritos!", toastStyle);
                     break;
 
                 case "invalid":
-                    toast.error("Could not add to favorites!", toastStyle);
+                    toast.error("Não foi possível adicionar aos favoritos!", toastStyle);
                     break;
 
                 default:
@@ -62,8 +62,8 @@
                 <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
 
                 <header>
-                    <h3 class="font-bold text-lg">Save to Favorites</h3>
-                    <p class="text-sm opacity-70">Provide a description to save the ruling in your favorites.</p>
+                    <h3 class="font-bold text-lg">Guardar nos Favoritos</h3>
+                    <p class="text-sm opacity-70">Podes especificiar uma descrição para te localizares melhor!</p>
                     <div class="divider m-0"></div>
                 </header>
             </form>
@@ -74,12 +74,12 @@
 
                 <textarea
                         name="description"
-                        placeholder="Enter a description"
+                        placeholder="Adiciona uma descrição"
                         class="textarea textarea-bordered textarea-md w-full mt-4 mb-0" ></textarea>
 
                 <div class="modal-action">
                     <button class="btn btn-sm btn-accent">
-                        Save
+                        Guardar
                     </button>
                 </div>
             </form>

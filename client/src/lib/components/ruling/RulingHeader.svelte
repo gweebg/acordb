@@ -10,7 +10,7 @@
 
     <header class="flex flex-row items-center">
         <div class="">
-            <h2 class="card-title">Process no. {rulingData.process}</h2>
+            <h2 class="card-title">Processo nº {rulingData.process}</h2>
         </div>
 
         <div class="ml-auto opacity-50">

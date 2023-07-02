@@ -69,14 +69,14 @@ export const actions = {
 
             if (response.ok) {
                 throw redirect(
-                    { type: "success", message: "Successfully deleted favorite!" },
+                    { type: "success", message: "Favorito removido com sucesso!" },
                     event
                 )
             }
 
             else {
                 throw redirect(
-                    { type: "error", message: "Could not delete the bookmark." },
+                    { type: "error", message: "Não foi possível remover o favorito!" },
                     event
                 )
             }
@@ -116,14 +116,14 @@ export const actions = {
 
             if (response.ok) {
                 throw redirect(
-                    { type: "success", message: "Successfully edited!" },
+                    { type: "success", message: "Editado com sucesso!" },
                     event
                 )
             }
 
             else {
                 throw redirect(
-                    { type: "error", message: "Something went wrong, try again!" },
+                    { type: "error", message: "Ocorreu um problema, tente mais tarde." },
                     event
                 )
             }

@@ -21,8 +21,8 @@
 
     <!-- Title -->
     <header>
-        <h2 class="text-2xl font-bold">Review & Submit</h2>
-        <p class="opacity-50">Make sure to review every field of the ruling before submitting!</p>
+        <h2 class="text-2xl font-bold">Rever e Submenter</h2>
+        <p class="opacity-50">Não te esqueças de rever todos os campos antes de submeter!</p>
         <div class="divider mt-0"></div>
     </header>
 
@@ -47,7 +47,7 @@
 
         <section>
 
-            <div class="divider"><span class="opacity-50">Decision</span></div>
+            <div class="divider"><span class="opacity-50">Decisão</span></div>
             {#if $newForm.body.decision !== ''}
                 <p>{$newForm.body.decision}</p>
             {:else}
@@ -56,7 +56,7 @@
 
 
 
-            <div class="divider"><span class="opacity-50">Summary</span></div>
+            <div class="divider"><span class="opacity-50">Sumário</span></div>
             {#if $newForm.body.summary !== ''}
                 <p>{$newForm.body.summary}</p>
             {:else}
@@ -64,7 +64,7 @@
             {/if}
 
 
-            <div class="divider"><span class="opacity-50">Integral Text</span></div>
+            <div class="divider"><span class="opacity-50">Texto Integral</span></div>
             {#if $newForm.body.text !== ''}
                 <p>{$newForm.body.text}</p>
             {:else}

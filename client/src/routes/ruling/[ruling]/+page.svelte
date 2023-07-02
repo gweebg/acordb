@@ -15,7 +15,7 @@
 
 <svelte:head>
     <title>
-        Ruling {data.ruling.data.Processo}
+        Acórdão {data.ruling.data.Processo}
     </title>
 </svelte:head>
 
