@@ -8,7 +8,7 @@
 {#if $loading}
 
     <div class="bg-accent flex justify-center p-1" transition:slide>
-        <span class="loading loading-dots loading-md"></span>
+        <span class="loading loading-dots loading-md text-primary"></span>
     </div>
 
 {/if}

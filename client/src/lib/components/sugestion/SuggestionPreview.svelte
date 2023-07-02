@@ -84,7 +84,7 @@
             <header class="flex flex-row gap-2 items-center">
 
                 <div class="pt-1">
-                    <button class="btn btn-xs btn-neutral btn-circle" on:click={() => deleteField(param)}>
+                    <button type="button" class="btn btn-xs btn-neutral btn-circle" on:click={() => deleteField(param)}>
                         <img src="/icons/delete.svg" alt="remove">
                     </button>
                 </div>
