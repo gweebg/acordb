@@ -145,6 +145,8 @@ A documentação e listagem de todas as rotas públicas e privadas está totalme
 - No ***browser*** através de `Swagger Docs`, acessível por http://localhost:8000/swagger/.
 - No ***browser*** através de `Redoc`, acessível por http://localhost:8000/redoc/.
 
+Tanto a documentação do `Swagger` como do `Redoc` seguem o _standard_ da _OpenAPI_.
+
 Relativamente às funcionalidades, temos particular orgulho na implementação do histórico dos acórdãos. De modo a nunca perder informação e em alternativa à edição/remoção de acórdãos, optamos por distinguir um acórdão como sendo um conjunto de `records`, onde cada `record` representa uma versão do acórdão, estas versões são geradas através do mecanismo de revisões, isto é, um utilizador (autenticado) pode sugerir uma alteração a um acórdão que pode posteriormente ser aceite ou rejeitado (ficando sempre um registo no ********dashboard******** do utilizador). Assim caso um acórdão seja alterado o utilizador poderá sempre verificar como era antes, podemos pensar nesta funcionalidade como os Pull Requests do GitHub, do mesmo modo, o administrador pode ver as diferenças entre a versão sugerida e a atual antes de aceitar ou rejeitar o pedido. 
 
 # Desenvolvimento do **Frontend**
