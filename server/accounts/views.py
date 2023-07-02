@@ -74,7 +74,7 @@ class Statistics(APIView):
     def get(self,request):
         if request.user.is_administrator:
             return Response({
-                "Processos":Record.objects.filter(added_by=request.user).count(),
+                "Acordãos":Record.objects.filter(added_by=request.user).count(),
                 "Criação":request.user.created_at.strftime('%H:%M:%S %d/%m/%Y'),
                 "Reviews":ChangeRequest.objects.filter(reviewer=request.user).count(),
                 "Favoritos":Favorites.objects.filter(user=request.user).count()
