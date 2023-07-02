@@ -38,10 +38,10 @@
         list = res["data"];
         totalCount = res["count"];
         totalPages =  Math.ceil(res["count"] / items_per_page)
-        
-
+        let completePageArray = Array.from({ length: totalPages }, (_, i) => i + 1);
         let pageArray = [];
-        if (currentPage < 7) {
+        if (totalPages <= visiblePages) pageArray = completePageArray;
+        else if (currentPage < 7) {
             let range = visiblePages - 3
             for (let i = 1; i <= range; i++) {
                 pageArray.push(i);

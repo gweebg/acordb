@@ -1,5 +1,6 @@
 from django.conf import settings
 from datetime import datetime
+import re
 def getManyRecords(query):
     limit = query.pop("limit", None)
     skip = query.pop("skip", None)
@@ -47,7 +48,7 @@ def getMostRecentRecords(query):
         if sort not in ['asc','desc']:
             return None
         sort = 1 if sort == 'asc' else -1
-    query = {key:{"$regex": value} for key,value in query.items()}
+    query = {key:{"$regex": re.compile(value, re.IGNORECASE)} for key,value in query.items()}
     if from_date is not None or to_date is not None:
         query['record_added_at']={}
         if from_date is not None:
@@ -86,10 +87,10 @@ def getMostRecentRecords(query):
         'results': 1,
         'total_count': {'$arrayElemAt': ['$total_count.count', 0]}
     }})
-    print(pipeline)
+    # print(pipeline)
     # Execute the aggregation query
     result = list(settings.MONGO_DB['records'].aggregate(pipeline, allowDiskUse=True))
-    print(result)
+    # print(result)
     if result[0]["results"] != []:
         result,total_count = result[0].values()
     else:
