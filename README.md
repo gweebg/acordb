@@ -1,3 +1,10 @@
+## Grupo
+| Número | Nome             |
+| -------- | ------- |
+| 96766  | Guilherme Sampaio |
+| 96681  | Luís Pereira  |
+| 96561  | Rodrigo Pereira   |
+
 # Acordb
 
 Através da realização deste projeto foi criada a plataforma **Acordb** com o intuído de auxiliar qualquer tipo de pessoa ou organização a procurar, guardar ou editar acórdãos.
