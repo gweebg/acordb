@@ -3,11 +3,11 @@
 Através da realização deste projeto foi criada a plataforma **Acordb** com o intuído de auxiliar qualquer tipo de pessoa ou organização a procurar, guardar ou editar acórdãos.
 Dado a que cada tribunal, com autonomia própria, disponibiliza periodicamente um conjunto de acórdãos públicos, a aplicação, por defeito, possui aproximadamente 340.000 acórdãos espalhados por 14 tribunais diferentes. Tais registos podem ser pesquisados a qualquer nível de detalhe, guardados nos favoritos ou até alterados através de pedidos de sugestão.
 
-Ao longo do projeto, foram utilizadas diferentes *stacks* de tecnologias. De um modo geral, o *backend* foi desenvolvido em Python (Django), devivo à facilidade de processamento, parsing, manipulação e normalização de dados. E no *frontend* Sveltekit (Svelte + JavaScript) devido à sua grande abstração de tarefas que noutras ***********frameworks*********** seriam, no mínimo, cansativas. 
+Ao longo do projeto, foram utilizadas diferentes *stacks* de tecnologias. De um modo geral, o *backend* foi desenvolvido em Python (Django), devivo à facilidade de processamento, parsing, manipulação e normalização de dados. E no *frontend* Sveltekit (Svelte + JavaScript) devido à sua grande abstração de tarefas que noutras ***frameworks*** seriam, no mínimo, cansativas.
 
-Relativamente às bases de dados, o conteúdo dos acórdãos é maioritariamente guardado em MongoDB enquanto que os meta-dados relativos a acórdãos e dados de utilizadores são guardados em Postgres. Devido aos limites de velocidade impostos por serviços de *******hosting,*******  todas as bases de dados são alojadas localmente num ****************docker container**************** (assim como todo o projeto).
+Relativamente às bases de dados, o conteúdo dos acórdãos é maioritariamente guardado em MongoDB enquanto que os meta-dados relativos a acórdãos e dados de utilizadores são guardados em Postgres. Devido aos limites de velocidade impostos por serviços de ***hosting,***  todas as bases de dados são alojadas localmente num **docker container** (assim como todo o projeto).
 
-Nesta aplicação, existem três tipos de acesso. Utilizadores sem conta apenas conseguem consultar e pesquisar acórdãos, consumidores (utilizadores com conta) têm as mesmas vantagens que os anteriores, porém também conseguem sugerir alterações aos acórdãos e adicioná-los aos favoritos. Finalmente, os administradores conseguem realizar qualquer funcionalidade anteriormente descrita, e também aceitar sugestões realizadas. 
+Nesta aplicação, existem três tipos de acesso. Utilizadores sem conta apenas conseguem consultar e pesquisar acórdãos, consumidores (utilizadores com conta) têm as mesmas vantagens que os anteriores, porém também conseguem sugerir alterações aos acórdãos e adicioná-los aos favoritos. Finalmente, os administradores conseguem realizar qualquer funcionalidade anteriormente descrita, e também aceitar sugestões realizadas.
 
 No presente relatório, são explicadas as ferramentas e tecnologias usadas, a arquitetura implementada, o tratamento de dados feito, a implementação de bases de dados e ainda a interface da aplicação.
 
@@ -19,17 +19,18 @@ A plataforma depende de vários serviços, pelo que é necessário ter instalada
 - Docker-Compose
 - Python 3.10 (Apenas utilizado para normalização de dados, opcional)
 
-**********Nota:********** Caso pretenda utilizar autenticação através do Google, é necessária a criação de uma aplicação no [Google](https://developers.google.com/identity/sign-in/web/sign-in).
+**Nota:** Caso pretenda utilizar autenticação através do Google, é necessária a criação de uma aplicação no [Google](https://developers.google.com/identity/sign-in/web/sign-in).
 
 Para iniciar a aplicação temos de executar:
 
-```bash
-git clone https://github.com/gweebg/acordb
+```
+git clone <https://github.com/gweebg/acordb>
 cd acordb
 docker-compose up --build
+
 ```
 
-Após isto, temos garantidamente a API de dados a ser executada em [localhost:8000](http://localhost:8000) e a interface em [localhost:80/home](http://localhost/home), ambas prontas a ser utilizadas.
+Após isto, temos garantidamente a API de dados a ser executada em [localhost:8000](http://localhost:8000/) e a interface em [localhost:80/home](http://localhost/home), ambas prontas a ser utilizadas.
 
 Relativamente às bases de dados, estas podem ser acedidas através `mongodb://localhost:27017`(MongoDB) e `postgresql://localhost:5432` (Postgres).
 
@@ -48,12 +49,12 @@ O **Acordb** dispõe de varias opções de configuração. As principais configu
 - Três níveis de acesso (utilizadores sem conta, utilizadores com conta (consumidores) e administradores) com diferentes níveis de permissões.
 - Utilizadores sem conta conseguem apenas consultar/pesquisar acórdãos.
 - Consumidores conseguem consultar/pesquisar, sugerir alterações e guardar acórdãos nos favoritos.
-- Administradores conseguem consultar/pesquisar, sugerir alterações, guardar acórdãos nos favoritos, aprovar pedir de alterações e criar através de formulário ou ******upload****** de ficheiro acórdãos. Para além disso, os administradores podem tornar outros utilizadores em administradores.
-- Todos os utilizadores com conta registada têm a liberdade de alterar o seu nome (primeiro nome, segundo nome) e/ou ********password********.
+- Administradores conseguem consultar/pesquisar, sugerir alterações, guardar acórdãos nos favoritos, aprovar pedir de alterações e criar através de formulário ou **upload** de ficheiro acórdãos. Para além disso, os administradores podem tornar outros utilizadores em administradores.
+- Todos os utilizadores com conta registada têm a liberdade de alterar o seu nome (primeiro nome, segundo nome) e/ou **password**.
 
 ### Autenticação, Autorização
 
-- Autenticação através de ******email****** e *********password.*********
+- Autenticação através de **email** e ***password.***
 - Autorização através de API ***Key***.
 - Autenticação através da conta Google.
 - Criação de contas através da conta Google ou formulário.
@@ -75,9 +76,9 @@ O **Acordb** dispõe de varias opções de configuração. As principais configu
 A aplicação está divida em quatro partes distintas.
 
 1. ***Frontend (Interface)***
-Desenvolvido em [SvelteKit](https://kit.svelte.dev/), comunica diretamente com o *backend* para gestão de dados. É  responsável por mostrar ao utilizador os dados dos acórdãos, e a possibilidade de gestão dos mesmos.
+Desenvolvido em [SvelteKit](https://kit.svelte.dev/), comunica diretamente com o *backend* para gestão de dados. É responsável por mostrar ao utilizador os dados dos acórdãos, e a possibilidade de gestão dos mesmos.
 2. ***Backend***
-Desenvolvido em Django, providencia uma ****Restfull**** API com a qual o *frontend* comunica. Para além disso comunica com ambas as bases de dados para implementar a lógica da aplicação.
+Desenvolvido em Django, providencia uma **Restfull** API com a qual o *frontend* comunica. Para além disso comunica com ambas as bases de dados para implementar a lógica da aplicação.
 3. ***Base de Dados Não Relacional (MongoDB)***
 Desenvolvida em MongoDB, é utilizada para guardar dados sobre os quais não se tem a certeza quais os seus campos nem o tamanho/tipo dos seus valores. Neste caso foi usado para guardar os dados das várias versões de um acórdão.
 4. **Base de dados relacional (PostgresSQL)**
@@ -87,11 +88,11 @@ A escolha de ter duas bases de dados veio da incompatibilidade base de Django co
 
 Na seguinte figura, podemos observar um diagrama que representa a arquitetura geral do sistema:
 
-![image.png](https://github.com/gweebg/acordb/blob/main/docs/arq.svg)
+!https://github.com/gweebg/acordb/blob/main/docs/arq.svg
 
-# Desenvolvimento do *******Backend*******
+# Desenvolvimento do ***Backend***
 
-### Normalização dos ****datasets****
+### Normalização dos **datasets**
 
 Dado que eram fornecidos 14 *datasets* diferentes, com o objetivo de reduzir o número de chaves foi feita uma normalização deste *datasets*. Visto que havia vários descritores com o mesmo significado ou um descritor com a informação de vários estes foram também normalizados.
 
@@ -99,13 +100,13 @@ Para isto criaram-se os *scripts* `keysByFile.py` e `typesToTable`.py que permit
 
 Como normalizar os datasets:
 
-```bash
+```
 mv {local_com_os_acórdãos} norm/acordãos_in
 cd norm
 python3 normalizers/run.py
 ```
 
-Os datasets normalizados podem ser encontrados na pasta `norm/acordãos_out`. 
+Os datasets normalizados podem ser encontrados na pasta `norm/acordãos_out`.
 
 Na normalização de descritores é feita uma lista com todos os descritores existentes comparando os novos aos já existentes. Caso a única diferença seja ter `"."` no fim, os acórdãos são considerados o mesmo sendo guardado o que já existia. Para além disso é verificada a existência de separações dentro de um descritor criando assim 2 descritores separados.
 
@@ -117,7 +118,7 @@ Para colocar automaticamente os dados nas bases de dados foi gerado um comando d
 
 Para utilizar basta executar dentro do *container* da *backend*:
 
-```bash
+```
 python manage.py seed {pasta_com_os_datasets}
 ```
 
@@ -134,15 +135,21 @@ Esta camada dispões de várias rotas públicas e acessíveis a qualquer utiliza
 A documentação e listagem de todas as rotas públicas e privadas está totalmente documentada e pode ser consultada:
 
 - No `Postman`, importando o ficheiro **[Acordãos.postman_collection.json](https://github.com/gweebg/acordb/blob/main/server/Acord%C3%A3os.postman_collection.json).**
-- No *****browser***** através de `Swagger Docs`, acessível por http://localhost:8000/swagger/.
-- No *******browser******* através de `Redoc`, acessível por http://localhost:8000/redoc/.
+- No ***browser*** através de `Swagger Docs`, acessível por http://localhost:8000/swagger/.
+- No ***browser*** através de `Redoc`, acessível por http://localhost:8000/redoc/.
 
-# Desenvolvimento do ********Frontend********
+Relativamente às funcionalidades, temos particular orgulho na implementação do histórico dos acórdãos. De modo a nunca perder informação e em alternativa à edição/remoção de acórdãos, optamos por distinguir um acórdão como sendo um conjunto de `records`, onde cada `record` representa uma versão do acórdão, estas versões são geradas através do mecanismo de revisões, isto é, um utilizador (autenticado) pode sugerir uma alteração a um acórdão que pode posteriormente ser aceite ou rejeitado (ficando sempre um registo no ********dashboard******** do utilizador). Assim caso um acórdão seja alterado o utilizador poderá sempre verificar como era antes, podemos pensar nesta funcionalidade como os Pull Requests do GitHub, do mesmo modo, o administrador pode ver as diferenças entre a versão sugerida e a atual antes de aceitar ou rejeitar o pedido. 
 
-### ********Frontend********
+# Desenvolvimento do **Frontend**
 
-Para a realização do ********frontend******** foi utilizado `Svelte + JavaScript` juntamente com a *********framework********* `Sveltekit`, visto que, mais uma vez, parte do grupo já possuia experiência.  Algumas das vantagens de usar o `SvelteKit` em relação a outras *frameworks* como `React`, `Vue` e `Angular` incluem a sua simplicidade, desempenho e tamanho. `SvelteKit` foi projetado para ser leve e rápido, com um tamanho de pacote pequeno que permite carregamentos rápidos de página. Além disso, possui uma sintaxe e API mais simples do que outras *frameworks.* Finalmente, `SvelteKit` possui renderização do lado do servidor integrada e suporta geração de sites estáticos, tornando-o adequado para construir sites rápidos e amigáveis.
+### **Frontend**
 
-Esta camada é responsável por comunicar com o ****backend,**** porém, esta, também possui a sua própria API que facilita a gestão de rotas (por exemplo impedir que o utilizador volte a uma página protegida logo após o *******logout*******) e autenticação através do Google.
+Para a realização do **frontend** foi utilizado `Svelte + JavaScript` juntamente com a ***framework*** `Sveltekit`, visto que, mais uma vez, parte do grupo já possuia experiência.  Algumas das vantagens de usar o `SvelteKit` em relação a outras *frameworks* como `React`, `Vue` e `Angular` incluem a sua simplicidade, desempenho e tamanho. `SvelteKit` foi projetado para ser leve e rápido, com um tamanho de pacote pequeno que permite carregamentos rápidos de página. Além disso, possui uma sintaxe e API mais simples do que outras *frameworks.* Finalmente, `SvelteKit` possui renderização do lado do servidor integrada e suporta geração de sites estáticos, tornando-o adequado para construir sites rápidos e amigáveis.
 
-Como já referido previamente, podemos testar a interface em http://localhost/home que nos leva à página principal da nossa aplicação onde podemos executar qualquer pesquisa, consultar os 10 acórdãos mas recentes assim como as estatísticas gerais relativas ao serviço.
+Esta camada é responsável por comunicar com o **backend,** porém, esta, também possui a sua própria API que facilita a gestão de rotas (por exemplo impedir que o utilizador volte a uma página protegida logo após o ***logout***) e autenticação através do Google. Graças ao SSR (Server Side Rendering), podemos executar no servidor apenas pedidos autenticados enquanto que pedidos não autenticados podem ser executados pelo cliente (********browser********), isto diminui o *********overhead********* no servidor aumentado a reatividade e velocidade da aplicação. 
+
+Como já referido previamente, podemos testar a interface em http://localhost/home que nos leva à página principal da nossa aplicação onde podemos executar qualquer pesquisa, consultar os 10 acórdãos mas recentes assim como as estatísticas gerais relativas ao serviço. 
+
+Da página inicial temos acesso também ao *********dashboard********* (http://localhost/user) que nos permite a navegação pela aba do perfil, pedidos feitos e favoritos. Para além disso, caso o utilizador seja administrador também tem a possibilidade de adicionar um acórdão. Isto pode ser realizado através do preenchimento de um formulário ou do **********upload********** de um ficheiro `json` devidamente formatado.  Para além disso também podemos consultar um acórdão (`http://localhost/ruling/{id}`) onde podemos observar todo o conteúdo do acórdão, assim como sugerir alterações, favoritar e verificar versões anteriores.
+
+No fundo estas três rotas mencionadas são as mais importantes dado que nos permitem realizar todas as operações da aplicação.
