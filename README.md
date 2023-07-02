@@ -2,8 +2,6 @@
 
 # Acordb
 
----
-
 Através da realização deste projeto foi criada a plataforma **Acordb** com o intuído de auxiliar qualquer tipo pessoa ou organização a procurar, guardar ou editar acórdãos.
 Dado a que cada tribunal, com autonomia própria, disponibiliza periodicamente um conjunto de acórdãos públicos, a aplicação, por defeito, possui aproximadamente 340.000 acórdãos espalhados por 14 tribunais diferentes. Tais registos podem ser pesquisados a qualquer nível de detalhe, guardados nos favoritos ou até alterados através de pedidos de sugestão.
 
@@ -16,8 +14,6 @@ Nesta aplicação, existem três tipos de acesso. Utilizadores sem conta apenas 
 No presente relatório, são explicadas as ferramentas e tecnologias usadas, a arquitetura implementada, o tratamento de dados feito, a implementação de bases de dados e ainda a interface da aplicação.
 
 ## Pré-requisitos e Manual de Utilização
-
----
 
 A plataforma depende de vários serviços, pelo que é necessário ter instaladas as aplicações :
 
@@ -49,8 +45,6 @@ O **Acordb** dispõe de varias opções de configuração. As principais configu
 
 ## Funcionalidades Implementadas
 
----
-
 ### Níveis de Acesso e Utilizadores
 
 - Três níveis de acesso (utilizadores sem conta, utilizadores com conta (consumidores) e administradores) com diferentes níveis de permissões.
@@ -80,8 +74,6 @@ O **Acordb** dispõe de varias opções de configuração. As principais configu
 
 # Arquitetura da Aplicação
 
----
-
 A aplicação está divida em quatro partes distintas.
 
 1. ***Frontend (Interface)***
@@ -100,8 +92,6 @@ Na seguinte figura, podemos observar um diagrama que representa a arquitetura ge
 ![image.png]()
 
 # Desenvolvimento do *******Backend*******
-
----
 
 ### Normalização dos ****datasets****
 
