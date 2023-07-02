@@ -20,8 +20,8 @@ services:
     build: ./client
     ports:
       - 80:80
-    volumes:
-      - ./client:/src
+    # volumes:
+    #   - ./client:/src
     networks:
       - lost
     environment:
