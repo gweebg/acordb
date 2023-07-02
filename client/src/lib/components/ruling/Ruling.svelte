@@ -5,10 +5,9 @@
     import { checkValue } from "$lib/scripts/utils.js";
 
     export let ruling;
-    export let isResult;
+    export let isRecord = false;
 
-
-    const { id, added_by, added_at, tags, data } = ruling;
+    const { id, added_by, added_at, acordao, tags, data } = ruling;
 
     const headerData = {
         process: checkValue(data.Processo),
@@ -25,7 +24,10 @@
     }
 
     const redirectToRuling = () => {
-        window.location.href = `/record/${id}`;
+        if (isRecord)
+            window.location.href = `/record/${id}`;
+        else
+            window.location.href = `/ruling/${acordao}`;
     }
 
 </script>

@@ -50,7 +50,7 @@
             {#if versions.length > 0}
 
                 {#each versions as ruling}
-                    <Ruling ruling={ruling}/>
+                    <Ruling ruling={ruling} isRecord={true}/>
                 {/each}
 
             {:else}
