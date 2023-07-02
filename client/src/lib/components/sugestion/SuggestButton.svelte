@@ -68,7 +68,7 @@
                 </div>
 
                 <div class="flex mt-4">
-                    <button class="btn ml-auto btn-accent btn-sm">Enviar Pedido</button>
+                    <button class="btn ml-auto btn-primary btn-sm">Enviar Pedido</button>
                 </div>
             </form>
         </div>

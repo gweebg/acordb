@@ -84,7 +84,7 @@
             <header class="flex flex-row gap-2 items-center">
 
                 <div class="pt-1">
-                    <button type="button" class="btn btn-xs btn-neutral btn-circle" on:click={() => deleteField(param)}>
+                    <button type="button" class="btn btn-xs btn-error btn-circle" on:click={() => deleteField(param)}>
                         <img src="/icons/delete.svg" alt="remove">
                     </button>
                 </div>
@@ -141,7 +141,7 @@
 
     {/each}
 
-    <button type="button" onclick="addF.showModal()" class="btn btn-sm"><span class="">New Field +</span></button>
+    <button type="button" onclick="addF.showModal()" class="btn btn-sm w-full"><span class="">Adicionar novo campo +</span></button>
 
     <dialog id="addF" class="modal modal-bottom sm:modal-middle">
 
@@ -151,8 +151,8 @@
                 <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
 
                 <header>
-                    <h3 class="font-bold text-lg">Create a new field</h3>
-                    <p class="text-sm opacity-70">Provide at least a field name.</p>
+                    <h3 class="font-bold text-lg">Adicionar um campo ao acordão</h3>
+                    <p class="text-sm opacity-70">Forneça, no mínimo, um nome para o campo.</p>
                     <div class="divider m-0"></div>
                 </header>
 
@@ -162,14 +162,14 @@
 
                 <div class="form-control w-full max-w-xs">
                     <label class="label">
-                        <span class="label-text">Field Name</span>
+                        <span class="label-text">Nome do campo</span>
                     </label>
                     <input type="text" placeholder="Field Name" class="input input-bordered w-full" bind:value={fieldName} />
                 </div>
 
                 <div class="form-control w-full max-w-xs">
                     <label class="label">
-                        <span class="label-text">Field Value</span>
+                        <span class="label-text">Valor do campo</span>
                     </label>
                     <input type="text" placeholder="Field Name" class="input input-bordered w-full" bind:value={fieldValue} />
                 </div>
@@ -183,8 +183,8 @@
             {/if}
 
             <div class="modal-action">
-                <button type="button" class="btn btn-sm btn-accent" on:click={newField}>
-                    Create
+                <button type="button" class="btn btn-sm btn-primary" on:click={newField}>
+                    Criar
                 </button>
             </div>
 
