@@ -2,7 +2,6 @@ import os
 import json
 import re
 from collections import OrderedDict
-from fuzzywuzzy import fuzz
 
 allTags=set()
 
@@ -109,9 +108,6 @@ def tribunalRecorrido(item,k):
                 del item[k]
                 
                 
-def calculate_similarity(word1, word2):
-    similarity_score = fuzz.ratio(word1, word2) / 100
-    return similarity_score
 
 
 def replace_matching_words(tags):
