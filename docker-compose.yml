@@ -7,7 +7,7 @@ services:
       - 8000:8000
     volumes:
       - api-data:/code/data
-      - ./out:/code/out
+      # - ./out:/code/out
     environment:
       - TZ=Europe/Lisbon
     networks:
