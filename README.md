@@ -34,7 +34,8 @@ Para iniciar a aplicação temos de executar:
 git clone <https://github.com/gweebg/ENGWEB2023-Projeto>
 cd acordb
 docker-compose up --build
-
+Se for a primeira vez:
+docker exec -it engweb2023-projeto-api-server-1 python manage.py migrate
 ```
 
 Após isto, temos garantidamente a API de dados a ser executada em [localhost:8000](http://localhost:8000/) e a interface em [localhost:80/home](http://localhost/home), ambas prontas a ser utilizadas.
