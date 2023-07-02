@@ -7,7 +7,7 @@
 	},
 	"item": [
 		{
-			"name": "user",
+			"name": "accounts",
 			"item": [
 				{
 					"name": "get current user",
@@ -83,7 +83,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"email\": \"seb4@vettel.com\",\n    \"password\": \"croissant\",\n    \"first_name\": \"seb\",\n    \"last_name\": \"vettel\",\n    \"filiation\": \"racist\"\n}\n",
+							"raw": "{\n    \"email\": \"lumafepe@gmail.com\",\n    \"password\": \"password\",\n    \"first_name\": \"luis\",\n    \"last_name\": \"pereria\",\n    \"filiation\": \"estudante\"\n}\n",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -108,16 +108,11 @@
 					"name": "genApiKey",
 					"request": {
 						"auth": {
-							"type": "apikey",
-							"apikey": [
+							"type": "bearer",
+							"bearer": [
 								{
-									"key": "key",
-									"value": "API-KEY",
-									"type": "string"
-								},
-								{
-									"key": "value",
-									"value": "DZ0ex07c.1GkgMW2TRr4leV5wPFGwIXZHpsK2RXl8",
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjkxMDA3MDA4LCJpYXQiOjE2ODgzMjg2MDgsImp0aSI6IjNkMjk4ODc4MzVhMjRmYjliZmU1YjZhYWU2ZWM4YmEyIiwidXNlcl9pZCI6MX0.GL2s7CA1StEJ49oZyOEi3aZyjganwc0gzxAZwg2fAtc",
 									"type": "string"
 								}
 							]
@@ -187,7 +182,7 @@
 					"response": []
 				},
 				{
-					"name": "tornar administrador",
+					"name": "editar info Copy",
 					"request": {
 						"auth": {
 							"type": "bearer",
@@ -199,17 +194,63 @@
 								}
 							]
 						},
-						"method": "POST",
+						"method": "PUT",
 						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"filipe@massa.com\",\n    \"password\": \"croissant2\",\n    \"first_name\": \"filipe_alt\",\n    \"last_name\": \"massa_alr\",\n    \"filiation\": \"racer\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
 						"url": {
-							"raw": "{{url}}/accounts/user/2/makeadmin/",
+							"raw": "{{url}}/accounts/user/3/",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"accounts",
 								"user",
-								"2",
+								"3",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "tornar administrador",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjkwODc5ODE1LCJpYXQiOjE2ODgyMDE0MTUsImp0aSI6Ijc4MmEwZDZjNGZhNTRkYWU4MTQzZGU4N2UzMTkxMGE2IiwidXNlcl9pZCI6MX0.m6sRijN30UIe4vRS8Bx6E4Q5wE6zPosmPYgvzUn53U4",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\":\"rodrigommpereira309@gmail.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/accounts/makeadmin/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"accounts",
 								"makeadmin",
 								""
 							]
@@ -267,14 +308,14 @@
 					"response": []
 				},
 				{
-					"name": "New Request",
+					"name": "requests",
 					"request": {
 						"auth": {
 							"type": "bearer",
 							"bearer": [
 								{
 									"key": "token",
-									"value": "0MDOZCrFia1U1khCA7HN3n95ZKEvfv",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjkxMDA3MDA4LCJpYXQiOjE2ODgzMjg2MDgsImp0aSI6IjNkMjk4ODc4MzVhMjRmYjliZmU1YjZhYWU2ZWM4YmEyIiwidXNlcl9pZCI6MX0.GL2s7CA1StEJ49oZyOEi3aZyjganwc0gzxAZwg2fAtc",
 									"type": "string"
 								}
 							]
@@ -294,11 +335,139 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "authentication password",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\":\"admin@admin.pt\",\n    \"password\":\"admin\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/accounts/login/password/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"accounts",
+								"login",
+								"password",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "refresh authentication token",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"refresh\":\"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTcxOTg2NDYwOCwiaWF0IjoxNjg4MzI4NjA4LCJqdGkiOiI4MWZhZGNiZWZhZjI0ZDJhYmY0NzQ4ODg0YWUyMzcyOCIsInVzZXJfaWQiOjF9.4_5ElpjVyRwIiPD-M47ZwOYyQiy236Qh7GL9LhhPkS8\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/accounts/login/refresh/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"accounts",
+								"login",
+								"refresh",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "google Account login",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"token\":\"eyJhbGciOiJSUzI1NiIsImtpZCI6IjkzNDFkZWRlZWUyZDE4NjliNjU3ZmE5MzAzMDAwODJmZTI2YjNkOTIiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJodHRwczovL2FjY291bnRzLmdvb2dsZS5jb20iLCJuYmYiOjE2ODgyMTI2ODYsImF1ZCI6IjE3Mzk4NzUzNTUxNy1lYTVrbzJqZTFkODB1cXFtaTZpcG83NDNrYXVsYTduYi5hcHBzLmdvb2dsZXVzZXJjb250ZW50LmNvbSIsInN1YiI6IjExMjgxMDI3NjIxODEwMjQyMTMxMSIsImVtYWlsIjoicm9kcmlnb21tcGVyZWlyYTMwOUBnbWFpbC5jb20iLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwiYXpwIjoiMTczOTg3NTM1NTE3LWVhNWtvMmplMWQ4MHVxcW1pNmlwbzc0M2thdWxhN25iLmFwcHMuZ29vZ2xldXNlcmNvbnRlbnQuY29tIiwibmFtZSI6IlJvZHJpZ28gUGVyZWlyYSIsInBpY3R1cmUiOiJodHRwczovL2xoMy5nb29nbGV1c2VyY29udGVudC5jb20vYS9BQWNIVHRjUjZpclVnWDJIZGxYeUpfekE2SlFiRUFEVS1iWllyZmxIZVlWLW1hOGNxZz1zOTYtYyIsImdpdmVuX25hbWUiOiJSb2RyaWdvIiwiZmFtaWx5X25hbWUiOiJQZXJlaXJhIiwiaWF0IjoxNjg4MjEyOTg2LCJleHAiOjE2ODgyMTY1ODYsImp0aSI6ImY1MTIwYzQ3NWY5OTZiZjdkMjE3ZTE3NWQxZTgwZGUxMzhkZDcwMmUifQ.g06QPu-ZQHqo8sLM3z7QV46xWqC8jHfEOwrv1ijjtC6LpkpLhSjxkd9znMgcJ90-jYYn-PcCXuYB_kJksGfitUZnje_af674JIz-h8-CyAvwXIeB9MeD_Ci5xO0tfTX6_hvR8Vtol-NqC4DagQo43rkFrudDwVT3UyDqWrprycIncM2j3or12W49GnK9LJQwdaagJhJlJIm_syNDlSimHPaE5OeIB7gz_JXqZtw1STMszbuEpO-9eTXnDWWcQv5nZi9CP8_aZic6Q--gH7TUkSrKq9xlVU85z7QRjihArAnHO7g1a_Th43b3tzjBRjSNBN92SjWA4ufh7348rsbwvA\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/accounts/login/google/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"accounts",
+								"login",
+								"google",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "add google Account",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"token\":\"eyJhbGciOiJSUzI1NiIsImtpZCI6IjkzNDFkZWRlZWUyZDE4NjliNjU3ZmE5MzAzMDAwODJmZTI2YjNkOTIiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJodHRwczovL2FjY291bnRzLmdvb2dsZS5jb20iLCJuYmYiOjE2ODgxNzA5OTQsImF1ZCI6IjE3Mzk4NzUzNTUxNy1lYTVrbzJqZTFkODB1cXFtaTZpcG83NDNrYXVsYTduYi5hcHBzLmdvb2dsZXVzZXJjb250ZW50LmNvbSIsInN1YiI6IjExMjgxMDI3NjIxODEwMjQyMTMxMSIsImVtYWlsIjoicm9kcmlnb21tcGVyZWlyYTMwOUBnbWFpbC5jb20iLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwiYXpwIjoiMTczOTg3NTM1NTE3LWVhNWtvMmplMWQ4MHVxcW1pNmlwbzc0M2thdWxhN25iLmFwcHMuZ29vZ2xldXNlcmNvbnRlbnQuY29tIiwibmFtZSI6IlJvZHJpZ28gUGVyZWlyYSIsInBpY3R1cmUiOiJodHRwczovL2xoMy5nb29nbGV1c2VyY29udGVudC5jb20vYS9BQWNIVHRjUjZpclVnWDJIZGxYeUpfekE2SlFiRUFEVS1iWllyZmxIZVlWLW1hOGNxZz1zOTYtYyIsImdpdmVuX25hbWUiOiJSb2RyaWdvIiwiZmFtaWx5X25hbWUiOiJQZXJlaXJhIiwiaWF0IjoxNjg4MTcxMjk0LCJleHAiOjE2ODgxNzQ4OTQsImp0aSI6Ijc1Y2E0MDg0M2I1OGYwM2Y3NDM2MjBhMGJiNGRiMTYxMmIwMTIwZDQifQ.PmvADr-KwEZ0yh7xGejbo1z-GQU9FLWbp3H7gEDLkwd9z6IseuOyFQcpZ1W-OGWlI3KJVAkFE0o2zv-cRhgDaSREceIueYehsRa5sRoKDGDuAe6rYHS-HrpavGoBxRXdrnBsNIbvc174hNjGrA-_T4fkZMmrBcP7lsXWermc_BpeuaBq5b8rW-MBgSiNzOiJPW8xILkUadalqgaAQpVXHrfEK9q8WWjjNJ_5KQ6jJ56rJ7OoVzkHuT3SI-0ml4UPl6mxaLcGa_2L6MBWvdZpWotwMeKVewImEin5zVsYGPQ3rcDbwyQlhqG3DsJ3vwf8fI76NXva032rnYm3eJO9BQ\",\n    \"filiation\":\"barista\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/accounts/login/google/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"accounts",
+								"login",
+								"google",
+								""
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},
 		{
-			"name": "records",
+			"name": "acordaos",
 			"item": [
 				{
 					"name": "Create Acordão",
@@ -366,34 +535,6 @@
 									"key": "limit",
 									"value": "10"
 								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "retrieve Acordao",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "JZxUCOL2PKp8aiIMbxwcv3AK9agfvx",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{url}}/acordaos/",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"acordaos",
-								""
 							]
 						}
 					},
@@ -882,102 +1023,6 @@
 					"response": []
 				}
 			]
-		},
-		{
-			"name": "authentication",
-			"request": {
-				"auth": {
-					"type": "noauth"
-				},
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n    \"email\":\"admin@admin.pt\",\n    \"password\":\"admin\"\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "{{url}}/accounts/login/password/",
-					"host": [
-						"{{url}}"
-					],
-					"path": [
-						"accounts",
-						"login",
-						"password",
-						""
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "add google Account",
-			"request": {
-				"auth": {
-					"type": "noauth"
-				},
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n    \"token\":\"eyJhbGciOiJSUzI1NiIsImtpZCI6IjkzNDFkZWRlZWUyZDE4NjliNjU3ZmE5MzAzMDAwODJmZTI2YjNkOTIiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJodHRwczovL2FjY291bnRzLmdvb2dsZS5jb20iLCJuYmYiOjE2ODgxNzA5OTQsImF1ZCI6IjE3Mzk4NzUzNTUxNy1lYTVrbzJqZTFkODB1cXFtaTZpcG83NDNrYXVsYTduYi5hcHBzLmdvb2dsZXVzZXJjb250ZW50LmNvbSIsInN1YiI6IjExMjgxMDI3NjIxODEwMjQyMTMxMSIsImVtYWlsIjoicm9kcmlnb21tcGVyZWlyYTMwOUBnbWFpbC5jb20iLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwiYXpwIjoiMTczOTg3NTM1NTE3LWVhNWtvMmplMWQ4MHVxcW1pNmlwbzc0M2thdWxhN25iLmFwcHMuZ29vZ2xldXNlcmNvbnRlbnQuY29tIiwibmFtZSI6IlJvZHJpZ28gUGVyZWlyYSIsInBpY3R1cmUiOiJodHRwczovL2xoMy5nb29nbGV1c2VyY29udGVudC5jb20vYS9BQWNIVHRjUjZpclVnWDJIZGxYeUpfekE2SlFiRUFEVS1iWllyZmxIZVlWLW1hOGNxZz1zOTYtYyIsImdpdmVuX25hbWUiOiJSb2RyaWdvIiwiZmFtaWx5X25hbWUiOiJQZXJlaXJhIiwiaWF0IjoxNjg4MTcxMjk0LCJleHAiOjE2ODgxNzQ4OTQsImp0aSI6Ijc1Y2E0MDg0M2I1OGYwM2Y3NDM2MjBhMGJiNGRiMTYxMmIwMTIwZDQifQ.PmvADr-KwEZ0yh7xGejbo1z-GQU9FLWbp3H7gEDLkwd9z6IseuOyFQcpZ1W-OGWlI3KJVAkFE0o2zv-cRhgDaSREceIueYehsRa5sRoKDGDuAe6rYHS-HrpavGoBxRXdrnBsNIbvc174hNjGrA-_T4fkZMmrBcP7lsXWermc_BpeuaBq5b8rW-MBgSiNzOiJPW8xILkUadalqgaAQpVXHrfEK9q8WWjjNJ_5KQ6jJ56rJ7OoVzkHuT3SI-0ml4UPl6mxaLcGa_2L6MBWvdZpWotwMeKVewImEin5zVsYGPQ3rcDbwyQlhqG3DsJ3vwf8fI76NXva032rnYm3eJO9BQ\",\n    \"filiation\":\"barista\"\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "{{url}}/accounts/login/google/",
-					"host": [
-						"{{url}}"
-					],
-					"path": [
-						"accounts",
-						"login",
-						"google",
-						""
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "google Account login",
-			"request": {
-				"auth": {
-					"type": "noauth"
-				},
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n    \"token\":\"eyJhbGciOiJSUzI1NiIsImtpZCI6IjkzNDFkZWRlZWUyZDE4NjliNjU3ZmE5MzAzMDAwODJmZTI2YjNkOTIiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJodHRwczovL2FjY291bnRzLmdvb2dsZS5jb20iLCJuYmYiOjE2ODgxNzMyOTUsImF1ZCI6IjE3Mzk4NzUzNTUxNy1lYTVrbzJqZTFkODB1cXFtaTZpcG83NDNrYXVsYTduYi5hcHBzLmdvb2dsZXVzZXJjb250ZW50LmNvbSIsInN1YiI6IjExMjgxMDI3NjIxODEwMjQyMTMxMSIsImVtYWlsIjoicm9kcmlnb21tcGVyZWlyYTMwOUBnbWFpbC5jb20iLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwiYXpwIjoiMTczOTg3NTM1NTE3LWVhNWtvMmplMWQ4MHVxcW1pNmlwbzc0M2thdWxhN25iLmFwcHMuZ29vZ2xldXNlcmNvbnRlbnQuY29tIiwibmFtZSI6IlJvZHJpZ28gUGVyZWlyYSIsInBpY3R1cmUiOiJodHRwczovL2xoMy5nb29nbGV1c2VyY29udGVudC5jb20vYS9BQWNIVHRjUjZpclVnWDJIZGxYeUpfekE2SlFiRUFEVS1iWllyZmxIZVlWLW1hOGNxZz1zOTYtYyIsImdpdmVuX25hbWUiOiJSb2RyaWdvIiwiZmFtaWx5X25hbWUiOiJQZXJlaXJhIiwiaWF0IjoxNjg4MTczNTk1LCJleHAiOjE2ODgxNzcxOTUsImp0aSI6IjMzNjAzYTlmODQxNTE2MjNhNmNkNmRlM2FmYWQwZDY4NDMwOThhMGYifQ.NR64F1UGTNJy5W7-fPQ4d12Rxfhi1rBg3DuUUQ6Ft4DWHJgTT0R1q6pzicMA2CztForwdBi_2mX7Cj_jyS_OnbaQQM4-W2umWvXJKiaAQMo-jQEpQund1dcaONfr4Zll5vX5BPGfk0aAH4WRDJocOv0BC-uGsJV4_kpOl30SNjAGIndTEQs96reA1MRL1UieDNOfLW4pkVo_BhY6QnZUZL41j2mIsX1tRuCcoF488_kcT8dHTone0d6RQ8mSSv6TMBNYS9z-XUOXTp_vTOK27oXUsesCz9Svet1Dmm9eE3rvhsSD_rqu420ttCbxN5opTDHvTpgg67lI6e7CO5e5mw\"\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "{{url}}/accounts/login/google/",
-					"host": [
-						"{{url}}"
-					],
-					"path": [
-						"accounts",
-						"login",
-						"google",
-						""
-					]
-				}
-			},
-			"response": []
 		},
 		{
 			"name": "Stats",

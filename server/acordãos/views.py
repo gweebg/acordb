@@ -6,11 +6,34 @@ from records.models import Record,ChangeRequest
 from favorites.models import Favorites
 from django.utils import timezone
 from datetime import timedelta
-
+from drf_yasg.utils import swagger_auto_schema
+from drf_yasg import openapi
 
 
 class Statistics(APIView):
     permission_classes=[permissions.AllowAny]
+    @swagger_auto_schema(
+        operation_description="Retrieves the global  statistics",
+        responses={
+            200: openapi.Response(
+                description="Successful response",
+                schema=openapi.Schema(
+                    type=openapi.TYPE_OBJECT,
+                    properties={
+                        "Processos": openapi.Schema(type=openapi.TYPE_INTEGER),
+                        "Processos24horas": openapi.Schema(type=openapi.TYPE_INTEGER),
+                        "Users": openapi.Schema(type=openapi.TYPE_INTEGER),
+                        "Administradores": openapi.Schema(type=openapi.TYPE_INTEGER),
+                        "Consumidores": openapi.Schema(type=openapi.TYPE_INTEGER),
+                        "RecordsMes": openapi.Schema(
+                            type=openapi.TYPE_ARRAY,
+                            items=openapi.Schema(type=openapi.TYPE_INTEGER),
+                        ),
+                    },
+                ),
+            ),
+        },
+    )
     def get(self,request):
         last_1_days = timezone.now() - timedelta(days=1)
         current_date = timezone.now()

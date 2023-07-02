@@ -8,10 +8,38 @@ from .serializers import FavoritesSerializer
 from .permissions import FavoritesPermission
 import uuid
 from django.shortcuts import get_object_or_404
+from drf_yasg.utils import swagger_auto_schema
+from drf_yasg import openapi
 # Create your views here.
 
 class IsFavorite(APIView):
     permission_classes=[permissions.IsAuthenticated]
+    @swagger_auto_schema(
+        operation_description="Check if the acordao is a favorite",
+        manual_parameters=[
+            openapi.Parameter(
+                name="acordao",
+                in_=openapi.IN_PATH,
+                type=openapi.TYPE_INTEGER,
+                description="ID of the acordao",
+                required=True,
+            ),
+        ],
+        responses={
+            200: openapi.Response(
+                description="Favorite found",
+                schema=openapi.Schema(
+                    type=openapi.TYPE_OBJECT,
+                    properties={
+                        "acordao": openapi.Schema(type=openapi.TYPE_INTEGER),
+                        "description": openapi.Schema(type=openapi.TYPE_STRING),
+                        "id": openapi.Schema(type=openapi.TYPE_INTEGER),
+                    },
+                ),
+            ),
+            204: openapi.Response(description="Favorite not found"),
+        },
+    )
     def get(self, request,acordao):
         acordao = get_object_or_404(Acordao,pk=acordao)
         fav = Favorites.objects.filter(user=request.user, acordao=acordao).first()
